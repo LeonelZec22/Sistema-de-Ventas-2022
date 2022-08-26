@@ -1,0 +1,13 @@
+CornerRadius redondea las esquinas de la pantalla utilizando el paquete de iconos
+
+Selecciona el objeto tipo window en apariencia pones allow transparent para tener la pantalla completa
+
+Despues en windostartup lo pones en center
+
+Cambiamos el color del windows 
+
+Agregamos un rectangulo a este solo cambiamos su tamaño y sus bordes dejando solo una franja del windows
+
+Creamos una figula con un rectangulo que girado es un rombo y en medio un circulo de otro color 
+
+Content="Ver lista de &#xa; productos" -> para el salto de línea

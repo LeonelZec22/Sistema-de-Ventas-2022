@@ -4,9 +4,621 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CapaPresentacion"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Height="450" Width="800">
+        Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <AdornerDecorator>
+                        <ContentPresenter/>
+                    </AdornerDecorator>
+                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+                        <Condition Property="WindowState" Value="Normal"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="WindowStyle1" TargetType="{x:Type Window}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="15" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                    <Setter Property="Template" Value="{StaticResource WindowTemplateKey}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <hc:SimplePanel Margin="-5,8,-5,-13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="55">
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\home-48.png
+                                           "/>
+                                    <Label Content="Inicio" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="55" Margin="0,32,0,0" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                </hc:SimplePanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <hc:SimplePanel Margin="-5,3,-27,-18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="77">
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\Product-64.png                                            "/>
+                                    <Label Content="Productos" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="0,32,0,-2" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                </hc:SimplePanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <hc:SimplePanel Margin="-5,3,-27,-18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="77">
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="34" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\Clientes-64.png                                            " Margin="20,0,23,0"/>
+                                    <Label Content="Productos" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="0,32,0,-2" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                </hc:SimplePanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <hc:SimplePanel Margin="-5,3,-27,-18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="77">
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="34" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\inventory-64.png                                            " Margin="20,0,23,0"/>
+                                    <Label Content="Inventario" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="0,32,0,-2" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                </hc:SimplePanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}"/>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CardStyle1" TargetType="{x:Type hc:Card}">
+            <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type hc:Card}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
+                                    <Border.Visibility>
+                                        <TemplateBinding Property="Header">
+                                            <TemplateBinding.Converter>
+                                                <hc:Object2VisibilityConverter/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </Border.Visibility>
+                                    <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header"/>
+                                </Border>
+                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Grid.Row="1"/>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0" Grid.Row="2">
+                                    <Border.Visibility>
+                                        <TemplateBinding Property="Footer">
+                                            <TemplateBinding.Converter>
+                                                <hc:Object2VisibilityConverter/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </Border.Visibility>
+                                    <ContentPresenter ContentTemplate="{TemplateBinding FooterTemplate}" Content="{TemplateBinding Footer}" ContentStringFormat="{TemplateBinding FooterStringFormat}" ContentSource="Footer"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Control}">
+                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FocusVisualStyle">
+                        <Setter.Value>
+                            <Style>
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                <Rectangle.Style>
+                                                    <Style TargetType="{x:Type Rectangle}">
+                                                        <Setter Property="Margin" Value="-2"/>
+                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                    </Style>
+                                                </Rectangle.Style>
+                                            </Rectangle>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Style.BasedOn>
+        </Style>
+        <Style x:Key="ButtonStyle5" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                    <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <hc:SimplePanel>
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <Border BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15" Background="{x:Null}" OpacityMask="#FF4B4949">
+                                        <StackPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Orientation="Horizontal" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                            <Path x:Name="PathMain" Data="{TemplateBinding hc:IconElement.Geometry}" Fill="{TemplateBinding Foreground}" Height="{TemplateBinding hc:IconElement.Height}" Stretch="Uniform" SnapsToDevicePixels="True" Width="{TemplateBinding hc:IconElement.Width}"/>
+                                            <ContentPresenter x:Name="ContentPresenterMain" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="6,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </hc:SimplePanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Content" Value="{x:Null}">
+                                        <Setter Property="Visibility" TargetName="ContentPresenterMain" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="hc:IconElement.Geometry" Value="{x:Null}">
+                                        <Setter Property="Visibility" TargetName="PathMain" Value="Collapsed"/>
+                                        <Setter Property="Margin" TargetName="ContentPresenterMain" Value="0"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.BasedOn>
+                        <Style TargetType="{x:Type ButtonBase}">
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Style.BasedOn>
+                                <Style TargetType="{x:Type Control}">
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle RadiusY="4" RadiusX="4">
+                                                                <Rectangle.Style>
+                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                        <Setter Property="Margin" Value="-2"/>
+                                                                        <Setter Property="Opacity" Value="0.6"/>
+                                                                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                                                        <Setter Property="StrokeThickness" Value="2"/>
+                                                                        <Setter Property="StrokeDashArray" Value="1 1"/>
+                                                                    </Style>
+                                                                </Rectangle.Style>
+                                                            </Rectangle>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Style.BasedOn>
+                        </Style>
+                    </Style.BasedOn>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Rectangle Fill="#FF111111" HorizontalAlignment="Left" Height="500" Margin="83,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="917" RadiusX="15" RadiusY="15"/>
+        <Grid Margin="10,38,948,420">
+            <Rectangle Fill="#FFF9EAEA" HorizontalAlignment="Left" Height="42" Stroke="Black" VerticalAlignment="Top" Width="42                    " RenderTransformOrigin="0.467,0.889" Margin="9,0,-9,0">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="47.602"/>
+                        <TranslateTransform X="-11.612" Y="-6.35"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Ellipse Fill="#FF111111" Margin="19,7,0,10" Stroke="Black" RenderTransformOrigin="1.087,0.44"/>
+
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,278,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle3}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,375,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle4}"/>
+        <hc:SearchBar HorizontalAlignment="Left" Height="38" Margin="480,10,0,0" TextWrapping="Wrap" Text="Busqueda" VerticalAlignment="Top" Width="475"/>
+        <TextBlock HorizontalAlignment="Left" Margin="161,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="38" Foreground="#FFFBF4F4" FontSize="24" FontWeight="Bold"><Run Text="Bienv"/><Run Text="enido"/></TextBlock>
+        <Image HorizontalAlignment="Left" Height="53" Margin="100,10,0,0" VerticalAlignment="Top" Width="56" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" Text="Administrador" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="13" Width="80" FontSize="11"/>
+        <hc:Card HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="104,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\product-64.png"/>
+        <Button Content="Ver la lista de&#xA; productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,167,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="161,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Productos"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="281,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="284,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\supplier-48.png"/>
+        <Button Content="Ir a lista de&#xA;proveedores" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="295,167,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="341,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Proveedores"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="481,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="484,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\clientes-64.png"/>
+        <Button Content="Ver la lista de&#xA; clientes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="495,167,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="541,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Clientes"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="714,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="717,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\servicios-48.png"/>
+        <Button Content="Ver la lista de&#xA; servicios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,167,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="774,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Servicios"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="714,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="54" Margin="717,300,0,0" VerticalAlignment="Top" Width="52" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\configuracion.png"/>
+        <Button Content="          Ir a&#xA;configuraciones" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,375,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="774,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80"><Run Text="Configuración"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="481,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="48" Margin="492,306,0,0" VerticalAlignment="Top" Width="44" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\reserva.png"/>
+        <Button Content="Ver la lista de&#xA; reservas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="495,375,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="541,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Reservas"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="281,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="284,300,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\ventas-48.png"/>
+        <Button Content="Ver la lista de&#xA; ventas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="295,375,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="341,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Ventas"/></TextBlock>
+        <hc:Card HorizontalAlignment="Left" Margin="101,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+        <Image HorizontalAlignment="Left" Height="61" Margin="104,300,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\inventory-64.png"/>
+        <Button Content="Ver inventario" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,375,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="161,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Inventario"/></TextBlock>
+
+
     </Grid>
 </Window>
