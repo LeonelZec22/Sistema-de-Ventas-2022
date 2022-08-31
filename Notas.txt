@@ -11,3 +11,5 @@ Agregamos un rectangulo a este solo cambiamos su tamaño y sus bordes dejando sol
 Creamos una figula con un rectangulo que girado es un rombo y en medio un circulo de otro color 
 
 Content="Ver lista de &#xa; productos" -> para el salto de línea
+
+ <Icon:PackIconMaterial Kind="Prod" Style="{StaticResource menuButtonIcon}"/>

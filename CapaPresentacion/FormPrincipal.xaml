@@ -603,9 +603,9 @@
         <Button Content="Ver la lista de&#xA; servicios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,167,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="774,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Servicios"/></TextBlock>
         <hc:Card HorizontalAlignment="Left" Margin="714,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="54" Margin="717,300,0,0" VerticalAlignment="Top" Width="52" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\configuracion.png"/>
-        <Button Content="          Ir a&#xA;configuraciones" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,375,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="774,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80"><Run Text="Configuración"/></TextBlock>
+        <Image HorizontalAlignment="Left" Height="54" Margin="717,300,0,0" VerticalAlignment="Top" Width="52" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\box.png"/>
+        <Button Content="Ver la lista &#xA;de paquetes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,375,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="774,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80"><Run Text="Paquetes"/></TextBlock>
         <hc:Card HorizontalAlignment="Left" Margin="481,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
         <Image HorizontalAlignment="Left" Height="48" Margin="492,306,0,0" VerticalAlignment="Top" Width="44" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\reserva.png"/>
         <Button Content="Ver la lista de&#xA; reservas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="495,375,0,0"/>
