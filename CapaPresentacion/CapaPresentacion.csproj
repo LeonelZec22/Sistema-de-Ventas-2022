@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormEditBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +101,9 @@
     </Compile>
     <Compile Include="FormAgregarBase.xaml.cs">
       <DependentUpon>FormAgregarBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditBase.xaml.cs">
+      <DependentUpon>FormEditBase.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormPrincipal.xaml.cs">
       <DependentUpon>FormPrincipal.xaml</DependentUpon>
