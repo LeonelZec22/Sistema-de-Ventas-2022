@@ -25,14 +25,14 @@
                 <Setter Property="Background" Value="#ffffff"/>
                 <Setter Property="Foreground" Value="#b0b9c6"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontSize" Value="15" />
                 <Setter Property="Padding" Value="15 10"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="Margin" Value="0 10"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
+                            <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
                                 <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                             </Border>
 

@@ -135,3 +135,42 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 	 me llevo el método carga datos cambiamos el nombre de la tabla de productos a inventario y cambios el nombre del datagrid por el de inventario
 
 	 procedemos a conectar la pantalla principal del sistema con la pantalla de inventario
+
+
+	 ------------------Formulario Agregar Producto-----------
+	 
+	 Al textBox de monto total del inventario le quitamos el isEnabled para que sea solo de lectura y no se pueda escribir en él
+	 además hemos hechos modificaciones al buscador que está en inventario y en productos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
