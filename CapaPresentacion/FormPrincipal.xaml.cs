@@ -32,5 +32,20 @@ namespace CapaPresentacion
                 this.DragMove();
             }
         }
+
+        //Creamos un nuevo constructor del objeto 
+
+        public MainWindow(bool doNotMakeInvisible)
+        {
+            InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            FrmProductos frmProductos = new FrmProductos();
+            frmProductos.ShowDialog();
+            Close();
+        }
     }
 }

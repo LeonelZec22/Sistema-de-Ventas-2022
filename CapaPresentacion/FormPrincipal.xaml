@@ -588,7 +588,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" Text="Administrador" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="13" Width="80" FontSize="11"/>
         <hc:Card HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
         <Image HorizontalAlignment="Left" Height="61" Margin="104,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\product-64.png"/>
-        <Button Content="Ver la lista de&#xA; productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,167,0,0"/>
+        <Button Content="Ver la lista de&#xA; productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,167,0,0" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="161,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Productos"/></TextBlock>
         <hc:Card HorizontalAlignment="Left" Margin="281,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
         <Image HorizontalAlignment="Left" Height="61" Margin="284,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\supplier-48.png"/>

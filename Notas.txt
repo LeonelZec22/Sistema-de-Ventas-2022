@@ -26,8 +26,11 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
  Nos falta la opción del XAML Dinamico al maximizar (Maximized) y nos falta los botones de cerrar, minimizar y maximizar
 
+ private sqlconnection Conexion = new sqlconnection(configurationManager.ConnectionStrings["Conexion_DB"].ConnectionString);
 
   ------------------Conexion a la base de datos-----------
+
+  Solo hemos modificado el archivo app.confi y creado la clase cd_conexion aunque en el archivo app.config da problemas y lo movimos todo a la clase creada
 
   En la clase CD_conexion es donde tu vas a agregar la conexion a la base de datos con autenticación de windows en el momento que está lista para 
   hacer el instalador vas a la empresa instalas el sql server y cambias la conexión haciendo un nuevo instalador
@@ -35,6 +38,8 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
  Utilizamos la clase CD_Conexion para seguir con la conexión a la base de datos 
 
    ------------------Clase procedimientos en la capa datos -----------
+   
+   Solo creamos la clase cd_procedimientos.cs
 
     Donde creo cada uno de los métodos / funciones que me van a facilitar la programación como el método cargar datos para utilizarlo en cualquier formulario en un datagridview 
 
