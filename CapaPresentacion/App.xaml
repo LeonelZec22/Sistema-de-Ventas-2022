@@ -20,7 +20,63 @@
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
 
-            <!--Estilos del boton de arriba -->
+            <!--#region  TextBox-->
+            <Style x:Key="textBoxSearch" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="#ffffff"/>
+                <Setter Property="Foreground" Value="#b0b9c6"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="Padding" Value="15 10"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0 10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                                </Trigger>
+
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="textBoxFilter" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBoxSearch}">
+                <Setter Property="Padding" Value="10 7"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" CornerRadius="7" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                                </Trigger>
+
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+    
+            <!--#endregion-->
+            
+            <!--#region Estilos de botones-->
+            
             <Style x:Key="topButton" TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#6e7783"/>
@@ -44,8 +100,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
-            <!--Estilos del Menu boton-->
 
             <Style x:Key="menuButton" TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="Transparent"/>
@@ -80,34 +134,6 @@
                 <Setter Property="Padding" Value="10 0 10 0"/>
             </Style>
 
-            <Style x:Key="textBoxSearch" TargetType="{x:Type TextBox}">
-                <Setter Property="Background" Value="#ffffff"/>
-                <Setter Property="Foreground" Value="#b0b9c6"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="25" />
-                <Setter Property="Padding" Value="15 10"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Margin" Value="0 10"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                            </Border>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
 
             <Style x:Key="addButton" TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="#6741d9"/>
@@ -163,28 +189,6 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="textBoxFilter" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBoxSearch}">
-                <Setter Property="Padding" Value="10 7"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                            <Border x:Name="border" CornerRadius="7" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#e0e6ed">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                            </Border>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
 
             <Style x:Key="paginButton" TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="Transparent"/>
@@ -217,6 +221,7 @@
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
 
+            <!--#endregion-->
 
             <!--#region Estilos del DataGrid-->
             <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
@@ -236,11 +241,12 @@
                 <Setter Property="SelectionUnit" Value="FullRow"/>
                 <Setter Property="CanUserAddRows" Value="False"/>
                 <Setter Property="CanUserDeleteRows" Value="False"/>
-                <Setter Property="CanUserResizeRows" Value="False"/>
                 <Setter Property="CanUserReorderColumns" Value="False"/>
+                <Setter Property="CanUserResizeRows" Value="False"/>
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="ColumnWidth" Value="*"/>
                 <Setter Property="GridLinesVisibility" Value="None"/>
+                <Setter Property="IsReadOnly" Value="True"/>
                 <Setter Property="Template">
                     <!--Finalizan los estilos a cambiar-->
                     <Setter.Value>
@@ -311,6 +317,7 @@
 
             <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}">
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="5 5"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Template">

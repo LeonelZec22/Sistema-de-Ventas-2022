@@ -54,7 +54,7 @@
 
                 <Button Margin="370,532,40,25" x:Name="EditguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D"/>
 
-                <Button Margin="29,532,381,25" x:Name="EditCancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0"/>
+                <Button Margin="29,532,381,25" x:Name="EditCancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0" Click="EditCancelarBtn_Click"/>
 
             </Grid>
         </Border>

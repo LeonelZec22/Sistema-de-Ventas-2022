@@ -23,5 +23,30 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+
+        private void EditCancelarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        public virtual bool Guardar()
+        {
+            return false;
+        }
+
+        public virtual void Editar()
+        {
+
+        }
+
+        public virtual void Eliminar()
+        {
+
+        }
+
+        public virtual void Buscar()
+        {
+
+        }
     }
 }
