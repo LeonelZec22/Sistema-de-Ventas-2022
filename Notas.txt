@@ -13,3 +13,72 @@ Creamos una figula con un rectangulo que girado es un rombo y en medio un circul
 Content="Ver lista de &#xa; productos" -> para el salto de línea
 
  <Icon:PackIconMaterial Kind="Prod" Style="{StaticResource menuButtonIcon}"/>
+
+  ------------------Formulario Principal-----------
+
+ Nombre: FrmPrincipal
+
+ StartPosition: CenterScreen 
+
+ Text: Sistemas de ventas - 
+
+ Windows State: Maximized 
+
+ Nos falta la opción del XAML Dinamico al maximizar (Maximized) y nos falta los botones de cerrar, minimizar y maximizar
+
+
+  ------------------Conexion a la base de datos-----------
+
+  En la clase CD_conexion es donde tu vas a agregar la conexion a la base de datos con autenticación de windows en el momento que está lista para 
+  hacer el instalador vas a la empresa instalas el sql server y cambias la conexión haciendo un nuevo instalador
+
+ Utilizamos la clase CD_Conexion para seguir con la conexión a la base de datos 
+
+   ------------------Clase procedimientos en la capa datos -----------
+
+    Donde creo cada uno de los métodos / funciones que me van a facilitar la programación como el método cargar datos para utilizarlo en cualquier formulario en un datagridview 
+
+   Vamos a crear un método que me permite cargar los datos de una tabla a un datagridview
+
+   donde pasare como parametro el nombre de la tabla 
+
+
+   Métodos creado:
+
+   - Cargar datos a la tabla
+   - Cambiar el color de la fila 
+   - Generar los códigos 
+   - Generar los códigos de ID
+   - Darle formato moneda
+   - Limpiar controles
+   - Llenar ComboBox
+
+
+       ------------------Formulario Base y Formulario Productos-----------
+   
+   Seguiremos agregando métodos / funciones a la clase procedimiento pero ahora en la capa negocio
+   Trabajaremos el formulario Productos para cargar nuestra tabla 
+
+   Mandamos a llamar a cada uno de los métodos en un objeto nuevo para ser utilizados
+
+   Agregamos un bóton cancelar con icono en la parte inferior derecha 
+
+    x:Name="EditCancelarBtn"
+
+	En FormEditBase está el boton a copiar porque tiene el método clic para cerrar la pantalla y otros métodos virtuales
+	Ahí está un método close que lo vamos a utilizar
+	y otros métodos publicos virtuales
+
+	Agregamoss el DataGrid 
+
+	Tengo que cambiar los botones del menu lateral por otros y cambiar el ancho de la pantalla para hacerlos más grande y desactivar que se pueda mover 
+	ademas de minimizar y cerrar además conectarlo con otras pantallas y tambien tenemos que ver como hacer datagrid ui más estilizado
+
+	Importamos la capa negocio y la capa entidad 
+
+	No vamos a utilizar las clases procedimientos solo vamos a copiar ese código cuando lo necesitemos
+
+	hemos creado el método cargaDatos y en la pantalla principal al hacer clic en productos se abre el formulario de productos
+
+
+	 ------------------Formulario Inventario-----------
