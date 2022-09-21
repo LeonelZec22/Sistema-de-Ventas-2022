@@ -115,3 +115,23 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 7) Conectamos la pantalla principal con la pantalla productos 
 
 	 ------------------Formulario Inventario-----------
+
+	 Los formularios de editar y agregar no deben de maximizarse 
+
+	 Tenemos que ocultar la columna id cuando es un datagrid con columnas dinamicas
+
+	 Creamos el formulario principal de inventarios
+
+	 Me llevo todo del formulario Productos
+
+	 Cambiamos los nombres del x:name de los elementos y eliminamos los botones porque solo necesitamos mostrar los datos en la tabla
+
+	 que no se te olvide agregarle este evento: Border_MouseLeftButtonDown
+
+	 Una vez teniendo ya el formulario de inventario terminados pasamos al código
+
+	 en el código me robo todas las referencias o librerias de la clase productos a la clase inventario
+
+	 me llevo el método carga datos cambiamos el nombre de la tabla de productos a inventario y cambios el nombre del datagrid por el de inventario
+
+	 procedemos a conectar la pantalla principal del sistema con la pantalla de inventario

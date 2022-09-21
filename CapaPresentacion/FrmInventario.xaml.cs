@@ -21,17 +21,15 @@ using System.Drawing;
 namespace CapaPresentacion
 {
     /// <summary>
-    /// Lógica de interacción para FrmProductos.xaml
+    /// Lógica de interacción para FrmInventario.xaml
     /// </summary>
-    public partial class FrmProductos : Window
+    public partial class FrmInventario : Window
     {
-        public FrmProductos()
+        public FrmInventario()
         {
             InitializeComponent();
-
             CargarDatos();
 
-            //DataGridProductos.Columns[0].Visibility = Visibility.Collapsed;
         }
 
         //Método para que se pueda mover la ventana
@@ -57,7 +55,7 @@ namespace CapaPresentacion
         private void CargarDatos()
         {
             Dt = new DataTable("Cargar_Datos");
-            Cmd = new SqlCommand("SELECT * FROM Productos", Con.Abrir());
+            Cmd = new SqlCommand("SELECT * FROM Inventario", Con.Abrir());
 
             Cmd.CommandType = CommandType.Text;
 
@@ -69,11 +67,8 @@ namespace CapaPresentacion
 
             Con.Cerrar();
 
-            DataGridProductos.ItemsSource = Dt.DefaultView;
+            DataGridInventario.ItemsSource = Dt.DefaultView;
 
         }
-
-        
-
     }
 }

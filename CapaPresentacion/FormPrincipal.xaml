@@ -616,7 +616,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="341,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Ventas"/></TextBlock>
         <hc:Card HorizontalAlignment="Left" Margin="101,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
         <Image HorizontalAlignment="Left" Height="61" Margin="104,300,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\inventory-64.png"/>
-        <Button Content="Ver inventario" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,375,0,0"/>
+        <Button Content="Ver inventario" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,375,0,0" Click="Button_Click_1"/>
         <TextBlock HorizontalAlignment="Left" Margin="161,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Inventario"/></TextBlock>
 
 
