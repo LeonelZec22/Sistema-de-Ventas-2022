@@ -73,7 +73,15 @@ namespace CapaPresentacion
 
         }
 
-        
+        //Evento para ocultar una columna de un datagrid autogenerico
+        private void DataGridProductos_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string Id_Producto = e.Column.Header.ToString();
 
+            if (Id_Producto == "Id_Producto")
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

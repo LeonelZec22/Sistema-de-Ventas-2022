@@ -234,7 +234,7 @@
                 <!--DataGrid-->
 
 
-                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"/>
+                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn"/>
                 <Button  Style="{StaticResource addButton}" Margin="0,9,102,10" Grid.Row="4" Width="88">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />

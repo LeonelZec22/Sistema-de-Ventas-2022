@@ -142,6 +142,10 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 	 Al textBox de monto total del inventario le quitamos el isEnabled para que sea solo de lectura y no se pueda escribir en él
 	 además hemos hechos modificaciones al buscador que está en inventario y en productos
 
+	 Creamos un método para calcular el monto total del inventario es decir sumamos toda la columna de monto total
+
+	 Ocultamos un columna auto generica con el evento AutoGeneratingColumn asi ocultamos la columna ID esto en el formulario inventario y de productos
+
 
 
 

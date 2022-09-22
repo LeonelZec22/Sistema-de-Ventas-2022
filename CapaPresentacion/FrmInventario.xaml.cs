@@ -29,6 +29,7 @@ namespace CapaPresentacion
         {
             InitializeComponent();
             CargarDatos();
+            SumarInventario();
 
         }
 
@@ -68,6 +69,34 @@ namespace CapaPresentacion
             Con.Cerrar();
 
             DataGridInventario.ItemsSource = Dt.DefaultView;
+
+        }
+
+        //Método para sumar toda la columna de Monto Inventario y imprimir ese valor en el textbox
+
+        public static decimal Total;
+
+        private void SumarInventario()
+        {
+            Total = 0;
+            foreach (DataRowView row in DataGridInventario.ItemsSource)
+            {
+                Total += Convert.ToDecimal(row[6]);
+            }
+
+            txtMontoInv.Text = Total.ToString("N2");
+        }
+
+
+        //Evento para ocultar una columna de un datagrid autogenerico
+        private void DataGridInventario_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string Id_Inventario = e.Column.Header.ToString();
+
+            if (Id_Inventario == "IdInventario")
+            {
+                e.Cancel = true;
+            }
 
         }
     }
