@@ -146,6 +146,32 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 	 Ocultamos un columna auto generica con el evento AutoGeneratingColumn asi ocultamos la columna ID esto en el formulario inventario y de productos
 
+	 Vamos a la capa entidad y creamos la clase CE_Productos
+
+	 Creamos los atributos que corresponde a los campos de la tabla productos 
+	 Creamos los métodos get y set de esos campos 
+
+	 En la capa datos creamos la clase CD_Productos en esa clase es que vamos a crear el método para agregar un producto a la base de datos
+
+	 como parametro creo una instancia de la clase CE_Productos
+
+	 Creamos los métodos agregar, editar y eliminar productos 
+
+	 En la capa de negocios creamos la clase CDo_Productos en está clase creamos más métodos para agregar, editar y eliminar
+
+	 Agregamos nuestro formulario - Agregar productos 
+
+	 Copiamos todo lo de formulario Agregar Base copiamos ese código
+
+	 Ya lo tenemos ahora los vamos a modificar un poquito para definir los campos recuerda quitar el evento mousedown heredado
+
+	 Para cada pantalla editar, agregar y eliminar si podriamos cambiar el color y los iconos 
+
+
+
+
+
+
 
 
 
