@@ -35,7 +35,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de producto" Margin="29,83,425,484"/>
 
-                <TextBox Margin="210,66,62,484" x:Name="txtAddCodeProduct" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsEnabled="False" IsReadOnly="True"/>
+                <TextBox Margin="210,66,62,484" x:Name="txtAddCodeProduct" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsEnabled="False"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de producto" Margin="22,161,424,406"/>
 
@@ -52,7 +52,7 @@
 
                 <TextBox Margin="210,410,62,140" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el precio de venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus"/>
 
-                <Button Margin="370,532,40,25" x:Name="AddguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D"/>
+                <Button Margin="370,532,40,25" x:Name="AddguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D" Click="AddguardarBtn_Click"/>
 
                 <Button Margin="29,532,381,25" x:Name="AddCancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0" Click="AddCancelarBtn_Click"/>
 

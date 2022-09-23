@@ -56,7 +56,7 @@ namespace CapaPresentacion
         private void CargarDatos()
         {
             Dt = new DataTable("Cargar_Datos");
-            Cmd = new SqlCommand("SELECT * FROM Inventario", Con.Abrir());
+            Cmd = new SqlCommand("SELECT Codigo, Nombre, Cantidad, Precio_Venta, Costo_Unitario, Monto_Total FROM Inventario", Con.Abrir());
 
             Cmd.CommandType = CommandType.Text;
 
@@ -81,7 +81,7 @@ namespace CapaPresentacion
             Total = 0;
             foreach (DataRowView row in DataGridInventario.ItemsSource)
             {
-                Total += Convert.ToDecimal(row[6]);
+                Total += Convert.ToDecimal(row[5]);
             }
 
             txtMontoInv.Text = Total.ToString("N2");
@@ -91,11 +91,11 @@ namespace CapaPresentacion
         //Evento para ocultar una columna de un datagrid autogenerico
         private void DataGridInventario_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            string Id_Inventario = e.Column.Header.ToString();
+            string IdInventario = e.Column.Header.ToString();
 
-            if (Id_Inventario == "IdInventario")
+            if (IdInventario == "ldInventario")
             {
-                e.Cancel = true;
+                e.Cancel = false;
             }
 
         }

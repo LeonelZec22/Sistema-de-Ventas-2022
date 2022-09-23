@@ -83,5 +83,19 @@ namespace CapaPresentacion
                 e.Cancel = true;
             }
         }
+
+        private void AgPro_UpdateEventHandler(object sender, FrmAgregarProducto.UpdateEventArgs args )
+        {
+            CargarDatos();
+        }
+
+        private void BtnAddProd_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarProducto AgregarProducto = new FrmAgregarProducto(this);
+            AgregarProducto.UpdateEventHandler += AgPro_UpdateEventHandler;
+            AgregarProducto.ShowDialog();
+            //Close();
+
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace CapaDatos
             string Codigo = string.Empty;
             int Total = 0;
 
-            Cmd = new SqlCommand("SELECT (*) as TotalRegistros FROM " + Tabla, Con.Abrir());
+            Cmd = new SqlCommand("SELECT COUNT(*) as TotalRegistros FROM " + Tabla, Con.Abrir());
 
             Cmd.CommandType = CommandType.Text;
 
@@ -119,7 +119,7 @@ namespace CapaDatos
             string Codigo = string.Empty;
             int Total = 0;
 
-            Cmd = new SqlCommand("SELECT (*) as TotalRegistros FROM " + Tabla, Con.Abrir());
+            Cmd = new SqlCommand("SELECT COUNT(*) as TotalRegistros FROM " + Tabla, Con.Abrir());
 
             Cmd.CommandType = CommandType.Text;
 
@@ -191,7 +191,8 @@ namespace CapaDatos
 
             while (Dr.Read())
             {
-               // xCBox.Items.Add(Dr[Nombre].ToString());
+                // xCBox.Items.Add(Dr[Nombre].ToString());
+                xCBox.Items.Add(Dr[Nombre].ToString());
             }
         }
     }

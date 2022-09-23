@@ -192,21 +192,21 @@
 
                 <!--Add Button-->
 
-                <Button  Style="{StaticResource addButton}" Margin="0,18,12,10">
+                <Button x:Name="btnAddProd" Style="{StaticResource addButton}" Margin="0,18,12,10" Click="BtnAddProd_Click">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Agregar Productos"/>
                     </StackPanel>
                 </Button>
 
-                <Button  Style="{StaticResource addButton}" Margin="0,18,215,10">
+                <Button x:Name="btnEditProd" Style="{StaticResource addButton}" Margin="0,18,215,10">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="ApplicationEdit" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Editar Productos"/>
                     </StackPanel>
                 </Button>
 
-                <Button  Style="{StaticResource addButton}" Margin="0,18,413,10">
+                <Button x:Name="btnDeleteProd" Style="{StaticResource addButton}" Margin="0,18,413,10">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Eliminar Productos"/>

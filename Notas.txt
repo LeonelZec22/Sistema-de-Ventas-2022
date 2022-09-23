@@ -185,6 +185,10 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 	entonces en las 4 capas tiene que estar la referencia a la presentationframework después en los métodos hay que poner la ruta completa del control como
 	parametro porque si no surge el problema de ambiguedad que es que no sabe visual studio si es un textbox de tipo form o de tipo control y eso lo cambias en todos los métodos para que espere recibir un textbox de tipo control (wpf) y no uno de tipo form (winform)
 
+	Ahora agregamos el método virtual agregar
+
+
+
 
 
 
