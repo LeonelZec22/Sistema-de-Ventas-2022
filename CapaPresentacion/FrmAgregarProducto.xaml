@@ -35,26 +35,26 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de producto" Margin="29,83,425,484"/>
 
-                <TextBox Margin="210,66,62,484" x:Name="txtAddCodeProduct" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el codigo del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Margin="210,66,62,484" x:Name="txtAddCodeProduct" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsEnabled="False" IsReadOnly="True"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de producto" Margin="22,161,424,406"/>
 
-                <TextBox Margin="210,144,62,406" x:Name="txtAddNameProduct" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Margin="210,144,62,406" x:Name="txtAddNombreProduct" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProduct_KeyDown"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descripción " Margin="21,258,425,309"/>
 
-                <TextBox Margin="210,241,62,309" x:Name="txtAddDescripcion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la descripción del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Margin="210,241,62,309" x:Name="txtAddDescripcion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la descripción del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddDescripcion_KeyDown"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Costo unitario" Margin="22,343,424,224"/>
-                <TextBox Margin="210,326,62,224" x:Name="txtAddCostoUnit" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el costo unitario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Margin="210,326,62,224" x:Name="txtAddCostoUnit" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el costo unitario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddCostoUnit_KeyDown" LostFocus="TxtAddCostoUnit_LostFocus"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio de venta" Margin="22,427,424,140"/>
 
-                <TextBox Margin="210,410,62,140" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el precio de venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Margin="210,410,62,140" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el precio de venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus"/>
 
                 <Button Margin="370,532,40,25" x:Name="AddguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D"/>
 
-                <Button Margin="29,532,381,25" x:Name="AddCancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0"/>
+                <Button Margin="29,532,381,25" x:Name="AddCancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0" Click="AddCancelarBtn_Click"/>
 
             </Grid>
         </Border>

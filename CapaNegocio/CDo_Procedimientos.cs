@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using CapaDatos;
 using System.Windows.Forms;
-
+using System.Windows.Controls;
 namespace CapaNegocio
 {
     public class CDo_Procedimientos
@@ -26,10 +26,10 @@ namespace CapaNegocio
 
         //Método que me permite alternar los  colores de las filas de un datagridview
 
-        public void AlternarColorFilaDataGridView(DataGridView Dgv)
-        {
-            ObjProcedimientos.AlternarColorFilaDataGridView(Dgv);
-        }
+        //public void AlternarColorFilaDataGridView(DataGridView Dgv)
+        //{
+        //    ObjProcedimientos.AlternarColorFilaDataGridView(Dgv);
+        //}
 
         //Método que me permite generar los códigos de los productos y demás 
 
@@ -49,7 +49,7 @@ namespace CapaNegocio
 
         //Método que permite dar formato moneda a un TextBox o caja de texto
 
-        public void FormatoMoneda(TextBox xTBox)
+        public void FormatoMoneda(System.Windows.Controls.TextBox xTBox)
         {
             ObjProcedimientos.FormatoMoneda(xTBox);
 
@@ -65,7 +65,7 @@ namespace CapaNegocio
 
         //Método que permite dar llenar un ComboBox de manera generica
 
-        public void LlenarComboBox(string Tabla, string Nombre, ComboBox xCBox)
+        public void LlenarComboBox(string Tabla, string Nombre, System.Windows.Controls.ComboBox xCBox)
         {
             ObjProcedimientos.LlenarComboBox(Tabla, Nombre, xCBox);
 

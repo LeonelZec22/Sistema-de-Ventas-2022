@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Controls;
 
 namespace CapaDatos
 {
@@ -140,7 +141,9 @@ namespace CapaDatos
 
         //Método que permite dar formato moneda a un TextBox o caja de texto
 
-        public void FormatoMoneda(TextBox xTBox)
+         
+
+        public void FormatoMoneda(System.Windows.Controls.TextBox xTBox)
         {
             if (xTBox.Text == string.Empty)
             {
@@ -164,13 +167,13 @@ namespace CapaDatos
         {
             foreach (var xCtrl in xForm.Controls)
             {
-                if (xCtrl is TextBox)
+                if (xCtrl is System.Windows.Controls.TextBox)
                 {
-                    ((TextBox)xCtrl).Text = string.Empty;
+                    ((System.Windows.Controls.TextBox)xCtrl).Text = string.Empty;
                 }
-                else if (xCtrl is ComboBox)
+                else if (xCtrl is System.Windows.Controls.ComboBox)
                 {
-                    ((ComboBox)xCtrl).Text = string.Empty;
+                    ((System.Windows.Controls.ComboBox)xCtrl).Text = string.Empty;
                 }
             }
 
@@ -178,7 +181,7 @@ namespace CapaDatos
 
         //Método que permite dar llenar un ComboBox de manera generica
 
-        public void LlenarComboBox(string Tabla, string Nombre, ComboBox xCBox)
+        public void LlenarComboBox(string Tabla, string Nombre, System.Windows.Controls.ComboBox xCBox)
         {
             Cmd = new SqlCommand("SELECT * FROM " + Tabla, Con.Abrir());
 
@@ -188,7 +191,7 @@ namespace CapaDatos
 
             while (Dr.Read())
             {
-                xCBox.Items.Add(Dr[Nombre].ToString());
+               // xCBox.Items.Add(Dr[Nombre].ToString());
             }
         }
     }
