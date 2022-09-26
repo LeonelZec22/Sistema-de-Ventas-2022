@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CapaPresentacion"
+         xmlns:uc="clr-namespace:CapaPresentacion.Menu"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         mc:Ignorable="d"
@@ -15,7 +15,7 @@
 
     </Window.Resources>
 
-    <Border Background="#FF1F1D1D" CornerRadius="30" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="#1F1D1D" CornerRadius="30" MouseLeftButtonDown="Border_MouseLeftButtonDown">
 
         <Grid HorizontalAlignment="Right" Width="1080">
 
@@ -53,101 +53,103 @@
                         <TextBlock Text="Thermal SPA" Foreground="White" FontSize="22"  FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
                         <TextBlock Text="Bienvenido" Foreground="#ffffff" FontSize="14"  FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" />
 
-                        <!--Menu Separador-->
-
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8">
-                            <Separator.Background>
-                                <SolidColorBrush Color="White" Opacity="1"/>
-                            </Separator.Background>
-                        </Separator>
-
-                        <!--Menu Buttons-->
-
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" 
-                                    Background="#0F3460" Foreground="White" BorderBrush="White" BorderThickness="2">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\home-48.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Inicio" Padding="5 10"/>
-                                </StackPanel>
-
-                            </Button>
-
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\product-64.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Productos" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\supplier-48.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Proveedor" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\clientes-64.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Clientes" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\servicios-48.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Servicios" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\inventory-64.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Inventario" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\ventas-48.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Ventas" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\reserva.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Reservas" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}"
-                                    Background="#0F3460" Foreground="White">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\box.png"/>
-                                    <!--<Icon:PackIconMaterial Kind="Package" Style="{StaticResource menuButtonIcon}"/>-->
-                                    <TextBlock Text="Paquetes" Padding="5 10"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
                     </DockPanel>
+                </Border>
+
+                <!--Separador del menu-->
+                <Separator Margin="10,150,10,499" Height="0.8" Grid.Row="1">
+                    <Separator.Background>
+                        <SolidColorBrush Color="White" Opacity="1"/>
+                    </Separator.Background>
+                </Separator>
+
+                <!--Menu de Iconos-->
+                <Border Grid.Row="1" Margin="0,156,0,0" >
+                    <StackPanel  Margin="0,10,0,0" >
+                        <!--Inicio-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Home-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Inicio" />
+                        </Grid>
+
+                        <!--Productos-->
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Productos" EsActivo="True"/>
+                        </Grid>
+
+                        <!--Proveedores-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/supplier-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Proveedores" />
+                        </Grid>
+
+                        <!--Clientes-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Clientes-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Clientes" />
+                        </Grid>
+
+                        <!--Servicios-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/servicios-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Servicios" />
+                        </Grid>
+
+                        <!--Inventario-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Inventario" />
+                        </Grid>
+
+                        <!--Ventas-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+
+                            <uc:Modulos Grid.Column="1" Titulo="Ventas" />
+                        </Grid>
+                    </StackPanel>
                 </Border>
             </Grid>
 

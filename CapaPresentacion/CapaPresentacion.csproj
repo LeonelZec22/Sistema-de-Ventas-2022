@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menu\Modulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrmAgregarProducto.xaml.cs">
@@ -139,6 +143,9 @@
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Modulos.xaml.cs">
+      <DependentUpon>Modulos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -197,6 +204,23 @@
     <Resource Include="Images\add.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\admi.png" />
+    <Resource Include="Images\box.png" />
+    <Resource Include="Images\cancelar.png" />
+    <Resource Include="Images\clientes-64.png" />
+    <Resource Include="Images\configuracion.png" />
+    <Resource Include="Images\home-48.png" />
+    <Resource Include="Images\inventory-64.png" />
+    <Resource Include="Images\logout.png" />
+    <Resource Include="Images\reserva-male-50.png" />
+    <Resource Include="Images\reserva.png" />
+    <Resource Include="Images\servicios-48.png" />
+    <Resource Include="Images\settings.png" />
+    <Resource Include="Images\spa.png" />
+    <Resource Include="Images\supplier-48.png" />
+    <Resource Include="Images\ventas-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

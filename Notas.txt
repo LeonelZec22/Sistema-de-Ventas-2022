@@ -187,9 +187,19 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 	Ahora agregamos el método virtual agregar
 
+	 ------------------ Correciones del menu lateral del Formulario Agregar Producto-----------
 
+	 Creamos un control de usuario llamado Modulos en la carpeta Menu
 
+	 Despues Pegas el estilo de menu lateral en el App.xaml 
 
+	 Despues abrimos la clase de Modulos.cs para pegar los métodos
+
+	 Despues abrimos el modulo.xaml para crear los elementos 
+
+	 Ahora compilamos la solución
+
+	 Resumen solo Creamos el control de usuarios, agregamos más imagenes, agregamos más estilos al App.xaml, modificamos la pantalla de productos principal
 
 
 
