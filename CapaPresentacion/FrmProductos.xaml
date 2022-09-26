@@ -24,17 +24,15 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Left Menu-->
+            <!--Menu Lateral-->
 
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
-                <!--Menu icon-->
-
-
+                
+                <!--Información de la empresa-->
 
                 <Border Grid.Row="1" Background="#0F3460" CornerRadius="0 50 0 30">
 
@@ -175,7 +173,7 @@
                 </Border>
             </Grid>
 
-            <!--Main section-->
+            <!--Sección Principal-->
 
             <Grid Grid.Column="1" Margin="30,18,20,22">
                 <Grid.RowDefinitions>
@@ -188,19 +186,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <!--Search TextBox-->
-
-                <Grid Width="348" HorizontalAlignment="Left" Margin="267,0,0,0" Grid.Row="4">
-
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Text="Busca aquí..." Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis} }"/>
-
-                    <TextBox x:Name="txtSearch" Style="{StaticResource textBoxSearch}" Foreground="#FF09090A"/>
-
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
-
-                </Grid>
-
-                <!--Top Buttons-->
+                <!--Botones de arriba-->
 
                 <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
                     <Icon:PackIconMaterial Kind="Cog"/>
@@ -210,11 +196,11 @@
                     <Icon:PackIconMaterial Kind="Bell"/>
                 </Button>
 
-                <!--Page Title-->
+                <!--Titulo del encabezado-->
 
                 <TextBlock Text="Productos" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#ffffff"/>
 
-                <!--Add Button-->
+                <!--Botones Encabezado-->
 
                 <Button x:Name="btnAddProd" Style="{StaticResource addButton}" Margin="0,18,12,10" Click="BtnAddProd_Click">
                     <StackPanel Orientation="Horizontal">
@@ -237,36 +223,41 @@
                     </StackPanel>
                 </Button>
 
-                <!--Separarto-->
-
-                <Separator Height="1" Grid.Row="3" Background="#ffffff" Margin="0 -1 0 10" />
-
-                <!--Counter Title-->
-
-
+                <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <ComboBox x:Name="BusqProdu" HorizontalAlignment="Left" Margin="116,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" Background="White" Height="34" >
-                    <ComboBox.Effect>
-                        <hc:ContrastEffect/>
-                    </ComboBox.Effect>
-                    <ComboBoxItem Content="Código" Height="25" Width="100"/>
-                    <ComboBoxItem Content="Nombre" Height="25" Width="100"/>
-                    <ComboBoxItem Content="Descripción" Height="25" Width="100"/>
-                </ComboBox>
-
-                <!--DataGrid-->
-
-
-                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn"/>
-                <Button  Style="{StaticResource addButton}" Margin="0,9,102,10" Grid.Row="4" Width="88">
+                <Button  Style="{StaticResource addButton}" Margin="0,9,65,10" Grid.Row="4" Width="88">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Buscar"/>
                     </StackPanel>
                 </Button>
 
+                <Grid Grid.Row="4" Margin="107,0,584,0">
+                    <ComboBox Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
 
+                        <ComboBoxItem Content="Codigo"/>
+                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
+                        <ComboBoxItem Content="Descripcion"/>
+                    </ComboBox>
+
+                    <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="140,10,-3,10"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Margin="267,0,158,0">
+                    <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible"/>
+                </Grid>
+
+                <!--Separarto-->
+
+                <Separator Height="1" Grid.Row="3" Background="#ffffff" Margin="0 -1 0 10" />
+
+                <!--DataGrid-->
+
+                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn"/>
+              
             </Grid>
 
 
