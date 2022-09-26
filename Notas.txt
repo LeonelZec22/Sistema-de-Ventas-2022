@@ -199,8 +199,13 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 	 Ahora compilamos la solución
 
+	 Creamos los elementos en el Productos.xaml
+
 	 Resumen solo Creamos el control de usuarios, agregamos más imagenes, agregamos más estilos al App.xaml, modificamos la pantalla de productos principal
 
+	 Ahora copiamos esa parte en el Invertario.xaml
+
+	 No se te olvide agregar la referencia xmlns:uc="clr-namespace:CapaPresentacion.Menu"
 
 
 
