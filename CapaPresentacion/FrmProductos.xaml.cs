@@ -97,5 +97,23 @@ namespace CapaPresentacion
             //Close();
 
         }
+
+        private void BtnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Inicio = new MainWindow();
+            Hide();
+            Inicio.ShowDialog();
+            Close();
+
+
+        }
+
+        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        {
+            FrmInventario Inventario = new FrmInventario();
+            Hide();
+            Inventario.ShowDialog();
+            Close();
+        }
     }
 }

@@ -75,7 +75,10 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Home-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Inicio" />
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio" Click="BtnInicio_Click" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos Titulo="Inicio" Margin="-20 0 0 0"/>
+                            </Button>
+
                         </Grid>
 
                         <!--Productos-->
@@ -86,8 +89,11 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Style="{StaticResource BotonesMenu}">
 
-                            <uc:Modulos Grid.Column="1" Titulo="Productos" EsActivo="True"/>
+                                <uc:Modulos Titulo="Productos" EsActivo="True" Margin="-20 0 0 0"/>
+                            </Button>
+
                         </Grid>
 
                         <!--Proveedores-->
@@ -99,7 +105,11 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/supplier-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Proveedores" />
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0"/>
+                                
+                            </Button>
+
                         </Grid>
 
                         <!--Clientes-->
@@ -111,7 +121,9 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Clientes-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Clientes" />
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnClientes" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos  Titulo="Clientes" Margin="-20 0 0 0"/>
+                            </Button>
                         </Grid>
 
                         <!--Servicios-->
@@ -123,7 +135,11 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/servicios-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Servicios" />
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos Titulo="Servicios" Margin="-20 0 0 0"/>
+                                
+                            </Button>
+
                         </Grid>
 
                         <!--Inventario-->
@@ -134,8 +150,11 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click">
+                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
+                                
+                            </Button>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Inventario" />
                         </Grid>
 
                         <!--Ventas-->
@@ -146,8 +165,11 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0"/>
+                                
+                            </Button>
 
-                            <uc:Modulos Grid.Column="1" Titulo="Ventas" />
                         </Grid>
                     </StackPanel>
                 </Border>

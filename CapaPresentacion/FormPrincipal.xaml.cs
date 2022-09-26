@@ -50,8 +50,8 @@ namespace CapaPresentacion
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Hide();
             FrmInventario frmInventario = new FrmInventario();
+            Hide();
             frmInventario.ShowDialog();
             Close();
         }
