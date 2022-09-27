@@ -18,6 +18,8 @@ namespace CapaDatos
         CD_Conexion Con = new CD_Conexion();
 
         SqlCommand Cmd;
+        SqlDataAdapter Da;
+        DataTable dataTable;
 
         //Método que me permite agregar un producto a la base de datos 
 
@@ -92,6 +94,57 @@ namespace CapaDatos
             }
         }
 
+        #region Métodos para buscar productos
+
+        //Método que me permite buscar un producto  por el codigo
+        public DataTable Buscar_Producto_Codigo(CE_Productos Productos)
+        {
+            dataTable = new DataTable("Codigo");
+            Cmd = new SqlCommand("Buscar_Producto_Codigo", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        //Método que me permite buscar un producto  por el nombre
+        public DataTable Buscar_Producto_Nombre(CE_Productos Productos)
+        {
+            dataTable = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_Producto_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        //Método que me permite buscar un producto  por la descripcion
+        public DataTable Buscar_Producto_Descripcion(CE_Productos Productos)
+        {
+            dataTable = new DataTable("Descripcion");
+            Cmd = new SqlCommand("Buscar_Producto_Descripcion", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        #endregion
 
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using CapaEntidad;
+using System.Data;
 
 namespace CapaNegocio
 {
@@ -32,5 +33,30 @@ namespace CapaNegocio
         {
             ObjProductos.EliminarProducto(Productos);
         }
+
+
+        #region Buscar productos
+        //Método que me permite buscar un producto por codigo
+
+        public DataTable Buscar_Producto_Codigo(CE_Productos Productos)
+        {
+           return ObjProductos.Buscar_Producto_Codigo(Productos);
+        }
+
+        //Método que me permite buscar un producto por nombre
+
+        public DataTable Buscar_Producto_Nombre(CE_Productos Productos)
+        {
+            return ObjProductos.Buscar_Producto_Nombre(Productos);
+        }
+
+        //Método que me permite buscar un producto por descripcion
+
+        public DataTable Buscar_Producto_Descripcion(CE_Productos Productos)
+        {
+            return ObjProductos.Buscar_Producto_Descripcion(Productos);
+        }
+
+        #endregion
     }
 }

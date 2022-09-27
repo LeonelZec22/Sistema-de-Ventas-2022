@@ -234,7 +234,7 @@
                 </Button>
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
+                    <ComboBox x:Name="cboProducto" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
 
                         <ComboBoxItem Content="Codigo"/>
                         <ComboBoxItem Content="Nombre" IsSelected="True"/>
@@ -247,7 +247,7 @@
                 <Grid Grid.Row="4" Margin="267,0,158,0">
                     <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible"/>
+                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged"/>
                 </Grid>
 
                 <!--Separarto-->

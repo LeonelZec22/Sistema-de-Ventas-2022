@@ -175,7 +175,7 @@ namespace CapaPresentacion
 
         //Método Eliminar
 
-        public void Eliminar()
+        public  void Eliminar()
         {
             if (DataGridProductos.Items.Count == 0)
             {
@@ -205,6 +205,38 @@ namespace CapaPresentacion
                 {
                     System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
+            }
+        }
+
+        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Buscar();
+        }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboProducto.Text == "Codigo")
+                {
+                    Producto.Buscar = txtBuscador.Text.Trim();
+                    DataGridProductos.ItemsSource = Productos.Buscar_Producto_Codigo(Producto).AsDataView();
+                }
+                else if (cboProducto.Text == "Nombre")
+                {
+                    Producto.Buscar = txtBuscador.Text.Trim();
+                    DataGridProductos.ItemsSource = Productos.Buscar_Producto_Nombre(Producto).AsDataView();
+                }
+                else if (cboProducto.Text == "Descripcion")
+                {
+                    Producto.Buscar = txtBuscador.Text.Trim();
+                    DataGridProductos.ItemsSource = Productos.Buscar_Producto_Descripcion(Producto).AsDataView();
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Producto no fue encontrado por: " + ex.Message, "Buscar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
     }

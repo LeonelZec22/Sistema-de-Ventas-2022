@@ -246,6 +246,20 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 
 
+	    ------------------ Buscar productos por Código, Nombre y Descripción   ------------------
+
+		Abrimos CD_Productos
+
+		Creamos los métodos para buscar productos
+
+		Abrimos la capa negocios y abrimos la clase cdo_productos
+
+		Creamos los métodos buscar
+
+		podemos usar el evento clic o el evento textchanged 
+
+
+
 
 
 
