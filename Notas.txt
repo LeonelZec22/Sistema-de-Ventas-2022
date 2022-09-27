@@ -240,7 +240,9 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 	   
 	   La solución agregar el campo id_producto a la tabla inventario y dejar de hacer cosas raras 
 
-	   
+	   si agregamos esa columna eliminanos el id_inventario de los trigger y lo cambiamos por @Id_Productos 
+
+	   creas otras base de datos y puebas estos cambios
 
 
 

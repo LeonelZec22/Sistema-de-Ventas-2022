@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class CD_Conexion
     {
-        public SqlConnection Conexion = new SqlConnection(@"Data Source=LEONEL\SISTEMADEVENTAS;Initial Catalog=DB_Sistemas_de_Ventas;Integrated Security=True");
+        public SqlConnection Conexion = new SqlConnection(@"Data Source=LEONEL\SISTEMADEVENTAS;Initial Catalog=DB_Sistemas_V2;Integrated Security=True");
 
         //Método que permite abrir la conexión a la base de datos 
 
