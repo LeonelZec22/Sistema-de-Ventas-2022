@@ -220,8 +220,27 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 	  Agregar el evento selection changed en el datagrid 
 
 
+	   ------------------  (Eliminar Producto) -----------
 
+	   Nos vamos a CD_Productos
 
+	   Ceeamoes el metodo eliminar que despues mandamos llamar a en el formulario productos
+
+	   Ahora nos vamos al formulario productos 
+
+	   El inventario no lo actualiza cuando le doy a editar producto ni lo elimina cuando elimino un producto desde productos hay algo mal con los triggers
+	   pero como ese modulo no toca esta semana pues lo vemos más adelante 
+
+	   hay un problema con el id producto y inventario fijate que cuando lo agregas
+
+	   cuando lo vas a agregar no pones el id ni como parametro @ ni dentro de insert into porque eso ya se agrega automaticamente cuando es identity
+
+	   cuando vas a editar el producto si pones el parametro id pero vas usarlo dentro del where Id_Producto=@Id_Producto;
+
+	   
+	   La solución agregar el campo id_producto a la tabla inventario y dejar de hacer cosas raras 
+
+	   
 
 
 

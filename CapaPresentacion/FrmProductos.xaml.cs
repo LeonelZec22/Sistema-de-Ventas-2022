@@ -53,6 +53,10 @@ namespace CapaPresentacion
         SqlCommand Cmd;
         SqlDataReader Dr;
         DataTable Dt;
+        CDo_Productos Productos = new CDo_Productos();
+        CE_Productos Producto = new CE_Productos();
+        CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
+
 
         //Método para cargar o mostrar los datos en la tabla del fprmulario
         private void CargarDatos()
@@ -129,6 +133,7 @@ namespace CapaPresentacion
             if(dr != null)
             {
                 EditarProductos.ShowDialog();
+                
             }
 
             else
@@ -161,6 +166,46 @@ namespace CapaPresentacion
             }
 
             
+        }
+
+        private void BtnDeleteProd_Click(object sender, RoutedEventArgs e)
+        {
+            Eliminar();
+        }
+
+        //Método Eliminar
+
+        public void Eliminar()
+        {
+            if (DataGridProductos.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay registros para eliminar!!! ", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if(DataGridProductos.SelectedItems == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                        if(Resultado == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Producto.Id_Producto = Convert.ToInt32(dr[0].ToString());
+                            Productos.EliminarProducto(Producto);
+                            CargarDatos();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
         }
     }
 }

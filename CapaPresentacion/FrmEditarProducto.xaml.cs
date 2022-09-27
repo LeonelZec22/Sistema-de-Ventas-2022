@@ -26,6 +26,7 @@ namespace CapaPresentacion
     {
         public FrmEditarProducto()
         {
+            
             InitializeComponent();
         }
 
@@ -63,8 +64,7 @@ namespace CapaPresentacion
         #region Evento Clic de los botones
         private void EditCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos btnEditar = new FrmProductos();
-            btnEditar.btnEditProd.IsEnabled = false;
+            
             this.Close();
         }
         private void EditguardarBtn_Click(object sender, RoutedEventArgs e)
