@@ -17,6 +17,7 @@ using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Collections;
 
 namespace CapaPresentacion
 {
@@ -31,10 +32,10 @@ namespace CapaPresentacion
 
             CargarDatos();
 
-            //DataGridProductos.Columns[0].Visibility = Visibility.Collapsed;
+           
         }
 
-        //Método para que se pueda mover la ventana
+        //Evento para que se pueda mover la ventana
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -53,7 +54,7 @@ namespace CapaPresentacion
         SqlDataReader Dr;
         DataTable Dt;
 
-        //Método para cargar o mostrar los datos en la tabla
+        //Método para cargar o mostrar los datos en la tabla del fprmulario
         private void CargarDatos()
         {
             Dt = new DataTable("Cargar_Datos");
@@ -89,6 +90,12 @@ namespace CapaPresentacion
             CargarDatos();
         }
 
+        private void EdPro_UpdateEventHandler(object sender, FrmEditarProducto.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+
         private void BtnAddProd_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarProducto AgregarProducto = new FrmAgregarProducto(this);
@@ -98,6 +105,7 @@ namespace CapaPresentacion
 
         }
 
+        //Botones del Menú
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow Inicio = new MainWindow();
@@ -114,6 +122,45 @@ namespace CapaPresentacion
             Hide();
             Inventario.ShowDialog();
             Close();
+        }
+
+        private void BtnEditProd_Click(object sender, RoutedEventArgs e)
+        {
+            if(dr != null)
+            {
+                EditarProductos.ShowDialog();
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        FrmEditarProducto EditarProductos = new FrmEditarProducto();
+        DataGrid dg;
+        DataRowView dr;
+
+       private void DataGridProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null )
+            {
+                EditarProductos.UpdateEventHandler += EdPro_UpdateEventHandler;
+                EditarProductos.txtEditIDProduct.Text = dr[0].ToString();
+                EditarProductos.txtEditCodeProduct.Text = dr[1].ToString();
+                EditarProductos.txtEditNombreProduct.Text = dr[2].ToString();
+                EditarProductos.txtEditDescripcion.Text = dr[3].ToString();
+                EditarProductos.txtEditPrecioVenta.Text = dr[4].ToString();
+                EditarProductos.txtEditCostoUnit.Text = dr[5].ToString();
+                EditarProductos.EditguardarBtn.IsEnabled = true;
+                btnEditProd.IsEnabled = true;
+            }
+
+            
         }
     }
 }

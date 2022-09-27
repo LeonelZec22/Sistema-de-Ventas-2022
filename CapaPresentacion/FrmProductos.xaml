@@ -209,7 +209,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="btnEditProd" Style="{StaticResource addButton}" Margin="0,18,215,10">
+                <Button x:Name="btnEditProd" Style="{StaticResource addButton}" Margin="0,18,215,10" Click="BtnEditProd_Click" Tag="{Binding ElementName=DataGridProductos}" IsEnabled="True">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="ApplicationEdit" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Editar Productos"/>
@@ -256,7 +256,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn"/>
+                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn" SelectionChanged="DataGridProductos_SelectionChanged"/>
               
             </Grid>
 
