@@ -58,7 +58,7 @@ namespace CapaPresentacion
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
 
 
-        //Método para cargar o mostrar los datos en la tabla del fprmulario
+        //Método para cargar o mostrar los datos en la tabla del formulario
         private void CargarDatos()
         {
             Dt = new DataTable("Cargar_Datos");
@@ -238,6 +238,14 @@ namespace CapaPresentacion
             {
                 System.Windows.Forms.MessageBox.Show("El Producto no fue encontrado por: " + ex.Message, "Buscar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProveedores Proveedor = new FrmProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
         }
     }
 }

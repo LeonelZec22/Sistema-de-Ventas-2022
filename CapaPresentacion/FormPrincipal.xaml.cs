@@ -55,5 +55,13 @@ namespace CapaPresentacion
             frmInventario.ShowDialog();
             Close();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            FrmProveedores Proveedor = new FrmProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
+        }
     }
 }

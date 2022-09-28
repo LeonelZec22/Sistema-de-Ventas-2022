@@ -49,6 +49,7 @@
     <Compile Include="CD_Conexion.cs" />
     <Compile Include="CD_Procedimientos.cs" />
     <Compile Include="CD_Productos.cs" />
+    <Compile Include="CD_Proveedores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -115,5 +115,13 @@ namespace CapaPresentacion
             Productos.ShowDialog();
             Close();
         }
+
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProductos Producto = new FrmProductos();
+            Hide();
+            Producto.ShowDialog();
+            Close();
+        }
     }
 }

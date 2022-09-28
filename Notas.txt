@@ -258,6 +258,35 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		podemos usar el evento clic o el evento textchanged 
 
+		------------------------------ Gestión de Proveedores -----------------------------------
+
+		Vamos a la capa entidad y creamos la clase CE_Proveedores
+
+		Creamos los método get y set de todos los campos que conforman la tabla proveedores
+
+		Nos vamos a la capa datos y creamos una clase llamada CD_Proveedores
+		Pegamos todo el código de la clase CD_Productos en la clase CD_Proveedores y modificamos las referencias 
+		
+		Vamos a la capa de negocio y creamos la clase CDo_Proveedores
+
+		Vamos a crear el formulario de proveedores 
+
+		Como siempre agregamos las referencias del formulario productos al de proveedores
+
+		Copio el codigo y renombro los elementos x:name 
+
+		Ahora agrego el método cargadatos y cambio la tabla de productos a proveedores
+
+		Agrego el Evento para ocultar una columna id de un datagrid autogenerico
+
+		------------------------------ Agregar Proveedor ------------------------------
+
+		Creamos un nuevo formulario 
+
+
+
+
+
 
 
 
