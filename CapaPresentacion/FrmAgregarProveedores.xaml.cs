@@ -163,7 +163,7 @@ namespace CapaPresentacion
             try
             {
 
-            txtAddCodeProveedor.Text = "PROD" + GenerarCodigoProve();
+            txtAddCodeProveedor.Text = "PROVE" + GenerarCodigoProve();
             }
 
             catch(Exception ex)

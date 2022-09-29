@@ -198,6 +198,11 @@ namespace CapaPresentacion
                         {
                             Producto.Id_Producto = Convert.ToInt32(dr[0].ToString());
                             Productos.EliminarProducto(Producto);
+                            System.Windows.Forms.MessageBox.Show("Registro Eliminado correctamente!!! ", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            CargarDatos();
+                        }
+                        else if (Resultado == System.Windows.Forms.DialogResult.No)
+                        {
                             CargarDatos();
                         }
                     }

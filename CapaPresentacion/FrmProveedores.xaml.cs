@@ -112,7 +112,7 @@ namespace CapaPresentacion
 
         private void BtnDeleteProve_Click(object sender, RoutedEventArgs e)
         {
-
+            Eliminar();
         }
         #endregion
 
@@ -185,5 +185,46 @@ namespace CapaPresentacion
                 btnEditProve.IsEnabled = true;
             }
         }
+
+        //Método para eliminar 
+
+        public void Eliminar()
+        {
+            if (DataGridProveedores.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay registros para eliminar!!! ", "Eliminar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (DataGridProveedores.SelectedItems == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Proveedor", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                        if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Proveedor.Id_Proveedor = Convert.ToInt32(dr[0].ToString());
+                            Proveedores.EliminarProveedor(Proveedor);
+                            System.Windows.Forms.MessageBox.Show("Registro Eliminado correctamente!!! ", "Eliminar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            CargarDatos();
+                        }
+                        else if (Resultado == System.Windows.Forms.DialogResult.No)
+                        {
+                            CargarDatos();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
     }
 }
