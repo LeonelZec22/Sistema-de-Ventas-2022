@@ -91,7 +91,9 @@ namespace CapaPresentacion
         #region Botones del encabezado
         private void BtnAddProve_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmAgregarProveedores proveedores = new FrmAgregarProveedores(this);
+            proveedores.UpdateEventHandler += AgProve_UpdateEventHandler;
+            proveedores.ShowDialog();
         }
 
         private void BtnEditProve_Click(object sender, RoutedEventArgs e)
@@ -141,7 +143,10 @@ namespace CapaPresentacion
 
         }
 
-
+        private void AgProve_UpdateEventHandler(object sender, FrmAgregarProveedores.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
 
     }

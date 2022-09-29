@@ -283,7 +283,17 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		Creamos un nuevo formulario 
 
+		Copiamos el código del formulario AgregarProductos 
 
+		Cambiamos los nombres de xname y los eventos
+
+		Puedes cambiar los colores y el icono
+
+		Agregamos las referencias 
+
+		Copiamos los métodos del formulario Agregar Producto
+
+		Nos falta validar con Expresiones regulares regex el campo de telefono y bloquear las teclas de texto para que solo pueda escribir numeros 
 
 
 
