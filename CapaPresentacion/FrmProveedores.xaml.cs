@@ -153,7 +153,7 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
 
         private void AgProve_UpdateEventHandler(object sender, FrmAgregarProveedores.UpdateEventArgs args)
@@ -223,6 +223,29 @@ namespace CapaPresentacion
                 {
                     System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
+            }
+        }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboProveedores.Text == "Codigo")
+                {
+                    Proveedor.Buscar = txtBuscador.Text.Trim();
+                    DataGridProveedores.ItemsSource = Proveedores.Buscar_Proveedor_Codigo(Proveedor).AsDataView();
+                }
+                else if (cboProveedores.Text == "Nombre")
+                {
+                    Proveedor.Buscar = txtBuscador.Text.Trim();
+                    DataGridProveedores.ItemsSource = Proveedores.Buscar_Proveedor_Nombre(Proveedor).AsDataView();
+                }
+                
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Proveedor no fue encontrado por: " + ex.Message, "Buscar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
 
