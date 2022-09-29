@@ -296,6 +296,18 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Nos falta validar con Expresiones regulares regex el campo de telefono y bloquear las teclas de texto para que solo pueda escribir numeros 
 
 
+		
+		------------------------------ Editar Proveedor ------------------------------
+
+		Agregamos un nuevo formulario
+
+		Copiamos el código de AgregarProveedor al editarproveedor cambiamos los nombre x:name 
+
+		Agregamos el textbox para el id pero de manera oculta 
+
+		Ahora en la clase EditarProveedor creamos el método para editar el proveedor
+
+		Ahora seguimos con la clase del formulario Proveedor
 
 
 

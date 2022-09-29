@@ -98,7 +98,16 @@ namespace CapaPresentacion
 
         private void BtnEditProve_Click(object sender, RoutedEventArgs e)
         {
+            if (dr != null)
+            {
+                EditarProveedor.ShowDialog();
 
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BtnDeleteProve_Click(object sender, RoutedEventArgs e)
@@ -107,6 +116,10 @@ namespace CapaPresentacion
         }
         #endregion
 
+
+        FrmEditarProveedor EditarProveedor = new FrmEditarProveedor();
+        DataGrid dg;
+        DataRowView dr;
 
         #region Botones del menu lateral
 
@@ -148,6 +161,29 @@ namespace CapaPresentacion
             CargarDatos();
         }
 
+        private void EdProve_UpdateEventHandler(object sender, FrmEditarProveedor.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
+
+        private void DataGridProveedores_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                EditarProveedor.UpdateEventHandler += EdProve_UpdateEventHandler;
+                EditarProveedor.txtEditIDProveedor.Text = dr[0].ToString();
+                EditarProveedor.txtEditCodeProveedor.Text = dr[1].ToString();
+                EditarProveedor.txtEditNombreProveedor.Text = dr[2].ToString();
+                EditarProveedor.txtEditDireccion.Text = dr[3].ToString();
+                EditarProveedor.txtEditTelefono.Text = dr[4].ToString();
+                EditarProveedor.EditguardarBtn.IsEnabled = true;
+                btnEditProve.IsEnabled = true;
+            }
+        }
     }
 }

@@ -257,7 +257,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProveedores_AutoGeneratingColumn" SelectionChanged="DataGridProveedores_SelectionChanged"/>
+                <DataGrid x:Name="DataGridProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProveedores_AutoGeneratingColumn" SelectionChanged="DataGridProveedores_SelectionChanged_1"/>
 
             </Grid>
 

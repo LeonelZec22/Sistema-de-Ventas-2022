@@ -64,8 +64,8 @@ namespace CapaPresentacion
         #region Evento Clic de los botones
         private void EditCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            this.Close();
+            this.Hide();
+            Actualizar();
         }
         private void EditguardarBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -144,7 +144,7 @@ namespace CapaPresentacion
 
                     System.Windows.Forms.MessageBox.Show("Producto Editado exitosamente!!! ", "Editar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
-                    this.Close();
+                    this.Hide();
 
                     Actualizar();
                 }

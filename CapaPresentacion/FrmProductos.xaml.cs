@@ -100,15 +100,6 @@ namespace CapaPresentacion
         }
 
 
-        private void BtnAddProd_Click(object sender, RoutedEventArgs e)
-        {
-            FrmAgregarProducto AgregarProducto = new FrmAgregarProducto(this);
-            AgregarProducto.UpdateEventHandler += AgPro_UpdateEventHandler;
-            AgregarProducto.ShowDialog();
-            //Close();
-
-        }
-
         //Botones del Menú
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
@@ -127,11 +118,21 @@ namespace CapaPresentacion
             Inventario.ShowDialog();
             Close();
         }
+        private void BtnAddProd_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarProducto AgregarProducto = new FrmAgregarProducto(this);
+            AgregarProducto.UpdateEventHandler += AgPro_UpdateEventHandler;
+            AgregarProducto.ShowDialog();
+            //Close();
+
+        }
+
 
         private void BtnEditProd_Click(object sender, RoutedEventArgs e)
         {
             if(dr != null)
             {
+                
                 EditarProductos.ShowDialog();
                 
             }
