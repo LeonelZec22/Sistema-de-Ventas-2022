@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\CapaPresentacion\App.xaml
-131932981634
+14-1209994433
 
-21-1620679292
+22-61261053
 24-1136818793
-DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
+DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmClientes.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
 
 False
 

@@ -209,7 +209,7 @@ namespace CapaPresentacion
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar: "+ex, "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
             }
         }

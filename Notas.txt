@@ -310,13 +310,59 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Ahora seguimos con la clase del formulario Proveedor
 
 
-		------------------------------ Buscar Proveedor por Código, Nombre de Proveedores------------------------------
+		------------------------------ Gestión de Clientes ------------------------------
 
+		Creamos la clase CE_Clientes en la capa entidad
 
+		Creamos las variables o atributos de la clase en base a las columnas de la tabla cliente
 
+		Id_Cliente
 
+		Codigo
 
+		Nombre
 
+		Telefono
+
+		Email
+
+		Estado
+
+		Creamos la clase CD_Clientes en la capa datos
+
+		Abrimos la clase CD_Proveedores
+
+		Copiamos las librerias
+
+		Copiamos todo el codigo 
+
+		Sustituimos los nombres 
+
+		Creamos la clase CDo_Clientes en la capa negocio
+
+		Copiamos las librerias de de CDo_Proveedor
+
+		Copiamos el codigo de CDo_Proveedor
+
+		Sustituimos los nombres de los métodos y las variables
+
+		Agregamos una nueva pantalla llamada FrmClientes
+
+		Abrimos el formulario principal de proveedores 
+
+		Copiamos sus librerias y las pegamos en FrmClientes
+
+		Copiamos todo el código 
+
+		Renombramos los elementos
+
+		Abrimos la clase de ese formulario clientes
+
+		Abrimos la clase del formulario proveedores
+
+		Copiamos las librerias del formulario proveedor
+
+		Copiamos el código y modificamos los nombres
 
 
 

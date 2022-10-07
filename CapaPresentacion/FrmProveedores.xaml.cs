@@ -38,9 +38,9 @@ namespace CapaPresentacion
         CD_Conexion Con = new CD_Conexion();
 
         //Inicialiamos las variables a utilizar
-        SqlCommand Cmd;
-        SqlDataReader Dr;
-        DataTable Dt;
+        //SqlCommand Cmd;
+        //SqlDataReader Dr;
+        //DataTable Dt;
 
         CDo_Proveedores Proveedores = new CDo_Proveedores();
         CE_Proveedores Proveedor = new CE_Proveedores();
@@ -78,11 +78,6 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
-        }
-
-        private void DataGridProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         #endregion
