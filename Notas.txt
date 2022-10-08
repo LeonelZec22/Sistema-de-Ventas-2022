@@ -365,7 +365,22 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Copiamos el código y modificamos los nombres
 
 
+		------------------------------ Agregar Clientes ------------------------------
 
+		Creamos el formulario Agregar Cliente
+
+		Copias el codigo de Agregar Proveedores
+
+		Ahora abre la clase de Agregar Proveedore
+
+		Abre la clase de Agregar Clientes
+
+		Tenemos que hacer una modificación en la base de datos en el campo nombre y que acepte 20 caracteres
+
+		Usar expresiones regulares para que el campo nombre tiene que ir como minimo 1 nombre y 1 apellido es decir 10 caracteres
+		Expresiones regulares para telefono y email
+
+		Activo -> Reserva activa o paquete activo cuando se haya cumplido la reserva pasa a inactivo o cumplido todo el paquete
 
 
 

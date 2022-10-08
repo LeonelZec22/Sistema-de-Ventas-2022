@@ -60,26 +60,13 @@ namespace CapaPresentacion
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         private void BtnAddCliente_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmAgregarCliente clientes = new FrmAgregarCliente(this);
+            clientes.UpdateEventHandler += AgClient_UpdateEventHandler;
+            clientes.ShowDialog();
         }
 
         private void BtnEditCliente_Click(object sender, RoutedEventArgs e)
@@ -90,6 +77,11 @@ namespace CapaPresentacion
         private void BtnDeleteCliente_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AgClient_UpdateEventHandler(object sender, FrmAgregarCliente.UpdateEventArgs args)
+        {
+            CargarDatos();
         }
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)

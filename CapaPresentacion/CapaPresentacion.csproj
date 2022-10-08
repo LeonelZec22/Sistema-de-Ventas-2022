@@ -110,6 +110,10 @@
       <DependentUpon>FormPrincipal.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="FrmAgregarCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAgregarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +156,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAgregarCliente.xaml.cs">
+      <DependentUpon>FrmAgregarCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAgregarProducto.xaml.cs">
       <DependentUpon>FrmAgregarProducto.xaml</DependentUpon>
     </Compile>

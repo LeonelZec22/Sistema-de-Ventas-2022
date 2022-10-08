@@ -103,7 +103,8 @@ namespace CapaPresentacion
 
         private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
+            Guardar();
         }
 
         #endregion
