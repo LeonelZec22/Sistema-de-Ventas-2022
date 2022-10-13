@@ -61,7 +61,7 @@ namespace CapaPresentacion
         }
 
         
-
+        //Botones de menu superior
         private void BtnAddCliente_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarCliente clientes = new FrmAgregarCliente(this);
@@ -69,9 +69,20 @@ namespace CapaPresentacion
             clientes.ShowDialog();
         }
 
+
+        //Método para editar 
         private void BtnEditCliente_Click(object sender, RoutedEventArgs e)
         {
+            if (dr != null)
+            {
+                EditarCliente.ShowDialog();
 
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BtnDeleteCliente_Click(object sender, RoutedEventArgs e)
@@ -79,10 +90,48 @@ namespace CapaPresentacion
 
         }
 
+
+        FrmEditarCliente EditarCliente = new FrmEditarCliente();
+        DataGrid dg;
+        DataRowView dr;
+
+
+
+        //Eventos del DataGrid 
+
         private void AgClient_UpdateEventHandler(object sender, FrmAgregarCliente.UpdateEventArgs args)
         {
             CargarDatos();
         }
+
+        private void EdClient_UpdateEventHandler(object sender, FrmEditarCliente.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+
+        private void DataGridClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                EditarCliente.UpdateEventHandler += EdClient_UpdateEventHandler;
+                EditarCliente.txtEditIDCliente.Text = dr[0].ToString();
+                EditarCliente.txtEditCodeCliente.Text = dr[1].ToString();
+                EditarCliente.txtEditNombreCliente.Text = dr[2].ToString();
+                EditarCliente.txtEditEmailCliente.Text = dr[3].ToString();
+                EditarCliente.txtEditTelefonoCliente.Text = dr[4].ToString();
+                EditarCliente.cboEstadoClientes.Text = dr[5].ToString();
+                EditarCliente.EditguardarBtn.IsEnabled = true;
+                btnEditCliente.IsEnabled = true;
+            }
+        }
+
+
+        //Método para eliminar
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -90,11 +139,7 @@ namespace CapaPresentacion
         }
 
 
-        private void DataGridClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        #region menu lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
 
@@ -109,5 +154,7 @@ namespace CapaPresentacion
         {
 
         }
+
+        #endregion
     }
 }

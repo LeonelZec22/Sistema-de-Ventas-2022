@@ -382,6 +382,27 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		Activo -> Reserva activa o paquete activo cuando se haya cumplido la reserva pasa a inactivo o cumplido todo el paquete
 
+		------------------------------ Editar Clientes ------------------------------
+
+		Creamos el formulario editar 
+
+		Abrimos el formulario Agregar Cliente
+
+		Copiamos el código 
+		
+		Modificamos los nombres
+
+		Vamos a editar proveedores y copiamos la caja editar id
+
+		Abrimos la clase agregar clientes 
+		
+		Copiamos una parte del código y modificamos los nombres en la clase editar clientes
+
+		Abrimos la clase de proveedores 
+
+		Abrimos la pantalla de clientes
+
+		Abrimos la clase de clientes
 
 
 
