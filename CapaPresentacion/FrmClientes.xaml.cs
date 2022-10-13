@@ -173,12 +173,38 @@ namespace CapaPresentacion
             }
         }
 
+
+        
+        //Método Buscar Clientes
+
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
 
         {
-
+            Buscar();
         }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboClientes.Text == "Codigo")
+                {
+                    Cliente.Buscar = txtBuscador.Text.Trim();
+                    DataGridClientes.ItemsSource = Clientes.Buscar_Cliente_Codigo(Cliente).AsDataView();
+                }
+                else if (cboClientes.Text == "Nombre")
+                {
+                    Cliente.Buscar = txtBuscador.Text.Trim();
+                    DataGridClientes.ItemsSource = Clientes.Buscar_Cliente_Nombre(Cliente).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Cliente no fue encontrado por: " + ex.Message, "Buscar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
 
         #region menu lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
