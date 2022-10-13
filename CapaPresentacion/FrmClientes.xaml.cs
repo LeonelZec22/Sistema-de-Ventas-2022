@@ -85,10 +85,6 @@ namespace CapaPresentacion
             }
         }
 
-        private void BtnDeleteCliente_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
 
         FrmEditarCliente EditarCliente = new FrmEditarCliente();
@@ -133,7 +129,52 @@ namespace CapaPresentacion
 
         //Método para eliminar
 
+        
+        private void BtnDeleteCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Eliminar();
+        }
+
+        public void Eliminar()
+        {
+            if (DataGridClientes.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay registros para eliminar!!! ", "Eliminar Clientes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (DataGridClientes.SelectedItems == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Cliente", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                        if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Cliente.Id_Cliente = Convert.ToInt32(dr[0].ToString());
+                            Clientes.EliminarCliente(Cliente);
+                            System.Windows.Forms.MessageBox.Show("Registro Eliminado correctamente!!! ", "Eliminar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            CargarDatos();
+                        }
+                        else if (Resultado == System.Windows.Forms.DialogResult.No)
+                        {
+                            CargarDatos();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
+
         {
 
         }
