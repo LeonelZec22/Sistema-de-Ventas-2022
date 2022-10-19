@@ -51,6 +51,7 @@
     <Compile Include="CD_Procedimientos.cs" />
     <Compile Include="CD_Productos.cs" />
     <Compile Include="CD_Proveedores.cs" />
+    <Compile Include="CD_Servicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

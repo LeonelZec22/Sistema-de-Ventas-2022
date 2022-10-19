@@ -47,6 +47,7 @@
     <Compile Include="CDo_Proveedores.cs" />
     <Compile Include="CDo_Procedimientos.cs" />
     <Compile Include="CDo_Productos.cs" />
+    <Compile Include="CDo_Servicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

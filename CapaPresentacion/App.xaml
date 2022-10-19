@@ -6,7 +6,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="CapaPresentacion.App"
-             StartupUri="FrmClientes.xaml">
+             StartupUri="FrmServicios.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
