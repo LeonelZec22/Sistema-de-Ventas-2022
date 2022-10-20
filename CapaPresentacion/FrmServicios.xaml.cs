@@ -53,21 +53,6 @@ namespace CapaPresentacion
             }
         }
 
-
-        //Eventos del DataGrid 
-
-        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
-        {
-            CargarDatos();
-        }
-
-        //private void EdClient_UpdateEventHandler(object sender, FrmEditarCliente.UpdateEventArgs args)
-        //{
-        //    CargarDatos();
-        //}
-
-
-
         #region Botones superiores
 
 
@@ -81,21 +66,105 @@ namespace CapaPresentacion
         private void BtnEditServicio_Click(object sender, RoutedEventArgs e)
         {
 
+            if (dr != null)
+            {
+                EditarServicio.ShowDialog();
+
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BtnDeleteServicio_Click(object sender, RoutedEventArgs e)
         {
-
+            Eliminar();
         }
 
         #endregion
 
+
+        FrmEditarServicios EditarServicio = new FrmEditarServicios();
+        DataGrid dg;
+        DataRowView dr;
+
+
+        //Eventos del DataGrid 
+
+        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        private void EdServi_UpdateEventHandler(object sender, FrmEditarServicios.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
         private void DataGridServicios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            dg = sender as DataGrid;
 
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                EditarServicio.UpdateEventHandler += EdServi_UpdateEventHandler;
+                EditarServicio.txtEditIDServicio.Text = dr[0].ToString();
+                EditarServicio.txtEditCodeServicio.Text = dr[1].ToString();
+                EditarServicio.txtEditNombreServicio.Text = dr[2].ToString();
+                EditarServicio.txtEditDescripcionServicio.Text = dr[3].ToString();
+                EditarServicio.txtEditPrecioVenta.Text = dr[4].ToString();
+                EditarServicio.EditguardarBtn.IsEnabled = true;
+                EditarServicio.IsEnabled = true;
+            }
         }
 
 
+        //Método para eliminar
+
+        public void Eliminar()
+        {
+            if (DataGridServicios.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay registros para eliminar!!! ", "Eliminar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (DataGridServicios.SelectedItems == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Servicio", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                        if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Servicio.Id_Servicio = Convert.ToInt32(dr[0].ToString());
+                            Servicios.EliminarServicio(Servicio);
+                            System.Windows.Forms.MessageBox.Show("Registro Eliminado correctamente!!! ", "Eliminar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            CargarDatos();
+                        }
+                        else if (Resultado == System.Windows.Forms.DialogResult.No)
+                        {
+                            CargarDatos();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        
+        //Método Buscar Clientes
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
 
