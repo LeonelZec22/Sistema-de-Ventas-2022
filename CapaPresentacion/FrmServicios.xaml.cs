@@ -56,10 +56,10 @@ namespace CapaPresentacion
 
         //Eventos del DataGrid 
 
-        //private void AgServi_UpdateEventHandler(object sender, FrmAgregarCliente.UpdateEventArgs args)
-        //{
-        //    CargarDatos();
-        //}
+        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
         //private void EdClient_UpdateEventHandler(object sender, FrmEditarCliente.UpdateEventArgs args)
         //{
@@ -73,7 +73,9 @@ namespace CapaPresentacion
 
         private void BtnAddServicio_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmAgregarServicio servicios = new FrmAgregarServicio(this);
+            servicios.UpdateEventHandler += AgServi_UpdateEventHandler;
+            servicios.ShowDialog();
         }
 
         private void BtnEditServicio_Click(object sender, RoutedEventArgs e)
