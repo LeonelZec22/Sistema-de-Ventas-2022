@@ -167,9 +167,31 @@ namespace CapaPresentacion
         //Método Buscar Clientes
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboServicios.Text == "Codigo")
+                {
+                    Servicio.Buscar = txtBuscador.Text.Trim();
+                    DataGridServicios.ItemsSource = Servicios.Buscar_Servicio_Codigo(Servicio).AsDataView();
+                }
+                else if (cboServicios.Text == "Nombre")
+                {
+                    Servicio.Buscar = txtBuscador.Text.Trim();
+                    DataGridServicios.ItemsSource = Servicios.Buscar_Servicios_Nombre(Servicio).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Servicio no fue encontrado por: " + ex.Message, "Buscar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
 
         #region Botones menu izquierda
         private void BtnInicio_Click(object sender, RoutedEventArgs e)

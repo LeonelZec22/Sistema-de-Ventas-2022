@@ -426,12 +426,32 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		Cambiamos los nombres
 
+		------------------------------ Clases del Modulo Gestión de Compras ------------------------------
+		
+		En la capa entidad creo la clase CE_Ingreso_Productos
 
+		Creamos los atributos y los métodos get y set
 
+		En la capa entidad creo la clase CE_Detalle_Ingreso
 
+		Creamos los atributos y los métodos get y set
 
+		En la capa datos creo la clase CD_Ingreso_Productos
 
+		Creamos los métodos para agregar el ingreso de un producto
+		Creamos los métodos para anular o cancelar el ingreso de un producto
+		Creamos los métodos para mostrar el ingreso de un producto en una tabla
 
+		En la capa datos creo la clase CD_Detalle_Ingreso
+
+		Más que imprimir una factura podemos imprimir un resumen o exportar a excel un resumen de todo los productos ingresados que hay actualmente 
+
+		Creamos los métodos para agregar el ingreso del detalle de un producto
+		Creamos los métodos para anular o cancelar el ingreso del detalle de un producto
+
+		En la capa negocios creo la clase CDo_Ingreso_Productos
+
+		En la capa negocios creo la clase CDo_Detalle_Ingreso
 
 
 
