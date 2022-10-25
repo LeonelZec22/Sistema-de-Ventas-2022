@@ -12,7 +12,7 @@ namespace CapaNegocio
 {
     public class CDo_Ingreso_Productos
     {
-        CDo_Ingreso_Productos objIngresoProducto = new CDo_Ingreso_Productos();
+        CD_Ingreso_Productos objIngresoProducto = new CD_Ingreso_Productos();
 
         //Método para agregar el ingreso de un producto
 

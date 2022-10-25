@@ -453,7 +453,25 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		En la capa negocios creo la clase CDo_Detalle_Ingreso
 
+		------------------------------ Formulario Compras y Vista Proveedores ------------------------------
 
+		Creamos una nueva pantalla FrmCompraDeProducto porque cada vez nosotros recibimos un producto que hemos comprado hay que registrarlo 
+		para tener un informe de este día se compro este producto o se recibio este producto 
+
+		Abrimos el formulario de Clientes y copiamos sus referencias en CompraDeProducto porque para crear el método cargaDatos vamos a hacer algo a BuscarClientes 
+		donde "  DataGridClientes.ItemsSource = Clientes.Buscar_Cliente_Codigo(Cliente).AsDataView(); " se sustituye los nombres 
+
+		Utilizamos el evento para ocultar el nombre de una columna
+
+		Creamos una nueva pantalla FrmVistaProveedores 
+
+		Abrimos el formulario Proveedores 
+
+		Copiamos el formulario y lo pegamos en VistaProveedores
+
+		Abrimos la clase del formulario proveedores
+
+		Copiamos las librerias y las pegamos 
 
 
 

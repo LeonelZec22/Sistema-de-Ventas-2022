@@ -130,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmCompraDeProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmEditarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +166,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmVistaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +195,9 @@
     <Compile Include="FrmClientes.xaml.cs">
       <DependentUpon>FrmClientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmCompraDeProducto.xaml.cs">
+      <DependentUpon>FrmCompraDeProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditarCliente.xaml.cs">
       <DependentUpon>FrmEditarCliente.xaml</DependentUpon>
     </Compile>
@@ -210,6 +221,9 @@
     </Compile>
     <Compile Include="FrmServicios.xaml.cs">
       <DependentUpon>FrmServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVistaProveedores.xaml.cs">
+      <DependentUpon>FrmVistaProveedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

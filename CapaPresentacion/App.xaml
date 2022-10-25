@@ -6,7 +6,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="CapaPresentacion.App"
-             StartupUri="FrmServicios.xaml">
+             StartupUri="FrmCompraDeProducto.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -658,7 +658,7 @@
             </Style>
 
             <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
-                <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Height="40" Width="120">
+                <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Height="40" Width="137">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
