@@ -114,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmAgregarIngreso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAgregarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +186,9 @@
   <ItemGroup>
     <Compile Include="FrmAgregarCliente.xaml.cs">
       <DependentUpon>FrmAgregarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAgregarIngreso.xaml.cs">
+      <DependentUpon>FrmAgregarIngreso.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmAgregarProducto.xaml.cs">
       <DependentUpon>FrmAgregarProducto.xaml</DependentUpon>

@@ -40,7 +40,7 @@ namespace CapaPresentacion
         private void CargarDatos()
         {
             DataGridIngresoProducto.ItemsSource = IngresoProductos.MostrarIngresoProductos().AsDataView();
-
+            
         }
 
         //Evento para ocultar una columna de un datagrid autogenerico
@@ -54,17 +54,16 @@ namespace CapaPresentacion
             }
         }
 
-
-
-
-
-
-
-
+        private void AgIn_UpdateEventHandler(object sender, FrmAgregarIngreso.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
         private void BtnNuevoIngreso_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmAgregarIngreso AgregarProducto = new FrmAgregarIngreso(this);
+            AgregarProducto.UpdateEventHandler += AgIn_UpdateEventHandler;
+            AgregarProducto.ShowDialog();
         }
 
         private void BtnAnularIngreso_Click(object sender, RoutedEventArgs e)

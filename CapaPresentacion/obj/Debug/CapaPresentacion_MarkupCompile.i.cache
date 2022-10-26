@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\CapaPresentacion\App.xaml
-21-2111870365
+22-489274236
 
-291972591794
+30-1476996891
 24-1136818793
-DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarServicio.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmServicios.xaml;FrmVistaProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
+DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarServicio.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmServicios.xaml;FrmVistaProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
 
-False
+True
 

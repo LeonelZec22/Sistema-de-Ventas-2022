@@ -473,6 +473,12 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		Copiamos las librerias y las pegamos 
 
+		------------------------------  Formulario Agregar Ingreso Producto ------------------------------ 
+
+		Creamos un formulario
+
+		Despues en la clase de AgregarIngreso agregamos la libreria
+
 
 
 
