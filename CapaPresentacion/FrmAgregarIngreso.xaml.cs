@@ -32,8 +32,10 @@ namespace CapaPresentacion
         }
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
-        CDo_Ingreso_Productos Ingreso_Productos = new CDo_Ingreso_Productos();
-        CE_Ingreso_Productos Ingreso_Producto = new CE_Ingreso_Productos();
+        CDo_Ingreso_Productos Ingresos = new CDo_Ingreso_Productos();
+        CE_Ingreso_Productos Ingreso = new CE_Ingreso_Productos();
+        CDo_Detalle_Ingreso DetalleIngresos = new CDo_Detalle_Ingreso();
+        CE_Detalle_Ingreso DetalleIngreso = new CE_Detalle_Ingreso();
 
         //Agregamos un delegado
 
@@ -51,6 +53,23 @@ namespace CapaPresentacion
         {
             UpdateEventArgs args = new UpdateEventArgs();
             UpdateEventHandler.Invoke(this, args);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtTotal_Pago.Text = "0.00";
+            Correlativo();
+        }
+
+        //Método para generar el numero de ingreso 
+
+        private void Correlativo()
+        {
+            txtId_IngresoProducto.Text = Procedimientos.GenerarCodigoId("Ingreso_Productos");
+
+            txtNo_Ingreso.Text = "INGR" + Procedimientos.GenerarCodigo("Ingreso_Productos");
+
+            txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
         }
     }
 }

@@ -9,7 +9,7 @@ using CapaDatos;
 
 namespace CapaNegocio
 {
-    class CDo_Detalle_Ingreso
+    public class CDo_Detalle_Ingreso
     {
         CD_Detalle_Ingreso objDetalleIngreso = new CD_Detalle_Ingreso();
 
