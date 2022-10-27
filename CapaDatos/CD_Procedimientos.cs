@@ -132,7 +132,7 @@ namespace CapaDatos
 
             Dr.Close();
 
-
+            Codigo = Convert.ToString(Total);
 
             Con.Cerrar();
 

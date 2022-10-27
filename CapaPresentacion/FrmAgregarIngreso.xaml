@@ -70,9 +70,9 @@
 
                     <TextBox Margin="385,10,840,172" x:Name="txtId_Proveedor" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
 
-                    <TextBox Margin="198,64,905,0" x:Name="txtNombre_Proveedor" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"/>
+                    <TextBox Margin="198,64,905,0" x:Name="txtNombre_Proveedor" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
-                    <Button x:Name="btnBuscarProveedor" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104"/>
+                    <Button x:Name="btnBuscarProveedor" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarProveedor_Click"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Ingreso"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
 

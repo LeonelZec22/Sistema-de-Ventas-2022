@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CapaEntidad;
 using CapaNegocio;
+using System.Data;
 
 namespace CapaPresentacion
 {
@@ -36,6 +37,9 @@ namespace CapaPresentacion
         CE_Ingreso_Productos Ingreso = new CE_Ingreso_Productos();
         CDo_Detalle_Ingreso DetalleIngresos = new CDo_Detalle_Ingreso();
         CE_Detalle_Ingreso DetalleIngreso = new CE_Detalle_Ingreso();
+
+        CDo_Proveedores Proveedores = new CDo_Proveedores();
+        CE_Proveedores Proveedor = new CE_Proveedores();
 
         //Agregamos un delegado
 
@@ -70,6 +74,36 @@ namespace CapaPresentacion
             txtNo_Ingreso.Text = "INGR" + Procedimientos.GenerarCodigo("Ingreso_Productos");
 
             txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
+        }
+
+
+        DataGrid dg;
+        DataRowView dr;
+
+        private void BtnBuscarProveedor_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVistaProveedores VistaProveedor = new FrmVistaProveedores();
+
+            VistaProveedor.ShowDialog();
+
+            this.Hide();
+            //try
+            //{
+            //    if(VistaProveedor.DialogResult == true)
+            //    {
+
+            //        //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items[VistaProveedor.DataGridGestionProveedores.CurrentItem.]
+
+            //        //txtId_Proveedor.Text = VistaProveedor
+
+            //        Proveedor.Id_Proveedor = Convert.ToInt32(txtId_Proveedor.Text.Trim());
+            //        Proveedor.Nombre = txtNombre_Proveedor.Text.Trim();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Exclamation);
+            //}
         }
     }
 }

@@ -481,6 +481,11 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		------------------------------ Agregar Ingreso Producto ------------------------------
 
+		Si yo tengo en Editar Proveedores los textBox a llenar 
+
+		Si tengo el datagrid en Proveedores que cuando selecciono una fila después doy clic en editar esos datos de esa fila seleccionada se van a los textbox del
+		formulario editar
+
 
 
 

@@ -9,7 +9,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Collections;
-using System.Windows.Forms;
 
 
 namespace CapaPresentacion
@@ -31,6 +30,8 @@ namespace CapaPresentacion
         CD_Conexion Con = new CD_Conexion();
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
+        CDo_Proveedores Proveedores = new CDo_Proveedores();
+        CE_Proveedores Proveedor = new CE_Proveedores();
 
 
         private void CargarDatos()
@@ -39,6 +40,8 @@ namespace CapaPresentacion
             DataGridGestionProveedores.ItemsSource = Procedimientos.CargarDatos("Proveedores").AsDataView();
 
         }
+
+
 
         private void DataGridGestionProveedores_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -50,32 +53,53 @@ namespace CapaPresentacion
             }
         }
 
-        private void DataGridGestionProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //Estamos accediendo a los textbox del otro formulario
+        FrmAgregarIngreso AgregarIngresoProveedor = new FrmAgregarIngreso();
+
+
+        DataGrid dg; //Seleccionar un DataGrid
+        DataRowView dr; //Seleccionar una fila de ese DataGrid
+
+
+        //No funciona 
+
+        public void DataGridGestionProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DataGridGestionProveedores.Items.Count == 0)
-            {
-                return;
-            }
 
-            else
-            {
-                DialogResult= Convert.ToBoolean("Ok");
-                Close();
-            }
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            //AgregarIngresoProveedor.UpdateEventHandler += 
+            AgregarIngresoProveedor.txtId_Proveedor.Text = dr[0].ToString();
+            AgregarIngresoProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
+
         }
+        
 
-
-
-
-
-
-
-
+        //Vacio
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        FrmAgregarIngreso AddProveedor = new FrmAgregarIngreso();
 
+
+        private void BtnSeleccionarProve_Click(object sender, RoutedEventArgs e)
+        {
+            if (dr != null)
+            {
+                //AddProveedor.txtId_Proveedor.Text = dr[0].ToString();
+                //AddProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
+                //Hide();
+                AgregarIngresoProveedor.Show();
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
