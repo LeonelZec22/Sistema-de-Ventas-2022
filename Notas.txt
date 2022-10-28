@@ -486,6 +486,286 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Si tengo el datagrid en Proveedores que cuando selecciono una fila después doy clic en editar esos datos de esa fila seleccionada se van a los textbox del
 		formulario editar
 
+		Para contar filas int num=dataGrid.Items.Count
+
+		foreach (DataGridViewRow Row in DataGridIngresoProducto.Rows)
+        {
+                        
+			Total += Convert.ToDouble(Row.Cells[6].Value)
+                        
+        }
+
+		
+
+		el numero de fila (no_fila) es para saber el index de una fila 
+
+
+
+		DataGridView.Rows : Es que captura o agarra todas las filas de la tabla y las guarda en una coleccion que es un array editable porque podemos agregar y eliminar 
+		filas ademas al ser un array podemos iterar porque si decimos que la fila 1 está en la posición cero y la fila dos en la posición se puede iterar 
+
+		dataGridView1.ColumnCount = 4 -> Declara cuantas columnas tendrá esta tabla de datos 
+
+		dataGridView1.ColumnHeadersVisible = true; -> Declara que los encabezados de las columnas seran visibles
+
+		 dataGridView1.Columns[0].Name = "Recipe"; => Agregamos nombre a las columnas 
+
+		 en vez de usar la posicion de columna utilizamos el bilding 
+
+		 Creamos un array de tipo string para insertar esos datos a una fila nueva de la tabla
+
+		  string[] row1 = new string[] { "Meatloaf", "Main Dish", "ground beef", "**" };
+
+		  Creamos otro array de tipo objecto para insetar los array de tipo string
+
+		  object[] rows = new object[] { row1, row2, row3, row4, row5, row6 };
+
+		  Digamos que el array de tipo objeto es el objeto a iterar 
+
+		  foreach (string[] rowArray in rows)
+			{
+				dataGridView1.Rows.Add(rowArray);
+			}
+
+		DataGridItem -> es una fila 
+
+
+		------------------------------ ------------------------------ ------------------------------ ------------------------------ ------------------------------ 
+
+		Es mejor hacer una función y llamar la función mediante un boton que meter el código dentro del boton
+
+		Si no se puede terminar de ejecutar el codigo que está dentro del try pues que me mande una exception
+
+		 private void SeleccionarProveedor()
+        {
+            try
+            {
+				//Validación que si el formulario abierto
+				if(){
+
+				}
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un Error" + ex, "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+
+		DataGridView Rows Count es para contar cuantas filas hay en una tabla es para saber ¿Cuantos Datos hay en la tabla? ¿Cuantas filas tiene? 
+
+		int num= dataGrid.Items.Count -> Te permite contar las filas que contiene la tabla 
+
+		Crean el formulario compra y vista proveedor 
+
+		Minuto 6 -> 33/2 -> se trata de abrir el formulario  AgregarIngreso y con el boton buscar abrir el formulario vista proveedores y seleccionar un proveedor 
+		y rellenar con esa fila seleccionada los textBox
+
+
+		------------------------------ ------------------------------ ------------------------------ ------------------------------ ------------------------------ 
+
+
+		El dialogoresult por defecto es falso y se puede utilizar porque aqui en el formulario agregar ingreso los hemos abierto 
+
+		El usuario puede hacer dos cosas cerrar la ventana por lo cuál el dialogresult queda en falso o puede apretar el boton de agregar 
+		entonces se verifica la siguiente validación si la tabla está vacia no podrás seleccionar níngun dato por lo tanto no hara nada el boton y saldrá por el momento el catch pero si hay datos y selecciona un dato entonces 
+
+		 try
+            {
+                if(VistaProveedor.DialogResult == true)
+                {
+
+                }
+            }
+
+			DataGridView Rows estas accediendo a todas las filas de la tabla 
+
+			DataGridViewRowCollection contiene las filas de una tabla 
+
+			DataGridViewRowCollection.Item[Int32]
+
+			Obtiene la fila de la tabla en el indice especificado 
+
+			Obtener la fila en el indice especificado wpf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

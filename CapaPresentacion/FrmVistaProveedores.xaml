@@ -207,7 +207,7 @@
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <Button Grid.Row="3" Margin="661,6,37,0" Height="Auto" Grid.RowSpan="2"  x:Name="btnSeleccionarProve" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="red"  IsEnabled="True" Click="BtnSeleccionarProve_Click"/>
+                <Button Grid.Row="3" Margin="661,6,37,0" Height="Auto" Grid.RowSpan="2"  x:Name="btnSeleccionarProve" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="red"  IsEnabled="True" Click="BtnSeleccionarProve_Click" PreviewMouseDoubleClick="BtnSeleccionarProve_PreviewMouseDoubleClick" Tag="{Binding Path=frow1}"/>
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
                     <ComboBox x:Name="cboGestionProv" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
@@ -235,7 +235,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridGestionProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridGestionProveedores_AutoGeneratingColumn" SelectionChanged="DataGridGestionProveedores_SelectionChanged"/>
+                <DataGrid x:Name="DataGridGestionProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridGestionProveedores_AutoGeneratingColumn" SelectionChanged="DataGridGestionProveedores_SelectionChanged" />
 
             </Grid>
 

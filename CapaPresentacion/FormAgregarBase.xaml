@@ -17,11 +17,15 @@
         <!--Left Section-->
 
         <Border Background="#FF1F1D1D" Padding="30" CornerRadius="25 0 0 25">
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Height="356" Margin="0,144,0,90">
                 <Image Source="/Images/add.png" Width="160" Height="160" Margin="0 0 0 40"/>
                 <TextBlock Text="Agregar Productos!" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#ffffff"/>
 
+                <Button IsDefault="True" Click="acceptButton_Click">OK (IsDefault=True)</Button>
+                
+                <Button IsCancel="True" Content="Cancel (IsCancel=True)"/>
             </StackPanel>
+            
         </Border>
 
         <!--Input Section-->

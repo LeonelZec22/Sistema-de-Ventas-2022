@@ -68,7 +68,7 @@
 
                     <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Proveedor"  Width="182" Margin="198,29,898,157"/>
 
-                    <TextBox Margin="385,10,840,172" x:Name="txtId_Proveedor" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
+                    <TextBox Margin="385,10,840,172" x:Name="txtId_Proveedor" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Visible"/>
 
                     <TextBox Margin="198,64,905,0" x:Name="txtNombre_Proveedor" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
@@ -102,7 +102,7 @@
 
                     <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,162,70,22"/>
 
-                    <Button x:Name="btnAgregarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,95,70,89"/>
+                    <Button x:Name="btnAgregarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,95,70,89" Click="BtnAgregarProducto_Click"/>
 
                     <TextBox Margin="274,152,960,30" x:Name="txtId_Detalle" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 

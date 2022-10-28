@@ -59,5 +59,34 @@ namespace CapaPresentacion
             }
         }
 
+        private void Seleccionar()
+        {
+            FrmClientes clientePrueba = new FrmClientes();
+
+            
+
+            if (clientePrueba.DataGridClientes.Items.Count == 0)
+            {
+                //Si el DataGrid está vacio que no devuelva nada pero si tiene al menos una fila es decir un dato que ejecute el bloque else
+                System.Windows.Forms.MessageBox.Show("No hay registro para seleccionar", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Registro seleccionado", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                //Al momento de hacer clic en el boton si hay datos pues se cierra 
+                DialogResult = true;
+                Hide();
+            }
+        }
+
+        
+
+        private void BotonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Seleccionar();
+        }
     }
 }

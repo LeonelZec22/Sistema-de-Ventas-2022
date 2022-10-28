@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace CapaPresentacion
 {
     /// <summary>
@@ -22,6 +23,8 @@ namespace CapaPresentacion
         public FormAgregarBase()
         {
             InitializeComponent();
+
+            //EditarPrueba();
         }
 
         //Método para mover la ventana
@@ -32,5 +35,31 @@ namespace CapaPresentacion
                 this.DragMove();
             }
         }
+
+       
+        public void EditarPrueba()
+        {
+            //FormEditBase EditaDialog = new FormEditBase();
+
+            //EditaDialog.ShowDialog();
+
+            //EditaDialog.DialogResult = true;
+
+            //FrmClientes ClientesPrueba = new FrmClientes();
+
+            //int num = ClientesPrueba.DataGridClientes.Items.Count;
+
+            //txtAddCodeProduct.Text =Convert.ToString(num);
+
+        }
+        
+
+        private void acceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+        }
+
+
     }
 }

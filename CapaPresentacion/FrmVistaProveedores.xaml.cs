@@ -25,7 +25,7 @@ namespace CapaPresentacion
             CargarDatos();
         }
 
-        //Creamos un objeto de nuestra clase conexión
+        #region Objetos de las clases a usar 
 
         CD_Conexion Con = new CD_Conexion();
 
@@ -33,7 +33,9 @@ namespace CapaPresentacion
         CDo_Proveedores Proveedores = new CDo_Proveedores();
         CE_Proveedores Proveedor = new CE_Proveedores();
 
+        #endregion
 
+        //Necesario
         private void CargarDatos()
         {
             
@@ -41,7 +43,7 @@ namespace CapaPresentacion
 
         }
 
-
+        #region Ocultar la columna ID Proveedor
 
         private void DataGridGestionProveedores_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -53,6 +55,9 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
+
+        #region Variables de datagrid 
         //Estamos accediendo a los textbox del otro formulario
         FrmAgregarIngreso AgregarIngresoProveedor = new FrmAgregarIngreso();
 
@@ -60,22 +65,33 @@ namespace CapaPresentacion
         DataGrid dg; //Seleccionar un DataGrid
         DataRowView dr; //Seleccionar una fila de ese DataGrid
 
+        #endregion
 
         //No funciona 
 
         public void DataGridGestionProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            dg = sender as DataGrid;
+            //var Cell = DataGridGestionProveedores.CurrentCell;
+            //GetDataGridCell(Cell);
 
-            dr = dg.SelectedItem as DataRowView;
+            FrmAgregarIngreso ingreso = new FrmAgregarIngreso();
 
-            //AgregarIngresoProveedor.UpdateEventHandler += 
-            AgregarIngresoProveedor.txtId_Proveedor.Text = dr[0].ToString();
-            AgregarIngresoProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
+            ingreso.txtId_Proveedor.Clear();
+           
+            #region traer datos
+            //dg = sender as DataGrid;
+
+            //dr = dg.SelectedItem as DataRowView;
+
+            ////AgregarIngresoProveedor.UpdateEventHandler += 
+            //AgregarIngresoProveedor.txtId_Proveedor.Text = dr[0].ToString();
+            //AgregarIngresoProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
+
+            #endregion
 
         }
-        
+
 
         //Vacio
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
@@ -88,18 +104,52 @@ namespace CapaPresentacion
 
         private void BtnSeleccionarProve_Click(object sender, RoutedEventArgs e)
         {
-            if (dr != null)
+
+            #region comentarios btnselecionnar
+            //if (dr != null)
+            //{
+            //    //AddProveedor.txtId_Proveedor.Text = dr[0].ToString();
+            //    //AddProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
+            //    //Hide();
+            //    AgregarIngresoProveedor.Show();
+            //}
+
+            //else
+            //{
+            //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            //}
+
+            #endregion
+
+            //Necesario
+
+            if (DataGridGestionProveedores.Items.Count == 0)
             {
-                //AddProveedor.txtId_Proveedor.Text = dr[0].ToString();
-                //AddProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
-                //Hide();
-                AgregarIngresoProveedor.Show();
+                return;
             }
 
             else
             {
-                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                DialogResult = true;
+
+                Hide();
             }
         }
+
+        private void BtnSeleccionarProve_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        public DataGridCell GetDataGridCell (DataGridCellInfo cellInfo)
+        {
+            var cellContent = cellInfo.Column.GetCellContent(cellInfo.Item);
+            if (cellContent != null)
+                return (DataGridCell)cellContent.Parent;
+
+            return null;
+        }
+
+        
     }
 }
