@@ -48,6 +48,7 @@
     <Compile Include="CE_Productos.cs" />
     <Compile Include="CE_Proveedores.cs" />
     <Compile Include="CE_Servicios.cs" />
+    <Compile Include="DataGridItemsProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

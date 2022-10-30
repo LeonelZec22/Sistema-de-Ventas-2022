@@ -23,5 +23,8 @@ namespace CapaEntidad
         public int Cantidad { get => _Cantidad; set => _Cantidad = value; }
         public decimal Costo_Unitario { get => _Costo_Unitario; set => _Costo_Unitario = value; }
         public decimal Sub_Total { get => _Sub_Total; set => _Sub_Total = value; }
+
+        //public IEnumerable<DataGridItemsProducto>
+
     }
 }

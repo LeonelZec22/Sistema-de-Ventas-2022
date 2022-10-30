@@ -68,7 +68,7 @@
 
                     <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Proveedor"  Width="182" Margin="198,29,898,157"/>
 
-                    <TextBox Margin="385,10,840,172" x:Name="txtId_Proveedor" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Visible"/>
+                    <TextBox Margin="385,10,840,172" x:Name="txtId_Proveedor" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
 
                     <TextBox Margin="198,64,905,0" x:Name="txtNombre_Proveedor" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
@@ -84,13 +84,13 @@
 
                     <TextBox Margin="949,10,285,172" x:Name="txtId_Producto" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
-                    <TextBox Margin="520,64,583,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"/>
+                    <TextBox Margin="520,64,583,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Producto"  Width="174" Margin="748,28,356,157" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"/>
+                    <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
-                    <Button x:Name="btnBuscarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="996,61,188,107"/>
+                    <Button x:Name="btnBuscarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="996,61,188,107" Click="BtnBuscarProducto_Click"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad"  Width="73" Margin="520,158,685,39" RenderTransformOrigin="0.876,0.477"/>
 
@@ -98,7 +98,7 @@
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Costo Unitario"  Width="128" Margin="794,158,356,39" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="922,142,181,0" x:Name="txtCosto_Unitario" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"/>
+                    <TextBox Margin="922,142,181,0" x:Name="txtCosto_Unitario" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
                     <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,162,70,22"/>
 
@@ -136,7 +136,12 @@
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Total a Pagar"  Width="143" Margin="10,322,1125,-4" Foreground="#DDFFFFFF"  />
 
-                     <TextBox Margin="172,309,964,0" x:Name="txtTotal_Pago" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+                    <TextBox Margin="172,309,964,0" x:Name="txtTotal_Pago" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+
+                    <TextBlock x:Name="labelrow" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="No  de fila"  Width="143" Margin="384,317,751,1" Foreground="#DDFFFFFF"  />
+
+                    <!--<TextBlock x:Name="labelrow2" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="No  de fila"  Width="143" Margin="552,317,583,1" Foreground="#DDFFFFFF"  />-->
+
 
                 </Grid>
                 <!--DataGrid-->

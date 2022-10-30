@@ -71,15 +71,14 @@ namespace CapaPresentacion
 
         public void DataGridGestionProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            //var Cell = DataGridGestionProveedores.CurrentCell;
-            //GetDataGridCell(Cell);
-
+           
             FrmAgregarIngreso ingreso = new FrmAgregarIngreso();
 
             ingreso.txtId_Proveedor.Clear();
-           
+
             #region traer datos
+            //var Cell = DataGridGestionProveedores.CurrentCell;
+            //GetDataGridCell(Cell);
             //dg = sender as DataGrid;
 
             //dr = dg.SelectedItem as DataRowView;
@@ -123,13 +122,16 @@ namespace CapaPresentacion
 
             //Necesario
 
-            if (DataGridGestionProveedores.Items.Count == 0)
+
+            if (DataGridGestionProveedores.SelectedItems.Count == 0)
             {
+                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 return;
             }
 
             else
             {
+
                 DialogResult = true;
 
                 Hide();
@@ -141,15 +143,17 @@ namespace CapaPresentacion
 
         }
 
-        public DataGridCell GetDataGridCell (DataGridCellInfo cellInfo)
-        {
-            var cellContent = cellInfo.Column.GetCellContent(cellInfo.Item);
-            if (cellContent != null)
-                return (DataGridCell)cellContent.Parent;
+        #region datagridcell
+        //public DataGridCell GetDataGridCell (DataGridCellInfo cellInfo)
+        //{
+        //    var cellContent = cellInfo.Column.GetCellContent(cellInfo.Item);
+        //    if (cellContent != null)
+        //        return (DataGridCell)cellContent.Parent;
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        
+        #endregion
+
     }
 }

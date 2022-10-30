@@ -590,16 +590,72 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 			Obtener la fila en el indice especificado wpf
 
 
+			DataRowView.Row -> Obtiene la fila de datos que se está visualizando.
+
+			Primero entro al la fila de la tabla para poder usar esta propiedad
+
+			DataRowView drv
+
+			DataRow row = drv.Row;
+
+			Despues que capturo la fila completa puedo especificar la columna a usar
+
+			Convert.ToString(drv.Row[0])
+
+			  DataGridView.Rows.Add 
+
+		   Agregar una fila a un DataGrid o tabla utilizando la informacion que hay en los textbox 
+
+		   Para acceder a todas las columnas lo hacemos mediante la coleccion Rows / Items 
+
+		    DataGridIngresoProducto.Items.Add -> Agrega una fila a la colección de filas.
+
+			DataTable -> Representa una tabla de datos 
+
+			ItemsControl -> Representa un control que se puede usar para presentar una colección de elementos.
+
+			------------------------------ ------------------------------ ------------------------------ ------------------------------ ------------------------------ 
+
+		Creamos 2 variables una para almacenar el total de todos los productos agregar (suma de una columna) y otra para contar el numero de filas que hay en  la tabla
+		esto nos sirve para saber si hay datos o registro ya en la tabla o si está vacia es decir para saber si ya hay productos agregados a la tabla o no hay ningún 
+		proudcto agregado a la tabla DataGridIngresoProducto
+
+			
+        public static int ContFila = 0; 
+        public static decimal Total;  
 
 
+		Creamos la variable subtotal que nos sirve para sumar el precio unitario por la cantidad del producto a comprar
+
+		decimal SubTotal = 0;
+
+		Creamos una validación con un if para verificar si los textbox están llenos o están vacios en caso que esten vacio que mande una alerta y no se ejecute el método 
+		hasta que los textbox tengan contenido
+
+		Creamos una variable para verificar la existencia ¿Hay o no hay? 
+
+		 bool Existe = false;
+
+		  if (ContFila == 0) -> Si no hay registros en la tabla ingresoproductos porque no hay productos agregados a la tabla entonces ejecuta este codigo 
+
+		  en el caso que sea no hay productos en la tabla el subtotal es el precio de multiplicar la cantidad de ese producto por el precio que tenga ese producto
+
+		   SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text); 
 
 
+		   Seleccionamos el DataGrid en este caso es el IngresoProducto porque vamos a agregar en esa tabla la información de los textbox para agregar ese primer producto a la tabla 
 
+		 Decimos que vamos a agregar una nueva fila a la tabla por eso usamos el método add de la propiedad items aqui es muy importante los parametros que recibe este método porque si se envia vacio nos agrega una nueva fila pero vacia entonces si recuerdas cuando creamos una columna está tiene el atributo bilding entonces nosotros hacemos referencia a esas columnas usando el nombre del bilding y decimos que el valor de la columna "x" de esa nueva fila va a ser igual a lo que hay en el textbox correspondiente 
 
+		 Ahora si ya datos en la tabla IngresoProducto y por lo tanto el total de filas es mayor a 0 
 
+		 Tenemos que recorrer un DataGrid 
 
+		 DataGridRow paretoRow in paretogrid.Items
 
+		 ------------------------------ ------------------------------ ------------------------------ ------------------------------ ------------------------------ 
 
+		Binding to Data con wpf y itemsource
 
 
 
