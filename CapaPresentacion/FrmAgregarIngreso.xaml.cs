@@ -94,9 +94,7 @@ namespace CapaPresentacion
 
         #endregion
 
-        DataGrid dg;
-        DataRowView dr;
-
+ 
         DataSet dataSet;
         DataTable TableProductos;
 
@@ -284,6 +282,7 @@ namespace CapaPresentacion
             //DataGridIngresoProducto.UnselectAll();
             #endregion
 
+            #region Coment
             //AgregarDetalle();
 
             //fillaDT();
@@ -298,11 +297,16 @@ namespace CapaPresentacion
 
             //DataGridIngresoProducto.ItemsSource = myDataTable.DefaultView;
 
-            LlenarDataTable();
+            #endregion
+
+            //LlenarDataTable();
+
+            AgregarDetalle();
             
         }
 
-        DataTable myDataTable;
+       
+        #region Metodos de prueba
         private void Tabla222 ()
         {
             //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
@@ -329,9 +333,6 @@ namespace CapaPresentacion
 
             System.Windows.Forms.MessageBox.Show(Typo, "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
         }
-
-
-
         public static DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
@@ -351,8 +352,6 @@ namespace CapaPresentacion
             }
             return dataTable;
         }
-
-
 
 
         private void fillaDT()
@@ -377,6 +376,7 @@ namespace CapaPresentacion
             //txtTotal_Pago.Text = Total.ToString("N2");
         }
 
+        #endregion
         #region comentario
         public void RowPrueba()
         {
@@ -389,6 +389,7 @@ namespace CapaPresentacion
 
         #endregion
 
+        //Método para cargar en los textBox el proveedor
         private void SeleccionarProveedor()
         {
            
@@ -503,12 +504,183 @@ namespace CapaPresentacion
         #region Agregar datos al datagrid 
 
         public static int ContFila = 0; 
-        public static decimal Total;  
+        public static decimal Total;
+
+        private void AgregarDetalle()
+        {
+            decimal SubTotal = 0;
+
+            try
+            {
+                //Valida que los campos de texto de producto no esten vacios 
+
+                if (txtId_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtCosto_Unitario.Text == string.Empty)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                    return;
+                }
+
+                else
+                {
+                    //Variable que verifica si un producto ya ha sido agregado a la DataTable
+                    bool Existe = false;
+
+                    int no_fila = 0;
+
+                    if (ContFila == 0)
+                    {
+                        if (TableProductos == null)
+                        {
+                            TableProductos = new DataTable();
+
+                            DataColumn column;
+                            DataRow row;
+
+                            column = new DataColumn();
+                            column.ColumnName = "Id_Producto";
+
+                            TableProductos.Columns.Add(column);
+
+                            column = new DataColumn();
+                            column.ColumnName = "Nombre";
+                            TableProductos.Columns.Add(column);
+
+                            column = new DataColumn();
+                            column.ColumnName = "Cantidad";
+                            TableProductos.Columns.Add(column);
+
+                            column = new DataColumn();
+                            column.ColumnName = "Costo_Unitario";
+                            TableProductos.Columns.Add(column);
+
+                            column = new DataColumn();
+                            column.ColumnName = "Sub_Total";
+                            TableProductos.Columns.Add(column);
+
+                            dataSet = new DataSet();
+
+                            dataSet.Tables.Add(TableProductos);
+
+                            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+                            TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
+
+                            DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                            LimpiarDetalle();
+                            ContFila++;
+                        }
+
+                        else
+                        {
+                            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+                            TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
+
+                            DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+
+                        }
+
+                    }
+
+                    else
+                    {
+                        
+                        
+                        //Recorro el DataGrid en busca de encontrar un producto que ya ha sido agregado con el mismo id que el está en el textbox
+                        foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
+                        {
+                            DataRow row = drv.Row; //Tomo la primera fila y accedo a la columna 0 ver su valor y ver si es igual
+                            if (row[0].ToString() ==txtId_Producto.Text)
+                            {
+                                Existe = true;
+
+                                no_fila = TableProductos.Rows.IndexOf(row);
+                            }
+                        }
+
+
+                        if(Existe == true)
+                        {
+                            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+                            TableProductos.Rows[no_fila]["Cantidad"] = Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(TableProductos.Rows[no_fila][2].ToString());
+                            TableProductos.Rows[no_fila]["Sub_Total"] = (SubTotal + Convert.ToDecimal(TableProductos.Rows[no_fila][4].ToString()));
+                            DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                            LimpiarDetalle();
+
+                        }
+
+                        else
+                        {
+                            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+                            TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
+
+                            DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                            LimpiarDetalle();
+                            ContFila++;
+                        }
+
+                        #region Comentario
+                        //if(Existe = true)
+                        //{
+                        //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+
+                        //    TableProductos.Rows[no_fila]["Cantidad"] = CantidadPro;
+                        //}
+
+                        //foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
+                        //{
+                        //    DataRow row = drv.Row;
+
+                        //    //labelrow.Text = Convert.ToString(row[0]);
+
+                        //    index = Convert.ToString(row[0]);
+
+                        //    if (index == txtId_Producto.Text)
+                        //    {
+                        //        SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+                        //        var CantidadPro = row[2];
+
+                        //        CantidadPro = Convert.ToDecimal(txtCantidad.Text) + Convert.ToDecimal(CantidadPro);
+
+                        //        var SubTotalPro = row[4];
+
+                        //        SubTotalPro = (SubTotal + Convert.ToDecimal(SubTotalPro));
+
+                        //        TableProductos.Rows[Convert.ToInt32(index)]["Cantidad"] = CantidadPro;
+                        //        TableProductos.Rows[Convert.ToInt32(index)]["Sub_Total"] = SubTotal;
+                        //        DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                        //    }
+
+                        //}
+
+                        #endregion
+                    
+                    }
+
+                    decimal Total = 0;
+
+                    foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
+                    {
+                        Total += Convert.ToDecimal(row3[4]);
+                    }
+
+                    txtTotal_Pago.Text = Total.ToString("N2");
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Producto no fue agregado por: " + ex, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
 
         // Método para agregar los productos al datagrid
 
         //Metódo para agregar detalle del producto
-        private void AgregarDetalle()
+        private void AgregarDetalle2()
         {
             decimal SubTotal = 0;
 
@@ -819,47 +991,49 @@ namespace CapaPresentacion
             
         }
 
-        public void row22()
-        {
-            decimal SubTotal = 0;
-            //dataGridProducto = DataGridIngresoProducto;
 
-            ////dataGridProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+        #region prueba fallida
+        //public void row22()
+        //{
+        //    decimal SubTotal = 0;
+        //    //dataGridProducto = DataGridIngresoProducto;
 
-            //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+        //    ////dataGridProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
 
-            //productos.Add(new DataGridItemsProducto() { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+        //    //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
 
-            //DataGridIngresoProducto.ItemsSource = productos;
+        //    //productos.Add(new DataGridItemsProducto() { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
 
-            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+        //    //DataGridIngresoProducto.ItemsSource = productos;
 
-            //DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+        //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
 
-            //DataGridIngresoProducto.UnselectAll();
+        //    //DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
 
-            //btnAgregarProducto.Focus();
+        //    //DataGridIngresoProducto.UnselectAll();
 
-            //CE_Ingreso_Productos CE = new CE_Ingreso_Productos();
+        //    //btnAgregarProducto.Focus();
 
-            //CE.AddProducto.Add(new DataGridItemsProducto());
+        //    //CE_Ingreso_Productos CE = new CE_Ingreso_Productos();
 
-            //this.DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+        //    //CE.AddProducto.Add(new DataGridItemsProducto());
+
+        //    //this.DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
 
            
 
-            Total = 0;
+        //    Total = 0;
 
-            foreach (DataRowView row in this.DataGridIngresoProducto.ItemsSource)
-            {
-                Total += Convert.ToDecimal(row[5]);
-            }
+        //    foreach (DataRowView row in this.DataGridIngresoProducto.ItemsSource)
+        //    {
+        //        Total += Convert.ToDecimal(row[5]);
+        //    }
 
-            txtTotal_Pago.Text = Total.ToString("N2");
+        //    txtTotal_Pago.Text = Total.ToString("N2");
 
-            LimpiarDetalle();
+        //    LimpiarDetalle();
 
-        }
+        //}
 
         //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
 
@@ -870,8 +1044,8 @@ namespace CapaPresentacion
 
         //    return productos;
         //}
-
-        #region prueba fallida
+        
+        
         //private void SeleccionItem ()
         //{
 
@@ -913,7 +1087,6 @@ namespace CapaPresentacion
 
         //    labelrow.Text = Convert.ToString(table.Rows.Count);
         //}
-        #endregion
 
         //private void RecorrerData()
         //{
@@ -946,6 +1119,8 @@ namespace CapaPresentacion
         //        }
         //    }
         //}
+        #endregion
+
 
     }
 }

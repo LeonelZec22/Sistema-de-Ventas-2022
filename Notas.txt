@@ -655,7 +655,13 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		 ------------------------------ ------------------------------ ------------------------------ ------------------------------ ------------------------------ 
 
-		Binding to Data con wpf y itemsource
+		Si los textbox  están lleno entonces valida si es el primer campo a llenar por defecto la variable contfila empieza en cero y solo aumenta su valor si se agrega
+		un dato entonces la primera vez si pasara después va a verificar si ya hay una fila creada en la dataTable por defecto no entonces se crea una columna
+
+		Actualizar una columna de una fila wpf
+
+		Tenemos la fila numero 1 y queremos actualizar su columna 3 
+
 
 
 
