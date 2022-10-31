@@ -113,7 +113,8 @@ namespace CapaPresentacion
         #region Agregar datos al datagrid 
 
         public static int ContFila = 0;
-        decimal TotalP = 0;
+
+        decimal TotalResta = 0;
 
         int indexDelete = 0;
         //Método para cargar en los textBox el proveedor
@@ -292,7 +293,8 @@ namespace CapaPresentacion
                             TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
 
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
-
+                            DataGridIngresoProducto.UnselectAllCells();
+                            LimpiarDetalle();
                         }
 
                     }
@@ -320,6 +322,7 @@ namespace CapaPresentacion
                             TableProductos.Rows[no_fila]["Sub_Total"] = (SubTotal + Convert.ToDecimal(TableProductos.Rows[no_fila][4].ToString()));
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                             LimpiarDetalle();
+                            DataGridIngresoProducto.UnselectAllCells();
 
                         }
 
@@ -331,6 +334,7 @@ namespace CapaPresentacion
 
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                             LimpiarDetalle();
+                            DataGridIngresoProducto.UnselectAllCells();
                             ContFila++;
                         }
 
@@ -374,15 +378,19 @@ namespace CapaPresentacion
                     
                     }
 
+                    decimal TotalSuma = 0;
                     
                     //Recorro el DataGrid para seleccionar la columna SubtoTotal de todas la filas y sumar su valor
                     foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
                     {
                         //Cuando entre a la primera fila agarre el valor de la columna 5 y que a las filas siguientes el valor de esas filas se sume al valor actual
-                        TotalP += Convert.ToDecimal(row3[4]);
+                        TotalSuma += Convert.ToDecimal(row3[4]);
                     }
+                    TotalResta = TotalSuma;
 
-                    txtTotal_Pago.Text = TotalP.ToString("N2");
+                    txtTotal_Pago.Text = TotalSuma.ToString("N2");
+                    
+                    
 
                 }
             }
@@ -473,26 +481,35 @@ namespace CapaPresentacion
         {
             try
             {
+                //Verificamos si hay productos agregados a la tabla es decir si hay filas agregadas
                 if (ContFila > 0 & DataGridIngresoProducto.Items.Count > 0)
                 {
+                    //Verificamos si hay un producto o una fila seleccionada de la tabla
                     if(DataGridIngresoProducto.SelectedItems.Count == 0)
                     {
                         System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
                     else
                     {
+                        //Va recorrer la fila seleccionada en busca de obtener su index
                         foreach (DataRowView drv in DataGridIngresoProducto.SelectedItems)
                         {
+                            //if(DataGridIngresoProducto.SelectedItems.Count == 1)
+                            //{
                             DataRow row = drv.Row;
-                            
+
                             indexDelete = TableProductos.Rows.IndexOf(row);
+                            //}
 
                         }
-                        TotalP = TotalP - Convert.ToDecimal(TableProductos.Rows[indexDelete][4]);
-                        txtTotal_Pago.Text = TotalP.ToString("N2");
+
+                        
+                        TotalResta = TotalResta - Convert.ToDecimal(TableProductos.Rows[indexDelete][4]);
+                        txtTotal_Pago.Text = TotalResta.ToString("N2");
 
                         TableProductos.Rows.RemoveAt(indexDelete);
                         DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                        DataGridIngresoProducto.UnselectAllCells();
                         ContFila--;
                     }
                 }
@@ -510,8 +527,79 @@ namespace CapaPresentacion
         }
 
 
+        private void BtnGuardarIngreso_Click(object sender, RoutedEventArgs e)
+        {
+            Guardar();
+        }
+
+        public virtual bool Guardar()
+        {
+            try
+            {
+                if (txtId_IngresoProducto.Text == string.Empty || txtNo_Ingreso.Text == string.Empty || txtId_Proveedor.Text == string.Empty || txtNombre_Proveedor.Text == string.Empty )
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    //Ingreso.No_Ingreso
+                    Ingreso.No_Ingreso = txtNo_Ingreso.Text;
+                    Ingreso.Id_Proveedor = Convert.ToInt32(txtId_Proveedor.Text);
+                    Ingreso.Fecha_Ingreso = Convert.ToDateTime(dtp_FechaIngreso.Text);
+                    Ingreso.Monto_total = Convert.ToDecimal(txtTotal_Pago.Text);
+                    Ingreso.Estado = "Recibido";
+
+                    foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
+                    {
+                        DataRow row = drv.Row;
+
+                        DetalleIngreso.Id_IngresoProducto = Convert.ToInt32(txtId_IngresoProducto.Text);
+                        DetalleIngreso.Id_Producto = Convert.ToInt32(row[0].ToString());
+                        DetalleIngreso.Nombre = Convert.ToString(row[1].ToString());
+                        DetalleIngreso.Cantidad = Convert.ToInt32(row[2].ToString());
+                        DetalleIngreso.Costo_Unitario = Convert.ToDecimal(row[3].ToString());
+                        DetalleIngreso.Sub_Total = Convert.ToDecimal(row[4].ToString());
+
+                        DetalleIngresos.AgregarDetalleIngreso(DetalleIngreso);
+                    }
+
+                    Ingresos.AgregarIngreso(Ingreso);
+
+                    System.Windows.Forms.MessageBox.Show("Ingreso de Producto agregado correctamente!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    txtId_Detalle.Text = string.Empty;
+                    txtTotal_Pago.Text = "0.00";
+                    Agregar();
+                    LimpiarDetalle();
+                    limpiarproveedor();
+                    Correlativo();
+                    Hide();
+                    limpiarFila();
+                    return true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Ingreso de Producto no fue agregado por: " + ex, "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return false;
+        }
+
+
+        public void limpiarproveedor()
+        {
+            txtId_IngresoProducto.Clear();
+            txtId_Proveedor.Clear();
+            txtNombre_Proveedor.Clear();
+        }
+
+        public void limpiarFila()
+        {
+             ContFila = 0;
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-        
+
 
 
         #region prueba fallida
@@ -1067,6 +1155,7 @@ namespace CapaPresentacion
 
             //DataGridIngresoProducto.ItemsSource = productos;
         }
+
 
 
         #endregion

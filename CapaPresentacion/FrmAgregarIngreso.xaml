@@ -76,7 +76,7 @@
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Ingreso"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
 
-                    <DatePicker x:Name="dtp_FechaIngreso" Margin="28,158,0,25" Height="40" FirstDayOfWeek="Sunday" Cursor="Cross" FontSize="18" HorizontalAlignment="Left" Width="222" Background="#ffffff"/>
+                    <DatePicker x:Name="dtp_FechaIngreso" Margin="28,158,0,25" Height="40" FirstDayOfWeek="Sunday" Cursor="Cross" FontSize="18" HorizontalAlignment="Left" Width="222" Background="#ffffff"  IsDropDownOpen="False" Text="" DisplayDateStart="2022-01-31" SelectedDate="2023-01-31"/>
 
                     <!--Detalle del producto-->
 
@@ -130,7 +130,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <Button x:Name="btnGuardarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#04293A"  IsEnabled="True" Margin="1114,308,0,0" HorizontalAlignment="Left" Width="128"/>
+                    <Button x:Name="btnGuardarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#04293A"  IsEnabled="True" Margin="1114,308,0,0" HorizontalAlignment="Left" Width="128" Click="BtnGuardarIngreso_Click"/>
 
                     <Button x:Name="btnCancelarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="#950101"  IsEnabled="True" Margin="920,308,0,0" HorizontalAlignment="Left" Width="128"/>
 
