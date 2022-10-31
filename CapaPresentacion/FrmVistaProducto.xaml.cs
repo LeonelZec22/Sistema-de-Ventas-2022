@@ -51,22 +51,9 @@ namespace CapaPresentacion
 
         private void CargarDatos()
         {
-            //Dt = new DataTable("Cargar_Datos");
-            //Cmd = new SqlCommand("SELECT * FROM Productos", Con.Abrir());
-
-            //Cmd.CommandType = CommandType.Text;
-
-            //Dr = Cmd.ExecuteReader();
-
-            //Dt.Load(Dr);
-
-            //Dr.Close();
-
-            //Con.Cerrar();
-
-            //DataGridGestionProductos.ItemsSource = Dt.DefaultView;
-
+           
             DataGridGestionProductos.ItemsSource = Procedimientos.CargarDatos("Productos").AsDataView();
+            DataGridGestionProductos.UnselectAllCells();
         }
 
         private void DataGridGestionProductos_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

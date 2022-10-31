@@ -27,7 +27,6 @@ namespace CapaPresentacion
         {
             InitializeComponent();
 
-
         }
 
         public FrmAgregarIngreso(FrmCompraDeProducto Compras)
@@ -81,7 +80,7 @@ namespace CapaPresentacion
         #endregion
 
 
-        #region Método para generar el numero de ingreso 
+        //Método para generar el numero de ingreso 
 
         private void Correlativo()
         {
@@ -92,302 +91,29 @@ namespace CapaPresentacion
             txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
         }
 
-        #endregion
-
- 
+      
         DataSet dataSet;
         DataTable TableProductos;
+      
 
-        decimal SubTotal = 0;
-        private void LlenarDataTable()
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        ///
+
+        //Método para limpiar los textBox de productos
+
+        private void LimpiarDetalle()
         {
-
-            if(TableProductos == null)
-            {
-                TableProductos = new DataTable();
-
-                DataColumn column;
-                DataRow row;
-
-                column = new DataColumn();
-                column.ColumnName = "Id_Producto";
-
-                TableProductos.Columns.Add(column);
-
-                column = new DataColumn();
-                column.ColumnName = "Nombre";
-                TableProductos.Columns.Add(column);
-
-                column = new DataColumn();
-                column.ColumnName = "Cantidad";
-                TableProductos.Columns.Add(column);
-
-                column = new DataColumn();
-                column.ColumnName = "Costo_Unitario";
-                TableProductos.Columns.Add(column);
-
-                column = new DataColumn();
-                column.ColumnName = "Sub_Total";
-                TableProductos.Columns.Add(column);
-
-                dataSet = new DataSet();
-
-                dataSet.Tables.Add(TableProductos);
-
-                SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
-
-                DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
-            }
-
-            else
-            {
-                SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
-
-                DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
-            }
-
-            decimal sum5 = 0;
-
-            foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
-            {
-                sum5 += Convert.ToDecimal(row3[4]);
-            }
-
-            txtTotal_Pago.Text = sum5.ToString("N2");
-
-            
-            //row = TableProductos.NewRow();
-
-            //row[0] = "1";
-
-            //row[1] = "Leonel";
-
-            //row[2] = "2";
-
-            //row[3] = "3";
-
-            //row[4] = "20";
-
-            //TableProductos.Rows.Add(row);
-
-            //TableProductos.Rows.Add(new Object[]
-            //{
-            //    "1", "Leonel", "2", "3","20"
-            //});
-
-
-
+            txtId_Producto.Text = string.Empty;
+            txtCod_Producto.Text = string.Empty;
+            txtNombre_Producto.Text = string.Empty;
+            txtCantidad.Text = string.Empty;
+            txtCosto_Unitario.Text = string.Empty;
         }
-
-        private void BtnBuscarProveedor_Click(object sender, RoutedEventArgs e)
-        {
-            SeleccionarProveedor();
-
-            #region comentarioos
-
-            //this.Hide();
-
-            //var Index = GetRow(DataGridIngresoProducto, 0);
-
-            //labelrow.Text = Convert.ToString(Index);
-            //try
-            //{
-            //    if(VistaProveedor.DialogResult == true)
-            //    {
-
-            // IndexOf
-            //       txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items.IndexOf(VistaProveedor.DataGridGestionProveedores.CurrentItem).ToString();
-
-            //       txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items.IndexOf(VistaProveedor.DataGridGestionProveedores.CurrentItem)
-
-            //        //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items[VistaProveedor.DataGridGestionProveedores.CurrentItem.]
-
-            //        //txtId_Proveedor.Text = VistaProveedor
-
-            //        Proveedor.Id_Proveedor = Convert.ToInt32(txtId_Proveedor.Text.Trim());
-            //        Proveedor.Nombre = txtNombre_Proveedor.Text.Trim();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Exclamation);
-            //}
-
-            #endregion
-        }
-
-
-        private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
-        {
-            #region comentarios4
-
-            //Ingreso2 = new List<DataGridItemsProducto>M
-            //DataTable dt = new DataTable();
-
-            //DataRow dr = null;
-
-            //dr = dt.NewRow();
-
-            //dt.Rows.Add(txtId_Proveedor.Text, txtNombre_Proveedor);
-            //DataGridIngresoProducto.ItemsSource = dt.DefaultView;
-
-
-            // DataGridIngresoProducto.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "5", Costo_Unitario = "2.50", Sub_Total = "50" });
-
-            // Id_Producto
-
-
-
-            // Imprime el número de filas en la colección.
-
-            //labelrow.Text = Convert.ToString(DataGridIngresoProducto.Items.Count);
-
-            //// Imprime el valor de la columna 2  en cada fila
-            ///
-            // FrmVistaProveedores VistaProveedor = new FrmVistaProveedores();
-
-            //DataTable Dta = new DataTable();
-
-            //DataRowCollection rowCollection = Dta.Rows;
-
-            //DataRow newRow = Dta.NewRow();
-
-            //DataTable dataTable = new DataTable();
-
-            //dataTable.Rows.Add(txtId_Proveedor.Text, txtNombre_Proveedor.Text);
-
-            //string idProducto = Convert.ToString(txtId_Producto);
-
-            //string NombreProve = Convert.ToString(txtNombre_Proveedor);
-
-            //string[] Array = new string[] { idProducto, NombreProve, "Hola", "Bye"};
-
-            //dataTable.Rows.Add(Array);
-
-            //DataGridIngresoProducto.ItemsSource = dataTable.DefaultView;
-
-            //foreach (DataRowView row in VistaProveedor.DataGridGestionProveedores.Items)
-            //{
-            //    labelrow.Text = Convert.ToString(row[2]);
-
-            //    labelrow2.Text = Convert.ToString(row[2]);
-            //}
-
-
-            //RecorrerData();
-
-            //DataGridIngresoProducto.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "5", Costo_Unitario = "2.50", Sub_Total = "50" });
-            //DataGridIngresoProducto.UnselectAll();
-            #endregion
-
-            #region Coment
-            //AgregarDetalle();
-
-            //fillaDT();
-            //Tabla222();
-            //var list = new List<DataGridItemsProducto>(DataGridIngresoProducto.ItemsSource as IEnumerable<DataGridItemsProducto>);
-
-            //myDataTable = ToDataTable(list);
-            //if (myDataTable != null)
-            //{
-            //    return;
-            //}
-
-            //DataGridIngresoProducto.ItemsSource = myDataTable.DefaultView;
-
-            #endregion
-
-            //LlenarDataTable();
-
-            AgregarDetalle();
-            
-        }
-
        
-        #region Metodos de prueba
-        private void Tabla222 ()
-        {
-            //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+        #region Agregar datos al datagrid 
 
-            //productos.Add(new DataGridItemsProducto() { Id_Producto = "1", Nombre = "Leonel", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
-            //productos.Add(new DataGridItemsProducto() { Id_Producto = "2", Nombre = "Ronaldo", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
-            //productos.Add(new DataGridItemsProducto() { Id_Producto = "4", Nombre = "James", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
-
-            //DataGridIngresoProducto.ItemsSource = productos;
-
-            //DataGrid DataGr= new DataGrid();
-
-            //DataGr.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
-
-            //DataGridIngresoProducto.ItemsSource = DataGr;
-
-            decimal SubTotal = 0;
-
-            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-
-            DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
-
-            string Typo =Convert.ToString(DataGridIngresoProducto.GetType());
-
-            System.Windows.Forms.MessageBox.Show(Typo, "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-        }
-        public static DataTable ToDataTable<T>(List<T> items)
-        {
-            DataTable dataTable = new DataTable(typeof(T).Name);
-            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo prop in Props)
-            {
-                dataTable.Columns.Add(prop.Name);
-            }
-            foreach (T item in items)
-            {
-                var values = new object[Props.Length];
-                for (int i = 0; i < Props.Length; i++)
-                {
-                    values[i] = Props[i].GetValue(item, null);
-                }
-                dataTable.Rows.Add(values);
-            }
-            return dataTable;
-        }
-
-
-        private void fillaDT()
-        {
-            decimal SubTotal = 0;
-            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-            DataGridItemsProducto Person1 = new DataGridItemsProducto();
-            Person1.Id_Producto = txtId_Producto.Text;
-            Person1.Nombre = txtNombre_Producto.Text;
-            Person1.Cantidad = txtCantidad.Text;
-            Person1.Costo_Unitario = txtCosto_Unitario.Text;
-            Person1.Sub_Total = SubTotal.ToString("N2");
-
-            DataGridIngresoProducto.Items.Add(Person1);
-
-            //decimal Totaal = 0;
-            //foreach (DataRowView row in DataGridIngresoProducto.ItemsSource)
-            //{
-            //    Totaal += Convert.ToDecimal(row[5]);
-            //}
-
-            //txtTotal_Pago.Text = Total.ToString("N2");
-        }
-
-        #endregion
-        #region comentario
-        public void RowPrueba()
-        {
-            //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
-
-            //productos.Add(new DataGridItemsProducto() { Id_Producto = 1, Nombre = "Leonel", Cantidad = 5, Costo_Unitario = 2.50, Sub_Total = 50 });
-
-            //DataGridIngresoProducto.ItemsSource = productos;
-        }
-
-        #endregion
+        public static int ContFila = 0; 
+        public static decimal Total;
 
         //Método para cargar en los textBox el proveedor
         private void SeleccionarProveedor()
@@ -489,30 +215,15 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
-        private void LimpiarDetalle()
-        {
-            txtId_Producto.Text = string.Empty;
-            txtCod_Producto.Text = string.Empty;
-            txtNombre_Producto.Text = string.Empty;
-            txtCantidad.Text = string.Empty;
-            txtCosto_Unitario.Text = string.Empty;
-        }
         
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-        ///
-
-        #region Agregar datos al datagrid 
-
-        public static int ContFila = 0; 
-        public static decimal Total;
-
+        // Método para agregar los productos al datagrid
         private void AgregarDetalle()
         {
             decimal SubTotal = 0;
 
             try
             {
-                //Valida que los campos de texto de producto no esten vacios 
+                //Valida que los campos de texto de productos no esten vacios 
 
                 if (txtId_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtCosto_Unitario.Text == string.Empty)
                 {
@@ -523,13 +234,16 @@ namespace CapaPresentacion
 
                 else
                 {
-                    //Variable que verifica si un producto ya ha sido agregado a la DataTable
+                    //Variable que verifica si un producto ya ha fue agregado a la DataTable para solo modificar la columna de Cantidad y Subtotal de ese producto
                     bool Existe = false;
 
+                    //Variable para guardar el index del producto en caso que este fuera agregado al DataTable
                     int no_fila = 0;
 
+                    //Verificamos si el DataGrid contiene datos por defecto no estara vacio porque después de agregar un producto el valor de está aumenta
                     if (ContFila == 0)
                     {
+                        //Verficamos si la DataTable ya esta creada con una fila agregada
                         if (TableProductos == null)
                         {
                             TableProductos = new DataTable();
@@ -570,6 +284,7 @@ namespace CapaPresentacion
                             ContFila++;
                         }
 
+                        //En caso que ya hay datos en la DataTable solo agregamos una fila con los datos de los TextBox
                         else
                         {
                             SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
@@ -583,12 +298,10 @@ namespace CapaPresentacion
 
                     else
                     {
-                        
-                        
-                        //Recorro el DataGrid en busca de encontrar un producto que ya ha sido agregado con el mismo id que el está en el textbox
+                        //Recorro el DataGrid en busca de encontrar un producto que ya ha sido agregado si tiene mismo id que el está en el textbox
                         foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
                         {
-                            DataRow row = drv.Row; //Tomo la primera fila y accedo a la columna 0 ver su valor y ver si es igual
+                            DataRow row = drv.Row; //Tomo la primera fila y accedo a la columna 0 ver su valor y ver si es igual que el está en el textbox id si no es igual entonces tomo las siguientes filas
                             if (row[0].ToString() ==txtId_Producto.Text)
                             {
                                 Existe = true;
@@ -597,7 +310,7 @@ namespace CapaPresentacion
                             }
                         }
 
-
+                        //Si el producto nuevo ya fue agregado a la Tabla entonces solo modifico la columna Cantidad y SubTotal de ese producto ya existente
                         if(Existe == true)
                         {
                             SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
@@ -609,6 +322,7 @@ namespace CapaPresentacion
 
                         }
 
+                        //Si no existe entonces solo agrego una  nueva fila con los datos que hay en los textbox
                         else
                         {
                             SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
@@ -660,9 +374,10 @@ namespace CapaPresentacion
                     }
 
                     decimal Total = 0;
-
+                    //Recorro el DataGrid para seleccionar la columna SubtoTotal de todas la filas y sumar su valor
                     foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
                     {
+                        //Cuando entre a la primera fila agarre el valor de la columna 5 y que a las filas siguientes el valor de esas filas se sume al valor actual
                         Total += Convert.ToDecimal(row3[4]);
                     }
 
@@ -677,236 +392,7 @@ namespace CapaPresentacion
             }
         }
 
-        // Método para agregar los productos al datagrid
-
-        //Metódo para agregar detalle del producto
-        private void AgregarDetalle2()
-        {
-            decimal SubTotal = 0;
-
-            try
-            {
-
-                if (txtId_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtCosto_Unitario.Text == string.Empty)
-                {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-
-                    return;
-                }
-
-                else
-                {
-                    bool Existe = false;
-
-                    int No_Fila = 0; 
-
-                    //Si no hay productos agregados en la tabla
-
-                    if (ContFila == 0)
-                    {
-                        #region comentario
-                        //dataGridProducto = DataGridIngresoProducto;
-                        //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
-                        //productos.Add(new DataGridItemsProducto() { Id_Producto =txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2")});
-
-                        //DataGridIngresoProducto.ItemsSource = productos;
-                        #endregion
-
-                        //Sumamos los datos que hay en los textbox
-                        SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-
-                        //Agregar a la tabla los campos de textos
-                        DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
-
-                        DataGridIngresoProducto.UnselectAll();
-
-                        btnAgregarProducto.Focus();
-                        ContFila++;
-
-                        LimpiarDetalle();
-
-                        #region comentariooos
-                        //DataGridIngresoProducto.Items.Add(txtId_Producto.Text);
-                        //DataGridIngresoProducto.Items.Add(txtNombre_Producto.Text);
-                        //DataGridIngresoProducto.Items.Add(txtCantidad.Text);
-                        //DataGridIngresoProducto.Items.Add(txtCosto_Unitario.Text);
-                        //DataGridIngresoProducto.Items.Add(SubTotal.ToString("N2"));
-
-                        #endregion
-
-                        //Hasta aquí todo bien
-                    }
-
-                    else
-                    {
-
-                        //Trabado en esto
-                        #region comentario 5
-                        //foreach (DataRowView drv in VistaProveedor.DataGridGestionProveedores.SelectedItems)
-                        //{
-                        //    DataRow row = drv.Row;
-
-                        //    var IdProveedor = Convert.ToString(drv.Row[0]);
-
-                        //    txtId_Proveedor.Text = IdProveedor;
-
-                        //    var NombreProveedor = Convert.ToString(drv.Row[2]);
-
-                        //    txtNombre_Proveedor.Text = NombreProveedor;
-                        //}
-
-                        //DataRow Darow = fila.Row;
-
-                        //var FilasSel = Convert.ToString(fila.Row[0]);
-
-                        //if(FilasSel == txtId_Producto.Text)
-                        //{
-                        //    Existe = true;
-                        //    //var IndexRow = DataGridIngresoProducto.Items.IndexOf(DataGridIngresoProducto.CurrentItem);
-                        //    //No_Fila = IndexRow;
-
-                        //    No_Fila = DataGridIngresoProducto.SelectedIndex;
-                        //}
-
-                        #endregion
-                        //Recorrer un DataGrid 
-
-                        #region si un producto ya ha sido agregado actualizar su cantidad y subtotalS
-                        //foreach (DataRowView fila in DataGridIngresoProducto.ItemsSource)
-                        //{
-                        //    if (fila[0].ToString() == txtId_Producto.Text)
-                        //    {
-                        //        //DataRow data = fila.Row;
-
-                        //        Existe = true;
-
-                        //        //DataGridRow row = (DataGridRow)DataGridIngresoProducto.ItemContainerGenerator.ContainerFromIndex;
-
-                        //        //Obtener la posicion de la fila en el DataGrid
-                        //        //No_Fila = fila.g;
-
-                        //    }
-
-                        //}
-
-                        #endregion
-
-                        #region si existe 
-                        //if (Existe == true)
-                        //{
-                        //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-                        //    foreach (DataRowView fila2 in DataGridIngresoProducto.ItemsSource)
-                        //    {
-                        //        //Obtiene o establece el valor de una columna especificada.
-                        //        fila2[3] = Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(fila2[3].ToString());
-
-                        //        fila2[4] = (SubTotal + Convert.ToDecimal(fila2[4])).ToString("N2");
-
-                        //        LimpiarDetalle();
-                        //    }
-                        //}
-
-                        ////Esperamos que funcione
-
-                        //else
-                        //{
-                        //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-
-                        //    //string CantidadPro = Convert.ToString(txtCantidad.Text);
-                        //    //string CostoUnitPro = Convert.ToString(txtCosto_Unitario.Text);
-                        //    //DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = CantidadPro, Costo_Unitario = CostoUnitPro, Sub_Total = SubTotal.ToString("N2") });
-
-                        //    //DataGridIngresoProducto.UnselectAll();
-
-                        //    //btnAgregarProducto.Focus();
-                        //    //ContFila++;
-
-                        //    //LimpiarDetalle();
-
-                        //    List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
-
-                        //    productos.Add(new DataGridItemsProducto() { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
-
-                        //    DataGridIngresoProducto.ItemsSource = productos;
-
-                        //    DataGridIngresoProducto.UnselectAll();
-
-                        //    btnAgregarProducto.Focus();
-                        //    ContFila++;
-
-                        //    LimpiarDetalle();
-                        //}
-
-                        #endregion
-
-                    }
-
-                    #region sumar el total
-
-                    Total = 0;
-
-                    //DataTable table;
-
-                    //for (int j = 0;  j < DataGridIngresoProducto.Items.Count; j++)
-                    //{
-                    //    table.Rows.Add(DataGridIngresoProducto.Items[j]);
-                    //}
-
-
-                    foreach (DataRowView row in DataGridIngresoProducto.ItemsSource)
-                    {
-                        Total += Convert.ToDecimal(row[5]);
-                    }
-
-                    txtTotal_Pago.Text = Total.ToString("N2");
-
-                    //foreach (DataRowView fila3 in DataGridIngresoProducto.ItemsSource)
-                    //{
-                    //    Total += Convert.ToDecimal(fila3[4]);
-                    //}
-
-                    //txtTotal_Pago.Text = Total.ToString("N2");
-
-                    //Total = 0;
-
-                    //string Prueba = "";
-
-                    //for (int i = 0; i < DataGridIngresoProducto.Items.Count; i++)
-                    //{
-                    //    //TextBlock tb = DataGridIngresoProducto.ColumnFromDisplayIndex(4).GetCellContent(DataGridIngresoProducto.SelectedItem[i]) as TextBlock;
-
-
-                    //    //Total += (decimal.Parse((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i] as TextBlock).ToString())));
-
-                    //    //Total = (decimal.Parse((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i]).ToString())));
-
-                    //    //txtTotal_Pago.Text = Total.ToString("N2");
-
-                    //    //Prueba = ((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i]) as TextBlock).Text);
-                    //}
-
-                    //System.Windows.Forms.MessageBox.Show(Prueba, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-                    #endregion
-                }
-            }
-
-            catch(Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("El Producto no fue agregado por: " + ex, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-
-            }
-
-        }
-
-        #endregion
-
-
-        private void BtnBuscarProducto_Click(object sender, RoutedEventArgs e)
-        {
-            SeleccionarProducto();
-        }
-
+        //Método para cargar en los textBox el producto
         private void SeleccionarProducto()
         {
 
@@ -926,10 +412,6 @@ namespace CapaPresentacion
             txtCantidad.Text = "";
 
             txtCosto_Unitario.Text = "";
-
-            //var Datos = VistaProducto.DataGridGestionProductos;
-
-
 
             try
             {
@@ -958,10 +440,7 @@ namespace CapaPresentacion
 
                         txtCosto_Unitario.Text = CostoUnitario;
                     }
-
-
-                  
-
+                    
                 }
             }
 
@@ -970,10 +449,32 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
+      
+        #endregion
+
+
+        private void BtnBuscarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            SeleccionarProducto();
+        }
+
+        private void BtnBuscarProveedor_Click(object sender, RoutedEventArgs e)
+        {
+            SeleccionarProveedor();
+        }
+
+        private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarDetalle(); 
+        }
+        
+
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         
-       
+
+
+        #region prueba fallida
         public static DataGridRow GetRow(DataGrid dataGrid, int index)
         {
             DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(index);
@@ -991,8 +492,6 @@ namespace CapaPresentacion
             
         }
 
-
-        #region prueba fallida
         //public void row22()
         //{
         //    decimal SubTotal = 0;
@@ -1020,7 +519,7 @@ namespace CapaPresentacion
 
         //    //this.DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
 
-           
+
 
         //    Total = 0;
 
@@ -1044,8 +543,225 @@ namespace CapaPresentacion
 
         //    return productos;
         //}
-        
-        
+
+        //private void AgregarDetalle2()
+        //{
+        //    decimal SubTotal = 0;
+
+        //    try
+        //    {
+
+        //        if (txtId_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtCosto_Unitario.Text == string.Empty)
+        //        {
+        //            System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+        //            return;
+        //        }
+
+        //        else
+        //        {
+        //            bool Existe = false;
+
+        //            int No_Fila = 0;
+
+        //            //Si no hay productos agregados en la tabla
+
+        //            if (ContFila == 0)
+        //            {
+        //                #region comentario
+        //                //dataGridProducto = DataGridIngresoProducto;
+        //                //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+        //                //productos.Add(new DataGridItemsProducto() { Id_Producto =txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2")});
+
+        //                //DataGridIngresoProducto.ItemsSource = productos;
+        //                #endregion
+
+        //                //Sumamos los datos que hay en los textbox
+        //                SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+        //                //Agregar a la tabla los campos de textos
+        //                DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+
+        //                DataGridIngresoProducto.UnselectAll();
+
+        //                btnAgregarProducto.Focus();
+        //                ContFila++;
+
+        //                LimpiarDetalle();
+
+        //                #region comentariooos
+        //                //DataGridIngresoProducto.Items.Add(txtId_Producto.Text);
+        //                //DataGridIngresoProducto.Items.Add(txtNombre_Producto.Text);
+        //                //DataGridIngresoProducto.Items.Add(txtCantidad.Text);
+        //                //DataGridIngresoProducto.Items.Add(txtCosto_Unitario.Text);
+        //                //DataGridIngresoProducto.Items.Add(SubTotal.ToString("N2"));
+
+        //                #endregion
+
+        //                //Hasta aquí todo bien
+        //            }
+
+        //            else
+        //            {
+
+        //                //Trabado en esto
+        //                #region comentario 5
+        //                //foreach (DataRowView drv in VistaProveedor.DataGridGestionProveedores.SelectedItems)
+        //                //{
+        //                //    DataRow row = drv.Row;
+
+        //                //    var IdProveedor = Convert.ToString(drv.Row[0]);
+
+        //                //    txtId_Proveedor.Text = IdProveedor;
+
+        //                //    var NombreProveedor = Convert.ToString(drv.Row[2]);
+
+        //                //    txtNombre_Proveedor.Text = NombreProveedor;
+        //                //}
+
+        //                //DataRow Darow = fila.Row;
+
+        //                //var FilasSel = Convert.ToString(fila.Row[0]);
+
+        //                //if(FilasSel == txtId_Producto.Text)
+        //                //{
+        //                //    Existe = true;
+        //                //    //var IndexRow = DataGridIngresoProducto.Items.IndexOf(DataGridIngresoProducto.CurrentItem);
+        //                //    //No_Fila = IndexRow;
+
+        //                //    No_Fila = DataGridIngresoProducto.SelectedIndex;
+        //                //}
+
+        //                #endregion
+        //                //Recorrer un DataGrid 
+
+        //                #region si un producto ya ha sido agregado actualizar su cantidad y subtotalS
+        //                //foreach (DataRowView fila in DataGridIngresoProducto.ItemsSource)
+        //                //{
+        //                //    if (fila[0].ToString() == txtId_Producto.Text)
+        //                //    {
+        //                //        //DataRow data = fila.Row;
+
+        //                //        Existe = true;
+
+        //                //        //DataGridRow row = (DataGridRow)DataGridIngresoProducto.ItemContainerGenerator.ContainerFromIndex;
+
+        //                //        //Obtener la posicion de la fila en el DataGrid
+        //                //        //No_Fila = fila.g;
+
+        //                //    }
+
+        //                //}
+
+        //                #endregion
+
+        //                #region si existe 
+        //                //if (Existe == true)
+        //                //{
+        //                //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+        //                //    foreach (DataRowView fila2 in DataGridIngresoProducto.ItemsSource)
+        //                //    {
+        //                //        //Obtiene o establece el valor de una columna especificada.
+        //                //        fila2[3] = Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(fila2[3].ToString());
+
+        //                //        fila2[4] = (SubTotal + Convert.ToDecimal(fila2[4])).ToString("N2");
+
+        //                //        LimpiarDetalle();
+        //                //    }
+        //                //}
+
+        //                ////Esperamos que funcione
+
+        //                //else
+        //                //{
+        //                //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+        //                //    //string CantidadPro = Convert.ToString(txtCantidad.Text);
+        //                //    //string CostoUnitPro = Convert.ToString(txtCosto_Unitario.Text);
+        //                //    //DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = CantidadPro, Costo_Unitario = CostoUnitPro, Sub_Total = SubTotal.ToString("N2") });
+
+        //                //    //DataGridIngresoProducto.UnselectAll();
+
+        //                //    //btnAgregarProducto.Focus();
+        //                //    //ContFila++;
+
+        //                //    //LimpiarDetalle();
+
+        //                //    List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+
+        //                //    productos.Add(new DataGridItemsProducto() { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+
+        //                //    DataGridIngresoProducto.ItemsSource = productos;
+
+        //                //    DataGridIngresoProducto.UnselectAll();
+
+        //                //    btnAgregarProducto.Focus();
+        //                //    ContFila++;
+
+        //                //    LimpiarDetalle();
+        //                //}
+
+        //                #endregion
+
+        //            }
+
+        //            #region sumar el total
+
+        //            Total = 0;
+
+        //            //DataTable table;
+
+        //            //for (int j = 0;  j < DataGridIngresoProducto.Items.Count; j++)
+        //            //{
+        //            //    table.Rows.Add(DataGridIngresoProducto.Items[j]);
+        //            //}
+
+
+        //            foreach (DataRowView row in DataGridIngresoProducto.ItemsSource)
+        //            {
+        //                Total += Convert.ToDecimal(row[5]);
+        //            }
+
+        //            txtTotal_Pago.Text = Total.ToString("N2");
+
+        //            //foreach (DataRowView fila3 in DataGridIngresoProducto.ItemsSource)
+        //            //{
+        //            //    Total += Convert.ToDecimal(fila3[4]);
+        //            //}
+
+        //            //txtTotal_Pago.Text = Total.ToString("N2");
+
+        //            //Total = 0;
+
+        //            //string Prueba = "";
+
+        //            //for (int i = 0; i < DataGridIngresoProducto.Items.Count; i++)
+        //            //{
+        //            //    //TextBlock tb = DataGridIngresoProducto.ColumnFromDisplayIndex(4).GetCellContent(DataGridIngresoProducto.SelectedItem[i]) as TextBlock;
+
+
+        //            //    //Total += (decimal.Parse((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i] as TextBlock).ToString())));
+
+        //            //    //Total = (decimal.Parse((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i]).ToString())));
+
+        //            //    //txtTotal_Pago.Text = Total.ToString("N2");
+
+        //            //    //Prueba = ((DataGridIngresoProducto.Columns[3].GetCellContent(DataGridIngresoProducto.Items[i]) as TextBlock).Text);
+        //            //}
+
+        //            //System.Windows.Forms.MessageBox.Show(Prueba, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+        //            #endregion
+        //        }
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show("El Producto no fue agregado por: " + ex, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+
+        //    }
+
+        //}
         //private void SeleccionItem ()
         //{
 
@@ -1121,6 +837,279 @@ namespace CapaPresentacion
         //}
         #endregion
 
+        #region BtnBuscarProveedor comentarioos
 
+        //this.Hide();
+
+        //var Index = GetRow(DataGridIngresoProducto, 0);
+
+        //labelrow.Text = Convert.ToString(Index);
+        //try
+        //{
+        //    if(VistaProveedor.DialogResult == true)
+        //    {
+
+        // IndexOf
+        //       txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items.IndexOf(VistaProveedor.DataGridGestionProveedores.CurrentItem).ToString();
+
+        //       txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items.IndexOf(VistaProveedor.DataGridGestionProveedores.CurrentItem)
+
+        //        //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items[VistaProveedor.DataGridGestionProveedores.CurrentItem.]
+
+        //        //txtId_Proveedor.Text = VistaProveedor
+
+        //        Proveedor.Id_Proveedor = Convert.ToInt32(txtId_Proveedor.Text.Trim());
+        //        Proveedor.Nombre = txtNombre_Proveedor.Text.Trim();
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Exclamation);
+        //}
+
+        #endregion
+
+        #region BtnAgregarProducto_Click comentarios4
+
+        //Ingreso2 = new List<DataGridItemsProducto>M
+        //DataTable dt = new DataTable();
+
+        //DataRow dr = null;
+
+        //dr = dt.NewRow();
+
+        //dt.Rows.Add(txtId_Proveedor.Text, txtNombre_Proveedor);
+        //DataGridIngresoProducto.ItemsSource = dt.DefaultView;
+
+
+        // DataGridIngresoProducto.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "5", Costo_Unitario = "2.50", Sub_Total = "50" });
+
+        // Id_Producto
+
+
+
+        // Imprime el número de filas en la colección.
+
+        //labelrow.Text = Convert.ToString(DataGridIngresoProducto.Items.Count);
+
+        //// Imprime el valor de la columna 2  en cada fila
+        ///
+        // FrmVistaProveedores VistaProveedor = new FrmVistaProveedores();
+
+        //DataTable Dta = new DataTable();
+
+        //DataRowCollection rowCollection = Dta.Rows;
+
+        //DataRow newRow = Dta.NewRow();
+
+        //DataTable dataTable = new DataTable();
+
+        //dataTable.Rows.Add(txtId_Proveedor.Text, txtNombre_Proveedor.Text);
+
+        //string idProducto = Convert.ToString(txtId_Producto);
+
+        //string NombreProve = Convert.ToString(txtNombre_Proveedor);
+
+        //string[] Array = new string[] { idProducto, NombreProve, "Hola", "Bye"};
+
+        //dataTable.Rows.Add(Array);
+
+        //DataGridIngresoProducto.ItemsSource = dataTable.DefaultView;
+
+        //foreach (DataRowView row in VistaProveedor.DataGridGestionProveedores.Items)
+        //{
+        //    labelrow.Text = Convert.ToString(row[2]);
+
+        //    labelrow2.Text = Convert.ToString(row[2]);
+        //}
+
+
+        //RecorrerData();
+
+        //DataGridIngresoProducto.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "5", Costo_Unitario = "2.50", Sub_Total = "50" });
+        //DataGridIngresoProducto.UnselectAll();
+        #endregion
+
+        #region Coment BtnAgregarProducto_Click
+        //AgregarDetalle();
+
+        //fillaDT();
+        //Tabla222();
+        //var list = new List<DataGridItemsProducto>(DataGridIngresoProducto.ItemsSource as IEnumerable<DataGridItemsProducto>);
+
+        //myDataTable = ToDataTable(list);
+        //if (myDataTable != null)
+        //{
+        //    return;
+        //}
+
+        //DataGridIngresoProducto.ItemsSource = myDataTable.DefaultView;
+
+        #endregion
+
+        #region Metodos de prueba
+        private void Tabla222()
+        {
+            //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+
+            //productos.Add(new DataGridItemsProducto() { Id_Producto = "1", Nombre = "Leonel", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
+            //productos.Add(new DataGridItemsProducto() { Id_Producto = "2", Nombre = "Ronaldo", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
+            //productos.Add(new DataGridItemsProducto() { Id_Producto = "4", Nombre = "James", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
+
+            //DataGridIngresoProducto.ItemsSource = productos;
+
+            //DataGrid DataGr= new DataGrid();
+
+            //DataGr.Items.Add(new { Id_Producto = "1", Nombre = "Leonel", Cantidad = "3", Costo_Unitario = "4", Sub_Total = "10" });
+
+            //DataGridIngresoProducto.ItemsSource = DataGr;
+
+            decimal SubTotal = 0;
+
+            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+
+            DataGridIngresoProducto.Items.Add(new { Id_Producto = txtId_Producto.Text, Nombre = txtNombre_Producto.Text, Cantidad = txtCantidad.Text, Costo_Unitario = txtCosto_Unitario.Text, Sub_Total = SubTotal.ToString("N2") });
+
+            string Typo = Convert.ToString(DataGridIngresoProducto.GetType());
+
+            System.Windows.Forms.MessageBox.Show(Typo, "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in Props)
+            {
+                dataTable.Columns.Add(prop.Name);
+            }
+            foreach (T item in items)
+            {
+                var values = new object[Props.Length];
+                for (int i = 0; i < Props.Length; i++)
+                {
+                    values[i] = Props[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
+        }
+
+
+        private void fillaDT()
+        {
+            decimal SubTotal = 0;
+            SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+            DataGridItemsProducto Person1 = new DataGridItemsProducto();
+            Person1.Id_Producto = txtId_Producto.Text;
+            Person1.Nombre = txtNombre_Producto.Text;
+            Person1.Cantidad = txtCantidad.Text;
+            Person1.Costo_Unitario = txtCosto_Unitario.Text;
+            Person1.Sub_Total = SubTotal.ToString("N2");
+
+            DataGridIngresoProducto.Items.Add(Person1);
+
+            //decimal Totaal = 0;
+            //foreach (DataRowView row in DataGridIngresoProducto.ItemsSource)
+            //{
+            //    Totaal += Convert.ToDecimal(row[5]);
+            //}
+
+            //txtTotal_Pago.Text = Total.ToString("N2");
+        }
+
+        #endregion
+        #region comentario
+        public void RowPrueba()
+        {
+            //List<DataGridItemsProducto> productos = new List<DataGridItemsProducto>();
+
+            //productos.Add(new DataGridItemsProducto() { Id_Producto = 1, Nombre = "Leonel", Cantidad = 5, Costo_Unitario = 2.50, Sub_Total = 50 });
+
+            //DataGridIngresoProducto.ItemsSource = productos;
+        }
+
+        #endregion
+        
+        //private void LlenarDataTable()
+        //{
+
+        //    if (TableProductos == null)
+        //    {
+        //        TableProductos = new DataTable();
+
+        //        DataColumn column;
+        //        DataRow row;
+
+        //        column = new DataColumn();
+        //        column.ColumnName = "Id_Producto";
+
+        //        TableProductos.Columns.Add(column);
+
+        //        column = new DataColumn();
+        //        column.ColumnName = "Nombre";
+        //        TableProductos.Columns.Add(column);
+
+        //        column = new DataColumn();
+        //        column.ColumnName = "Cantidad";
+        //        TableProductos.Columns.Add(column);
+
+        //        column = new DataColumn();
+        //        column.ColumnName = "Costo_Unitario";
+        //        TableProductos.Columns.Add(column);
+
+        //        column = new DataColumn();
+        //        column.ColumnName = "Sub_Total";
+        //        TableProductos.Columns.Add(column);
+
+        //        dataSet = new DataSet();
+
+        //        dataSet.Tables.Add(TableProductos);
+
+        //        SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+        //        TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
+
+        //        DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+        //    }
+
+        //    else
+        //    {
+        //        SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
+        //        TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtCosto_Unitario.Text, SubTotal.ToString("N2"));
+
+        //        DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+        //    }
+
+        //    decimal sum5 = 0;
+
+        //    foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
+        //    {
+        //        sum5 += Convert.ToDecimal(row3[4]);
+        //    }
+
+        //    txtTotal_Pago.Text = sum5.ToString("N2");
+
+
+        //    //row = TableProductos.NewRow();
+
+        //    //row[0] = "1";
+
+        //    //row[1] = "Leonel";
+
+        //    //row[2] = "2";
+
+        //    //row[3] = "3";
+
+        //    //row[4] = "20";
+
+        //    //TableProductos.Rows.Add(row);
+
+        //    //TableProductos.Rows.Add(new Object[]
+        //    //{
+        //    //    "1", "Leonel", "2", "3","20"
+        //    //});
+
+
+
+        //}
     }
 }
