@@ -112,9 +112,10 @@ namespace CapaPresentacion
        
         #region Agregar datos al datagrid 
 
-        public static int ContFila = 0; 
-        public static decimal Total;
+        public static int ContFila = 0;
+        decimal TotalP = 0;
 
+        int indexDelete = 0;
         //Método para cargar en los textBox el proveedor
         private void SeleccionarProveedor()
         {
@@ -373,15 +374,15 @@ namespace CapaPresentacion
                     
                     }
 
-                    decimal Total = 0;
+                    
                     //Recorro el DataGrid para seleccionar la columna SubtoTotal de todas la filas y sumar su valor
                     foreach (DataRowView row3 in DataGridIngresoProducto.ItemsSource)
                     {
                         //Cuando entre a la primera fila agarre el valor de la columna 5 y que a las filas siguientes el valor de esas filas se sume al valor actual
-                        Total += Convert.ToDecimal(row3[4]);
+                        TotalP += Convert.ToDecimal(row3[4]);
                     }
 
-                    txtTotal_Pago.Text = Total.ToString("N2");
+                    txtTotal_Pago.Text = TotalP.ToString("N2");
 
                 }
             }
@@ -468,6 +469,45 @@ namespace CapaPresentacion
             AgregarDetalle(); 
         }
         
+        private void BtnEliminarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (ContFila > 0 & DataGridIngresoProducto.Items.Count > 0)
+                {
+                    if(DataGridIngresoProducto.SelectedItems.Count == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        foreach (DataRowView drv in DataGridIngresoProducto.SelectedItems)
+                        {
+                            DataRow row = drv.Row;
+                            
+                            indexDelete = TableProductos.Rows.IndexOf(row);
+
+                        }
+                        TotalP = TotalP - Convert.ToDecimal(TableProductos.Rows[indexDelete][4]);
+                        txtTotal_Pago.Text = TotalP.ToString("N2");
+
+                        TableProductos.Rows.RemoveAt(indexDelete);
+                        DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
+                        ContFila--;
+                    }
+                }
+
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("No hay productos para eliminar!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se ha podido eliminar el producto porque: "+ ex, "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
@@ -1028,8 +1068,9 @@ namespace CapaPresentacion
             //DataGridIngresoProducto.ItemsSource = productos;
         }
 
+
         #endregion
-        
+
         //private void LlenarDataTable()
         //{
 

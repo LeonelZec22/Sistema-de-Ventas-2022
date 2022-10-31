@@ -100,7 +100,7 @@
 
                     <TextBox Margin="922,142,181,0" x:Name="txtCosto_Unitario" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
 
-                    <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,162,70,22"/>
+                    <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,162,70,22" Click="BtnEliminarProducto_Click"/>
 
                     <Button x:Name="btnAgregarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,95,70,89" Click="BtnAgregarProducto_Click"/>
 
@@ -138,7 +138,7 @@
 
                     <TextBox Margin="172,309,964,0" x:Name="txtTotal_Pago" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
 
-                    <TextBlock x:Name="labelrow" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="No  de fila"  Width="143" Margin="384,317,751,1" Foreground="#DDFFFFFF"  />
+                    <!--<TextBlock x:Name="labelrow" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="No  de fila"  Width="143" Margin="384,317,751,1" Foreground="#DDFFFFFF"  />-->
 
                     <!--<TextBlock x:Name="labelrow2" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="No  de fila"  Width="143" Margin="552,317,583,1" Foreground="#DDFFFFFF"  />-->
 
