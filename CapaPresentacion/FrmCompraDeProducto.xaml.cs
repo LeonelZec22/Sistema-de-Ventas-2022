@@ -102,16 +102,19 @@ namespace CapaPresentacion
                 if (dr != null)
                 {
                     Mostrar.ShowDialog();
+                    DataGridIngresoProducto.UnselectAllCells();
                 }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Imprimir Informe", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    DataGridIngresoProducto.UnselectAllCells();
                 }
             }
 
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("No se ha Podido generar el Informe Por: " + ex, "Anular Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                DataGridIngresoProducto.UnselectAllCells();
             }
         }
         private void DataGridIngresoProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)

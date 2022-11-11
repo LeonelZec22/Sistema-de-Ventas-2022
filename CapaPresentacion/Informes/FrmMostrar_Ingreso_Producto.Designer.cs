@@ -31,39 +31,39 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dB_Sistemas_v2DataSet = new CapaPresentacion.DB_Sistemas_v2DataSet();
-            this.mostrarIngresoProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mostrar_Ingreso_ProductosTableAdapter = new CapaPresentacion.DB_Sistemas_v2DataSetTableAdapters.Mostrar_Ingreso_ProductosTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_Sistemas_v2DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarIngresoProductosBindingSource)).BeginInit();
+            this.Datos_Generales3 = new CapaPresentacion.Informes.Datos_Generales3();
+            this.Mostrar_Ingreso_ProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Mostrar_Ingreso_ProductosTableAdapter = new CapaPresentacion.Informes.Datos_Generales3TableAdapters.Mostrar_Ingreso_ProductosTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.Datos_Generales3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mostrar_Ingreso_ProductosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "Datos_Generales";
-            reportDataSource1.Value = this.mostrarIngresoProductosBindingSource;
+            reportDataSource1.Name = "Mostrar_Ingreso_Productos";
+            reportDataSource1.Value = this.Mostrar_Ingreso_ProductosBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaPresentacion.Informes.Mostrar_Ingreso_Producto.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaPresentacion.Informes.Mostrar_Ingreso_Productos2.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // dB_Sistemas_v2DataSet
+            // Datos_Generales3
             // 
-            this.dB_Sistemas_v2DataSet.DataSetName = "DB_Sistemas_v2DataSet";
-            this.dB_Sistemas_v2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Datos_Generales3.DataSetName = "Datos_Generales3";
+            this.Datos_Generales3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // mostrarIngresoProductosBindingSource
+            // Mostrar_Ingreso_ProductosBindingSource
             // 
-            this.mostrarIngresoProductosBindingSource.DataMember = "Mostrar_Ingreso_Productos";
-            this.mostrarIngresoProductosBindingSource.DataSource = this.dB_Sistemas_v2DataSet;
+            this.Mostrar_Ingreso_ProductosBindingSource.DataMember = "Mostrar_Ingreso_Productos";
+            this.Mostrar_Ingreso_ProductosBindingSource.DataSource = this.Datos_Generales3;
             // 
-            // mostrar_Ingreso_ProductosTableAdapter
+            // Mostrar_Ingreso_ProductosTableAdapter
             // 
-            this.mostrar_Ingreso_ProductosTableAdapter.ClearBeforeFill = true;
+            this.Mostrar_Ingreso_ProductosTableAdapter.ClearBeforeFill = true;
             // 
             // FrmMostrar_Ingreso_Producto
             // 
@@ -71,14 +71,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmMostrar_Ingreso_Producto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Ingreso de Producto";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "FrmMostrar_Ingreso_Producto";
             this.Load += new System.EventHandler(this.FrmMostrar_Ingreso_Producto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dB_Sistemas_v2DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrarIngresoProductosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Datos_Generales3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mostrar_Ingreso_ProductosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource mostrarIngresoProductosBindingSource;
-        private DB_Sistemas_v2DataSet dB_Sistemas_v2DataSet;
-        private DB_Sistemas_v2DataSetTableAdapters.Mostrar_Ingreso_ProductosTableAdapter mostrar_Ingreso_ProductosTableAdapter;
+        private System.Windows.Forms.BindingSource Mostrar_Ingreso_ProductosBindingSource;
+        private Datos_Generales3 Datos_Generales3;
+        private Datos_Generales3TableAdapters.Mostrar_Ingreso_ProductosTableAdapter Mostrar_Ingreso_ProductosTableAdapter;
     }
 }

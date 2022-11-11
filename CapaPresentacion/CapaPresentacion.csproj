@@ -97,15 +97,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DB_Sistemas_v2DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB_Sistemas_v2DataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DB_Sistemas_v2DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_Sistemas_v2DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\Datos_Generales3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datos_Generales3.xsd</DependentUpon>
     </Compile>
     <Compile Include="Informes\FrmMostrar_Ingreso_Producto.cs">
       <SubType>Form</SubType>
@@ -136,11 +136,6 @@
     </Compile>
     <Compile Include="DataGridBase.xaml.cs">
       <DependentUpon>DataGridBase.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DB_Sistemas_v2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB_Sistemas_v2DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormAgregarBase.xaml.cs">
       <DependentUpon>FormAgregarBase.xaml</DependentUpon>
@@ -310,33 +305,11 @@
     <EmbeddedResource Include="Informes\FrmMostrar_Ingreso_Producto.resx">
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informes\Mostrar_Ingreso_Producto.rdlc" />
+    <EmbeddedResource Include="Informes\Mostrar_Ingreso_Productos2.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DB_Sistemas_v2DataSet.xsc">
-      <DependentUpon>DB_Sistemas_v2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DB_Sistemas_v2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DB_Sistemas_v2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DB_Sistemas_v2DataSet.xss">
-      <DependentUpon>DB_Sistemas_v2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DB_Sistemas_v2DataSet1.xsc">
-      <DependentUpon>DB_Sistemas_v2DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DB_Sistemas_v2DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DB_Sistemas_v2DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DB_Sistemas_v2DataSet1.xss">
-      <DependentUpon>DB_Sistemas_v2DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="DB_Sistemas_v2DataSet2.xsc">
       <DependentUpon>DB_Sistemas_v2DataSet2.xsd</DependentUpon>
     </None>
@@ -347,6 +320,17 @@
     </None>
     <None Include="DB_Sistemas_v2DataSet2.xss">
       <DependentUpon>DB_Sistemas_v2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Informes\Datos_Generales3.xsc">
+      <DependentUpon>Datos_Generales3.xsd</DependentUpon>
+    </None>
+    <None Include="Informes\Datos_Generales3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Datos_Generales3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Informes\Datos_Generales3.xss">
+      <DependentUpon>Datos_Generales3.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

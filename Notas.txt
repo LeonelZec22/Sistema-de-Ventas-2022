@@ -717,6 +717,13 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 		@StockActual = @Cantidad = 2 - 2 
 
+		 this.mostrar_Ingreso_ProductosTableAdapter.Fill(this.dB_Sistemas_v2DataSet.Mostrar_Ingreso_Productos, Id_IngresoProducto);
+            this.reportViewer1.RefreshReport();
+
+			 private int _Id_IngresoProducto;
+
+        public int Id_IngresoProducto { get => _Id_IngresoProducto; set => _Id_IngresoProducto = value; }
+
 
 
 

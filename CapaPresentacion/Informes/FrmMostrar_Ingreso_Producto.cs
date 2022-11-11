@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Informes
 {
-    public partial class FrmMostrar_Ingreso_Producto: Form
+    public partial class FrmMostrar_Ingreso_Producto : Form
     {
         public FrmMostrar_Ingreso_Producto()
         {
             InitializeComponent();
-
         }
 
         private int _Id_IngresoProducto;
@@ -24,7 +23,9 @@ namespace CapaPresentacion.Informes
 
         private void FrmMostrar_Ingreso_Producto_Load(object sender, EventArgs e)
         {
-            this.mostrar_Ingreso_ProductosTableAdapter.Fill(this.dB_Sistemas_v2DataSet.Mostrar_Ingreso_Productos, Id_IngresoProducto);
+            // TODO: esta línea de código carga datos en la tabla 'Datos_Generales3.Mostrar_Ingreso_Productos' Puede moverla o quitarla según sea necesario.
+            this.Mostrar_Ingreso_ProductosTableAdapter.Fill(this.Datos_Generales3.Mostrar_Ingreso_Productos, Id_IngresoProducto);
+
             this.reportViewer1.RefreshReport();
         }
     }
