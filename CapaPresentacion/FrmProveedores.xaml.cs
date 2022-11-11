@@ -235,5 +235,13 @@ namespace CapaPresentacion
             }
         }
 
+        private void BtnAddIngre_Click(object sender, RoutedEventArgs e)
+        {
+
+            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
+            Hide();
+            compraDeProducto.ShowDialog();
+            Close();
+        }
     }
 }

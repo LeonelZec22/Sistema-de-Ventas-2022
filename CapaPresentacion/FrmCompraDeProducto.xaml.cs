@@ -52,9 +52,16 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
+
+            
         }
 
         private void AgIn_UpdateEventHandler(object sender, FrmAgregarIngreso.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        private void AnIn_UpdateEventHandler(object sender, FrmAnularIngresoProducto.UpdateEventArgs args)
         {
             CargarDatos();
         }
@@ -66,23 +73,79 @@ namespace CapaPresentacion
             AgregarProducto.ShowDialog();
         }
 
+        FrmAnularIngresoProducto AnularProducto = new FrmAnularIngresoProducto();
+        DataGrid dg;
+        DataRowView dr;
+
         private void BtnAnularIngreso_Click(object sender, RoutedEventArgs e)
         {
+            //FrmAnularIngresoProducto AnularProducto = new FrmAnularIngresoProducto(this);
+            //AnularProducto.UpdateEventHandler += AnIn_UpdateEventHandler;
+            if (dr != null)
+            {
+                AnularProducto.ShowDialog();
+                DataGridIngresoProducto.UnselectAllCells();
+            }
 
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
+
+        Informes.FrmMostrar_Ingreso_Producto Mostrar = new Informes.FrmMostrar_Ingreso_Producto();
 
         private void BtnImprimirInfo_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (dr != null)
+                {
+                    Mostrar.ShowDialog();
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Imprimir Informe", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
 
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
         private void DataGridIngresoProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            dg = sender as DataGrid;
 
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                AnularProducto.UpdateEventHandler += AnIn_UpdateEventHandler;
+                AnularProducto.txtId_IngresoProducto.Text = dr[0].ToString();
+                AnularProducto.txtId_Proveedor.Text = dr[1].ToString();
+                AnularProducto.txtNo_Ingreso.Text = dr[2].ToString();
+                AnularProducto.txtNombre_Proveedor.Text = dr[3].ToString();
+                AnularProducto.dtp_FechaIngreso.Text = dr[4].ToString();
+                AnularProducto.txtTotal_Pago.Text = dr[5].ToString();
+                Mostrar.Id_IngresoProducto = Convert.ToInt32(dr[0].ToString());
+
+            }
         }
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        {
+
+            FrmProductos Productos = new FrmProductos();
+            Hide();
+            Productos.ShowDialog();
+            Close();
         }
     }
 }

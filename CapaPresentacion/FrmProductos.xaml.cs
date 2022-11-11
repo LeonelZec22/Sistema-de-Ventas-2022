@@ -253,5 +253,24 @@ namespace CapaPresentacion
             Proveedor.ShowDialog();
             Close();
         }
+
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrmClientes Clientes = new FrmClientes();
+            Hide();
+
+            Clientes.ShowDialog();
+            Close();
+        }
+
+        private void BtnServicios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmServicios Servicios = new FrmServicios();
+            Hide();
+
+            Servicios.ShowDialog();
+
+            Close();
+        }
     }
 }

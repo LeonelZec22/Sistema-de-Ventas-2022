@@ -663,13 +663,59 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Tenemos la fila numero 1 y queremos actualizar su columna 3 
 
 
+		De la tabla productos voy a insertar ciertos datos en la tabla inventario
+
+		Cuando pongo parametros estoy diciendo que datos voy a insertar en la tabla 
+
+		 @Id_Producto=Id_Producto,@Codigo=Codigo,@Nombre=No
+
+		 @Cantidad=0,@Precio_Venta=Precio_Venta,@Costo_Unitario=Costo_Unitario,
+		@Monto_Total=(@Cantidad * @Costo_Unitario) 
+
+		solo cantidad y monto total no pertenece a la tabla productos 
+
+		------------------------------ Mostrar Ingreso Producto ------------------------------
+
+		Creamos una carpeta en la capa de presentación
 
 
+		Id_Producto = 19 -> Detalle Ingreso 
+
+		Cantidad = 2 + 2 = 4 -> Detalle Ingreso 
+
+		SubTotal = 1.20 + 1.20 = 2.40
+
+		Costo_Unitario = 0.60
+
+		------------------------------------------------------
+
+		@Id_Inventario = Id_Producto = 19 -> Detalle Ingreso 
+
+		@Cantidad = Cantidad = 4 -> Detalle Ingreso 
+
+		@Stock_Actual = @Cantidad = 4 -> -> Detalle Ingreso 
+
+		@Costo_Unitario = Costo_Unitario =  0.60 -> Inventario
+
+		@Monto_Total 
+
+		@Balance_Actual = Monto_Total = 2.50 -> Inventario
 
 
+		Nostros vamos a actualizar la tabla de inventarios entonces decimos que la columna Montototal su nuevo valor saldra
+		de calcular 
 
+		@Balance_Actual = MontoTotal = 2.40 -> Inventario
 
+		@Costo_Unitario = Costo_Unitario =  0.60 -> Inventario
 
+		@Cantidad = Cantidad = 2 -> Detalle Ingreso  
+
+		2.40 - (2*0.60) = 2.40 - 1.20 = 1.20
+
+		la columna Cantidad su nuevo valor saldra de calcular 
+
+		@StockActual = @Cantidad = 2 - 2 
 
 
 

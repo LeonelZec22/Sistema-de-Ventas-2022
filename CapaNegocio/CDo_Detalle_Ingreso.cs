@@ -22,5 +22,12 @@ namespace CapaNegocio
         {
             objDetalleIngreso.AnularDetalleIngreso(Detalles);
         }
+
+
+        public DataTable MostrarIngresoProducto(int ID_Ingreso)
+        {
+
+            return objDetalleIngreso.MostrarIngresoProducto(ID_Ingreso);
+        }
     }
 }

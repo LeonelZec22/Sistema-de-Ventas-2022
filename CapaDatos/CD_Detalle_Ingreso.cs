@@ -49,5 +49,22 @@ namespace CapaDatos
 
             Con.Cerrar();
         }
+
+        public DataTable MostrarIngresoProducto(int ID_Ingreso)
+        {
+            DataTable Dt = new DataTable("Detalles_Ingreso");
+            Cmd = new SqlCommand("Mostrar_Detalle_Ingreso", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", ID_Ingreso));
+           
+            Cmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter(Cmd);
+            da.Fill(Dt);
+
+            Con.Cerrar();
+
+            return Dt;
+        }
     }
 }

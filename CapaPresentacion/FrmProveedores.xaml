@@ -259,6 +259,13 @@
 
                 <DataGrid x:Name="DataGridProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProveedores_AutoGeneratingColumn" SelectionChanged="DataGridProveedores_SelectionChanged_1"/>
 
+                <Button x:Name="btnAddIngre" Style="{StaticResource addButton}" Margin="0,488,632,0" Click="BtnAddIngre_Click" Width="169" Grid.Row="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
+                        <TextBlock Text="Pedido Nuevo"/>
+                    </StackPanel>
+                </Button>
+
             </Grid>
 
 

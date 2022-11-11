@@ -571,9 +571,9 @@ namespace CapaPresentacion
                     Agregar();
                     LimpiarDetalle();
                     limpiarproveedor();
+                    limpiarFila();
                     Correlativo();
                     Hide();
-                    limpiarFila();
                     return true;
                 }
             }
@@ -589,8 +589,10 @@ namespace CapaPresentacion
         public void limpiarproveedor()
         {
             txtId_IngresoProducto.Clear();
+            txtNo_Ingreso.Clear();
             txtId_Proveedor.Clear();
             txtNombre_Proveedor.Clear();
+            
         }
 
         public void limpiarFila()
