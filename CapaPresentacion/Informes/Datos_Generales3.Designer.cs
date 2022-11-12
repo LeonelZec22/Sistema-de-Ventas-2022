@@ -295,6 +295,8 @@ namespace CapaPresentacion.Informes {
             
             private global::System.Data.DataColumn columnTotal;
             
+            private global::System.Data.DataColumn columnMonto_Total;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public Mostrar_Ingreso_ProductosDataTable() {
@@ -394,6 +396,14 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Monto_TotalColumn {
+                get {
+                    return this.columnMonto_Total;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public Mostrar_Ingreso_ProductosRow AddMostrar_Ingreso_ProductosRow(string No_Ingreso, string Proveedor, System.DateTime Fecha_Ingreso, string Estado, string Producto, int Cantidad, decimal Costo_Unitario, decimal Total) {
+            public Mostrar_Ingreso_ProductosRow AddMostrar_Ingreso_ProductosRow(string No_Ingreso, string Proveedor, System.DateTime Fecha_Ingreso, string Estado, string Producto, int Cantidad, decimal Costo_Unitario, decimal Total, decimal Monto_Total) {
                 Mostrar_Ingreso_ProductosRow rowMostrar_Ingreso_ProductosRow = ((Mostrar_Ingreso_ProductosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         No_Ingreso,
@@ -439,7 +449,8 @@ namespace CapaPresentacion.Informes {
                         Producto,
                         Cantidad,
                         Costo_Unitario,
-                        Total};
+                        Total,
+                        Monto_Total};
                 rowMostrar_Ingreso_ProductosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMostrar_Ingreso_ProductosRow);
                 return rowMostrar_Ingreso_ProductosRow;
@@ -470,6 +481,7 @@ namespace CapaPresentacion.Informes {
                 this.columnCantidad = base.Columns["Cantidad"];
                 this.columnCosto_Unitario = base.Columns["Costo_Unitario"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnMonto_Total = base.Columns["Monto_Total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +503,8 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnCosto_Unitario);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
+                this.columnMonto_Total = new global::System.Data.DataColumn("Monto_Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMonto_Total);
                 this.columnNo_Ingreso.AllowDBNull = false;
                 this.columnNo_Ingreso.MaxLength = 15;
                 this.columnProveedor.AllowDBNull = false;
@@ -503,6 +517,7 @@ namespace CapaPresentacion.Informes {
                 this.columnCantidad.AllowDBNull = false;
                 this.columnCosto_Unitario.AllowDBNull = false;
                 this.columnTotal.AllowDBNull = false;
+                this.columnMonto_Total.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -730,6 +745,17 @@ namespace CapaPresentacion.Informes {
                     this[this.tableMostrar_Ingreso_Productos.TotalColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal Monto_Total {
+                get {
+                    return ((decimal)(this[this.tableMostrar_Ingreso_Productos.Monto_TotalColumn]));
+                }
+                set {
+                    this[this.tableMostrar_Ingreso_Productos.Monto_TotalColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -899,6 +925,7 @@ namespace CapaPresentacion.Informes.Datos_Generales3TableAdapters {
             tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
             tableMapping.ColumnMappings.Add("Costo_Unitario", "Costo_Unitario");
             tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("Monto_Total", "Monto_Total");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

@@ -726,7 +726,27 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 
 
+		----------------------------------------------
 
+		ALTER TRIGGER Tr_Reducir_Producto_Inventario
+  ON Detalles_Ingreso for UPDATE
+  AS 
+  SET NOCOUNT ON 
+  DECLARE @Id_Inventario int /* = Detalles_Ingreso.Id_Producto*/
+  DECLARE @Cantidad int /*Detalles_Ingreso.Cantidad*/
+  DECLARE @Stock_Actual int /*Es igual Cantidad*/
+  DECLARE @Costo_Unitario decimal(12,2)
+  DECLARE @Monto_Total decimal(12,2)
+  DECLARE @Balance_Actual decimal(12,2) /*Inventario*/
+  Select @Id_Inventario = Id_Producto, @Cantidad=Cantidad FROM inserted
+
+  SELECT @Stock_Actual=Cantidad, @Costo_Unitario = Costo_Unitario, 
+  @Balance_Actual=Monto_Total FROM Inventario WHERE Id_Inventario=@Id_Inventario
+
+  UPDATE Inventario SET	 Inventario.Cantidad=@Stock_Actual-@Cantidad, 
+  Inventario.Monto_Total = @Balance_Actual - (@Cantidad * @Costo_Unitario)
+  WHERE Inventario.Id_Inventario=@Id_Inventario
+GO
 
 
 

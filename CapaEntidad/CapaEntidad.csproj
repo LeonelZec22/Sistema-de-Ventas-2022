@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="CE_Clientes.cs" />
     <Compile Include="CE_Detalle_Ingreso.cs" />
+    <Compile Include="CE_Detalle_Ventas.cs" />
     <Compile Include="CE_Ingreso_Productos.cs" />
     <Compile Include="CE_Productos.cs" />
     <Compile Include="CE_Proveedores.cs" />
     <Compile Include="CE_Servicios.cs" />
+    <Compile Include="CE_Ventas.cs" />
     <Compile Include="DataGridItemsProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

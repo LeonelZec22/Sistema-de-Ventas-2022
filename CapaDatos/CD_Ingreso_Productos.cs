@@ -35,17 +35,49 @@ namespace CapaDatos
 
         public void AnularIngreso(CE_Ingreso_Productos Ingresos)
         {
-            Cmd = new SqlCommand("Anular_Ingreso_Productos", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", Ingresos.Id_IngresoProducto));
-            Cmd.Parameters.Add(new SqlParameter("@No_Ingreso", Ingresos.No_Ingreso));
-            Cmd.Parameters.Add(new SqlParameter("@ID_Proveedor", Ingresos.Id_Proveedor));
-            Cmd.Parameters.Add(new SqlParameter("@Fecha_Ingreso", Ingresos.Fecha_Ingreso));
-            Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ingresos.Monto_total));
-            Cmd.Parameters.Add(new SqlParameter("@Estado", Ingresos.Estado));
-            Cmd.ExecuteNonQuery();
+            try
+            {
 
-            Con.Cerrar();
+                string Estado = string.Empty;
+                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_Ingreso=" + Ingresos.Id_IngresoProducto + "", Con.Abrir());
+                Cmd.CommandType = CommandType.Text;
+                SqlDataReader dr = Cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    Estado = dr["Estado"].ToString();
+                }
+
+                dr.Close();
+                Con.Cerrar();
+
+                if (Estado== "Anulado")
+                {
+                    System.Windows.Forms.MessageBox.Show("Esta Compra ya ha sido Anulada anteriormente", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+
+                    Cmd = new SqlCommand("Anular_Ingreso_Productos", Con.Abrir());
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", Ingresos.Id_IngresoProducto));
+                    Cmd.Parameters.Add(new SqlParameter("@No_Ingreso", Ingresos.No_Ingreso));
+                    Cmd.Parameters.Add(new SqlParameter("@ID_Proveedor", Ingresos.Id_Proveedor));
+                    Cmd.Parameters.Add(new SqlParameter("@Fecha_Ingreso", Ingresos.Fecha_Ingreso));
+                    Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ingresos.Monto_total));
+                    Cmd.Parameters.Add(new SqlParameter("@Estado", Ingresos.Estado));
+                    Cmd.ExecuteNonQuery();
+                    System.Windows.Forms.MessageBox.Show("La Compra fue anulada correctamente", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    Con.Cerrar();
+                }
+
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se puedo anular la comprar por: " + ex, "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
         }
 
 
@@ -65,5 +97,6 @@ namespace CapaDatos
 
             return Dt;
         }
+
     }
 }

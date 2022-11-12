@@ -7,26 +7,26 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaEntidad;
 
+
 namespace CapaDatos
 {
-    public class CD_Detalle_Ingreso
+    public class CD_Detalle_Ventas
     {
         CD_Conexion Con = new CD_Conexion();
 
         private SqlCommand Cmd;
 
-        //Método para agregar el ingreso de un producto
-
-        public void AgregarDetalleIngreso(CE_Detalle_Ingreso Detalles)
+        public void AgregarDetalleVenta(CE_Detalle_Ventas Detalles)
         {
-            Cmd = new SqlCommand("Agregar_Detalle_Ingreso", Con.Abrir());
+            Cmd = new SqlCommand("AgregarDetalleVenta", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", Detalles.Id_IngresoProducto));
+            Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Detalles.Id_Venta));
             Cmd.Parameters.Add(new SqlParameter("@Id_Producto", Detalles.Id_Producto));
-            Cmd.Parameters.Add(new SqlParameter("@Nombre", Detalles.Nombre));
             Cmd.Parameters.Add(new SqlParameter("@Cantidad", Detalles.Cantidad));
-            Cmd.Parameters.Add(new SqlParameter("@Costo_Unitario", Detalles.Costo_Unitario));
+            Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Detalles.Precio_Venta));
             Cmd.Parameters.Add(new SqlParameter("@Sub_Total", Detalles.Sub_Total));
+            Cmd.Parameters.Add(new SqlParameter("@Descuento", Detalles.Descuento));
+            Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Detalles.Monto_Total));
             Cmd.ExecuteNonQuery();
 
             Con.Cerrar();
@@ -34,13 +34,13 @@ namespace CapaDatos
 
         //Método para anular el ingreso de un producto por ejemplo se cancelo el envio de un producto o se devuelve un producto
 
-        public void AnularDetalleIngreso(CE_Detalle_Ingreso Detalles)
+        public void AnularDetalleVenta(CE_Detalle_Ventas Detalles)
         {
             try
             {
 
                 string Estado = string.Empty;
-                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_Ingreso=" + Detalles.Id_IngresoProducto + "", Con.Abrir());
+                Cmd = new SqlCommand("Select Estado From Ventas Where Id_Venta=" + Detalles.Id_Venta + "", Con.Abrir());
                 Cmd.CommandType = CommandType.Text;
                 SqlDataReader dr = Cmd.ExecuteReader();
 
@@ -59,15 +59,16 @@ namespace CapaDatos
                 else
                 {
 
-                    Cmd = new SqlCommand("Anular_Detalle_Ingreso", Con.Abrir());
+                    Cmd = new SqlCommand("AnularDetalleVenta", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.Add(new SqlParameter("@ID_Detalle", Detalles.Id_Detalle));
-                    Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", Detalles.Id_IngresoProducto));
+                    Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Detalles.Id_Venta));
                     Cmd.Parameters.Add(new SqlParameter("@Id_Producto", Detalles.Id_Producto));
-                    Cmd.Parameters.Add(new SqlParameter("@Nombre", Detalles.Nombre));
                     Cmd.Parameters.Add(new SqlParameter("@Cantidad", Detalles.Cantidad));
-                    Cmd.Parameters.Add(new SqlParameter("@Costo_Unitario", Detalles.Costo_Unitario));
+                    Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Detalles.Precio_Venta));
                     Cmd.Parameters.Add(new SqlParameter("@Sub_Total", Detalles.Sub_Total));
+                    Cmd.Parameters.Add(new SqlParameter("@Descuento", Detalles.Descuento));
+                    Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Detalles.Monto_Total));
+                    Cmd.Parameters.Add(new SqlParameter("@Id_DetalleVenta", Detalles.Id_DetalleVenta));
                     Cmd.ExecuteNonQuery();
                     Con.Cerrar();
                 }
@@ -76,18 +77,18 @@ namespace CapaDatos
 
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("No se puedo anular la comprar por: " + ex, "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("No se puedo anular la venta por: " + ex, "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
 
         }
 
-        public DataTable MostrarIngresoProducto(int ID_Ingreso)
+        public DataTable MostrarVentas(int Id_Venta)
         {
-            DataTable Dt = new DataTable("Detalles_Ingreso");
-            Cmd = new SqlCommand("Mostrar_Detalle_Ingreso", Con.Abrir());
+            DataTable Dt = new DataTable("Detalle_Venta");
+            Cmd = new SqlCommand("Mostrar_Detalle_Venta", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Id_IngresoProducto", ID_Ingreso));
-           
+            Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Id_Venta));
+
             Cmd.ExecuteNonQuery();
 
             SqlDataAdapter da = new SqlDataAdapter(Cmd);
@@ -97,5 +98,6 @@ namespace CapaDatos
 
             return Dt;
         }
+
     }
 }
