@@ -39,7 +39,7 @@ namespace CapaDatos
             {
 
                 string Estado = string.Empty;
-                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_Ingreso=" + Ingresos.Id_IngresoProducto + "", Con.Abrir());
+                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_IngresoProducto=" + Ingresos.Id_IngresoProducto + "", Con.Abrir());
                 Cmd.CommandType = CommandType.Text;
                 SqlDataReader dr = Cmd.ExecuteReader();
 
@@ -51,7 +51,7 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado== "Anulado")
+                if (Estado== "Cancelado")
                 {
                     System.Windows.Forms.MessageBox.Show("Esta Compra ya ha sido Anulada anteriormente", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }

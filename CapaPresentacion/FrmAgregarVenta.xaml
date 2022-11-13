@@ -1,0 +1,171 @@
+﻿<Window x:Class="CapaPresentacion.FrmAgregarVenta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:CapaPresentacion.Menu"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:hc="https://handyorg.github.io/handycontrol" 
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        mc:Ignorable="d"
+        Height="720" Width="1338" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+
+    </Window.Resources>
+
+
+    <Border Background="#1F1D1D" CornerRadius="30">
+
+        <Grid HorizontalAlignment="Right" Width="1382" Margin="-302,0,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Sección Principal-->
+
+            <Grid Margin="44,18,20,22">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Botones de arriba-->
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Cog"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Bell"/>
+                </Button>
+
+                <!--Titulo del encabezado-->
+
+                <TextBlock Text="Informacion de la Venta" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="40,10,0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
+
+
+                <!--Separarto-->
+
+                <Separator Height="1" Grid.Row="2" Background="#1F1D1D" Margin="0 -1 0 10" />
+
+                <!--Formulario-->
+
+                <Grid Grid.Row="3" Margin="40,0,0,-199" Background="#F6F6C9" Grid.RowSpan="2">
+
+                    <!--Detalle del Proveedor-->
+                    <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente"  Width="222" Margin="28,29,1028,172"/>
+
+                    <!--Caja de texto de ID Cliente-->
+                    <TextBox Margin="342,10,892,172" x:Name="txtId_Cliente" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
+
+                    <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
+
+                   
+
+                    <!--Caja de texto Id Venta-->
+                    <TextBox Margin="426,8,799,174" x:Name="txtId_Venta" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
+
+
+                    <Button x:Name="btnBuscarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarCliente_Click"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Venta"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
+
+                    <DatePicker x:Name="dtp_FechaVenta" Margin="28,158,0,25" Height="40" FirstDayOfWeek="Sunday" Cursor="Cross" FontSize="18" HorizontalAlignment="Left" Width="222" Background="#ffffff"  IsDropDownOpen="False" Text="" DisplayDateStart="2022-01-31" SelectedDate="2023-01-31"/>
+
+                    <!--Detalle del producto-->
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de Producto"  Width="174" Margin="520,28,584,157" RenderTransformOrigin="0.876,0.477"/>
+
+                    <TextBox Margin="949,10,285,172" x:Name="txtId_Producto" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
+
+                    <TextBox Margin="520,64,561,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Producto"  Width="174" Margin="748,28,356,157" RenderTransformOrigin="0.876,0.477"/>
+
+                    <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
+
+                    <Button x:Name="btnBuscarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="996,61,188,107" Click="BtnBuscarProducto_Click"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad"  Width="73" Margin="584,158,621,39" RenderTransformOrigin="0.876,0.477"/>
+
+                    <TextBox Margin="676,142,506,0" x:Name="txtCantidad" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" RenderTransformOrigin="1.284,0.473"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Stock Actual"  Width="117" Margin="374,157,787,40"/>
+
+
+                    <TextBox Margin="491,129,743,53" x:Name="txtStockActual" FontSize="18" TextWrapping="Wrap" Visibility="Visible"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio Venta"  Width="128" Margin="794,158,356,39" RenderTransformOrigin="0.876,0.477"/>
+
+                    <TextBox Margin="907,142,260,0" x:Name="txtPrecio_Venta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
+
+                    <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="94" Margin="1038,157,146,40"/>
+
+
+                    <TextBox Margin="1137,142,30,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsEnabled="False"/>
+
+                    <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarProducto_Click"/>
+
+                    <Button x:Name="btnAgregarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,17,70,167" Click="BtnAgregarProducto_Click"/>
+
+
+
+                </Grid>
+
+                <!--DataGrid-->
+                <Grid Grid.Row="4" Margin="40,205,0,-542">
+
+
+                    <DataGrid  x:Name="DataGridVenta" HorizontalAlignment="Left" Height="293" Margin="0" VerticalAlignment="Top" Width="1278" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGenerateColumns="False">
+
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Id Producto" Binding="{Binding Id_Producto}" Visibility="Hidden"/>
+
+                            <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" />
+
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" />
+                            <DataGridTextColumn Header="Precio Venta" Binding="{Binding Precio_Venta}" />
+                            
+                            <DataGridTextColumn Header="Sub Total" Binding="{Binding Sub_Total}" />
+
+                            <DataGridTextColumn Header="Descuento" Binding="{Binding Descuento}" />
+                            
+                            <DataGridTextColumn Header="Total" Binding="{Binding Total}" />
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button x:Name="btnGuardarVenta" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#04293A"  IsEnabled="True" Margin="1114,308,0,0" HorizontalAlignment="Left" Width="128" Click="BtnGuardarVenta_Click"/>
+
+                    <Button x:Name="btnCancelarVenta" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="#950101"  IsEnabled="True" Margin="920,308,0,0" HorizontalAlignment="Left" Width="128" Click="BtnCancelarVenta_Click"/>
+
+                    <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Subtotal"  Width="101" Margin="10,322,1167,-4" Foreground="#DDFFFFFF"  />
+
+                    <TextBox Margin="116,308,1020,0" x:Name="txtSubTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+
+                    <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="118" Margin="279,322,881,-4" Foreground="#DDFFFFFF"  />
+
+                    <TextBox Margin="420,308,716,0" x:Name="txtDescuentoVenta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+
+                    <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Monto Total"  Width="135" Margin="584,322,559,-4" Foreground="#DDFFFFFF"  />
+
+                    <TextBox Margin="724,309,412,0" x:Name="txtMontoTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+                </Grid>
+
+
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</Window>

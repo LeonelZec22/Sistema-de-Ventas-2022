@@ -272,5 +272,14 @@ namespace CapaPresentacion
 
             Close();
         }
+
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVentas Ventas = new FrmVentas();
+            Hide();
+
+            Ventas.ShowDialog();
+            Close();
+        }
     }
 }

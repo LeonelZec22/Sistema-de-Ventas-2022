@@ -157,7 +157,7 @@ namespace CapaPresentacion
 
                     Ingresos.AnularIngreso(Ingreso);
 
-                    System.Windows.Forms.MessageBox.Show("El Ingreso de Producto fue Cancelado correctamente!!", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    //System.Windows.Forms.MessageBox.Show("El Ingreso de Producto fue Cancelado correctamente!!", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                     this.Close();
                     Actualizar();

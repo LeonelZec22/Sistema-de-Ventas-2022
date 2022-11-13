@@ -40,7 +40,7 @@ namespace CapaDatos
             {
 
                 string Estado = string.Empty;
-                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_Ingreso=" + Detalles.Id_IngresoProducto + "", Con.Abrir());
+                Cmd = new SqlCommand("Select Estado From Ingreso_Productos Where Id_IngresoProducto=" + Detalles.Id_IngresoProducto + "", Con.Abrir());
                 Cmd.CommandType = CommandType.Text;
                 SqlDataReader dr = Cmd.ExecuteReader();
 
@@ -52,7 +52,7 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado == "Anulado")
+                if (Estado == "Cancelado")
                 {
                     return;
                 }

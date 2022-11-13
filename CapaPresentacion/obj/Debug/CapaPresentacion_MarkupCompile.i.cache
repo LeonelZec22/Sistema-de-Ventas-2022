@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\CapaPresentacion\App.xaml
-241785424626
+26-110246923
 51001242449
-37-608220521
+39309328577
 32247530884
-DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarServicio.xaml;FrmAnularIngresoProducto.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmServicios.xaml;FrmVistaProducto.xaml;FrmVistaProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
+DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarServicio.xaml;FrmAgregarVenta.xaml;FrmAnularIngresoProducto.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmServicios.xaml;FrmVentas.xaml;FrmVistaProducto.xaml;FrmVistaProveedores.xaml;Login.xaml;Menu\Modulos.xaml;
 
 False
 
