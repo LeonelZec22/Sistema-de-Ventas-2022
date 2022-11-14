@@ -37,9 +37,7 @@ namespace CapaPresentacion
         CD_Conexion Con = new CD_Conexion();
 
         //Inicialiamos las variables a utilizar
-        SqlCommand Cmd;
-        SqlDataReader Dr;
-        DataTable Dt;
+        
         CDo_Productos Productos = new CDo_Productos();
         CE_Productos Producto = new CE_Productos();
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();

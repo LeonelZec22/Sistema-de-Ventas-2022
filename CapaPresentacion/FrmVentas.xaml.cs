@@ -57,12 +57,19 @@ namespace CapaPresentacion
             }
         }
 
-
+        private void AgVen_UpdateEventHandler(object sender, FrmAgregarVenta.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
 
 
         private void BtnNuevaVenta_Click(object sender, RoutedEventArgs e)
         {
+            FrmAgregarVenta AgregarVentas = new FrmAgregarVenta(this);
+            AgregarVentas.UpdateEventHandler += AgVen_UpdateEventHandler;
+            AgregarVentas.ShowDialog();
+
 
         }
 
