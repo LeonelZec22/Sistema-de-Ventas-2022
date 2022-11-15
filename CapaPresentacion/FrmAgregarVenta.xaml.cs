@@ -131,13 +131,80 @@ namespace CapaPresentacion
         }
 
         #endregion
-        DataSet dataSet;
-        DataTable TableProductos;
 
-        private void BtnBuscarProducto_Click(object sender, RoutedEventArgs e)
+        #region Seleccionar un Producto
+
+        //Método para cargar en los textBox el producto
+        private void SeleccionarProducto()
         {
 
+            //Abrimos el Formulario de VistaProveedor
+
+
+            FrmVista_Venta_Producto VistaProductoVenta = new FrmVista_Venta_Producto();
+
+            VistaProductoVenta.ShowDialog();
+
+            txtId_Producto.Text = "";
+
+            txtCod_Producto.Text = "";
+
+            txtNombre_Producto.Text = "";
+
+            txtStockActual.Text = "";
+
+            txtPrecio_Venta.Text = "";
+
+            try
+            {
+                if (VistaProductoVenta.DialogResult == true)
+                {
+
+                    //Lenamos los textbox 
+
+                    foreach (DataRowView drv in VistaProductoVenta.DataGridProductosVenta.SelectedItems)
+                    {
+                        DataRow row = drv.Row;
+
+                        var IdProducto = Convert.ToString(drv.Row[0]);
+
+                        txtId_Producto.Text = IdProducto;
+
+                        var CodProducto = Convert.ToString(drv.Row[1]);
+
+                        txtCod_Producto.Text = CodProducto;
+
+                        var NombreProducto = Convert.ToString(drv.Row[2]);
+
+                        txtNombre_Producto.Text = NombreProducto;
+                        
+                        var PrecioVenta = Convert.ToString(drv.Row[3]);
+
+                        txtPrecio_Venta.Text = PrecioVenta;
+
+                        var StockActual = Convert.ToString(drv.Row[4]);
+
+                        txtStockActual.Text = StockActual;
+
+                    }
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Producto en la lista Producto!!", "Seleccionar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
+        private void BtnBuscarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            SeleccionarProducto();
+        }
+
+        #endregion
+
+        DataSet dataSet;
+        DataTable TableProductos;
 
         private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {

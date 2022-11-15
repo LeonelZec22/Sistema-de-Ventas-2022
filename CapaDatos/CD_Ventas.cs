@@ -102,5 +102,21 @@ namespace CapaDatos
             return Dt;
         }
 
+        public DataTable Mostrar_Ingreso_Ventas()
+        {
+            DataTable Dt = new DataTable("Mostrar_Producto_Venta");
+            Cmd = new SqlCommand("Mostrar_Ingreso_Ventas", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader Dr = Cmd.ExecuteReader();
+            Dt.Load(Dr);
+
+            Con.Cerrar();
+
+            Dr.Close();
+
+            return Dt;
+        }
+
     }
 }

@@ -111,6 +111,9 @@
     <Compile Include="FrmVistaClientes.xaml.cs">
       <DependentUpon>FrmVistaClientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmVista_Venta_Producto.xaml.cs">
+      <DependentUpon>FrmVista_Venta_Producto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Informes\Datos_Generales3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmVistaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmVista_Venta_Producto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

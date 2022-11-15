@@ -32,5 +32,12 @@ namespace CapaNegocio
         {
             return objVentas.MostrarVentas();
         }
+
+        public DataTable Mostrar_Ingreso_Ventas()
+        {
+            return objVentas.Mostrar_Ingreso_Ventas();
+        }
+
+        
     }
 }
