@@ -109,7 +109,7 @@
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="94" Margin="1038,157,146,40"/>
 
 
-                    <TextBox Margin="1137,142,30,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"/>
+                    <TextBox Margin="1137,142,30,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" LostFocus="TxtDescuento_LostFocus"/>
 
                     <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarProducto_Click"/>
 

@@ -73,11 +73,36 @@ namespace CapaPresentacion
 
         }
 
-        private void GenerarCorrelativo()
-        {
-            
-        }
+        //private void GenerarCorrelativo()
+        //{
 
+        //}
+
+
+        public double importe = 0, ImporteNeto= 0, Descuento1= 0, Monto_Total=0, Porcentaje=0;
+
+        private void Descuento()
+        {
+            try
+            {
+                if (txtCantidad.Text != string.Empty)
+                {
+                    importe = Convert.ToDouble(txtPrecio_Venta.Text) * Convert.ToDouble(txtCantidad.Text);
+                    Descuento1 = importe * Convert.ToDouble(txtDescuento.Text) / 100;
+                    ImporteNeto = importe - Convert.ToDouble(Descuento1.ToString("N2"));
+                    Monto_Total = Convert.ToDouble(ImporteNeto);
+                    Porcentaje = Descuento1;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("El campo Cantidad no puede estar vacio", "Calcular Descuento", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error al calcular Descuento por: " + ex.Message, "Calcular Descuento", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
 
         #region Seleccionar un Clientee 
 
@@ -203,13 +228,193 @@ namespace CapaPresentacion
 
         #endregion
 
+
+        #region Agregar Datos al DataGrid 
         DataSet dataSet;
         DataTable TableProductos;
 
+        public static int ContFila = 0;
+        decimal TotalResta1 = 0, TotalResta2 = 0, TotalResta3 = 0;
+
+        private void AgregarDetalle()
+        {
+            try
+            {
+                if (txtId_Producto.Text == string.Empty || txtCod_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtPrecio_Venta.Text == string.Empty || txtStockActual.Text == string.Empty || txtDescuento.Text == string.Empty)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else if (Convert.ToInt32(txtCantidad.Text) == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("No hay producto en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else if (Convert.ToInt32(txtStockActual.Text) < Convert.ToInt32(txtCantidad.Text))
+                {
+                    System.Windows.Forms.MessageBox.Show("No hay suficientes productos en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                }
+                else
+                {
+                    if (txtId_Producto.Text == string.Empty || txtCod_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtPrecio_Venta.Text == string.Empty || txtStockActual.Text == string.Empty || txtDescuento.Text == string.Empty)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                        return;
+                    }
+                    else
+                    {
+                        Descuento();
+                        bool Existe = false;
+                        int no_fila = 0;
+
+                        if (ContFila == 0)
+                        {
+                            if (TableProductos == null)
+                            {
+                                TableProductos = new DataTable();
+
+                                DataColumn column;
+                                DataRow row;
+
+                                column = new DataColumn();
+                                column.ColumnName = "Id_Producto";
+
+                                TableProductos.Columns.Add(column);
+
+                                column = new DataColumn();
+                                column.ColumnName = "Nombre";
+                                TableProductos.Columns.Add(column);
+
+                                column = new DataColumn();
+                                column.ColumnName = "Cantidad";
+                                TableProductos.Columns.Add(column);
+
+                                column = new DataColumn();
+                                column.ColumnName = "Precio_Venta";
+                                TableProductos.Columns.Add(column);
+
+                                column = new DataColumn();
+                                column.ColumnName = "Sub_Total";
+                                TableProductos.Columns.Add(column);
+                                column = new DataColumn();
+
+                                column.ColumnName = "Descuento";
+                                TableProductos.Columns.Add(column);
+                                column = new DataColumn();
+
+                                column.ColumnName = "Total";
+                                TableProductos.Columns.Add(column);
+                                column = new DataColumn();
+
+                                dataSet = new DataSet();
+
+                                dataSet.Tables.Add(TableProductos);
+
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+
+                                DataGridVenta.ItemsSource = TableProductos.DefaultView;
+                                LimpiarDetalle();
+                                ContFila++;
+                            }
+
+                            else
+                            {
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+
+                                DataGridVenta.ItemsSource = TableProductos.DefaultView;
+
+                                DataGridVenta.UnselectAllCells();
+                                LimpiarDetalle();
+                                ContFila++;
+                            }
+                        }
+
+                        else
+                        {
+                            foreach (DataRowView drv in DataGridVenta.ItemsSource)
+                            {
+                                DataRow row = drv.Row;
+
+                                if (row[0].ToString() == txtId_Producto.Text)
+                                {
+                                    Existe = true;
+
+                                    no_fila = TableProductos.Rows.IndexOf(row);
+                                }
+
+                            }
+
+                            if (Existe == true)
+                            {
+                                int ValidarStock = Convert.ToInt32(TableProductos.Rows[no_fila][2]) + Convert.ToInt32(txtCantidad.Text);
+
+                                if (ValidarStock > Convert.ToInt32(txtStockActual.Text))
+                                {
+                                    System.Windows.Forms.MessageBox.Show("No hay producto en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                    LimpiarDetalle();
+                                    DataGridVenta.UnselectAllCells();
+                                }
+
+                                else
+                                {
+                                    TableProductos.Rows[no_fila]["Cantidad"] = Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(TableProductos.Rows[no_fila][2].ToString());
+
+                                    TableProductos.Rows[no_fila]["Sub_Total"] = ImporteNeto + Convert.ToDouble(TableProductos.Rows[no_fila][4].ToString());
+
+                                    TableProductos.Rows[no_fila]["Descuento"] = Descuento1 + Convert.ToDouble(TableProductos.Rows[no_fila][5].ToString());
+
+                                    TableProductos.Rows[no_fila]["Total"] = Monto_Total + Convert.ToDouble(TableProductos.Rows[no_fila][6].ToString());
+
+                                    DataGridVenta.ItemsSource = TableProductos.DefaultView;
+                                    LimpiarDetalle();
+                                    DataGridVenta.UnselectAllCells();
+                                }
+                                
+                            }
+
+                            else
+                            {
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+
+                                DataGridVenta.ItemsSource = TableProductos.DefaultView;
+
+                                DataGridVenta.UnselectAllCells();
+                                LimpiarDetalle();
+                                ContFila++;
+                            }
+                        }
+
+                        decimal Total1 = 0, Total2 = 0, Total3 = 0;
+                        foreach (DataRowView row3 in DataGridVenta.ItemsSource)
+                        {
+                            Total1 += Convert.ToDecimal(row3[4]);
+                            Total2 += Convert.ToDecimal(row3[5]);
+                            Total3 += Convert.ToDecimal(row3[6]);
+                        }
+
+                        txtSubTotal.Text = Total1.ToString("N2");
+                        txtDescuentoVenta.Text = Total2.ToString("N2");
+                        txtMontoTotal.Text = Total3.ToString("N2");
+
+                        TotalResta1 = Total1;
+                        TotalResta2 = Total2;
+                        TotalResta3 = Total3;
+                    }
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("La Venta no fue agregada por: " + ex, "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
+
         private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-
+            AgregarDetalle();
         }
+
+        #endregion
 
         private void BtnEliminarProducto_Click(object sender, RoutedEventArgs e)
         {
@@ -224,6 +429,37 @@ namespace CapaPresentacion
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(txtDescuento.Text == string.Empty)
+            {
+                return;
+            }
+            else
+            {
+                Descuento();
+            }
+        }
+
+        private void LimpiarDetalle()
+        {
+            txtId_Producto.Text = string.Empty;
+            txtCod_Producto.Text = string.Empty;
+            txtNombre_Producto.Text = string.Empty;
+            txtCantidad.Text = string.Empty;
+            txtStockActual.Text = string.Empty;
+            txtPrecio_Venta.Text = string.Empty;
+            txtDescuento.Text = string.Empty;
+            btnBuscarProducto.Focus();
+        }
+
+        private void LimpiarCampo()
+        {
+            txtId_Cliente.Text = string.Empty;
+            txtNombre_Producto.Text = string.Empty;
+            DataGridVenta.Items.Clear();
         }
     }
 }

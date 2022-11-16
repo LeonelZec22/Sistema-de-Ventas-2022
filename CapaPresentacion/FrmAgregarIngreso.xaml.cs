@@ -320,6 +320,7 @@ namespace CapaPresentacion
 
                             TableProductos.Rows[no_fila]["Cantidad"] = Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(TableProductos.Rows[no_fila][2].ToString());
                             TableProductos.Rows[no_fila]["Sub_Total"] = (SubTotal + Convert.ToDecimal(TableProductos.Rows[no_fila][4].ToString()));
+
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                             LimpiarDetalle();
                             DataGridIngresoProducto.UnselectAllCells();
