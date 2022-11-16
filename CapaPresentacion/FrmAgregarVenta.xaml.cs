@@ -504,7 +504,70 @@ namespace CapaPresentacion
         #region Método para guardar la Venta en la Base de datos
         private void BtnGuardarVenta_Click(object sender, RoutedEventArgs e)
         {
+            Guardar();
+        }
 
+        private void GenerarCorrelativos()
+        {
+            txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");
+        }
+
+        public virtual bool Guardar()
+        {
+            try
+            {
+                if (txtClienteNombre.Text == string.Empty || txtId_Cliente.Text == string.Empty)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+
+                    Venta.Id_Cliente = Convert.ToInt32(txtId_Cliente.Text);
+                    Venta.Fecha_Venta = Convert.ToDateTime(dtp_FechaVenta.Text);
+                    Venta.Sub_Total = Convert.ToDecimal(txtSubTotal.Text);
+                    Venta.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
+                    Venta.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
+                    Venta.Estado = "Emitido";
+                    Venta.Id_Usuario = 1;
+
+                    GenerarCorrelativos();
+
+                    foreach (DataRowView drv in DataGridVenta.ItemsSource)
+                    {
+                        DataRow row = drv.Row;
+
+                        DetalleVenta.Id_Venta = Convert.ToInt32(txtId_Venta.Text);
+                        DetalleVenta.Id_Producto = Convert.ToInt32(row[0].ToString());
+                        DetalleVenta.Cantidad = Convert.ToInt32(row[2].ToString());
+                        DetalleVenta.Precio_Venta = Convert.ToDecimal(row[3].ToString());
+                        DetalleVenta.Sub_Total = Convert.ToDecimal(row[4].ToString());
+                        DetalleVenta.Descuento = Convert.ToDecimal(row[5].ToString());
+                        DetalleVenta.Monto_Total = Convert.ToDecimal(row[6].ToString());
+
+                        DetalleVentas.AgregarDetalleVenta(DetalleVenta);
+                    }
+
+                    Ventas.AgregarVenta(Venta);
+
+                    System.Windows.Forms.MessageBox.Show("Venta de Productos agregada correctamente!!", "Agregar Venta Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    txtSubTotal.Text= "0.00";
+                    txtDescuentoVenta.Text = "0.00";
+                    txtMontoTotal.Text = "0.00";
+                    Agregar();
+                    LimpiarDetalle();
+                    LimpiarCampo();
+                    limpiarFila();
+                    Hide();
+                    return true;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Ingreso de Producto no fue agregado por: " + ex, "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return false;
         }
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
@@ -512,6 +575,7 @@ namespace CapaPresentacion
             this.Close();
         }
 
+        #endregion
 
         private void LimpiarDetalle()
         {
@@ -529,7 +593,11 @@ namespace CapaPresentacion
         {
             txtId_Cliente.Text = string.Empty;
             txtNombre_Producto.Text = string.Empty;
-            DataGridVenta.Items.Clear();
+        }
+
+        public void limpiarFila()
+        {
+            ContFila = 0;
         }
     }
 }
