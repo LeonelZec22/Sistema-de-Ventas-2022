@@ -483,7 +483,7 @@ namespace CapaPresentacion
             try
             {
                 //Verificamos si hay productos agregados a la tabla es decir si hay filas agregadas
-                if (ContFila > 0 & DataGridIngresoProducto.Items.Count > 0)
+                if (ContFila > 0 && DataGridIngresoProducto.Items.Count > 0)
                 {
                     //Verificamos si hay un producto o una fila seleccionada de la tabla
                     if(DataGridIngresoProducto.SelectedItems.Count == 0)

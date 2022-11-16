@@ -70,14 +70,13 @@ namespace CapaPresentacion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            txtSubTotal.Text = "0.00";
+            txtDescuentoVenta.Text = "0.00";
+            txtMontoTotal.Text = "0.00";
         }
 
-        //private void GenerarCorrelativo()
-        //{
 
-        //}
-
+        #region Método para calcular el descuento
 
         public double importe = 0, ImporteNeto= 0, Descuento1= 0, Monto_Total=0, Porcentaje=0;
 
@@ -103,6 +102,7 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Error al calcular Descuento por: " + ex.Message, "Calcular Descuento", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
+        #endregion
 
         #region Seleccionar un Clientee 
 
@@ -235,6 +235,7 @@ namespace CapaPresentacion
 
         public static int ContFila = 0;
         decimal TotalResta1 = 0, TotalResta2 = 0, TotalResta3 = 0;
+        int indexDelete = 0;
 
         private void AgregarDetalle()
         {
@@ -247,11 +248,14 @@ namespace CapaPresentacion
                 else if (Convert.ToInt32(txtCantidad.Text) == 0)
                 {
                     System.Windows.Forms.MessageBox.Show("No hay producto en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                    txtCantidad.Text = string.Empty;
                 }
                 else if (Convert.ToInt32(txtStockActual.Text) < Convert.ToInt32(txtCantidad.Text))
                 {
                     System.Windows.Forms.MessageBox.Show("No hay suficientes productos en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-
+                    txtCantidad.Text = string.Empty;
+                    txtDescuento.Text = string.Empty;
                 }
                 else
                 {
@@ -271,10 +275,12 @@ namespace CapaPresentacion
                         {
                             if (TableProductos == null)
                             {
+                                //Creamos el Data Table porque no existe todavia
                                 TableProductos = new DataTable();
 
+                                //Creamos las columnas del Data Table 
                                 DataColumn column;
-                                DataRow row;
+                                //DataRow row;
 
                                 column = new DataColumn();
                                 column.ColumnName = "Id_Producto";
@@ -310,7 +316,8 @@ namespace CapaPresentacion
 
                                 dataSet.Tables.Add(TableProductos);
 
-                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+                                //Creamos una fila del Data Table utilizando la información ya capturada
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, importe.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
 
                                 DataGridVenta.ItemsSource = TableProductos.DefaultView;
                                 LimpiarDetalle();
@@ -319,7 +326,7 @@ namespace CapaPresentacion
 
                             else
                             {
-                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, importe.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
 
                                 DataGridVenta.ItemsSource = TableProductos.DefaultView;
 
@@ -350,7 +357,7 @@ namespace CapaPresentacion
 
                                 if (ValidarStock > Convert.ToInt32(txtStockActual.Text))
                                 {
-                                    System.Windows.Forms.MessageBox.Show("No hay producto en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                    System.Windows.Forms.MessageBox.Show("No hay suficientes productos en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                                     LimpiarDetalle();
                                     DataGridVenta.UnselectAllCells();
                                 }
@@ -374,7 +381,7 @@ namespace CapaPresentacion
 
                             else
                             {
-                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, ImporteNeto.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+                                TableProductos.Rows.Add(txtId_Producto.Text, txtNombre_Producto.Text, txtCantidad.Text, txtPrecio_Venta.Text, importe.ToString("N2"), Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
 
                                 DataGridVenta.ItemsSource = TableProductos.DefaultView;
 
@@ -414,23 +421,6 @@ namespace CapaPresentacion
             AgregarDetalle();
         }
 
-        #endregion
-
-        private void BtnEliminarProducto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnGuardarVenta_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
         {
             if(txtDescuento.Text == string.Empty)
@@ -442,6 +432,86 @@ namespace CapaPresentacion
                 Descuento();
             }
         }
+
+
+        #endregion
+
+        #region Eliminar Datos del DataGrid
+
+        private void EliminarDetalle()
+        {
+            try
+            {
+                if (ContFila > 0 && DataGridVenta.Items.Count > 0)
+                {
+                    if (DataGridVenta.SelectedItems.Count == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+
+                    else
+                    {
+                        //Va recorrer la fila seleccionada en busca de obtener su index
+                        foreach (DataRowView drv in DataGridVenta.SelectedItems)
+                        {
+                            
+                            DataRow row = drv.Row;
+
+                            indexDelete = TableProductos.Rows.IndexOf(row);
+
+                        }
+
+                        //Restar SubTotal 
+
+                        TotalResta1 = TotalResta1 - Convert.ToDecimal(TableProductos.Rows[indexDelete][4]);
+                        txtSubTotal.Text = TotalResta1.ToString("N2");
+
+                        //Restar Descuento 
+                        TotalResta2 = TotalResta2 - Convert.ToDecimal(TableProductos.Rows[indexDelete][5]);
+                        txtDescuentoVenta.Text = TotalResta2.ToString("N2");
+
+                        // Restar Monto Total
+                        TotalResta3 = TotalResta3 - Convert.ToDecimal(TableProductos.Rows[indexDelete][6]);
+                        txtMontoTotal.Text = TotalResta3.ToString("N2");
+
+                        TableProductos.Rows.RemoveAt(indexDelete);
+                        DataGridVenta.ItemsSource = TableProductos.DefaultView;
+                        DataGridVenta.UnselectAllCells();
+                        ContFila--;
+                    }
+                }
+
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("No hay productos para eliminar!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se ha podido eliminar el producto porque: " + ex, "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnEliminarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarDetalle();
+        }
+
+        #endregion
+
+
+        #region Método para guardar la Venta en la Base de datos
+        private void BtnGuardarVenta_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
 
         private void LimpiarDetalle()
         {
