@@ -105,6 +105,9 @@
     <Compile Include="FrmAgregarVenta.xaml.cs">
       <DependentUpon>FrmAgregarVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmAnularVentas.xaml.cs">
+      <DependentUpon>FrmAnularVentas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmVentas.xaml.cs">
       <DependentUpon>FrmVentas.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmAnularIngresoProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmAnularVentas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

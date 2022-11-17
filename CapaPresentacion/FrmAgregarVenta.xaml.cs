@@ -41,6 +41,7 @@ namespace CapaPresentacion
         CDo_Detalle_Ventas DetalleVentas = new CDo_Detalle_Ventas();
         CE_Detalle_Ventas DetalleVenta = new CE_Detalle_Ventas();
 
+        //DateTime UltimoDia = new DateTime(DateTime.Now.Day, 1,1);
        
         #endregion
 
@@ -73,6 +74,8 @@ namespace CapaPresentacion
             txtSubTotal.Text = "0.00";
             txtDescuentoVenta.Text = "0.00";
             txtMontoTotal.Text = "0.00";
+            //dtp_FechaVenta.Text = Convert.ToString(UltimoDia);
+           
         }
 
 
@@ -228,6 +231,7 @@ namespace CapaPresentacion
 
         #endregion
 
+       
 
         #region Agregar Datos al DataGrid 
         DataSet dataSet;

@@ -61,6 +61,10 @@ namespace CapaPresentacion
         {
             CargarDatos();
         }
+        private void AnVen_UpdateEventHandler(object sender, FrmAnularVentas.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
 
 
@@ -73,9 +77,23 @@ namespace CapaPresentacion
 
         }
 
+
+        FrmAnularVentas AnularVenta = new FrmAnularVentas();
+        DataGrid dg;
+        DataRowView dr;
         private void BtnAnularVenta_Click(object sender, RoutedEventArgs e)
         {
+            if (dr != null)
+            {
+                AnularVenta.MostrarDetalleVenta();
+                AnularVenta.ShowDialog();
+                DataGridVenta.UnselectAllCells();
+            }
 
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BtnImprimirInfo_Click(object sender, RoutedEventArgs e)
@@ -85,7 +103,33 @@ namespace CapaPresentacion
 
         private void DataGridVenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            dg = sender as DataGrid;
 
+            dr = dg.SelectedItem as DataRowView;
+
+            if (DataGridVenta.Items.Count==0)
+            {
+                System.Windows.Forms.MessageBox.Show("No Hay Compras para Anular!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+            else 
+            {
+                if (dr != null)
+                {
+                    AnularVenta.UpdateEventHandler += AnVen_UpdateEventHandler;
+                    AnularVenta.txtId_Venta.Text = dr[0].ToString();
+                    AnularVenta.txtClienteNombre.Text = dr[1].ToString();
+                    AnularVenta.dtp_FechaVenta.Text = dr[2].ToString();
+                    AnularVenta.txtSubTotal.Text = dr[3].ToString();
+                    AnularVenta.txtDescuentoVenta.Text = dr[4].ToString();
+                    AnularVenta.txtMontoTotal.Text = dr[5].ToString();
+                    
+                }
+                //else
+                //{
+                //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una compra para Anular!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                //}
+            }
         }
 
 
