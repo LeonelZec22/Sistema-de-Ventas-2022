@@ -51,6 +51,39 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
+
+            string Codigo = e.Column.Header.ToString();
+            string Nombre = e.Column.Header.ToString();
+            string Telefono = e.Column.Header.ToString();
+            string Email = e.Column.Header.ToString();
+            string Estado = e.Column.Header.ToString();
+
+            if (Codigo == "Codigo")
+            {
+                e.Column.Width = 150;
+            }
+
+            if (Nombre == "Nombre")
+            {
+                e.Column.Width = 200;
+            }
+
+            if (Telefono == "Telefono")
+            {
+                e.Column.Width = 125;
+            }
+            
+            if (Email == "Email")
+            {
+                e.Column.Width = 220;
+            }
+            
+            if (Estado == "Estado")
+            {
+                e.Column.Width = 120;
+            }
+
+
         }
 
         

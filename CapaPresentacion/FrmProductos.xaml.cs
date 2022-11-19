@@ -87,6 +87,37 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
+
+            string Codigo = e.Column.Header.ToString();
+            string Nombre = e.Column.Header.ToString();
+            string Descripcion = e.Column.Header.ToString();
+            string Precio_Venta = e.Column.Header.ToString();
+            string Costo_Unitario = e.Column.Header.ToString();
+            
+            if(Codigo == "Codigo")
+            {
+                e.Column.Width = 150;
+            }
+
+            if (Nombre == "Nombre")
+            {
+                e.Column.Width = 200;
+            }
+
+            if (Descripcion == "Descripcion")
+            {
+                e.Column.Width = 225;
+            }
+
+            if (Precio_Venta == "Precio_Venta")
+            {
+                e.Column.Width = 100;
+            }
+
+            if (Costo_Unitario == "Costo_Unitario")
+            {
+                e.Column.Width = 110;
+            }
         }
 
         private void AgPro_UpdateEventHandler(object sender, FrmAgregarProducto.UpdateEventArgs args )
