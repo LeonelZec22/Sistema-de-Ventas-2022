@@ -576,7 +576,9 @@ namespace CapaPresentacion
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
+            limpiarFila();
+            TableProductos = null;
         }
 
         #endregion

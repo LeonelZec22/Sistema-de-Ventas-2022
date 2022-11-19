@@ -61,7 +61,7 @@ namespace CapaDatos
 
                     Cmd = new SqlCommand("AnularDetalleVenta", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Detalles.Id_Venta));
+                    Cmd.Parameters.Add(new SqlParameter("@Id_Ventas", Detalles.Id_Venta));
                     Cmd.Parameters.Add(new SqlParameter("@Id_Producto", Detalles.Id_Producto));
                     Cmd.Parameters.Add(new SqlParameter("@Cantidad", Detalles.Cantidad));
                     Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Detalles.Precio_Venta));

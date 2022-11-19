@@ -39,6 +39,8 @@ namespace CapaPresentacion
 
         private void CargarDatos()
         {
+            //Procedimiento Mostrar_Ingreso 
+
             DataGridIngresoProducto.ItemsSource = IngresoProductos.MostrarIngresoProductos().AsDataView();
             
         }
@@ -124,6 +126,7 @@ namespace CapaPresentacion
 
             if (dr != null)
             {
+                //Procedimiento Mostrar_Ingreso 
                 AnularProducto.UpdateEventHandler += AnIn_UpdateEventHandler;
                 AnularProducto.txtId_IngresoProducto.Text = dr[0].ToString();
                 AnularProducto.txtId_Proveedor.Text = dr[1].ToString();
@@ -131,6 +134,7 @@ namespace CapaPresentacion
                 AnularProducto.txtNombre_Proveedor.Text = dr[3].ToString();
                 AnularProducto.dtp_FechaIngreso.Text = dr[4].ToString();
                 AnularProducto.txtTotal_Pago.Text = dr[5].ToString();
+
                 Mostrar.Id_IngresoProducto = Convert.ToInt32(dr[0].ToString());
 
             }

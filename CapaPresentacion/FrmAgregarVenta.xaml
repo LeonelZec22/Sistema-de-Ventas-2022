@@ -70,7 +70,7 @@
                    
 
                     <!--Caja de texto Id Venta-->
-                    <TextBox Margin="426,8,799,174" x:Name="txtId_Venta" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Visible"/>
+                    <TextBox Margin="426,8,799,174" x:Name="txtId_Venta" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
 
 
                     <Button x:Name="btnBuscarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarCliente_Click"/>

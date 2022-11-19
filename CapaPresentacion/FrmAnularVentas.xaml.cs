@@ -38,6 +38,7 @@ namespace CapaPresentacion
         #region Instancia de objetos a usar
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
+        CDo_Productos Productos = new CDo_Productos();
         CDo_Ventas Ventas = new CDo_Ventas();
         CE_Ventas Venta = new CE_Ventas();
         CDo_Detalle_Ventas DetalleVentas = new CDo_Detalle_Ventas();
@@ -84,8 +85,70 @@ namespace CapaPresentacion
         }
         private void BtnAnularVenta_Click(object sender, RoutedEventArgs e)
         {
-
+            Editar();
         }
+
+
+        public virtual void Editar()
+        {
+            try
+            {
+                if (txtId_Venta.Text == string.Empty || txtClienteNombre.Text == string.Empty)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cancela esta Venta?", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                    if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        Venta.Id_Cliente = Convert.ToInt32(txtId_Cliente.Text);
+                        Venta.Id_Venta = Convert.ToInt32(txtId_Venta.Text);
+                        Venta.Fecha_Venta = Convert.ToDateTime(dtp_FechaVenta.Text);
+                        Venta.Sub_Total = Convert.ToDecimal(txtSubTotal.Text);
+                        Venta.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
+                        Venta.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
+                        Venta.Estado = "Cancelado";
+                        Venta.Id_Usuario = 1;
+
+
+                        foreach (DataRowView drv in DataGridAnularVenta.ItemsSource)
+                        {
+                            DataRow row = drv.Row;
+
+                            DetalleVenta.Id_DetalleVenta = Convert.ToInt32(row[0].ToString());
+                            DetalleVenta.Id_Venta = Convert.ToInt32(txtId_Venta.Text);
+                            DetalleVenta.Id_Producto = Convert.ToInt32(row[2].ToString());
+                            DetalleVenta.Cantidad = Convert.ToInt32(row[4].ToString());
+                            DetalleVenta.Precio_Venta = Convert.ToDecimal(row[5].ToString());
+                            DetalleVenta.Sub_Total = Convert.ToDecimal(row[6].ToString());
+                            DetalleVenta.Descuento = Convert.ToDecimal(row[7].ToString());
+                            DetalleVenta.Monto_Total = Convert.ToDecimal(row[8].ToString());
+
+                            DetalleVentas.AnularDetalleVenta(DetalleVenta);
+                        }
+
+                        Ventas.AnularVenta(Venta);
+                        System.Windows.Forms.MessageBox.Show("Venta Cancelada Correctamente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        Anular();
+                        this.Close();
+                    }
+
+                    else if (Resultado == System.Windows.Forms.DialogResult.No)
+                    {
+                        MostrarDetalleVenta();
+                    }
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("La Venta no fue cancelada por: " + ex, "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
+
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {

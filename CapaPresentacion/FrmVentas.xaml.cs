@@ -54,7 +54,61 @@ namespace CapaPresentacion
             if (Id_Venta == "Id_Venta")
             {
                 e.Cancel = true;
+                
             }
+
+            string Id_Cliente = e.Column.Header.ToString();
+
+            if (Id_Cliente == "Id_Cliente")
+            {
+                e.Cancel = true;
+
+            }
+
+            string Nombre = e.Column.Header.ToString();
+            string Fecha_Venta = e.Column.Header.ToString();
+            string Estado = e.Column.Header.ToString();
+            string Sub_Total = e.Column.Header.ToString();
+            string Monto_Total = e.Column.Header.ToString();
+            string Usuario = e.Column.Header.ToString();
+
+            string Descuento = e.Column.Header.ToString();
+
+            if (Nombre == "Nombre")
+            {
+                e.Column.Width = 225;
+            }
+
+            if (Fecha_Venta == "Fecha_Venta")
+            {
+                e.Column.Width = 117;
+            }
+
+            if (Estado == "Estado")
+            {
+                e.Column.Width = 130;
+            }
+
+            if (Estado == "Sub_Total")
+            {
+                e.Column.Width = 120;
+            }
+
+            if (Estado == "Monto_Total")
+            {
+                e.Column.Width = 120;
+            }
+
+            if (Estado == "Usuario")
+            {
+                e.Column.Width = 175;
+            }
+
+            if (Descuento == "Descuento")
+            {
+                e.Column.Width = 100;
+            }
+
         }
 
         private void AgVen_UpdateEventHandler(object sender, FrmAgregarVenta.UpdateEventArgs args)
@@ -118,11 +172,12 @@ namespace CapaPresentacion
                 {
                     AnularVenta.UpdateEventHandler += AnVen_UpdateEventHandler;
                     AnularVenta.txtId_Venta.Text = dr[0].ToString();
-                    AnularVenta.txtClienteNombre.Text = dr[1].ToString();
-                    AnularVenta.dtp_FechaVenta.Text = dr[2].ToString();
-                    AnularVenta.txtSubTotal.Text = dr[3].ToString();
-                    AnularVenta.txtDescuentoVenta.Text = dr[4].ToString();
-                    AnularVenta.txtMontoTotal.Text = dr[5].ToString();
+                    AnularVenta.txtId_Cliente.Text = dr[1].ToString();
+                    AnularVenta.txtClienteNombre.Text = dr[2].ToString();
+                    AnularVenta.dtp_FechaVenta.Text = dr[3].ToString();
+                    AnularVenta.txtSubTotal.Text = dr[5].ToString();
+                    AnularVenta.txtDescuentoVenta.Text = dr[6].ToString();
+                    AnularVenta.txtMontoTotal.Text = dr[7].ToString();
                     
                 }
                 //else
