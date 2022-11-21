@@ -601,6 +601,12 @@ namespace CapaPresentacion
              ContFila = 0;
         }
 
+        private void BtnCancelarIngreso_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableProductos = null;
+        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 
@@ -1158,6 +1164,8 @@ namespace CapaPresentacion
 
             //DataGridIngresoProducto.ItemsSource = productos;
         }
+
+        
 
 
 

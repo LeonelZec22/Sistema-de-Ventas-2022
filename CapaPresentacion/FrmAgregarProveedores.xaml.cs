@@ -58,7 +58,8 @@ namespace CapaPresentacion
             UpdateEventHandler.Invoke(this, args);
         }
 
-       
+
+        FrmVistaProveedores vistaProveedores = new FrmVistaProveedores();
 
 
         #region evento de los textbox
@@ -136,7 +137,7 @@ namespace CapaPresentacion
                     txtAddNombreProveedor.Focus();
 
                     Agregar();
-
+                    
                     //FrmProductos productos = new FrmProductos();
                     //productos.ShowDialog();
 

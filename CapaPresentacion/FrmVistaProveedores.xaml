@@ -9,7 +9,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Height="720" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -20,161 +20,13 @@
 
     <Border Background="#1F1D1D" CornerRadius="30">
 
-        <Grid HorizontalAlignment="Right" Width="1080">
+        <Grid HorizontalAlignment="Right" Width="1000">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--Menu Lateral-->
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!--Información de la empresa-->
-
-                <Border Grid.Row="1" Background="#0F3460" CornerRadius="0 50 0 30">
-
-                    <DockPanel>
-                        <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
-
-                            <Ellipse>
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png" />
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Border>
-
-                        <!--Menu Title-->
-                        <TextBlock Text="Thermal SPA" Foreground="White" FontSize="22"  FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-                        <TextBlock Text="Bienvenido" Foreground="#ffffff" FontSize="14"  FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" />
-
-                    </DockPanel>
-                </Border>
-
-                <!--Separador del menu-->
-                <Separator Margin="10,150,10,499" Height="0.8" Grid.Row="1">
-                    <Separator.Background>
-                        <SolidColorBrush Color="White" Opacity="1"/>
-                    </Separator.Background>
-                </Separator>
-
-                <!--Menu de Iconos-->
-                <Border Grid.Row="1" Margin="0,156,0,0" >
-                    <StackPanel  Margin="0,10,0,0" >
-                        <!--Inicio-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Home-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos Titulo="Inicio" Margin="-20 0 0 0"/>
-                            </Button>
-
-                        </Grid>
-
-                        <!--Productos-->
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Style="{StaticResource BotonesMenu}">
-
-                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
-                            </Button>
-
-                        </Grid>
-
-                        <!--Proveedores-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/supplier-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0" EsActivo="True"/>
-
-                            </Button>
-
-                        </Grid>
-
-                        <!--Clientes-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Clientes-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnClientes" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos  Titulo="Clientes" Margin="-20 0 0 0"/>
-                            </Button>
-                        </Grid>
-
-                        <!--Servicios-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/servicios-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos Titulo="Servicios" Margin="-20 0 0 0"/>
-
-                            </Button>
-
-                        </Grid>
-
-                        <!--Inventario-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
-
-                            </Button>
-
-                        </Grid>
-
-                        <!--Ventas-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}">
-                                <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0"/>
-
-                            </Button>
-
-                        </Grid>
-                    </StackPanel>
-                </Border>
-            </Grid>
 
             <!--Sección Principal-->
 
@@ -203,14 +55,18 @@
 
                 <TextBlock Text=" Gestión de Proveedores" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10,10,0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
 
+                <Button Grid.Row="4" Margin="824,1,20,3" Height="Auto"  x:Name="btnaddcli" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Agregar" Background="#9ED5C5" Foreground="Black"  IsEnabled="True" Click="Btnaddcli_Click" RenderTransformOrigin="-0.03,0.608"/>
+
 
                 <!--Buscador-->
-                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,20,708,16" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <Button Grid.Row="3" Margin="661,6,37,0" Height="Auto" Grid.RowSpan="2"  x:Name="btnSeleccionarProve" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="red"  IsEnabled="True" Click="BtnSeleccionarProve_Click" PreviewMouseDoubleClick="BtnSeleccionarProve_PreviewMouseDoubleClick" Tag="{Binding Path=frow1}"/>
+                <Button Grid.Row="4" Margin="641,1,162,0" Height="Auto"  x:Name="btnSeleccionarProve" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarProve_Click" Tag="{Binding Path=frow1}"/>
+
+                <Button Grid.Row="5" Margin="805,491,20,-18" Height="Auto"  x:Name="btnCancelarProv" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarProv_Click" Grid.RowSpan="2"/>
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox x:Name="cboGestionProv" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
+                    <ComboBox x:Name="cboGestionProv" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="-89,0,0,0" Panel.ZIndex="2">
 
                         <ComboBoxItem Content="Codigo"/>
                         <ComboBoxItem Content="Nombre" IsSelected="True"/>
@@ -219,7 +75,7 @@
                     <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="160,10,-3,10"/>
                 </Grid>
 
-                <Grid Grid.Row="4" Margin="297,0,214,0">
+                <Grid Grid.Row="4" Margin="287,0,368,0">
                     <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
                     <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged" Height="54"/>
@@ -235,7 +91,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridGestionProveedores" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridGestionProveedores_AutoGeneratingColumn" SelectionChanged="DataGridGestionProveedores_SelectionChanged" />
+                <DataGrid x:Name="DataGridGestionProveedores" HorizontalAlignment="Left" Height="444" Margin="11,42,0,0" Grid.Row="5" VerticalAlignment="Top" Width="929" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridGestionProveedores_AutoGeneratingColumn" SelectionChanged="DataGridGestionProveedores_SelectionChanged" />
 
             </Grid>
 

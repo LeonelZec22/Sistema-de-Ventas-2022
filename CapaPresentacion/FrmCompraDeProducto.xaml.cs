@@ -54,7 +54,15 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
-            
+
+            string Id_Proveedor = e.Column.Header.ToString();
+
+            if (Id_Proveedor == "Id_Proveedor")
+            {
+                e.Cancel = true;
+
+            }
+
         }
 
         private void AgIn_UpdateEventHandler(object sender, FrmAgregarIngreso.UpdateEventArgs args)
@@ -84,6 +92,7 @@ namespace CapaPresentacion
             //AnularProducto.UpdateEventHandler += AnIn_UpdateEventHandler;
             if (dr != null)
             {
+                AnularProducto.MostrarDetalleIngreso();
                 AnularProducto.ShowDialog();
                 DataGridIngresoProducto.UnselectAllCells();
             }

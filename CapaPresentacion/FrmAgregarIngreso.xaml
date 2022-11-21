@@ -132,7 +132,7 @@
 
                     <Button x:Name="btnGuardarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#04293A"  IsEnabled="True" Margin="1114,308,0,0" HorizontalAlignment="Left" Width="128" Click="BtnGuardarIngreso_Click"/>
 
-                    <Button x:Name="btnCancelarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="#950101"  IsEnabled="True" Margin="920,308,0,0" HorizontalAlignment="Left" Width="128"/>
+                    <Button x:Name="btnCancelarIngreso" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="#950101"  IsEnabled="True" Margin="920,308,0,0" HorizontalAlignment="Left" Width="128" Click="BtnCancelarIngreso_Click"/>
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Total a Pagar"  Width="143" Margin="10,322,1125,-4" Foreground="#DDFFFFFF"  />
 

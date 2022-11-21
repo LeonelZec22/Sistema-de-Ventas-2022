@@ -92,6 +92,13 @@ namespace CapaPresentacion
             }
         }
 
+        
+
+        private void BtnCancelarPro_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            DataGridGestionProductos.UnselectAllCells();
+        }
     }
 
 }

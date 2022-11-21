@@ -138,10 +138,7 @@ namespace CapaPresentacion
             }
         }
 
-        private void BtnSeleccionarProve_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
+      
 
         #region datagridcell
         //public DataGridCell GetDataGridCell (DataGridCellInfo cellInfo)
@@ -155,5 +152,16 @@ namespace CapaPresentacion
 
         #endregion
 
+        private void BtnCancelarProv_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            DataGridGestionProveedores.UnselectAllCells();
+        }
+
+        private void Btnaddcli_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarProveedores proveedores = new FrmAgregarProveedores();
+            proveedores.ShowDialog();
+        }
     }
 }

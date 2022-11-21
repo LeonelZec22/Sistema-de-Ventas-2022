@@ -78,7 +78,7 @@ namespace CapaPresentacion
             Procedimientos.FormatoMoneda(txtTotal_Pago);
         }
 
-        private void MostrarDetalleIngreso()
+        public void MostrarDetalleIngreso()
         {
             int Index = Convert.ToInt32(txtId_IngresoProducto.Text);
 
