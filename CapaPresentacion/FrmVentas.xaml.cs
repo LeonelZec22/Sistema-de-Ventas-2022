@@ -150,9 +150,29 @@ namespace CapaPresentacion
             }
         }
 
+        Informes.FrmMostrar_Detalle_Venta Mostrar = new Informes.FrmMostrar_Detalle_Venta();
+
         private void BtnImprimirInfo_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (dr != null)
+                {
+                    Mostrar.ShowDialog();
+                    DataGridVenta.UnselectAllCells();
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Imprimir Informe", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    DataGridVenta.UnselectAllCells();
+                }
+            }
 
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se ha Podido generar el Informe Por: " + ex, "Informe de Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                DataGridVenta.UnselectAllCells();
+            }
         }
 
         private void DataGridVenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,7 +198,10 @@ namespace CapaPresentacion
                     AnularVenta.txtSubTotal.Text = dr[5].ToString();
                     AnularVenta.txtDescuentoVenta.Text = dr[6].ToString();
                     AnularVenta.txtMontoTotal.Text = dr[7].ToString();
-                    
+
+                    Mostrar.Id_Venta = Convert.ToInt32(dr[0].ToString());
+
+
                 }
                 //else
                 //{
