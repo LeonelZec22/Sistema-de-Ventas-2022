@@ -40,8 +40,7 @@ namespace CapaPresentacion
         CE_Ventas Venta = new CE_Ventas();
         CDo_Detalle_Ventas DetalleVentas = new CDo_Detalle_Ventas();
         CE_Detalle_Ventas DetalleVenta = new CE_Detalle_Ventas();
-
-        //DateTime UltimoDia = new DateTime(DateTime.Now.Day, 1,1);
+        
        
         #endregion
 
@@ -107,7 +106,7 @@ namespace CapaPresentacion
         }
         #endregion
 
-        #region Seleccionar un Clientee 
+        #region Seleccionar un Cliente 
 
         private void SeleccionarCliente()
         {

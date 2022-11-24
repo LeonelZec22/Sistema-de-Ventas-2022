@@ -102,17 +102,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_Sistemas_v2DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmAgregarReserva.xaml.cs">
+      <DependentUpon>FrmAgregarReserva.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAgregarVenta.xaml.cs">
       <DependentUpon>FrmAgregarVenta.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmAnularVentas.xaml.cs">
       <DependentUpon>FrmAnularVentas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmReservas.xaml.cs">
+      <DependentUpon>FrmReservas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmVentas.xaml.cs">
       <DependentUpon>FrmVentas.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmVistaClientes.xaml.cs">
       <DependentUpon>FrmVistaClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVistaServicios.xaml.cs">
+      <DependentUpon>FrmVistaServicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVista_Reserva_Clientes.xaml.cs">
+      <DependentUpon>FrmVista_Reserva_Clientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmVista_Venta_Producto.xaml.cs">
       <DependentUpon>FrmVista_Venta_Producto.xaml</DependentUpon>
@@ -184,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmAgregarReserva.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAgregarServicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmReservas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmServicios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -253,6 +273,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmVistaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmVistaServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmVista_Reserva_Clientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

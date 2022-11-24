@@ -49,11 +49,13 @@
     <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Conexion.cs" />
     <Compile Include="CD_Detalle_Ingreso.cs" />
+    <Compile Include="CD_Detalle_Reservas.cs" />
     <Compile Include="CD_Detalle_Ventas.cs" />
     <Compile Include="CD_Ingreso_Productos.cs" />
     <Compile Include="CD_Procedimientos.cs" />
     <Compile Include="CD_Productos.cs" />
     <Compile Include="CD_Proveedores.cs" />
+    <Compile Include="CD_Reservas.cs" />
     <Compile Include="CD_Servicios.cs" />
     <Compile Include="CD_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

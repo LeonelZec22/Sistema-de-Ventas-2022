@@ -747,26 +747,162 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 		Estado - Se agrega por codigo 
 
 
+		----------------------------------------------
+
+			CREATE TABLE Ventas (
+			Id_Venta int identity(1,1) primary key not null,
+			Id_Cliente int not null,
+			Fecha_Venta date not null,
+			Sub_Total decimal (12,2) not null,
+			Descuento decimal (12,2),
+			Monto_Total decimal(12,2) not null,
+			Estado varchar(10),
+			Id_Usuario int  )
+
+			CREATE TABLE Detalle_Venta (
+			Id_DetalleVenta int identity(1,1) primary key not null,
+			Id_Venta int not null,
+			Id_Producto int not null,
+			Cantidad int not null,
+			Precio_Venta decimal(12,2) not null,
+			Sub_Total decimal (12,2) not null,
+			Descuento decimal (12,2),
+			Monto_Total decimal(12,2) not null,)
+
+			CREATE Table Reservas(
+			Id_Reservas int identity(1,1) primary key not null,
+			Id_Cliente int not null,
+			Id_Servicios int not null,
+			Fecha_Reserva date not null,
+			Estado varchar(10)
+
+			)
+
+			CREATE Table Detalle_Reservas(
+			Id_DetalleReserva int identity(1,1) primary key not null,
+			Id_Reserva int not null,
+			Id_Servicio int not null,
+			Cantidad int not null, 
+			Cantidad_Disponible int not null,
+			Cantidad_Usada int not null,
+
+			)
+
+
+			Alter PROC MostrarReservas
+			as
+			SELECT R.Id_Reservas, R.Id_Cliente,C.Nombre, R.Id_Servicios, S.Nombre, V.Fecha_Reserva, R.Estado, 
+			FROM Ventas V inner join Clientes C on V.Id_Cliente = C.Id_Cliente
+			inner join Usuarios U on V.Id_Usuario=U.Id_Usuario
+			GO
+
+			CREATE TABLE Reserva(
+			Id_Reserva int identity(1,1) primary key not null,
+			Id_Cliente int not null,
+			Fecha_Reserva date not null,
+			Estado varchar(10),
+			Descuento decimal (12,2),
+			Monto_Total decimal(12,2) not null
+			)
+
+			CREATE TABLE Detalle_Reserva(
+				Id_DetalleReserva int identity(1,1) primary key not null,
+				Id_Reserva int not null,
+				Id_Servicios int not null,
+				Descuento decimal (12,2),
+				Monto_Total decimal(12,2) not null)
+
+			GO
 
 
 
+			----------------------------------------------
+
+			[ Table Venta ]
+
+			txtId_Cliente
+
+			txtClienteNombre
+
+			txtId_Venta
+
+			dtp_FechaVenta
+
+			txtSubTotal
+
+			txtDescuentoVenta
+
+			txtMontoTotal
+
+			Estado -> se escribe por codigo 
+
+			[Table Detalle Venta]
+
+			txtId_Producto
+
+			txtCod_Producto
+
+			txtNombre_Producto
+
+			Cantidad -> se escribe manual
+
+			txtStockActual
+
+			txtPrecio_Venta
+
+			txtDescuento -> se escribe manual
 
 
+			ALTER PROC Mostrar_Detalle_Venta
+			@Id_Venta int
+			as
+			Select DV.Id_DetalleVenta, DV.Id_Venta, DV.Id_Producto, Pro.Nombre, DV.Cantidad, DV.Precio_Venta, 
+			 (DV.Cantidad * DV.Precio_Venta) as 'Sub Total', DV.Descuento ,DV.Monto_Total
+			FROM Detalle_Venta DV INNER JOIN Productos Pro 
+			ON DV.Id_Producto=Pro.Id_Producto
+			WHERE Id_Venta = @Id_Venta
 
+			GO
 
+			ALTER PROC Mostrar_Detalle_Reserva
 
+			@Id_Reserva int 
+			as 
+			Select DR.Id_DetalleReserva, DR.Id_Reserva, DR.Id_Servicio, S.Nombre, DR.Cantidad_Disponible, DR.Cantidad_Usado, S.Precio_Venta,
+			DR.Descuento, DR.Monto_Total
+			From Detalle_Reserva DR INNER JOIN Servicio S 
+			ON DR.Id_Servicio = S.Id_Servicio 
+			WHERE Id_Reserva = @Id_Reserva 
 
+			GO
 
+			Alter PROC MostrarVentas
+			as
+			SELECT R.Id_Reserva, R.Id_Cliente,C.Nombre, R.Fecha_Reserva, R.Estado,  R.Descuento, R.Monto_Total,
+			FROM Ventas V inner join Clientes C on V.Id_Cliente = C.Id_Cliente
+			GO
 
+			----------------------------------------------
 
+			Paso 1 : Creamos las clases de Reservas en las 3 capas 
 
+			Paso 2: Crear la pantalla de Reserva utilizando como plantilla FrmVentas
 
+			Paso 3: Método para mostrar el procedimiento almacenado
 
+			Paso 4: Creamos la pantalla de Agregar Reserva
 
+			Paso 5: Creamos la pantalla de Clientes
 
+			Paso 6: Mostramos los datos de clientes en esa pantalla
 
+			Paso 7: Seleccionamos el cliente en la pantalla agregar reserva
 
+			Paso 8: Creamos la pantalla de Servicios
 
+			Paso 9: Seleccionamos el Servicio en la pantalla de agregar reserva
+
+			Paso X: Creamos Venta de Servicio y Creamos el Trigger para cambiar el estado de Pendiente a Finalizado
 
 
 

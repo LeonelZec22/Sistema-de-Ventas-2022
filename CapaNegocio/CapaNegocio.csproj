@@ -45,11 +45,13 @@
   <ItemGroup>
     <Compile Include="CDo_Clientes.cs" />
     <Compile Include="CDo_Detalle_Ingreso.cs" />
+    <Compile Include="CDo_Detalle_Reservas.cs" />
     <Compile Include="CDo_Detalle_Ventas.cs" />
     <Compile Include="CDo_Ingreso_Productos.cs" />
     <Compile Include="CDo_Proveedores.cs" />
     <Compile Include="CDo_Procedimientos.cs" />
     <Compile Include="CDo_Productos.cs" />
+    <Compile Include="CDo_Reservas.cs" />
     <Compile Include="CDo_Servicios.cs" />
     <Compile Include="CDo_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

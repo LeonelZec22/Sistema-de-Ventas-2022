@@ -1,0 +1,95 @@
+﻿<Window x:Class="CapaPresentacion.FrmVistaServicios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:uc="clr-namespace:CapaPresentacion.Menu"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:hc="https://handyorg.github.io/handycontrol" 
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        mc:Ignorable="d"
+        Height="720" Width="1000.308" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+
+    </Window.Resources>
+
+    <Border Background="#1F1D1D" CornerRadius="30">
+
+        <Grid HorizontalAlignment="Right" Width="1080">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!--Sección Principal-->
+
+            <Grid Margin="30,18,20,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Botones de arriba-->
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Cog"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Bell"/>
+                </Button>
+
+                <!--Titulo del encabezado-->
+
+                <TextBlock Text="Selecciona un Servicios" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="107,10,0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
+
+                <!--Botones Encabezado-->
+
+                <!--Buscador-->
+                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,18,677,19" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <Button Grid.Row="4" Margin="810,1,94,534" Height="Auto"  x:Name="btnSeleccionarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarServicio_Click" Grid.RowSpan="2"/>
+
+                <Button Grid.Row="5" Margin="908,491,20,0" Height="Auto"  x:Name="btnCancelarSer" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarSer_Click"/>
+
+
+                <Grid Grid.Row="4" Margin="107,0,584,0">
+                    <ComboBox x:Name="cboServicios" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="-2,0,0,0" Panel.ZIndex="2">
+
+                        <ComboBoxItem Content="Codigo"/>
+                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
+                    </ComboBox>
+
+                    <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="159,10,0,10"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Margin="377,0,368,0">
+                    <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged" Height="54"/>
+                </Grid>
+
+                <!--Separarto-->
+
+                <Separator Height="1" Grid.Row="3" Background="#ffffff" Margin="0 -1 0 10" />
+
+                <!--DataGrid-->
+
+                <DataGrid x:Name="DataGridGestionServicios" HorizontalAlignment="Left" Height="444" Margin="91,40,0,0" Grid.Row="5" VerticalAlignment="Top" Width="929" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridGestionServicios_AutoGeneratingColumn" SelectionChanged="DataGridGestionServicios_SelectionChanged"/>
+
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</Window>

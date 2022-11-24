@@ -15,7 +15,7 @@ namespace CapaDatos
 
         private SqlCommand Cmd;
 
-        //Método para agregar el ingreso de un producto
+        //Método para agregar el ingreso de un venta
 
         public void AgregarVenta(CE_Ventas Ventas)
         {
