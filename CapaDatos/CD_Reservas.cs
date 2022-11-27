@@ -57,7 +57,7 @@ namespace CapaDatos
                 }
                 else
                 {
-                    Cmd = new SqlCommand("AgregarReserva", Con.Abrir());
+                    Cmd = new SqlCommand("AnularReserva", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Reservas.Id_Cliente));
                     Cmd.Parameters.Add(new SqlParameter("@Fecha_Reserva", Reservas.Fecha_Reserva));

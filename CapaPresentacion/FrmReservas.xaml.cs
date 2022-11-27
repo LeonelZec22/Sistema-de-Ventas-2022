@@ -71,10 +71,10 @@ namespace CapaPresentacion
         {
             CargarDatos();
         }
-        //private void AnRes_UpdateEventHandler(object sender, FrmAnularVentas.UpdateEventArgs args)
-        //{
-        //    CargarDatos();
-        //}
+        private void AnRes_UpdateEventHandler(object sender, FrmAnularReserva.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
 
 
         private void BtnNuevaReserva_Click(object sender, RoutedEventArgs e)
@@ -84,9 +84,58 @@ namespace CapaPresentacion
             AgregarReservas.ShowDialog();
         }
 
+
+
+        FrmAnularReserva AnularReserva = new FrmAnularReserva();
+        DataGrid dg;
+        DataRowView dr;
+
+
+
+        private void DataGridReserva_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (DataGridReserva.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No Hay Reservas para Anular!!! ", "Anular Resevas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+            else
+            {
+                if (dr != null)
+                {
+                    AnularReserva.UpdateEventHandler += AnRes_UpdateEventHandler;
+                    AnularReserva.txtId_Reserva.Text = dr[0].ToString();
+                    AnularReserva.txtId_Cliente.Text = dr[1].ToString();
+                    AnularReserva.txtClienteNombre.Text = dr[2].ToString();
+                    AnularReserva.dtp_FechaReserva.Text = dr[3].ToString();
+                    AnularReserva.txtEstado.Text = dr[4].ToString();
+                    AnularReserva.txtDescuentoVenta.Text = dr[5].ToString();
+                    AnularReserva.txtMontoTotal.Text = dr[6].ToString();
+
+                    //Mostrar.Id_Venta = Convert.ToInt32(dr[0].ToString());
+
+
+                }
+
+            }
+        }
         private void BtnAnularReserva_Click(object sender, RoutedEventArgs e)
         {
+            if (dr != null)
+            {
+                AnularReserva.MostrarDetalleVenta();
+                AnularReserva.ShowDialog();
+                DataGridReserva.UnselectAllCells();
+            }
 
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void BtnImprimirInfo_Click(object sender, RoutedEventArgs e)
@@ -98,15 +147,15 @@ namespace CapaPresentacion
         {
 
         }
-
-        private void DataGridReserva_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void BtnProductos_Click(object sender, RoutedEventArgs e)
         {
+            FrmProductos Productos = new FrmProductos();
 
+            Hide();
+
+            Productos.ShowDialog();
+
+            Close();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace CapaPresentacion
         }
 
 
-        FrmVistaProveedores vistaProveedores = new FrmVistaProveedores();
+        //FrmVistaProveedores vistaProveedores = new FrmVistaProveedores();
 
 
         #region evento de los textbox
@@ -105,11 +105,12 @@ namespace CapaPresentacion
         private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            Guardar();
+            Agregar();
         }
 
         #endregion
 
+        //FrmProveedores proveedores = new FrmProveedores();
         public virtual bool Guardar()
         {
             try
@@ -137,7 +138,12 @@ namespace CapaPresentacion
                     txtAddNombreProveedor.Focus();
 
                     Agregar();
-                    
+
+                    Hide();
+                    //proveedores.CargarDatos();
+                    //vistaProveedores.CargarDatos();
+                    //proveedores.ShowDialog();
+
                     //FrmProductos productos = new FrmProductos();
                     //productos.ShowDialog();
 

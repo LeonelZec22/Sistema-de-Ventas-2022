@@ -527,6 +527,7 @@ namespace CapaPresentacion
             }
         }
 
+        FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
 
         private void BtnGuardarIngreso_Click(object sender, RoutedEventArgs e)
         {
@@ -537,7 +538,7 @@ namespace CapaPresentacion
         {
             try
             {
-                if (txtId_IngresoProducto.Text == string.Empty || txtNo_Ingreso.Text == string.Empty || txtId_Proveedor.Text == string.Empty || txtNombre_Proveedor.Text == string.Empty )
+                if (txtId_IngresoProducto.Text == string.Empty || txtNo_Ingreso.Text == string.Empty || txtId_Proveedor.Text == string.Empty || txtNombre_Proveedor.Text == string.Empty)
                 {
                     System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
@@ -575,6 +576,7 @@ namespace CapaPresentacion
                     limpiarFila();
                     Correlativo();
                     Hide();
+                    //compraDeProducto.ShowDialog();
                     return true;
                 }
             }
@@ -604,6 +606,7 @@ namespace CapaPresentacion
         private void BtnCancelarIngreso_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+            //compraDeProducto.ShowDialog();
             limpiarFila();
             TableProductos = null;
         }

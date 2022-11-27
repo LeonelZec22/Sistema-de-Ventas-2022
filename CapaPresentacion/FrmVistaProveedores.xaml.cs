@@ -160,8 +160,8 @@ namespace CapaPresentacion
 
         private void Btnaddcli_Click(object sender, RoutedEventArgs e)
         {
-            FrmAgregarProveedores proveedores = new FrmAgregarProveedores();
-            proveedores.ShowDialog();
+            //FrmProveedores proveedores = new FrmProveedores();
+            //proveedores.ShowDialog();
         }
     }
 }

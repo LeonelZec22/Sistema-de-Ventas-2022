@@ -79,6 +79,7 @@ namespace CapaPresentacion
         {
             FrmAgregarIngreso AgregarProducto = new FrmAgregarIngreso(this);
             AgregarProducto.UpdateEventHandler += AgIn_UpdateEventHandler;
+            //this.Hide();
             AgregarProducto.ShowDialog();
         }
 
@@ -95,6 +96,7 @@ namespace CapaPresentacion
                 AnularProducto.MostrarDetalleIngreso();
                 AnularProducto.ShowDialog();
                 DataGridIngresoProducto.UnselectAllCells();
+                
             }
 
             else

@@ -203,10 +203,7 @@ namespace CapaPresentacion
 
 
                 }
-                //else
-                //{
-                //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una compra para Anular!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                //}
+                
             }
         }
 

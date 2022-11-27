@@ -63,7 +63,8 @@ namespace CapaPresentacion
         #region Evento Clic de los botones
         private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
+            Agregar();
         }
         private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
         {

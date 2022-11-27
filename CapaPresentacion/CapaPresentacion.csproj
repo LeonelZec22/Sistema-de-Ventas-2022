@@ -108,11 +108,17 @@
     <Compile Include="FrmAgregarVenta.xaml.cs">
       <DependentUpon>FrmAgregarVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmAnularReserva.xaml.cs">
+      <DependentUpon>FrmAnularReserva.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAnularVentas.xaml.cs">
       <DependentUpon>FrmAnularVentas.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmReservas.xaml.cs">
       <DependentUpon>FrmReservas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsuarios.xaml.cs">
+      <DependentUpon>FrmUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmVentas.xaml.cs">
       <DependentUpon>FrmVentas.xaml</DependentUpon>
@@ -212,6 +218,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmAnularReserva.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAnularVentas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmServicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

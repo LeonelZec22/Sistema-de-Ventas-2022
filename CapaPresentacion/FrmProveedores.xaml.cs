@@ -79,6 +79,7 @@ namespace CapaPresentacion
         {
             FrmAgregarProveedores proveedores = new FrmAgregarProveedores(this);
             proveedores.UpdateEventHandler += AgProve_UpdateEventHandler;
+            //this.Hide();
             proveedores.ShowDialog();
         }
 

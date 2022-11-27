@@ -51,6 +51,7 @@
     <Compile Include="CE_Proveedores.cs" />
     <Compile Include="CE_Reservas.cs" />
     <Compile Include="CE_Servicios.cs" />
+    <Compile Include="CE_Usuarios.cs" />
     <Compile Include="CE_Ventas.cs" />
     <Compile Include="DataGridItemsProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

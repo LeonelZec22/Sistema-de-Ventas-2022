@@ -132,7 +132,7 @@ namespace CapaPresentacion
                         Ventas.AnularVenta(Venta);
                         System.Windows.Forms.MessageBox.Show("Venta Cancelada Correctamente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                         Anular();
-                        this.Close();
+                        this.Hide();
                     }
 
                     else if (Resultado == System.Windows.Forms.DialogResult.No)
