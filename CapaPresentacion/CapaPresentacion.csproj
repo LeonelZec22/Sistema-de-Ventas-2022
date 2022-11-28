@@ -97,6 +97,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuraciones.xaml.cs">
+      <DependentUpon>Configuraciones.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB_Sistemas_v2DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +144,9 @@
     <Compile Include="FrmVista_Venta_Producto.xaml.cs">
       <DependentUpon>FrmVista_Venta_Producto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InformacionEmpresa.xaml.cs">
+      <DependentUpon>InformacionEmpresa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Informes\Datos_Generales3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +165,10 @@
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Page Include="Configuraciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataGridBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -313,6 +323,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmVista_Venta_Producto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformacionEmpresa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -492,6 +506,8 @@
     <Resource Include="Images\ventas-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\database.png" />
+    <Resource Include="Images\thermal-spa.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

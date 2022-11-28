@@ -58,9 +58,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <hc:SimplePanel Margin="-5,8,-5,-13" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="55">
-                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\home-48.png
-                                           "/>
-                                    <Label Content="Inicio" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="55" Margin="0,32,0,0" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="/Images/settings.png"/>
+                                    <Label Content="Config." HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="55" Margin="0,32,0,0" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
                                 </hc:SimplePanel>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="Content" Value="{x:Null}"/>
@@ -145,8 +144,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <hc:SimplePanel Margin="-5,3,-27,-18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="77">
-                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\Product-64.png                                            "/>
-                                    <Label Content="Productos" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="0,32,0,-2" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+                                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Top" Width="32" Source="/Images/spa.png"/>
+                                    <Label Content="Usuarios" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="77" Margin="0,32,0,-2" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
                                 </hc:SimplePanel>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="Content" Value="{x:Null}"/>
@@ -409,24 +408,12 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
-                                    <Border.Visibility>
-                                        <TemplateBinding Property="Header">
-                                            <TemplateBinding.Converter>
-                                                <hc:Object2VisibilityConverter/>
-                                            </TemplateBinding.Converter>
-                                        </TemplateBinding>
-                                    </Border.Visibility>
+                                   
                                     <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header"/>
                                 </Border>
                                 <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Grid.Row="1"/>
                                 <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0" Grid.Row="2">
-                                    <Border.Visibility>
-                                        <TemplateBinding Property="Footer">
-                                            <TemplateBinding.Converter>
-                                                <hc:Object2VisibilityConverter/>
-                                            </TemplateBinding.Converter>
-                                        </TemplateBinding>
-                                    </Border.Visibility>
+                                    
                                     <ContentPresenter ContentTemplate="{TemplateBinding FooterTemplate}" Content="{TemplateBinding Footer}" ContentStringFormat="{TemplateBinding FooterStringFormat}" ContentSource="Footer"/>
                                 </Border>
                             </Grid>
@@ -578,10 +565,10 @@
             <Ellipse Fill="#FF111111" Margin="19,7,0,10" Stroke="Black" RenderTransformOrigin="1.087,0.44"/>
 
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556"/>
+        <Button Content="Button" x:Name="btnConfiguracion" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556" Click="BtnConfiguracion_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,278,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle3}"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,375,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle4}"/>
+        <!--<Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,278,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle3}"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,375,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle4}"/>-->
         <hc:SearchBar HorizontalAlignment="Left" Height="38" Margin="480,10,0,0" TextWrapping="Wrap" Text="Busqueda" VerticalAlignment="Top" Width="475"/>
         <TextBlock HorizontalAlignment="Left" Margin="161,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="38" Foreground="#FFFBF4F4" FontSize="24" FontWeight="Bold"><Run Text="Bienv"/><Run Text="enido"/></TextBlock>
         <Image HorizontalAlignment="Left" Height="53" Margin="100,10,0,0" VerticalAlignment="Top" Width="56" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png"/>

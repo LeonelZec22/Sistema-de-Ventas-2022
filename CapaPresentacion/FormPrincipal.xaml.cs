@@ -63,5 +63,12 @@ namespace CapaPresentacion
             Proveedor.ShowDialog();
             Close();
         }
+
+        private void BtnConfiguracion_Click(object sender, RoutedEventArgs e)
+        {
+            Configuraciones configuraciones = new Configuraciones();
+            configuraciones.ShowDialog();
+
+        }
     }
 }
