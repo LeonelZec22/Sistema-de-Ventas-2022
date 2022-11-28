@@ -36,9 +36,11 @@ namespace CapaPresentacion
             empresa.ShowDialog();
         }
 
+
         private void BtnBackup_Click(object sender, RoutedEventArgs e)
         {
-
+            BackupBaseDatos backupBase = new BackupBaseDatos();
+            backupBase.ShowDialog();
         }
     }
 }

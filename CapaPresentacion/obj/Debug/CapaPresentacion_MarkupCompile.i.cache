@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\CapaPresentacion\App.xaml
 39162983943
 51001242449
-541843124077
-32247530884
+56353563993
+331234039384
 Configuraciones.xaml;DataGridBase.xaml;FormAgregarBase.xaml;FormEditBase.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarReserva.xaml;FrmAgregarServicio.xaml;FrmAgregarUsuario.xaml;FrmAgregarVenta.xaml;FrmAnularIngresoProducto.xaml;FrmAnularReserva.xaml;FrmAnularVentas.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmEditarUsuario.xaml;FrmInventario.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmReservas.xaml;FrmServicios.xaml;FrmUsuarios.xaml;FrmVentas.xaml;FrmVistaClientes.xaml;FrmVistaProducto.xaml;FrmVistaProveedores.xaml;FrmVistaServicios.xaml;FrmVista_Reserva_Clientes.xaml;FrmVista_Venta_Producto.xaml;InformacionEmpresa.xaml;Login.xaml;Menu\Modulos.xaml;
 
-False
+True
 
