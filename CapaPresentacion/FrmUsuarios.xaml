@@ -218,7 +218,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="btnEliminarUsuario" Style="{StaticResource addButton}" Margin="0,18,331,10" Click="BtnEditarUsuario_Click" Width="141">
+                <Button x:Name="btnEliminarUsuario" Style="{StaticResource addButton}" Margin="0,18,331,10" Click="BtnEliminarUsuario_Click" Width="141">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Width="18" Height="18" Margin="0 1 8 0" />
                         <TextBlock Text="Eliminar Usuario"/>
