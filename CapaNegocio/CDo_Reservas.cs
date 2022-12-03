@@ -33,5 +33,23 @@ namespace CapaNegocio
         {
             return objReservas.MostrarReservas();
         }
+
+        public DataTable Buscar_Reserva_Nombre(CE_Reservas Reservas)
+        {
+            return objReservas.Buscar_Reserva_Nombre(Reservas);
+        }
+
+        //Método que me permite buscar una reserva  por la fecha de reserva
+        public DataTable Buscar_Reserva_FechaReserva(CE_Reservas Reservas)
+        {
+            return objReservas.Buscar_Reserva_FechaReserva(Reservas);
+        }
+
+        //Método que me permite buscar una reserva  por el estado de la reserva
+        public DataTable Buscar_Reserva_Estado(CE_Reservas Reservas)
+        {
+            return objReservas.Buscar_Reserva_Estado(Reservas);
+        }
+
     }
 }

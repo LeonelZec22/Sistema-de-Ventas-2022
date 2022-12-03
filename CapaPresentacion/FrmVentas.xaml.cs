@@ -89,17 +89,17 @@ namespace CapaPresentacion
                 e.Column.Width = 130;
             }
 
-            if (Estado == "Sub_Total")
+            if (Sub_Total == "Sub_Total")
             {
                 e.Column.Width = 120;
             }
 
-            if (Estado == "Monto_Total")
+            if (Monto_Total == "Monto_Total")
             {
                 e.Column.Width = 120;
             }
 
-            if (Estado == "Usuario")
+            if (Usuario == "Usuario")
             {
                 e.Column.Width = 175;
             }
@@ -107,6 +107,11 @@ namespace CapaPresentacion
             if (Descuento == "Descuento")
             {
                 e.Column.Width = 100;
+            }
+
+            if (e.PropertyType == typeof(System.DateTime))
+            {
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
             }
 
         }
@@ -210,7 +215,37 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Buscar();
+        }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboVenta.Text == "Nombre")
+                {
+                    Venta.Buscar = txtBuscador.Text.Trim();
+                    DataGridVenta.ItemsSource = Ventas.Buscar_Venta_Nombre(Venta).AsDataView();
+                }
+                
+                else if (cboVenta.Text == "Estado")
+                {
+
+                    Venta.Buscar = txtBuscador.Text.Trim();
+                    DataGridVenta.ItemsSource = Ventas.Buscar_Venta_Estado(Venta).AsDataView();
+                }
+
+                //else if (cboReserva.Text == "Fecha")
+                //{
+                //    Reserva.Buscar = txtBuscador.Text.Trim();
+                //    DataGridReserva.ItemsSource = Reservas.Buscar_Reserva_FechaReserva(Reserva).AsDataView();
+                //}
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("La Venta no fue encontrada por: " + ex.Message, "Buscar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
 

@@ -431,6 +431,7 @@ namespace CapaPresentacion
                 {
 
                     Reserva.Id_Cliente = Convert.ToInt32(txtId_Cliente.Text);
+                    Reserva.Nombre = Convert.ToString(txtClienteNombre.Text);
                     Reserva.Fecha_Reserva = Convert.ToDateTime(dtp_FechaReserva.Text);
                     Reserva.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
                     Reserva.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);

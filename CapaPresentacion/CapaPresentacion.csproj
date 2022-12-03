@@ -121,11 +121,17 @@
     <Compile Include="FrmAgregarVenta.xaml.cs">
       <DependentUpon>FrmAgregarVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmAgregar_Venta_Servicios.xaml.cs">
+      <DependentUpon>FrmAgregar_Venta_Servicios.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAnularReserva.xaml.cs">
       <DependentUpon>FrmAnularReserva.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmAnularVentas.xaml.cs">
       <DependentUpon>FrmAnularVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAnular_Venta_Servicio.xaml.cs">
+      <DependentUpon>FrmAnular_Venta_Servicio.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmEditarUsuario.xaml.cs">
       <DependentUpon>FrmEditarUsuario.xaml</DependentUpon>
@@ -138,6 +144,9 @@
     </Compile>
     <Compile Include="FrmVentas.xaml.cs">
       <DependentUpon>FrmVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVentas_Servicios.xaml.cs">
+      <DependentUpon>FrmVentas_Servicios.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmVistaClientes.xaml.cs">
       <DependentUpon>FrmVistaClientes.xaml</DependentUpon>
@@ -172,6 +181,9 @@
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="VistaReservas.xaml.cs">
+      <DependentUpon>VistaReservas.xaml</DependentUpon>
+    </Compile>
     <Page Include="Configuraciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +253,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmAgregar_Venta_Servicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAnularIngresoProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +266,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmAnularVentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmAnular_Venta_Servicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,6 +329,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmVentas_Servicios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmVistaClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -342,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu\Modulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistaReservas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

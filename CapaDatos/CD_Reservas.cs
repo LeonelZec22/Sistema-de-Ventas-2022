@@ -13,6 +13,8 @@ namespace CapaDatos
         CD_Conexion Con = new CD_Conexion();
 
         private SqlCommand Cmd;
+        SqlDataAdapter Da;
+        DataTable dataTable;
 
         //Método para agregar el ingreso de una reserva
 
@@ -21,6 +23,7 @@ namespace CapaDatos
             Cmd = new SqlCommand("AgregarReserva", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Reservas.Id_Cliente));
+            Cmd.Parameters.Add(new SqlParameter("@Nombre", Reservas.Nombre));
             Cmd.Parameters.Add(new SqlParameter("@Fecha_Reserva", Reservas.Fecha_Reserva));
             Cmd.Parameters.Add(new SqlParameter("@Estado", Reservas.Estado));
             Cmd.Parameters.Add(new SqlParameter("@Descuento", Reservas.Descuento));
@@ -60,6 +63,7 @@ namespace CapaDatos
                     Cmd = new SqlCommand("AnularReserva", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Reservas.Id_Cliente));
+                    Cmd.Parameters.Add(new SqlParameter("@Nombre", Reservas.Nombre));
                     Cmd.Parameters.Add(new SqlParameter("@Fecha_Reserva", Reservas.Fecha_Reserva));
                     Cmd.Parameters.Add(new SqlParameter("@Estado", Reservas.Estado));
                     Cmd.Parameters.Add(new SqlParameter("@Descuento", Reservas.Descuento));
@@ -96,6 +100,54 @@ namespace CapaDatos
             Dr.Close();
 
             return Dt;
+        }
+
+        //Método que me permite buscar una reserva  por el nombre
+        public DataTable Buscar_Reserva_Nombre(CE_Reservas Reservas)
+        {
+            dataTable = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_Reserva_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Reservas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        //Método que me permite buscar una reserva  por la fecha de reserva
+        public DataTable Buscar_Reserva_FechaReserva(CE_Reservas Reservas)
+        {
+            dataTable = new DataTable("FechaReserva");
+            Cmd = new SqlCommand("Buscar_Reserva_FechaReserva", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Reservas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        //Método que me permite buscar una reserva  por el estado de la reserva
+        public DataTable Buscar_Reserva_Estado(CE_Reservas Reservas)
+        {
+            dataTable = new DataTable("Estado");
+            Cmd = new SqlCommand("Buscar_Reserva_Estado", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Reservas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
         }
     }
 }

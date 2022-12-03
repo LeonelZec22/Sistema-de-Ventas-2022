@@ -9,7 +9,7 @@ using CapaEntidad;
 
 namespace CapaDatos
 {
-    public class CD_Ventas
+    public class CD_Ventas_Servicios
     {
         CD_Conexion Con = new CD_Conexion();
 
@@ -18,13 +18,12 @@ namespace CapaDatos
         DataTable dataTable;
         //Método para agregar el ingreso de un venta
 
-        public void AgregarVenta(CE_Ventas Ventas)
+        public void AgregarVentaServicios(CE_Ventas_Servicios Ventas)
         {
-            Cmd = new SqlCommand("AgregarVenta", Con.Abrir());
+            Cmd = new SqlCommand("AgregarVentaServicios", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Ventas.Id_Cliente));
             Cmd.Parameters.Add(new SqlParameter("@Fecha_Venta", Ventas.Fecha_Venta));
-            Cmd.Parameters.Add(new SqlParameter("@Sub_Total", Ventas.Sub_Total));
             Cmd.Parameters.Add(new SqlParameter("@Descuento", Ventas.Descuento));
             Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ventas.Monto_Total));
             Cmd.Parameters.Add(new SqlParameter("@Estado", Ventas.Estado));
@@ -34,16 +33,14 @@ namespace CapaDatos
             Con.Cerrar();
         }
 
-        //Método para anular el ingreso de un producto por ejemplo se cancelo el envio de un producto o se devuelve un producto
-
-        public void AnularVenta(CE_Ventas Ventas)
+        public void AnularVentaServicios(CE_Ventas_Servicios Ventas)
         {
             try
             {
 
                 string Estado = string.Empty;
 
-                Cmd = new SqlCommand("Select Estado From Ventas Where Id_Venta=" + Ventas.Id_Venta + "", Con.Abrir());
+                Cmd = new SqlCommand("Select Estado From Ventas_Servicios Where Id_Venta_Servicios=" + Ventas.Id_Venta_Servicios + "", Con.Abrir());
                 Cmd.CommandType = CommandType.Text;
                 SqlDataReader dr = Cmd.ExecuteReader();
 
@@ -61,16 +58,15 @@ namespace CapaDatos
                 }
                 else
                 {
-                    Cmd = new SqlCommand("AnularVenta", Con.Abrir());
+                    Cmd = new SqlCommand("AnularVentaServicios", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Ventas.Id_Cliente));
                     Cmd.Parameters.Add(new SqlParameter("@Fecha_Venta", Ventas.Fecha_Venta));
-                    Cmd.Parameters.Add(new SqlParameter("@Sub_Total", Ventas.Sub_Total));
                     Cmd.Parameters.Add(new SqlParameter("@Descuento", Ventas.Descuento));
                     Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ventas.Monto_Total));
                     Cmd.Parameters.Add(new SqlParameter("@Estado", Ventas.Estado));
                     Cmd.Parameters.Add(new SqlParameter("@id_Usuario", Ventas.Id_Usuario));
-                    Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Ventas.Id_Venta));
+                    Cmd.Parameters.Add(new SqlParameter("@Id_Venta_Servicios", Ventas.Id_Venta_Servicios));
                     Cmd.ExecuteNonQuery();
                     System.Windows.Forms.MessageBox.Show("La Venta fue anulada correctamente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                     Con.Cerrar();
@@ -78,19 +74,17 @@ namespace CapaDatos
 
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("No se puedo anular la venta por: " + ex, "Cancelar Venta de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("No se puedo anular la venta por: " + ex, "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
 
         }
 
-
-        //Método para mostrar los productos ingresos 
-        public DataTable MostrarVentas()
+        public DataTable MostrarVentasServicios()
         {
-            DataTable Dt = new DataTable("Venta_de_Producto");
-            Cmd = new SqlCommand("MostrarVentas", Con.Abrir());
+            DataTable Dt = new DataTable("Venta_de_Reserva");
+            Cmd = new SqlCommand("MostrarVentasServicios", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataReader Dr = Cmd.ExecuteReader();
@@ -103,53 +97,20 @@ namespace CapaDatos
             return Dt;
         }
 
-        public DataTable Mostrar_Ingreso_Ventas()
-        {
-            DataTable Dt = new DataTable("Mostrar_Producto_Venta");
-            Cmd = new SqlCommand("Mostrar_Ingreso_Ventas", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
+        //public DataTable Mostrar_Ingreso_Ventas()
+        //{
+        //    DataTable Dt = new DataTable("Mostrar_Producto_Venta");
+        //    Cmd = new SqlCommand("Mostrar_Ingreso_Ventas", Con.Abrir());
+        //    Cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlDataReader Dr = Cmd.ExecuteReader();
-            Dt.Load(Dr);
+        //    SqlDataReader Dr = Cmd.ExecuteReader();
+        //    Dt.Load(Dr);
 
-            Con.Cerrar();
+        //    Con.Cerrar();
 
-            Dr.Close();
+        //    Dr.Close();
 
-            return Dt;
-        }
-
-        //Método que me permite buscar una venta  por el nombre
-        public DataTable Buscar_Venta_Nombre(CE_Ventas Ventas)
-        {
-            dataTable = new DataTable("Nombre");
-            Cmd = new SqlCommand("Buscar_Venta_Nombre", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
-
-            Da = new SqlDataAdapter(Cmd);
-            Da.Fill(dataTable);
-
-            Con.Cerrar();
-
-            return dataTable;
-        }
-
-        //Método que me permite buscar una venta  por el estado
-        public DataTable Buscar_Venta_Estado(CE_Ventas Ventas)
-        {
-            dataTable = new DataTable("Estado");
-            Cmd = new SqlCommand("Buscar_Venta_Estado", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
-
-            Da = new SqlDataAdapter(Cmd);
-            Da.Fill(dataTable);
-
-            Con.Cerrar();
-
-            return dataTable;
-        }
-
+        //    return Dt;
+        //}
     }
 }

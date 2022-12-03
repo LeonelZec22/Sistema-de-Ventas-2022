@@ -38,6 +38,17 @@ namespace CapaNegocio
             return objVentas.Mostrar_Ingreso_Ventas();
         }
 
-        
+        //Método que me permite buscar una venta  por el nombre
+        public DataTable Buscar_Venta_Nombre(CE_Ventas Ventas)
+        {
+            return objVentas.Buscar_Venta_Nombre(Ventas);
+        }
+
+        //Método que me permite buscar una venta  por el estado
+        public DataTable Buscar_Venta_Estado(CE_Ventas Ventas)
+        {
+            return objVentas.Buscar_Venta_Estado(Ventas);
+        }
+
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="CD_Detalle_Ingreso.cs" />
     <Compile Include="CD_Detalle_Reservas.cs" />
     <Compile Include="CD_Detalle_Ventas.cs" />
+    <Compile Include="CD_Detalle_Ventas_Servicios.cs" />
     <Compile Include="CD_Ingreso_Productos.cs" />
     <Compile Include="CD_Procedimientos.cs" />
     <Compile Include="CD_Productos.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="CD_Servicios.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="CD_Ventas.cs" />
+    <Compile Include="CD_Ventas_Servicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

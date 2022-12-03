@@ -909,11 +909,67 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 			Paso X: Creamos Venta de Servicio y Creamos el Trigger para cambiar el estado de Pendiente a Finalizado
 
 
+			----------------------------------------------
+
+			txtId_Venta -> Ventas 
+
+			txtId_Cliente -> Ventas
+
+			txtClienteNombre 
+
+			dtp_FechaVenta -> Ventas
 
 
+			********************
 
+			txtId_Venta -> Detalle Venta
 
+			txtId_Producto -> Detalle VENTA
 
+			txtCod_Producto
+
+			txtNombre_Producto
+
+			txtCantidad -> Detalle Venta
+
+			txtStockActual
+
+			txtPrecio_Venta -> Detalle Venta
+
+			txtDescuento -> Detalle Venta 
+
+			txtSubTotal -> Detalle Ventas
+
+			txtDescuentoVenta -> Ventas
+
+			txtMontoTotal -> Ventas
+
+			Estado -> Por código 
+
+			
+			********************
+			
+			txtId_Reserva -> Detalle_Venta_Servicios
+
+			txtId_Cliente -> Ventas_Servicios
+
+			txtClienteNombre 
+			
+			txtFechaReserva -> Detalle_Venta_Servicios
+			
+			txtEstado -> Detalle_Venta_Servicios
+
+			txtDescuento -> se ingresa
+			
+			txtMontoTotal1 -> de reservas
+
+			txtId_Venta_Servicios -> Ventas_Servicios y  Detalle_Venta_Servicios
+
+			dtp_FechaVenta -> Ventas_Servicios
+
+			txtDescuentoVenta -> Detalle_Venta_Servicios y Ventas_Servicios
+
+			txtMontoTotal -> Detalle_Venta_Servicios y Ventas_Servicios
 
 
 

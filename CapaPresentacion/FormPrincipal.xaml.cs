@@ -40,7 +40,7 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnProductos_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             FrmProductos frmProductos = new FrmProductos();
@@ -48,7 +48,8 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+
+        private void BtnInventario_Click(object sender, RoutedEventArgs e)
         {
             FrmInventario frmInventario = new FrmInventario();
             Hide();
@@ -56,7 +57,7 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
             FrmProveedores Proveedor = new FrmProveedores();
             Hide();
@@ -68,6 +69,45 @@ namespace CapaPresentacion
         {
             Configuraciones configuraciones = new Configuraciones();
             configuraciones.ShowDialog();
+            Close();
+        }
+
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            FrmReservas reservas = new FrmReservas();
+            Hide();
+            reservas.ShowDialog();
+            Close();
+        }
+
+      
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrmClientes clientes = new FrmClientes();
+            Hide();
+            clientes.ShowDialog();
+            Close();
+        }
+
+        private void BtnServicios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmServicios servicios = new FrmServicios();
+            Hide();
+            servicios.ShowDialog();
+            Close();
+        }
+
+
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVentas ventas = new FrmVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
+        }
+
+        private void BtnPaquetes_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

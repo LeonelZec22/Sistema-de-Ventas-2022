@@ -233,7 +233,7 @@
                 <Grid Grid.Row="4" Margin="107,0,584,0">
                     <ComboBox x:Name="cboVenta" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
 
-                        <ComboBoxItem Content="Nombre de proveedor" IsSelected="True"/>
+                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
                         <ComboBoxItem Content="Fecha de ingreso"/>
                         <ComboBoxItem Content="Estado"/>
                     </ComboBox>
@@ -260,4 +260,5 @@
 
         </Grid>
     </Border>
+
 </Window>

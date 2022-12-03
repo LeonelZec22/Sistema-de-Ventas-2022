@@ -107,6 +107,7 @@ namespace CapaPresentacion
                     if (Resultado == System.Windows.Forms.DialogResult.Yes)
                     {
                         Reserva.Id_Cliente = Convert.ToInt32(txtId_Cliente.Text);
+                        Reserva.Nombre = Convert.ToString(txtClienteNombre.Text);
                         Reserva.Id_Reserva = Convert.ToInt32(txtId_Reserva.Text);
                         Reserva.Fecha_Reserva = Convert.ToDateTime(dtp_FechaReserva.Text);
                         Reserva.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);

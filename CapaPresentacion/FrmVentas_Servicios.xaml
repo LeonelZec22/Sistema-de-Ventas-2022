@@ -1,4 +1,4 @@
-﻿<Window x:Class="CapaPresentacion.FrmReservas"
+﻿<Window x:Class="CapaPresentacion.FrmVentas_Servicios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,6 +8,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         mc:Ignorable="d"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded">
+
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -199,22 +200,22 @@
 
                 <!--Titulo del encabezado-->
 
-                <TextBlock Text="Reserva de Servicios" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
+                <TextBlock Text="Ventas de Reserva" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
 
                 <!--Botones Encabezado-->
 
-                <Button x:Name="btnNuevaReserva" Style="{StaticResource addButton}" Margin="0,18,12,10" Click="BtnNuevaReserva_Click" Width="132">
+                <Button x:Name="btnNuevaVenta" Style="{StaticResource addButton}" Margin="0,18,12,10" Click="BtnNuevaVenta_Click" Width="132">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="15" Height="15" Margin="0 1 8 0" />
-                        <TextBlock Text="Nueva Reserva"/>
+                        <TextBlock Text="Nueva Venta"/>
                     </StackPanel>
                 </Button>
 
 
-                <Button x:Name="btnAnularReserva" Style="{StaticResource addButton}" Margin="0,18,177,10" Click="BtnAnularReserva_Click" Width="135">
+                <Button x:Name="btnAnularVenta" Style="{StaticResource addButton}" Margin="0,18,177,10" Click="BtnAnularVenta_Click" Width="135">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="AlertOctagonOutline" VerticalAlignment="Center" Width="18" Height="18" Margin="0 1 8 0" />
-                        <TextBlock Text="Anular Reserva"/>
+                        <TextBlock Text="Anular Ingreso"/>
                     </StackPanel>
                 </Button>
 
@@ -231,10 +232,10 @@
 
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox x:Name="cboReserva" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
+                    <ComboBox x:Name="cboVenta" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
 
                         <ComboBoxItem Content="Nombre" IsSelected="True"/>
-                        <ComboBoxItem Content="Fecha"/>
+                        <ComboBoxItem Content="Fecha de ingreso"/>
                         <ComboBoxItem Content="Estado"/>
                     </ComboBox>
 
@@ -253,7 +254,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridReserva" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridReserva_AutoGeneratingColumn" SelectionChanged="DataGridReserva_SelectionChanged"/>
+                <DataGrid x:Name="DataGridVentaReservaa" HorizontalAlignment="Left" Height="444" Margin="-17,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="847" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridVentaReservaa_AutoGeneratingColumn" SelectionChanged="DataGridVentaReservaa_SelectionChanged" HorizontalScrollBarVisibility="Auto"/>
 
             </Grid>
 

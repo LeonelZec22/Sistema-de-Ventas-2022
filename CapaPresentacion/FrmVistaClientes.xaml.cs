@@ -45,6 +45,7 @@ namespace CapaPresentacion
         private void CargarDatos()
         {
             DataGridGestionClientes.ItemsSource = Procedimientos.CargarDatos("Clientes").AsDataView();
+            //DataGridGestionClientes.ItemsSource = Clientes.Mo("Clientes").AsDataView();
             DataGridGestionClientes.UnselectAllCells();
         }
 
@@ -88,9 +89,34 @@ namespace CapaPresentacion
             DataGridGestionClientes.UnselectAllCells();
         }
 
-        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void TxtBuscadorr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Buscar();
         }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboVistaClientes.Text == "Codigo")
+                {
+                    Cliente.Buscar = txtBuscadorr.Text.Trim();
+                    DataGridGestionClientes.ItemsSource = Clientes.Buscar_Cliente_Codigo(Cliente).AsDataView();
+                }
+                else if (cboVistaClientes.Text == "Nombre")
+                {
+                    Cliente.Buscar = txtBuscadorr.Text.Trim();
+                    DataGridGestionClientes.ItemsSource = Clientes.Buscar_Cliente_Nombre(Cliente).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Cliente no fue encontrado por: " + ex.Message, "Buscar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
     }
 }

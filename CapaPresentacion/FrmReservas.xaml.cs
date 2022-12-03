@@ -65,6 +65,11 @@ namespace CapaPresentacion
 
             }
 
+            if (e.PropertyType == typeof(System.DateTime))
+            {
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+            }
+            //DataGridReserva.Columns[3].HeaderStringFormat.
         }
 
         private void AgRes_UpdateEventHandler(object sender, FrmAgregarReserva.UpdateEventArgs args)
@@ -145,8 +150,37 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboReserva.Text == "Nombre")
+                {
+                    Reserva.Buscar = txtBuscador.Text.Trim();
+                    DataGridReserva.ItemsSource = Reservas.Buscar_Reserva_Nombre(Reserva).AsDataView();
+                }
+                else if (cboReserva.Text == "Fecha")
+                {
+                    Reserva.Buscar = txtBuscador.Text.Trim();
+                    DataGridReserva.ItemsSource = Reservas.Buscar_Reserva_FechaReserva(Reserva).AsDataView();
+                }
+                else if (cboReserva.Text == "Estado")
+                {
+                    Reserva.Buscar = txtBuscador.Text.Trim();
+                    DataGridReserva.ItemsSource = Reservas.Buscar_Reserva_Estado(Reserva).AsDataView();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("La Reserva no fue encontrada por: " + ex.Message, "Buscar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+
         private void BtnProductos_Click(object sender, RoutedEventArgs e)
         {
             FrmProductos Productos = new FrmProductos();
