@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using CapaEntidad;
+using CapaEntidad.Caches;
 using System.Windows.Forms;
 using System.Windows.Controls;
 
@@ -16,8 +17,9 @@ namespace CapaDatos
         CD_Conexion Con = new CD_Conexion();
 
         SqlCommand Cmd;
-        //SqlDataAdapter Da;
-        //DataTable dataTable;
+        SqlDataAdapter Da;
+        SqlDataReader Dr;
+        DataTable Dt;
 
         //Método que me permite agregar un usuario a la base de datos 
 
@@ -68,6 +70,49 @@ namespace CapaDatos
             Con.Cerrar();
         }
 
-       
+       //Método que permite Accesar al Sistema 
+
+        public DataTable LoginUsuario(CE_Usuarios Usuarios)
+        {
+            Dt = new DataTable("Login Usuario");
+
+            Cmd = new SqlCommand("SP_LoginUsuarios", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Usuario", Usuarios.Usuario));
+            Cmd.Parameters.Add(new SqlParameter("@Password", Usuarios.Password));
+
+            Da = new SqlDataAdapter(Cmd);
+
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+
+            return Dt;
+        }
+
+        public void DatosUsuario(string Usuario)
+        {
+            DataTable Dt = new DataTable("Datos Usuarios");
+
+            Cmd = new SqlCommand("SP_DatosUsuario", Con.Abrir());
+
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Usuario", Usuario));
+
+            Dr = Cmd.ExecuteReader();
+            if (Dr.Read())
+            {
+                InformacionUsuario.IdUsuario = Dr.GetInt32(0);
+                InformacionUsuario.Nombre = Dr.GetString(1);
+                InformacionUsuario.Apellido = Dr.GetString(2);
+                InformacionUsuario.Usuario = Dr.GetString(3);
+                InformacionUsuario.Correo = Dr.GetString(4);
+                InformacionUsuario.Password = Dr.GetString(5);
+            }
+
+            Dr.Close();
+
+            Con.Cerrar();
+        }
     }
 }

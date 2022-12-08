@@ -1,9 +1,9 @@
-﻿<Window x:Class="CapaPresentacion.FrmProductos"
+﻿<Window x:Class="CapaPresentacion.MenuVentas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:uc="clr-namespace:CapaPresentacion.Menu"
+        xmlns:uc="clr-namespace:CapaPresentacion.Menu"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         mc:Ignorable="d"
@@ -15,7 +15,8 @@
 
     </Window.Resources>
 
-    <Border Background="#1F1D1D" CornerRadius="30" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+
+    <Border Background="#1F1D1D" CornerRadius="30">
 
         <Grid HorizontalAlignment="Right" Width="1080">
 
@@ -31,7 +32,7 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <!--Información de la empresa-->
 
                 <Border Grid.Row="1" Background="#0F3460" CornerRadius="0 50 0 30">
@@ -73,7 +74,7 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Home-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio" Click="BtnInicio_Click" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio"  Style="{StaticResource BotonesMenu}" Click="BtnInicio_Click">
                                 <uc:Modulos Titulo="Inicio" Margin="-20 0 0 0"/>
                             </Button>
 
@@ -87,9 +88,9 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click">
 
-                                <uc:Modulos Titulo="Productos" EsActivo="True" Margin="-20 0 0 0"/>
+                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
                             </Button>
 
                         </Grid>
@@ -104,8 +105,8 @@
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/supplier-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}" Click="BtnProveedores_Click">
-                                <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0"/>
-                                
+                                <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0" />
+
                             </Button>
 
                         </Grid>
@@ -135,7 +136,7 @@
 
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}" Click="BtnServicios_Click">
                                 <uc:Modulos Titulo="Servicios" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -148,9 +149,9 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click_1">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click">
                                 <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -163,9 +164,9 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}" Click="BtnVentas_Click">
-                                <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0"/>
-                                
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}">
+                                <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0" EsActivo="True"/>
+
                             </Button>
 
                         </Grid>
@@ -198,66 +199,22 @@
 
                 <!--Titulo del encabezado-->
 
-                <TextBlock Text="Productos" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#ffffff"/>
-
-                <!--Botones Encabezado-->
-
-                <Button x:Name="btnAddProd" Style="{StaticResource addButton}" Margin="0,18,12,10" Click="BtnAddProd_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
-                        <TextBlock Text="Agregar Productos"/>
-                    </StackPanel>
-                </Button>
-
-                <Button x:Name="btnEditProd" Style="{StaticResource addButton}" Margin="0,18,215,10" Click="BtnEditProd_Click" Tag="{Binding ElementName=DataGridProductos}" IsEnabled="True">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="ApplicationEdit" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
-                        <TextBlock Text="Editar Productos"/>
-                    </StackPanel>
-                </Button>
-
-                <Button x:Name="btnDeleteProd" Style="{StaticResource addButton}" Margin="0,18,413,10" Click="BtnDeleteProd_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
-                        <TextBlock Text="Eliminar Productos"/>
-                    </StackPanel>
-                </Button>
-
-                <!--Buscador-->
-                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
-                <!--<Button  Style="{StaticResource addButton}" Margin="0,9,65,10" Grid.Row="4" Width="88">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
-                        <TextBlock Text="Buscar"/>
-                    </StackPanel>
-                </Button>-->
-
-                <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox x:Name="cboProducto" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
-
-                        <ComboBoxItem Content="Codigo"/>
-                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
-                        <ComboBoxItem Content="Descripcion"/>
-                    </ComboBox>
-
-                    <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="140,10,-3,10"/>
-                </Grid>
-
-                <Grid Grid.Row="4" Margin="267,0,158,0">
-                    <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-
-                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged" Height="54"/>
-                </Grid>
-
-                <!--Separarto-->
+                <TextBlock Text="Selecciona una Opcion" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,10" HorizontalAlignment="Center" Foreground="#ffffff"/>
 
                 <Separator Height="1" Grid.Row="3" Background="#ffffff" Margin="0 -1 0 10" />
 
-                <!--DataGrid-->
+                <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="113" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+                <Image Grid.Row="4" HorizontalAlignment="Left" Height="55" Margin="25,69,0,0" VerticalAlignment="Top" Width="64" Source="/images/reserva.png"/>
+                <Button Grid.Row="4" x:Name="btnReservas" Content="Agregar una nueva Reserva" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,52,0,0" Click="BtnReservas_Click"/>
 
-                <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn" SelectionChanged="DataGridProductos_SelectionChanged"/>
-              
+                <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Height="113" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C" Grid.RowSpan="2"/>
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,46,0,0" VerticalAlignment="Top" Width="79" Source="/images/spa.png"/>
+                <Button Grid.Row="5" x:Name="btnVentaReserva" Content="Nueva Venta de Servicios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,46,0,0" Click="BtnVentaReserva_Click"/>
+
+                <hc:Card Grid.Row="5" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Height="130" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,199,0,0" VerticalAlignment="Top" Width="79" Source="/images/Ventas-48.png"/>
+                <Button Grid.Row="5" x:Name="btnVentaProducto" Content="Nueva Venta de Productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,202,0,0" Click="BtnVentaProducto_Click"/>
+
             </Grid>
 
 

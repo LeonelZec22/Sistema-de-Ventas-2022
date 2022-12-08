@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CapaNegocio;
+using CapaEntidad;
+using CapaEntidad.Caches;
 
 namespace CapaPresentacion
 {
@@ -20,10 +23,19 @@ namespace CapaPresentacion
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Usuario;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        public MainWindow(string pUser)
+        {
+            InitializeComponent();
+            Usuario = pUser;
+        }
+
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -33,11 +45,23 @@ namespace CapaPresentacion
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MostrarUsuario();
+        }
+
         //Creamos un nuevo constructor del objeto 
 
         public MainWindow(bool doNotMakeInvisible)
         {
             InitializeComponent();
+        }
+
+        CDo_Usuarios Usuarios = new CDo_Usuarios();
+        private void MostrarUsuario()
+        {
+            Usuarios.DatosUsuario(Usuario);
+            tbUsuario.Text = InformacionUsuario.Nombre + " " + InformacionUsuario.Apellido;
         }
 
         private void BtnProductos_Click(object sender, RoutedEventArgs e)
@@ -69,7 +93,6 @@ namespace CapaPresentacion
         {
             Configuraciones configuraciones = new Configuraciones();
             configuraciones.ShowDialog();
-            Close();
         }
 
         private void BtnReservas_Click(object sender, RoutedEventArgs e)
@@ -100,7 +123,7 @@ namespace CapaPresentacion
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
-            FrmVentas ventas = new FrmVentas();
+            MenuVentas ventas = new MenuVentas();
             Hide();
             ventas.ShowDialog();
             Close();
@@ -110,5 +133,15 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void BtnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmUsuarios usuarios = new FrmUsuarios();
+            Hide();
+            usuarios.ShowDialog();
+            Hide();
+        }
+
+
     }
 }

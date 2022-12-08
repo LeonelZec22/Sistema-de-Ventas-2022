@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caches\InformacionUsuario.cs" />
     <Compile Include="CE_Clientes.cs" />
     <Compile Include="CE_Detalle_Ingreso.cs" />
     <Compile Include="CE_Detalle_Reservas.cs" />

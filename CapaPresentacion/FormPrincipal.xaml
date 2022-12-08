@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CapaPresentacion"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown">
+        Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
     <Window.Resources>
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
             <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
@@ -408,12 +408,12 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
-                                   
+
                                     <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header"/>
                                 </Border>
                                 <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Grid.Row="1"/>
                                 <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0" Grid.Row="2">
-                                    
+
                                     <ContentPresenter ContentTemplate="{TemplateBinding FooterTemplate}" Content="{TemplateBinding Footer}" ContentStringFormat="{TemplateBinding FooterStringFormat}" ContentSource="Footer"/>
                                 </Border>
                             </Grid>
@@ -566,13 +566,13 @@
 
         </Grid>
         <Button Content="Button" x:Name="btnConfiguracion" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556" Click="BtnConfiguracion_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}"/>
+        <Button x:Name="btnUsuarios" Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}" Click="BtnUsuarios_Click"/>
         <!--<Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,278,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle3}"/>
         <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,375,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle4}"/>-->
-        <hc:SearchBar HorizontalAlignment="Left" Height="38" Margin="480,10,0,0" TextWrapping="Wrap" Text="Busqueda" VerticalAlignment="Top" Width="475"/>
+        <!--<hc:SearchBar HorizontalAlignment="Left" Height="38" Margin="480,10,0,0" TextWrapping="Wrap" Text="Busqueda" VerticalAlignment="Top" Width="475"/>-->
         <TextBlock HorizontalAlignment="Left" Margin="161,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="38" Foreground="#FFFBF4F4" FontSize="24" FontWeight="Bold"><Run Text="Bienv"/><Run Text="enido"/></TextBlock>
         <Image HorizontalAlignment="Left" Height="53" Margin="100,10,0,0" VerticalAlignment="Top" Width="56" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" Text="Administrador" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="13" Width="80" FontSize="11"/>
+        <TextBlock x:Name="tbUsuario" HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" Text="Administrador" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="32" Width="295" FontSize="17"/>
         <hc:Card HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
         <Image HorizontalAlignment="Left" Height="61" Margin="104,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\product-64.png"/>
         <Button x:Name="btnProductos" Content="Ver la lista de&#xA; productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,167,0,0" Click="BtnProductos_Click"/>

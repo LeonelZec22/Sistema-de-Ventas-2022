@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
+using CapaNegocio;
+using CapaEntidad;
+using CapaEntidad.Caches;
+using System.Data;
 
 namespace CapaPresentacion
 {
@@ -25,7 +29,8 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-
+        CDo_Usuarios Usuarios = new CDo_Usuarios();
+        CE_Usuarios Usuario = new CE_Usuarios();
         //Métodos para cambiar al modo oscuro del tema 
         public bool IsDarkTheme { get; set; }
 
@@ -57,6 +62,77 @@ namespace CapaPresentacion
         {
             base.OnMouseLeftButtonDown(e);
             DragMove();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txtUsername.Text != string.Empty)
+                {
+                    if(txtPassword.Text != string.Empty)
+                    {
+                        Usuario.Usuario = txtUsername.Text.Trim();
+                        Usuario.Password = txtPassword.Text.Trim();
+
+                        DataTable User = Usuarios.LoginUsuario(Usuario);
+
+                        //MainWindow FormularioPrincipal = new MainWindow();
+                        //FormularioPrincipal.Show();
+                        //this.Hide();
+
+                        if (User.Rows.Count != 0)
+                        {
+                            MainWindow FormularioPrincipal = new MainWindow(txtUsername.Text);
+                            FormularioPrincipal.Show();
+                            this.Hide();
+                        }
+
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("Usuario o Contraseña Incorrecto, \n Por favor Intentelo Otra Vez!!! ", "Iniciar Sesion", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                            txtUsername.Clear();
+                            txtPassword.Clear();
+                            txtUsername.Focus();
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Debe completar el campo de Contraseña !!! ", "Iniciar Sesion", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+                }
+
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe completar el campo de Usuario !!! ", "Iniciar Sesion", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se puede ingresar al sistema por que: " +ex.Message, "Iniciar Sesion", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
+
+        
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                loginBtn.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void TxtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtPassword.Focus();
+                e.Handled = true;
+            }
         }
     }
 }

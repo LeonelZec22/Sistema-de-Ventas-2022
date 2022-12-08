@@ -180,6 +180,9 @@
     <Compile Include="Informes\FrmMostrar_Ingreso_Producto.Designer.cs">
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuVentas.xaml.cs">
+      <DependentUpon>MenuVentas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VistaReservas.xaml.cs">
       <DependentUpon>VistaReservas.xaml</DependentUpon>
@@ -362,6 +365,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuVentas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

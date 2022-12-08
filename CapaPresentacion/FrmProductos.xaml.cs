@@ -306,10 +306,18 @@ namespace CapaPresentacion
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
-            FrmVentas Ventas = new FrmVentas();
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
+        }
+
+        private void BtnInventario_Click_1(object sender, RoutedEventArgs e)
+        {
+            FrmInventario inventario = new FrmInventario();
             Hide();
 
-            Ventas.ShowDialog();
+            inventario.ShowDialog();
             Close();
         }
     }

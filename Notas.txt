@@ -971,6 +971,11 @@ Content="Ver lista de &#xa; productos" -> para el salto de línea
 
 			txtMontoTotal -> Detalle_Venta_Servicios y Ventas_Servicios
 
+				
+			********************
+
+			Application.Exit();
+
 
 
 

@@ -33,5 +33,18 @@ namespace CapaNegocio
         {
             ObjUsuarios.EliminarUsuario(Usuarios);
         }
+
+        //Método que permite Accesar al Sistema 
+
+        public DataTable LoginUsuario(CE_Usuarios Usuarios)
+        {
+            return ObjUsuarios.LoginUsuario(Usuarios);
+        }
+
+        //Podemos eliminar el parametro
+        public void DatosUsuario(string Usuario)
+        {
+            ObjUsuarios.DatosUsuario(Usuario);
+        }
     }
 }
