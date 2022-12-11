@@ -118,5 +118,10 @@ namespace CapaPresentacion
             }
         }
 
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Hide();
+            DataGridGestionClientes.UnselectAllCells();
+        }
     }
 }

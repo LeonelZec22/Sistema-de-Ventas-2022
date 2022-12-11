@@ -158,5 +158,11 @@ namespace CapaPresentacion
             txtContrasena.Clear();
             Hide();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            Agregar();
+        }
     }
 }

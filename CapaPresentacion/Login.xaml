@@ -14,6 +14,7 @@
             <StackPanel>
                 <materialDesign:PopupBox HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
                     <StackPanel>
+                        
                         <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock VerticalAlignment="Center" Text="Modo Oscuro" />
                             <ToggleButton Cursor="Hand" ToolTip="Activar Modo Oscuro" Margin="12 0 8 0" x:Name="themeToggle" IsChecked="{Binding IsDarkTheme}" Click="toggleTheme"/>
@@ -25,13 +26,13 @@
                    
                 </materialDesign:PopupBox>
                 
-                <Image Margin="0 60 0 5" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\spa.png" Height="100"/>
+                <Image Margin="0 60 0 5" Source="Images/spa.png" Height="100"/>
                 <TextBlock Margin="0 25 0 5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Inicia Sesión!"/>
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="en una cuenta registrada"/>
 
                 <TextBox Margin="0 50 0 0" x:Name="txtUsername" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Ingresa tu usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtUsername_KeyDown"/>
 
-                <TextBox Margin="0 20 0 0" x:Name="txtPassword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Ingrese su contraseña" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtPassword_KeyDown" />
+                <PasswordBox  Margin="0 20 0 0" x:Name="txtPassword" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Ingrese su contraseña" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" KeyDown="TxtPassword_KeyDown" />
 
                 <Button Margin="0 20 0 0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="ENTRAR" Click="LoginBtn_Click"/>
 

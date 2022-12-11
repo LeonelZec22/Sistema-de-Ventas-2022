@@ -394,6 +394,14 @@ namespace CapaPresentacion
             txtId_Venta_Servicios.Text = Procedimientos.GenerarCodigoId("Ventas_Servicios");
         }
 
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableReservas = null;
+        }
+
+
         public virtual bool Guardar()
         {
             try

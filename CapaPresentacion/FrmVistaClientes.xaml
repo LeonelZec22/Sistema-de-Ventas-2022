@@ -41,13 +41,9 @@
 
                 <!--Botones de arriba-->
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Cog"/>
-                </Button>
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Bell"/>
-                </Button>
+                </Ellipse>
 
                 <!--Titulo del encabezado-->
 
@@ -58,9 +54,9 @@
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,18,677,19" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <Button Grid.Row="4" Margin="810,1,94,534" Height="Auto"  x:Name="btnSeleccionarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarCliente_Click" Grid.RowSpan="2"/>
+                <Button Grid.Row="4" Margin="810,1,94,534" Height="Auto"  x:Name="btnSeleccionarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarCliente_Click" Cursor="Hand" Grid.RowSpan="2"/>
 
-                <Button Grid.Row="5" Margin="908,491,20,0" Height="Auto"  x:Name="btnCancelarCli" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarCli_Click"/>
+                <Button Grid.Row="5" Margin="908,491,20,0" Height="Auto"  x:Name="btnCancelarCli" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Cursor="Hand" Click="BtnCancelarCli_Click"/>
 
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">

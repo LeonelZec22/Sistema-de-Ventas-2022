@@ -510,6 +510,13 @@ namespace CapaPresentacion
             Guardar();
         }
 
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableProductos = null;
+        }
+
         private void GenerarCorrelativos()
         {
             txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");

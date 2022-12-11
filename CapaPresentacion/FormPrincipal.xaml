@@ -7,6 +7,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
         Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+    
     <Window.Resources>
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
             <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
@@ -549,6 +550,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+    
     <Grid>
         <Rectangle Fill="#FF111111" HorizontalAlignment="Left" Height="500" Margin="83,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="917" RadiusX="15" RadiusY="15"/>
         <Grid Margin="10,38,948,420">
@@ -565,45 +567,84 @@
             <Ellipse Fill="#FF111111" Margin="19,7,0,10" Stroke="Black" RenderTransformOrigin="1.087,0.44"/>
 
         </Grid>
-        <Button Content="Button" x:Name="btnConfiguracion" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556" Click="BtnConfiguracion_Click"/>
-        <Button x:Name="btnUsuarios" Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}" Click="BtnUsuarios_Click"/>
-        <!--<Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,278,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle3}"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,375,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle4}"/>-->
-        <!--<hc:SearchBar HorizontalAlignment="Left" Height="38" Margin="480,10,0,0" TextWrapping="Wrap" Text="Busqueda" VerticalAlignment="Top" Width="475"/>-->
+        <Button Content="Button" x:Name="btnConfiguracion" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556" Click="BtnConfiguracion_Click" Cursor="Hand"/>
+        
+        <Button x:Name="btnUsuarios" Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}" Click="BtnUsuarios_Click" Cursor="Hand"/>
+     
         <TextBlock HorizontalAlignment="Left" Margin="161,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="38" Foreground="#FFFBF4F4" FontSize="24" FontWeight="Bold"><Run Text="Bienv"/><Run Text="enido"/></TextBlock>
-        <Image HorizontalAlignment="Left" Height="53" Margin="100,10,0,0" VerticalAlignment="Top" Width="56" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png"/>
+
+        <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
+            
+        </Ellipse>
+
+        <Ellipse x:Name="minimizeApp" Fill="Yellow" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 50 0" MouseLeftButtonDown="MinimizeApp_MouseLeftButtonDown" ToolTip="Minimizar" Cursor="Hand"></Ellipse>
+
+        <Image HorizontalAlignment="Left" Height="53" Margin="100,10,0,0" VerticalAlignment="Top" Width="56" Source="/Images/admi.png"/>
+        
         <TextBlock x:Name="tbUsuario" HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" Text="Administrador" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="32" Width="295" FontSize="17"/>
+        
         <hc:Card HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="104,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\product-64.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="104,92,0,0" VerticalAlignment="Top" Width="57" Source="/Images/product-64.png"/>
+        
         <Button x:Name="btnProductos" Content="Ver la lista de&#xA; productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,167,0,0" Click="BtnProductos_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="161,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Productos"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="281,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="284,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\supplier-48.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="284,92,0,0" VerticalAlignment="Top" Width="57" Source="/Images/supplier-48.png"/>
+        
         <Button x:Name="btnProveedores" Content="Ir a lista de&#xA;proveedores" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="295,167,0,0" Click="BtnProveedores_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="341,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Proveedores"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="481,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="484,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\clientes-64.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="484,92,0,0" VerticalAlignment="Top" Width="57" Source="/Images/clientes-64.png"/>
+        
         <Button x:Name="btnClientes" Content="Ver la lista de&#xA; clientes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="495,167,0,0" Click="BtnClientes_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="541,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Clientes"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="714,81,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="717,92,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\servicios-48.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="717,92,0,0" VerticalAlignment="Top" Width="57" Source="/Images/servicios-48.png"/>
+        
         <Button x:Name="btnServicios" Content="Ver la lista de&#xA; servicios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,167,0,0" Click="BtnServicios_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="774,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Servicios"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="714,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="54" Margin="717,300,0,0" VerticalAlignment="Top" Width="52" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\box.png"/>
+
+        <Image HorizontalAlignment="Left" Height="54" Margin="717,300,0,0" VerticalAlignment="Top" Width="52" Source="/Images/box.png"/>
+        
         <Button x:Name="btnPaquetes" Content="Ver la lista &#xA;de paquetes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="728,375,0,0" Click="BtnPaquetes_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="774,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80"><Run Text="Paquetes"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="481,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="48" Margin="492,306,0,0" VerticalAlignment="Top" Width="44" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\reserva.png"/>
+
+        <Image HorizontalAlignment="Left" Height="48" Margin="492,306,0,0" VerticalAlignment="Top" Width="44" Source="/Images/reserva.png"/>
+        
         <Button x:Name="btnReservas" Content="Ver la lista de&#xA; reservas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="495,375,0,0" Click="BtnReservas_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="541,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Reservas"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="281,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="284,300,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\ventas-48.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="284,300,0,0" VerticalAlignment="Top" Width="57" Source="/Images/ventas-48.png"/>
+        
         <Button x:Name="btnVentas" Content="Ver la lista de&#xA; ventas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="295,375,0,0" Click="BtnVentas_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="341,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Ventas"/></TextBlock>
+        
         <hc:Card HorizontalAlignment="Left" Margin="101,289,0,0" VerticalAlignment="Top" Height="204" Width="147" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-        <Image HorizontalAlignment="Left" Height="61" Margin="104,300,0,0" VerticalAlignment="Top" Width="57" Source="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\inventory-64.png"/>
+
+        <Image HorizontalAlignment="Left" Height="61" Margin="104,300,0,0" VerticalAlignment="Top" Width="57" Source="/Images/inventory-64.png"/>
+        
         <Button x:Name="btnInventario" Content="Ver inventario" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="49" Background="#FF292727" Foreground="#FFFBF6F6" BorderBrush="#FFF0ECEC" Margin="115,375,0,0" Click="BtnInventario_Click"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="161,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF3E9E9" FontWeight="Bold" Height="23" Width="80" FontSize="16"><Run Text="Inventario"/></TextBlock>
 
 

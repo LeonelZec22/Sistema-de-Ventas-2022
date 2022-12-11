@@ -191,18 +191,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DataGridBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FormAgregarBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FormEditBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FormPrincipal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -210,15 +198,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataGridBase.xaml.cs">
-      <DependentUpon>DataGridBase.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FormAgregarBase.xaml.cs">
-      <DependentUpon>FormAgregarBase.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FormEditBase.xaml.cs">
-      <DependentUpon>FormEditBase.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormPrincipal.xaml.cs">
       <DependentUpon>FormPrincipal.xaml</DependentUpon>

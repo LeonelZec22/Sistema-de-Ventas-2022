@@ -233,5 +233,11 @@ namespace CapaPresentacion
             this.Hide();
             Agregar();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            Agregar();
+        }
     }
 }

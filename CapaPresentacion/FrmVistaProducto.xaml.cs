@@ -99,6 +99,12 @@ namespace CapaPresentacion
             Hide();
             DataGridGestionProductos.UnselectAllCells();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Hide();
+            DataGridGestionProductos.UnselectAllCells();
+        }
     }
 
 }

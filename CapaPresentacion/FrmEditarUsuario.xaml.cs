@@ -122,6 +122,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
+                    
                     Usuario.Id_Usuario = Convert.ToInt32(txtIdUsuario.Text.Trim());
                     Usuario.Nombre = txtNombre.Text.Trim();
                     Usuario.Apellido = txtApellido.Text.Trim();
@@ -130,8 +131,7 @@ namespace CapaPresentacion
                     Usuario.Password = txtContrasena.Text.Trim();
 
                     Usuarios.EditarUsuario(Usuario);
-
-                    System.Windows.Forms.MessageBox.Show("Usuario Editado exitosamente!!! ", "Editar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    
 
                     this.Hide();
 
@@ -147,6 +147,12 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("El Usuario no fue Editado porque: " + ex.Message, "Editar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
            
+        }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            Actualizar();
         }
     }
 }

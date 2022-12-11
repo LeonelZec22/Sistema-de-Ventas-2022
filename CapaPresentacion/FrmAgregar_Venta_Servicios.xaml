@@ -39,13 +39,10 @@
 
                 <!--Botones de arriba-->
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Cog"/>
-                </Button>
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Bell"/>
-                </Button>
+                </Ellipse>
+
 
                 <!--Titulo del encabezado-->
 
@@ -64,17 +61,17 @@
                     <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente"  Width="222" Margin="28,29,1028,172"/>
 
                     <!--Caja de texto de ID Cliente-->
-                    <TextBox Margin="342,10,892,172" x:Name="txtId_Cliente" FontSize="18" TextWrapping="Wrap" Visibility="Visible"/>
+                    <TextBox Margin="342,10,892,172" x:Name="txtId_Cliente" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
                     <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
 
-                    <TextBox Margin="275,152,959,30" x:Name="txtId_Reserva" FontSize="18" TextWrapping="Wrap" Visibility="Visible"/>
+                    <TextBox Margin="275,152,959,30" x:Name="txtId_Reserva" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
                     <!--Caja de texto Id Venta Servicios-->
-                    <TextBox Margin="426,8,799,174" x:Name="txtId_Venta_Servicios" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Visible"/>
+                    <TextBox Margin="426,8,799,174" x:Name="txtId_Venta_Servicios" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
 
 
-                    <Button x:Name="btnBuscarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarReserva_Click"/>
+                    <Button x:Name="btnBuscarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarReserva_Click" Cursor="Hand"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Venta"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
 
@@ -103,9 +100,9 @@
 
                     <TextBox Margin="956,142,211,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" LostFocus="TxtDescuento_LostFocus"/>
 
-                    <Button x:Name="btnEliminarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarReserva_Click"/>
+                    <Button x:Name="btnEliminarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarReserva_Click" Cursor="Hand"/>
 
-                    <Button x:Name="btnAgregarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,17,70,167" Click="BtnAgregarReserva_Click"/>
+                    <Button x:Name="btnAgregarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,17,70,167" Click="BtnAgregarReserva_Click" Cursor="Hand"/>
 
 
 

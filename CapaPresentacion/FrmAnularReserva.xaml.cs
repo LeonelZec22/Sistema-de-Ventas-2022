@@ -183,5 +183,10 @@ namespace CapaPresentacion
         {
             this.Hide();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

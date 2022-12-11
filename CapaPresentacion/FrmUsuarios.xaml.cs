@@ -54,6 +54,7 @@ namespace CapaPresentacion
         }
         private void BtnEditarUsuario_Click(object sender, RoutedEventArgs e)
         {
+            
             if (dr != null)
             {
                 EditarUsuario.ShowDialog();
@@ -83,7 +84,7 @@ namespace CapaPresentacion
             {
                 e.Cancel = true;
             }
-
+            
 
             string Nombre = e.Column.Header.ToString();
 
@@ -120,6 +121,7 @@ namespace CapaPresentacion
             {
                 e.Column.Width = 150;
             }
+
 
 
         }
@@ -175,7 +177,6 @@ namespace CapaPresentacion
                         {
                             Usuario.Id_Usuario = Convert.ToInt32(dr[0].ToString());
                             Usuarios.EliminarUsuario(Usuario);
-                            System.Windows.Forms.MessageBox.Show("Registro Eliminado correctamente!!! ", "Eliminar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                             MostrarUsuarios();
                         }
                         else if (Resultado == System.Windows.Forms.DialogResult.No)
@@ -199,6 +200,41 @@ namespace CapaPresentacion
         private void BtnEliminarUsuario_Click(object sender, RoutedEventArgs e)
         {
             Eliminar();
+        }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    Application.Current.Shutdown();
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+        }
+
+        private void MinimizeApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.WindowState = WindowState.Minimized;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
     }
 }

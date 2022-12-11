@@ -163,5 +163,11 @@ namespace CapaPresentacion
             //FrmProveedores proveedores = new FrmProveedores();
             //proveedores.ShowDialog();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Hide();
+            DataGridGestionProveedores.UnselectAllCells();
+        }
     }
 }

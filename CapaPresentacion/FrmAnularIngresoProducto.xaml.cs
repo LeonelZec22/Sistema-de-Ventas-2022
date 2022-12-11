@@ -181,7 +181,12 @@ namespace CapaPresentacion
 
         private void BtnCancelarIngreso_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            this.Hide();
+        }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

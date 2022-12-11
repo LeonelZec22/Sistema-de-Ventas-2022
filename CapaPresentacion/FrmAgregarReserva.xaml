@@ -38,13 +38,9 @@
 
                 <!--Botones de arriba-->
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Cog"/>
-                </Button>
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Bell"/>
-                </Button>
+                </Ellipse>
 
                 <!--Titulo del encabezado-->
 
@@ -73,7 +69,7 @@
                     <TextBox Margin="426,8,799,174" x:Name="txtId_Reserva" FontSize="18" TextWrapping="Wrap" RenderTransformOrigin="0.483,0.013" Visibility="Hidden"/>
 
 
-                    <Button x:Name="btnBuscarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarCliente_Click"/>
+                    <Button x:Name="btnBuscarCliente" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="385,64,799,104" Click="BtnBuscarCliente_Click" Cursor="Hand"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Venta"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
 
@@ -89,7 +85,7 @@
 
                     <TextBox Margin="550,70,504,0" x:Name="txtNombre_Servicio" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True" RenderTransformOrigin="0.531,1.011"/>
 
-                    <Button x:Name="btnBuscarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="818,64,366,104" Click="BtnBuscarServicio_Click" RenderTransformOrigin="-0.18,0.712"/>
+                    <Button x:Name="btnBuscarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Buscar" Background="#FF1F1D1D" Margin="818,64,366,104" Click="BtnBuscarServicio_Click" RenderTransformOrigin="-0.18,0.712" Cursor="Hand"/>
 
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="94" Margin="779,158,405,39" RenderTransformOrigin="0.466,-0.748"/>
@@ -105,9 +101,9 @@
 
                     <TextBox Margin="1133,140,34,0" x:Name="txtPrecio_Venta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True"/>
 
-                    <Button x:Name="btnEliminarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarServicio_Click"/>
+                    <Button x:Name="btnEliminarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarServicio_Click" Cursor="Hand"/>
 
-                    <Button x:Name="btnAgregarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,17,70,167" Click="BtnAgregarServicio_Click"/>
+                    <Button x:Name="btnAgregarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Agregar" Background="Green" Margin="1120,17,70,167" Click="BtnAgregarServicio_Click" Cursor="Hand"/>
 
                 </Grid>
 

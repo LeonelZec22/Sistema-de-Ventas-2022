@@ -42,5 +42,10 @@ namespace CapaPresentacion
             BackupBaseDatos backupBase = new BackupBaseDatos();
             backupBase.ShowDialog();
         }
+
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

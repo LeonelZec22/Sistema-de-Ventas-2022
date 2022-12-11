@@ -75,7 +75,7 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Home-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio" Style="{StaticResource BotonesMenu}" Click="BtnInicio_Click">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInicio" Style="{StaticResource BotonesMenu}" Click="BtnInicio_Click" Cursor="Hand">
                                 <uc:Modulos Titulo="Inicio" Margin="-20 0 0 0"/>
                             </Button>
 
@@ -89,7 +89,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click">
+                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click" Cursor="Hand">
 
                                 <uc:Modulos Titulo="Productos"  Margin="-20 0 0 0"/>
                             </Button>
@@ -105,7 +105,7 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/supplier-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}" Click="BtnProveedores_Click">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}" Click="BtnProveedores_Click" Cursor="Hand">
                                 <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0"/>
 
                             </Button>
@@ -121,7 +121,7 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Clientes-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnClientes" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnClientes" Style="{StaticResource BotonesMenu}" Cursor="Hand">
                                 <uc:Modulos  Titulo="Clientes" Margin="-20 0 0 0"/>
                             </Button>
                         </Grid>
@@ -135,7 +135,7 @@
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/servicios-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
 
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}" Cursor="Hand">
                                 <uc:Modulos Titulo="Servicios" Margin="-20 0 0 0"/>
 
                             </Button>
@@ -150,7 +150,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Cursor="Hand">
                                 <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0" EsActivo="True"/>
 
                             </Button>
@@ -165,7 +165,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}">
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}" Cursor="Hand">
                                 <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0"/>
 
                             </Button>
@@ -190,13 +190,11 @@
 
                 <!--Botones de arriba-->
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Cog"/>
-                </Button>
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
-                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Bell"/>
-                </Button>
+                </Ellipse>
+
+                <Ellipse x:Name="minimizeApp" Fill="Yellow" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 50 0" MouseLeftButtonDown="MinimizeApp_MouseLeftButtonDown" ToolTip="Minimizar" Cursor="Hand"></Ellipse>
 
                 <!--Titulo del encabezado-->
 
@@ -206,12 +204,12 @@
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <Button  Style="{StaticResource addButton}" Margin="0,9,65,10" Grid.Row="4" Width="88">
+                <!--<Button  Style="{StaticResource addButton}" Margin="0,9,65,10" Grid.Row="4" Width="88">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
                         <TextBlock Text="Buscar"/>
                     </StackPanel>
-                </Button>
+                </Button>-->
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
                     <ComboBox Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
@@ -227,28 +225,28 @@
                 <Grid Grid.Row="4" Margin="267,0,158,0">
                     <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
 
-                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible"/>
+                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" Height="45"/>
                 </Grid>
 
                 <!--Separador-->
 
                 <Separator Height="1" Grid.Row="3" Background="#ffffff" Margin="0 -1 0 10" />
 
-                
+
                 <!--DataGrid-->
 
 
                 <DataGrid x:Name="DataGridInventario" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"/>
-                
-                
+
+
                 <!--Monto Total-->
                 <TextBlock Text="Monto Total:" Grid.Row="5" FontSize="18" FontWeight="Bold" Margin="0,493,680,24" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center" Height="28" Width="121"/>
 
                 <Grid Width="300" HorizontalAlignment="Left" Margin="155,469,0,-4" Grid.Row="5" Grid.RowSpan="2">
 
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis} }"/>
+                    <TextBlock Margin="10,10,10,22" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis} }"/>
 
-                    <TextBox x:Name="txtMontoInv" Style="{StaticResource textBoxSearch}" Margin="0,22" IsEnabled="False"/>
+                    <TextBox x:Name="txtMontoInv" Style="{StaticResource textBoxSearch}" Margin="10,10,10,22" IsReadOnly="True" Height="38"/>
 
 
 

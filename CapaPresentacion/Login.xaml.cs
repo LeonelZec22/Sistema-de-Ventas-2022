@@ -68,12 +68,13 @@ namespace CapaPresentacion
         {
             try
             {
+
                 if (txtUsername.Text != string.Empty)
                 {
-                    if(txtPassword.Text != string.Empty)
+                    if(txtPassword.Password != string.Empty)
                     {
                         Usuario.Usuario = txtUsername.Text.Trim();
-                        Usuario.Password = txtPassword.Text.Trim();
+                        Usuario.Password = txtPassword.Password.Trim();
 
                         DataTable User = Usuarios.LoginUsuario(Usuario);
 

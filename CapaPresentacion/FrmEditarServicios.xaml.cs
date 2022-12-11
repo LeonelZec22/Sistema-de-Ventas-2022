@@ -144,5 +144,10 @@ namespace CapaPresentacion
 
         #endregion
 
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            Actualizar();
+        }
     }
 }

@@ -15,10 +15,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+       
 
         <!--Left Section-->
 
-        <Border Background="#FF1F1D1D" Padding="30" CornerRadius="25 0 0 25">
+        <Border  Background="#FF1F1D1D" Padding="30" CornerRadius="25 0 0 25">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/Images/settings.png" Height="135" Margin="65,0,100,40"/>
                 <TextBlock Text="Configuraciones!" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#ffffff"/>
@@ -31,20 +32,26 @@
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0">
 
             <Grid>
-                <!--<Button Content="Informacion" HorizontalAlignment="Left" Height="50" Margin="29,136,0,0" VerticalAlignment="Top" Width="134"
-                Background="#FF64CCF1"
-                Foreground="White"
-                FontFamily="Arial"
-                FontSize="20" Style="{DynamicResource RoundedButtonStyle}"/>-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <hc:Card HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Height="133" Width="348" Background="#FBFACD" BorderBrush="#FBFACD"/>
-                <Image HorizontalAlignment="Left" Height="61" Margin="29,51,0,0" VerticalAlignment="Top" Width="57" Source="/Images/configuracion.png"/>
-                <Button x:Name="btnInforEmp" Content="Informacion de&#xA; la empresa" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="49" Background="#2C3333" Foreground="White" BorderBrush="#2C3333" Margin="106,51,0,0" Click="BtnInforEmp_Click"/>
 
-                <hc:Card HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Height="133" Width="348" Background="#FBFACD" BorderBrush="#FBFACD"/>
-                <Image HorizontalAlignment="Left" Height="61" Margin="29,252,0,0" VerticalAlignment="Top" Width="57" Source="/Images/database.png"/>
-                <Button x:Name="BtnBackup" Content="Copia de Seguridad de&#xA; de la base de datos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="49" Background="#2C3333" Foreground="White" BorderBrush="#2C3333" Margin="106,252,0,0" Click="BtnBackup_Click"/>
-                <Button Margin="29,532,381,25" x:Name="CancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0" Click="CancelarBtn_Click"/>
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
+
+                </Ellipse>
+
+                <!--<Ellipse x:Name="minimizeApp" Fill="Yellow" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 50 0" MouseLeftButtonDown="MinimizeApp_MouseLeftButtonDown" ToolTip="Minimizar" Cursor="Hand"></Ellipse>-->
+
+                <hc:Card Grid.Row="1" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Height="133" Width="348" Background="#FBFACD" BorderBrush="#FBFACD"/>
+                <Image Grid.Row="1" HorizontalAlignment="Left" Height="61" Margin="29,51,0,0" VerticalAlignment="Top" Width="57" Source="/Images/configuracion.png"/>
+                <Button Grid.Row="1" x:Name="btnInforEmp" Content="Informacion de&#xA; la empresa" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="49" Background="#2C3333" Foreground="White" BorderBrush="#2C3333" Margin="106,51,0,0" Click="BtnInforEmp_Click"/>
+
+                <hc:Card Grid.Row="1" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Height="133" Width="348" Background="#FBFACD" BorderBrush="#FBFACD"/>
+                <Image Grid.Row="1" HorizontalAlignment="Left" Height="61" Margin="29,252,0,0" VerticalAlignment="Top" Width="57" Source="/Images/database.png"/>
+                <Button Grid.Row="1" x:Name="BtnBackup" Content="Copia de Seguridad de&#xA; de la base de datos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="49" Background="#2C3333" Foreground="White" BorderBrush="#2C3333" Margin="106,252,0,0" Click="BtnBackup_Click"/>
+                <Button Grid.Row="1" Margin="29,479,381,28" x:Name="CancelarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="Red" BorderThickness="0" Click="CancelarBtn_Click"/>
 
             </Grid>
         </Border>

@@ -29,8 +29,12 @@
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0">
 
             <Grid>
-                <Image Source="/Images/exit.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
-                <Image Source="/Images/mimizar.png" Width="20" Margin="0 7 40 0"  Style="{StaticResource iconApp}"/>
+                <!--<Image Source="/Images/exit.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
+                <Image Source="/Images/mimizar.png" Width="20" Margin="0 7 40 0"  Style="{StaticResource iconApp}"/>-->
+
+                <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
+
+                </Ellipse>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de proveedor" Margin="29,83,394,484" Width="187"/>
 
