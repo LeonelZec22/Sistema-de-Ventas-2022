@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CapaPresentacion"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+        Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown" Loaded="Window_Loaded" Icon="Images/thermal-spa.ico" Title="Menu Principal" Closed="Window_Closed">
     
     <Window.Resources>
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">

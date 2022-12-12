@@ -61,6 +61,7 @@
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="CD_Ventas.cs" />
     <Compile Include="CD_Ventas_Servicios.cs" />
+    <Compile Include="Correos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

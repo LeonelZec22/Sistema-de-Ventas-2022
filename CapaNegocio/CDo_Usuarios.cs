@@ -46,5 +46,7 @@ namespace CapaNegocio
         {
             ObjUsuarios.DatosUsuario(Usuario);
         }
+
+        
     }
 }

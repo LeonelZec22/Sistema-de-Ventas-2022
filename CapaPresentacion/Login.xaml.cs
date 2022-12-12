@@ -14,8 +14,10 @@ using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using CapaNegocio;
 using CapaEntidad;
+using CapaDatos;
 using CapaEntidad.Caches;
 using System.Data;
+using System.Net.Mail;
 
 namespace CapaPresentacion
 {
@@ -29,6 +31,7 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        CD_Usuarios user = new CD_Usuarios();
         CDo_Usuarios Usuarios = new CDo_Usuarios();
         CE_Usuarios Usuario = new CE_Usuarios();
         //Métodos para cambiar al modo oscuro del tema 
@@ -75,6 +78,7 @@ namespace CapaPresentacion
                     {
                         Usuario.Usuario = txtUsername.Text.Trim();
                         Usuario.Password = txtPassword.Password.Trim();
+                        
 
                         DataTable User = Usuarios.LoginUsuario(Usuario);
 
@@ -134,6 +138,68 @@ namespace CapaPresentacion
                 txtPassword.Focus();
                 e.Handled = true;
             }
+        }
+
+        int index = 0;
+
+        private void RestaurarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string Usuario1 = txtUsername.Text;
+
+            if (Usuario1 != string.Empty)
+            {
+                List<CE_Usuarios> Recuperacion = user.comprobarUsuario(txtUsername.Text);
+                if (Recuperacion != null)
+                {
+                    if (Recuperacion.Count > 0)
+                    {
+                        try
+                        {
+                            Correos Cr = new CapaDatos.Correos();
+                            MailMessage mnsj = new MailMessage();
+
+                            mnsj.Subject = "Recuperacion de contraseña";
+
+                            mnsj.To.Add(new MailAddress(Recuperacion.ElementAt(0).Correo));
+
+                            mnsj.From = new MailAddress("thermalspa22@hotmail.com", "Soporte Tecnico");
+
+                            /* Si deseamos Adjuntar algún archivo*/
+                            //mnsj.Attachments.Add(new Attachment("C:\\archivo.pdf"));
+
+                            mnsj.Body = @"Estimado " + Recuperacion.ElementAt(0).Nombre + "  " + Recuperacion.ElementAt(0).Apellido + " ,su contraseña es: " + Recuperacion.ElementAt(0).Password + "\n Por favor no compartirla con nadie ";
+
+                            /* Enviar */
+                            Cr.MandarCorreo(mnsj);
+
+                            System.Windows.Forms.MessageBox.Show("La Contraseña se ha enviado correctamente al correo del Usuario Registrado.", "Confirmación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Windows.Forms.MessageBox.Show(ex.ToString(), "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El usuario no existe.", "Aviso", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                    }
+                }
+
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("El usuario no existe.", "Aviso", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("El usuario no puede estar vacío.", "Aviso", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

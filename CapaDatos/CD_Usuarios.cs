@@ -165,5 +165,90 @@ namespace CapaDatos
 
             Con.Cerrar();
         }
+
+
+
+        public List<CE_Usuarios> comprobarCorreo(string regcorreo)
+        {
+           
+            SqlDataReader reader;
+            List<CE_Usuarios> usuario = new List<CE_Usuarios>();
+
+            try
+            {
+                string consulta = "SELECT Id_Usuario, Correo FROM Usuarios WHERE Correo = " + regcorreo + "";
+                SqlCommand comando = new SqlCommand(consulta);
+                Con.Abrir();
+                reader = comando.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    CE_Usuarios reg = new CE_Usuarios
+                    {
+                        Id_Usuario = Convert.ToInt32(reader["Id_Usuario"]),
+                        Correo = Convert.ToString(reader["Correo"])
+                    };
+                    usuario.Add(reg);
+                }
+                return usuario;
+            }
+
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            finally
+            {
+                Con.Cerrar();
+            }
+        }
+
+
+
+        public List<CE_Usuarios> comprobarUsuario(string regnom)
+        {
+            
+            SqlDataReader reader;
+            List<CE_Usuarios> usuario = new List<CE_Usuarios>();
+
+            try
+            {
+
+                //string consulta = "SELECT * FROM Usuarios WHERE Usuario = " + regnom + "";
+                //SqlCommand comando = new SqlCommand(consulta);
+                //Con.Abrir();
+
+                Cmd = new SqlCommand("Select * FROM Usuarios WHERE Usuario = '" + regnom + "'", Con.Abrir());
+                Cmd.CommandType = CommandType.Text;
+                reader = Cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    CE_Usuarios reg = new CE_Usuarios
+                    {
+                        Id_Usuario = Convert.ToInt32(reader["Id_Usuario"]),
+                        Nombre = Convert.ToString(reader["Nombre"]),
+                        Apellido = Convert.ToString(reader["Apellido"]),
+                        Usuario = Convert.ToString(reader["Usuario"]),
+                        Correo = Convert.ToString(reader["Correo"]),
+                        Password = Convert.ToString(reader["Password"])
+                    };
+                    usuario.Add(reg);
+                }
+                return usuario;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+
+            finally
+            {
+                Con.Cerrar();
+            }
+        }
     }
 }
