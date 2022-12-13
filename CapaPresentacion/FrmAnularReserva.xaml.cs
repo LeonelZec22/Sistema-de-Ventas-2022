@@ -112,7 +112,7 @@ namespace CapaPresentacion
                         Reserva.Fecha_Reserva = Convert.ToDateTime(dtp_FechaReserva.Text);
                         Reserva.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
                         Reserva.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
-                        Reserva.Estado = "Cancelado";
+                        Reserva.Estado = "Cancelada";
 
 
                         foreach (DataRowView drv in DataGridAnularReserva.ItemsSource)

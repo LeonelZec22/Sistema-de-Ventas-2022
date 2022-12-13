@@ -20,17 +20,26 @@ namespace CapaDatos
 
         public void AgregarVentaServicios(CE_Ventas_Servicios Ventas)
         {
-            Cmd = new SqlCommand("AgregarVentaServicios", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Ventas.Id_Cliente));
-            Cmd.Parameters.Add(new SqlParameter("@Fecha_Venta", Ventas.Fecha_Venta));
-            Cmd.Parameters.Add(new SqlParameter("@Descuento", Ventas.Descuento));
-            Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ventas.Monto_Total));
-            Cmd.Parameters.Add(new SqlParameter("@Estado", Ventas.Estado));
-            Cmd.Parameters.Add(new SqlParameter("@id_Usuario", Ventas.Id_Usuario));
-            Cmd.ExecuteNonQuery();
 
-            Con.Cerrar();
+            try {
+                
+                Cmd = new SqlCommand("AgregarVentaServicios", Con.Abrir());
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Ventas.Id_Cliente));
+                Cmd.Parameters.Add(new SqlParameter("@Fecha_Venta", Ventas.Fecha_Venta));
+                Cmd.Parameters.Add(new SqlParameter("@Descuento", Ventas.Descuento));
+                Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ventas.Monto_Total));
+                Cmd.Parameters.Add(new SqlParameter("@Estado", Ventas.Estado));
+                Cmd.Parameters.Add(new SqlParameter("@id_Usuario", Ventas.Id_Usuario));
+                Cmd.ExecuteNonQuery();
+
+                Con.Cerrar();
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se puedo Agregar la Venta por: " + ex, "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         public void AnularVentaServicios(CE_Ventas_Servicios Ventas)
@@ -97,20 +106,6 @@ namespace CapaDatos
             return Dt;
         }
 
-        //public DataTable Mostrar_Ingreso_Ventas()
-        //{
-        //    DataTable Dt = new DataTable("Mostrar_Producto_Venta");
-        //    Cmd = new SqlCommand("Mostrar_Ingreso_Ventas", Con.Abrir());
-        //    Cmd.CommandType = CommandType.StoredProcedure;
-
-        //    SqlDataReader Dr = Cmd.ExecuteReader();
-        //    Dt.Load(Dr);
-
-        //    Con.Cerrar();
-
-        //    Dr.Close();
-
-        //    return Dt;
-        //}
+        
     }
 }

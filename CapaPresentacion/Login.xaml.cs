@@ -91,6 +91,8 @@ namespace CapaPresentacion
                             MainWindow FormularioPrincipal = new MainWindow(txtUsername.Text);
                             FormularioPrincipal.Show();
                             this.Hide();
+
+
                         }
 
                         else

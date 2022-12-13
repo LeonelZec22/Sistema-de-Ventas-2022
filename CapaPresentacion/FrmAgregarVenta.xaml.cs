@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CapaEntidad;
+using CapaEntidad.Caches;
 using CapaNegocio;
 using System.Data;
 using System.Reflection;
@@ -27,6 +28,7 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+        public static string Usuario;
 
         public FrmAgregarVenta(FrmVentas Ventas)
         {
@@ -40,8 +42,11 @@ namespace CapaPresentacion
         CE_Ventas Venta = new CE_Ventas();
         CDo_Detalle_Ventas DetalleVentas = new CDo_Detalle_Ventas();
         CE_Detalle_Ventas DetalleVenta = new CE_Detalle_Ventas();
-        
-       
+
+        CDo_Usuarios Usuarios = new CDo_Usuarios();
+
+        public static string User1;
+
         #endregion
 
 
@@ -73,8 +78,11 @@ namespace CapaPresentacion
             txtSubTotal.Text = "0.00";
             txtDescuentoVenta.Text = "0.00";
             txtMontoTotal.Text = "0.00";
-            //dtp_FechaVenta.Text = Convert.ToString(UltimoDia);
+
+            Usuarios.DatosUsuario(MainWindow.Usuario);
+            tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
            
+
         }
 
 
@@ -539,7 +547,7 @@ namespace CapaPresentacion
                     Venta.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
                     Venta.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
                     Venta.Estado = "Emitido";
-                    Venta.Id_Usuario = 1;
+                    Venta.Id_Usuario = Convert.ToInt32(tbUsuario.Text);
 
                     GenerarCorrelativos();
 
@@ -611,5 +619,8 @@ namespace CapaPresentacion
         {
             ContFila = 0;
         }
+
+        
+        
     }
 }

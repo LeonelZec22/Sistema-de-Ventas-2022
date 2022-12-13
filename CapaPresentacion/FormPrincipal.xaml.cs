@@ -62,6 +62,8 @@ namespace CapaPresentacion
         {
             Usuarios.DatosUsuario(Usuario);
             tbUsuario.Text = InformacionUsuario.Nombre + " " + InformacionUsuario.Apellido;
+
+           // tbxUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
         }
 
         private void BtnProductos_Click(object sender, RoutedEventArgs e)

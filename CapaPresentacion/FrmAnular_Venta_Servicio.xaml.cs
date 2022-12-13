@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CapaEntidad;
+using CapaEntidad.Caches;
 using CapaNegocio;
 using System.Data;
 using System.Reflection;
@@ -41,7 +42,7 @@ namespace CapaPresentacion
         CE_Ventas_Servicios VentaServicio = new CE_Ventas_Servicios();
         CDo_Detalle_Ventas_Servicioscs DetalleVentasServicios = new CDo_Detalle_Ventas_Servicioscs();
         CE_Detalle_Venta_Servicios DetalleVentaServicios = new CE_Detalle_Venta_Servicios();
-
+        CDo_Usuarios Usuarios = new CDo_Usuarios();
 
         #endregion
 
@@ -72,6 +73,8 @@ namespace CapaPresentacion
         {
             Procedimientos.FormatoMoneda(txtDescuentoVenta);
             Procedimientos.FormatoMoneda(txtMontoTotal);
+            Usuarios.DatosUsuario(MainWindow.Usuario);
+            tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
             MostrarDetalleVenta();
         }
 
@@ -128,7 +131,7 @@ namespace CapaPresentacion
                         VentaServicio.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
                         VentaServicio.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
                         VentaServicio.Estado = "Cancelado";
-                        VentaServicio.Id_Usuario = 1;
+                        VentaServicio.Id_Usuario = Convert.ToInt32(tbUsuario.Text);
 
 
                         foreach (DataRowView drv in DataGridVentaServicios.ItemsSource)

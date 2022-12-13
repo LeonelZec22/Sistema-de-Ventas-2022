@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CapaEntidad;
+using CapaEntidad.Caches;
 using CapaNegocio;
 using System.Data;
 using System.Reflection;
@@ -41,7 +42,7 @@ namespace CapaPresentacion
         CDo_Detalle_Ventas_Servicioscs DetalleVentasServicios = new CDo_Detalle_Ventas_Servicioscs();
         CE_Detalle_Venta_Servicios DetalleVentaServicios = new CE_Detalle_Venta_Servicios();
 
-
+        CDo_Usuarios Usuarios = new CDo_Usuarios();
         #endregion
 
         #region Eventos del formulario 
@@ -72,6 +73,8 @@ namespace CapaPresentacion
         {
             txtDescuentoVenta.Text = "0.00";
             txtMontoTotal.Text = "0.00";
+            Usuarios.DatosUsuario(MainWindow.Usuario);
+            tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
         }
 
         #region Método para calcular el descuento
@@ -102,7 +105,7 @@ namespace CapaPresentacion
         }
         #endregion
 
-        #region Seleccionar un Producto
+        #region Seleccionar una Reserva
 
         private void SeleccionarReserva()
         {
@@ -131,30 +134,51 @@ namespace CapaPresentacion
 
                     //Lenamos los textbox 
 
-                    foreach (DataRowView drv in VistaReserva.DataGridGestionReserva.SelectedItems)
+                    if (VistaReserva.DataGridGestionReserva.SelectedItems.Count != 0)
                     {
-                        DataRow row = drv.Row;
+                       
+                        foreach (DataRowView drv in VistaReserva.DataGridGestionReserva.SelectedItems)
+                        {
+                            DataRow row = drv.Row;
 
-                        var IdReserva = Convert.ToString(drv.Row[0]);
+                            var Estado = Convert.ToString(drv.Row[4]);
 
-                        txtId_Reserva.Text = IdReserva;
+                            if (Estado == "Finalizada")
+                            {
+                                System.Windows.Forms.MessageBox.Show("Solo se pueden seleccionar Reservas que están pendientes!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
-                        var IdCliente = Convert.ToString(drv.Row[1]);
+                                break;
+                                //VistaReserva.DataGridGestionReserva.UnselectAllCells();
+                            }
+                            else
+                            {
+                                var IdReserva = Convert.ToString(drv.Row[0]);
 
-                        txtId_Cliente.Text = IdCliente;
+                                txtId_Reserva.Text = IdReserva;
 
-                        var NombreReserva = Convert.ToString(drv.Row[2]);
+                                var IdCliente = Convert.ToString(drv.Row[1]);
 
-                        txtClienteNombre.Text = NombreReserva;
+                                txtId_Cliente.Text = IdCliente;
 
-                        var FechaReserva = Convert.ToString(drv.Row[3]);
+                                var NombreReserva = Convert.ToString(drv.Row[2]);
 
-                        txtFechaReserva.Text = FechaReserva;
+                                txtClienteNombre.Text = NombreReserva;
 
-                        var MontoTotal = Convert.ToString(drv.Row[6]);
+                                var FechaReserva = Convert.ToString(drv.Row[3]);
 
-                        txtMontoTotal1.Text = MontoTotal;
+                                txtFechaReserva.Text = FechaReserva;
 
+                                var MontoTotal = Convert.ToString(drv.Row[6]);
+
+                                txtMontoTotal1.Text = MontoTotal;
+
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una Reserca en la lista Reserva!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
                 }
@@ -162,7 +186,7 @@ namespace CapaPresentacion
 
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una Reserca en la lista Reserva!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("Ha ocurrido un error al seleccionar una Reserva!" + ex.Message, "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
         private void BtnBuscarReserva_Click(object sender, RoutedEventArgs e)
@@ -401,6 +425,12 @@ namespace CapaPresentacion
             TableReservas = null;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableReservas = null;
+        }
 
         public virtual bool Guardar()
         {
@@ -417,37 +447,45 @@ namespace CapaPresentacion
                     VentaServicio.Fecha_Venta = Convert.ToDateTime(dtp_FechaVenta.Text);
                     VentaServicio.Descuento = Convert.ToDecimal(txtDescuentoVenta.Text);
                     VentaServicio.Monto_Total = Convert.ToDecimal(txtMontoTotal.Text);
-                    VentaServicio.Estado = "Emitido";
-                    VentaServicio.Id_Usuario = 1;
+                    VentaServicio.Estado = "Emitida";
+                    VentaServicio.Id_Usuario = Convert.ToInt32(tbUsuario.Text);
 
                     GenerarCorrelativos();
 
-                    foreach (DataRowView drv in DataGridVentaServicios.ItemsSource)
+                    if (DataGridVentaServicios.Items.Count == 0)
                     {
-                        DataRow row = drv.Row;
-
-                        DetalleVentaServicios.Id_Venta_Servicios = Convert.ToInt32(txtId_Venta_Servicios.Text);
-                        DetalleVentaServicios.Id_Reserva = Convert.ToInt32(row[0].ToString());
-                        DetalleVentaServicios.Fecha_Reserva = Convert.ToDateTime(row[2].ToString());
-                        DetalleVentaServicios.Estado = Convert.ToString(row[3].ToString());
-                        DetalleVentaServicios.Descuento = Convert.ToDecimal(row[4].ToString());
-                        DetalleVentaServicios.Monto_Total = Convert.ToDecimal(row[5].ToString());
-
-                        DetalleVentasServicios.AgregarDetalleVentaServicios(DetalleVentaServicios);
+                        System.Windows.Forms.MessageBox.Show("Por Favor Agregue una Reserva a la Tabla", "Agregar Venta Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
+                    else
+                    {
 
-                    VentasServicios.AgregarVentaServicios(VentaServicio);
-
-                    System.Windows.Forms.MessageBox.Show("Venta de Reserva agregada correctamente!!", "Agregar Venta Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                    
-                    txtDescuentoVenta.Text = "0.00";
-                    txtMontoTotal.Text = "0.00";
-                    Agregar();
-                    LimpiarDetalle();
-                    LimpiarCampo();
-                    limpiarFila();
-                    Hide();
-                    return true;
+                        foreach (DataRowView drv in DataGridVentaServicios.ItemsSource)
+                        {
+                            DataRow row = drv.Row;
+
+                            DetalleVentaServicios.Id_Venta_Servicios = Convert.ToInt32(txtId_Venta_Servicios.Text);
+                            DetalleVentaServicios.Id_Reserva = Convert.ToInt32(row[0].ToString());
+                            DetalleVentaServicios.Fecha_Reserva = Convert.ToDateTime(row[2].ToString());
+                            DetalleVentaServicios.Estado = Convert.ToString(row[3].ToString());
+                            DetalleVentaServicios.Descuento = Convert.ToDecimal(row[4].ToString());
+                            DetalleVentaServicios.Monto_Total = Convert.ToDecimal(row[5].ToString());
+
+                            DetalleVentasServicios.AgregarDetalleVentaServicios(DetalleVentaServicios);
+                        }
+                        VentasServicios.AgregarVentaServicios(VentaServicio);
+
+                        System.Windows.Forms.MessageBox.Show("Venta de Reserva agregada correctamente!!", "Agregar Venta Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                   
+                        txtDescuentoVenta.Text = "0.00";
+                        txtMontoTotal.Text = "0.00";
+                        Agregar();
+                        LimpiarDetalle();
+                        LimpiarCampo();
+                        limpiarFila();
+                        Hide();
+                        return true;
+                    }
                 }
             }
 

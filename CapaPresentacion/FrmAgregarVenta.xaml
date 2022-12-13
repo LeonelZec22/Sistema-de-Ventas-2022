@@ -84,6 +84,8 @@
                     <TextBox Margin="520,64,561,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Producto"  Width="174" Margin="748,28,356,157" RenderTransformOrigin="0.876,0.477"/>
+                    
+                    <TextBlock x:Name="tbUsuario" Text="1" Margin="971,8,233,206" Visibility="Hidden"/>
 
                     <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
 

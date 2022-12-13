@@ -17,17 +17,25 @@ namespace CapaDatos
 
         public void AgregarDetalleVentaServicios(CE_Detalle_Venta_Servicios Detalles)
         {
-            Cmd = new SqlCommand("AgregarDetalleVentaServicios", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Id_Venta_Servicios", Detalles.Id_Venta_Servicios));
-            Cmd.Parameters.Add(new SqlParameter("@Id_Reserva", Detalles.Id_Reserva));
-            Cmd.Parameters.Add(new SqlParameter("@Fecha_Reserva", Detalles.Fecha_Reserva));
-            Cmd.Parameters.Add(new SqlParameter("@Estado", Detalles.Estado));
-            Cmd.Parameters.Add(new SqlParameter("@Descuento", Detalles.Descuento));
-            Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Detalles.Monto_Total));
-            Cmd.ExecuteNonQuery();
+            try {
 
-            Con.Cerrar();
+                Cmd = new SqlCommand("AgregarDetalleVentaServicios", Con.Abrir());
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@Id_Venta_Servicios", Detalles.Id_Venta_Servicios));
+                Cmd.Parameters.Add(new SqlParameter("@Id_Reserva", Detalles.Id_Reserva));
+                Cmd.Parameters.Add(new SqlParameter("@Fecha_Reserva", Detalles.Fecha_Reserva));
+                Cmd.Parameters.Add(new SqlParameter("@Estado", Detalles.Estado));
+                Cmd.Parameters.Add(new SqlParameter("@Descuento", Detalles.Descuento));
+                Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Detalles.Monto_Total));
+                Cmd.ExecuteNonQuery();
+
+                Con.Cerrar();
+            }
+            catch(Exception ex)
+            {
+
+                System.Windows.Forms.MessageBox.Show("No se puedo Agregar la Venta por: " + ex, "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         public void AnularDetalleVentaServicios(CE_Detalle_Venta_Servicios Detalles)
