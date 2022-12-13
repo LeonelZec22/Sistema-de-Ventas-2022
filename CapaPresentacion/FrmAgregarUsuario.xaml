@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CapaPresentacion"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
-        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" >
+        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Usuario" Closed="Window_Closed">
 
     <Grid>
 

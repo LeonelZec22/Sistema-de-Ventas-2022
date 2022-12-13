@@ -525,6 +525,13 @@ namespace CapaPresentacion
             TableProductos = null;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableProductos = null;
+        }
+
         private void GenerarCorrelativos()
         {
             txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");
@@ -551,33 +558,42 @@ namespace CapaPresentacion
 
                     GenerarCorrelativos();
 
-                    foreach (DataRowView drv in DataGridVenta.ItemsSource)
+                    if (DataGridVenta.Items.Count == 0)
                     {
-                        DataRow row = drv.Row;
-
-                        DetalleVenta.Id_Venta = Convert.ToInt32(txtId_Venta.Text);
-                        DetalleVenta.Id_Producto = Convert.ToInt32(row[0].ToString());
-                        DetalleVenta.Cantidad = Convert.ToInt32(row[2].ToString());
-                        DetalleVenta.Precio_Venta = Convert.ToDecimal(row[3].ToString());
-                        DetalleVenta.Sub_Total = Convert.ToDecimal(row[4].ToString());
-                        DetalleVenta.Descuento = Convert.ToDecimal(row[5].ToString());
-                        DetalleVenta.Monto_Total = Convert.ToDecimal(row[6].ToString());
-
-                        DetalleVentas.AgregarDetalleVenta(DetalleVenta);
+                        System.Windows.Forms.MessageBox.Show("Por Favor Agregue un Producto a la Tabla", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
-                    Ventas.AgregarVenta(Venta);
+                    else
+                    {
 
-                    System.Windows.Forms.MessageBox.Show("Venta de Productos agregada correctamente!!", "Agregar Venta Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                    txtSubTotal.Text= "0.00";
-                    txtDescuentoVenta.Text = "0.00";
-                    txtMontoTotal.Text = "0.00";
-                    Agregar();
-                    LimpiarDetalle();
-                    LimpiarCampo();
-                    limpiarFila();
-                    Hide();
-                    return true;
+                        foreach (DataRowView drv in DataGridVenta.ItemsSource)
+                        {
+                            DataRow row = drv.Row;
+
+                            DetalleVenta.Id_Venta = Convert.ToInt32(txtId_Venta.Text);
+                            DetalleVenta.Id_Producto = Convert.ToInt32(row[0].ToString());
+                            DetalleVenta.Cantidad = Convert.ToInt32(row[2].ToString());
+                            DetalleVenta.Precio_Venta = Convert.ToDecimal(row[3].ToString());
+                            DetalleVenta.Sub_Total = Convert.ToDecimal(row[4].ToString());
+                            DetalleVenta.Descuento = Convert.ToDecimal(row[5].ToString());
+                            DetalleVenta.Monto_Total = Convert.ToDecimal(row[6].ToString());
+
+                            DetalleVentas.AgregarDetalleVenta(DetalleVenta);
+                        }
+
+                        Ventas.AgregarVenta(Venta);
+
+                        System.Windows.Forms.MessageBox.Show("Venta de Productos agregada correctamente!!", "Agregar Venta Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        txtSubTotal.Text= "0.00";
+                        txtDescuentoVenta.Text = "0.00";
+                        txtMontoTotal.Text = "0.00";
+                        Agregar();
+                        LimpiarDetalle();
+                        LimpiarCampo();
+                        limpiarFila();
+                        Hide();
+                        return true;
+                    }
                 }
             }
 

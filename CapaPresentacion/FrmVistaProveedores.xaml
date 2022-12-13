@@ -9,7 +9,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d"
-        Height="720" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Height="720" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Icon="Images/thermal-spa.ico" Title="Selecciona un Proveedor" Closed="Window_Closed">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -49,10 +49,7 @@
 
                 <!--Titulo del encabezado-->
 
-                <TextBlock Text=" Gestión de Proveedores" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10,10,0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
-
-                <!--<Button Grid.Row="4" Margin="846,1,20,3" Height="Auto"  x:Name="btnaddcli" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" Content="Nuevo" Background="#9ED5C5" Foreground="Black"  IsEnabled="True" Click="Btnaddcli_Click" RenderTransformOrigin="-0.03,0.608"/>-->
-
+                <TextBlock Text="Selecciona un Proveedor" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="10,10,0,10" HorizontalAlignment="Left" Foreground="#ffffff"/>
 
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,20,708,16" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>

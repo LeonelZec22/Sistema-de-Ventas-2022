@@ -85,7 +85,7 @@ namespace CapaPresentacion
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
-            FrmProveedores Proveedor = new FrmProveedores();
+            MenuProveedores Proveedor = new MenuProveedores();
             Hide();
             Proveedor.ShowDialog();
             Close();

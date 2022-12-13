@@ -7,7 +7,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         mc:Ignorable="d"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Icon="Images/thermal-spa.ico" Title="Menu Ventas" Closed="Window_Closed">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -43,7 +43,7 @@
 
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png" />
+                                    <ImageBrush ImageSource="Images/admi.png" />
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>

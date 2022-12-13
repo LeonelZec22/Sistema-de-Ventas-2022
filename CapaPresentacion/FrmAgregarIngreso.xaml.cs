@@ -551,33 +551,41 @@ namespace CapaPresentacion
                     Ingreso.Monto_total = Convert.ToDecimal(txtTotal_Pago.Text);
                     Ingreso.Estado = "Recibido";
 
-                    foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
+                    if (DataGridIngresoProducto.Items.Count == 0)
                     {
-                        DataRow row = drv.Row;
-
-                        DetalleIngreso.Id_IngresoProducto = Convert.ToInt32(txtId_IngresoProducto.Text);
-                        DetalleIngreso.Id_Producto = Convert.ToInt32(row[0].ToString());
-                        DetalleIngreso.Nombre = Convert.ToString(row[1].ToString());
-                        DetalleIngreso.Cantidad = Convert.ToInt32(row[2].ToString());
-                        DetalleIngreso.Costo_Unitario = Convert.ToDecimal(row[3].ToString());
-                        DetalleIngreso.Sub_Total = Convert.ToDecimal(row[4].ToString());
-
-                        DetalleIngresos.AgregarDetalleIngreso(DetalleIngreso);
+                        System.Windows.Forms.MessageBox.Show("Por favor agregue un producto a la tabla", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
-                    Ingresos.AgregarIngreso(Ingreso);
+                    else
+                    {
+                            foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
+                            {
+                                DataRow row = drv.Row;
 
-                    System.Windows.Forms.MessageBox.Show("Ingreso de Producto agregado correctamente!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                    txtId_Detalle.Text = string.Empty;
-                    txtTotal_Pago.Text = "0.00";
-                    Agregar();
-                    LimpiarDetalle();
-                    limpiarproveedor();
-                    limpiarFila();
-                    Correlativo();
-                    Hide();
-                    //compraDeProducto.ShowDialog();
-                    return true;
+                                DetalleIngreso.Id_IngresoProducto = Convert.ToInt32(txtId_IngresoProducto.Text);
+                                DetalleIngreso.Id_Producto = Convert.ToInt32(row[0].ToString());
+                                DetalleIngreso.Nombre = Convert.ToString(row[1].ToString());
+                                DetalleIngreso.Cantidad = Convert.ToInt32(row[2].ToString());
+                                DetalleIngreso.Costo_Unitario = Convert.ToDecimal(row[3].ToString());
+                                DetalleIngreso.Sub_Total = Convert.ToDecimal(row[4].ToString());
+
+                                DetalleIngresos.AgregarDetalleIngreso(DetalleIngreso);
+                            }
+
+                            Ingresos.AgregarIngreso(Ingreso);
+
+                            System.Windows.Forms.MessageBox.Show("Ingreso de Producto agregado correctamente!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            txtId_Detalle.Text = string.Empty;
+                            txtTotal_Pago.Text = "0.00";
+                            Agregar();
+                            LimpiarDetalle();
+                            limpiarproveedor();
+                            limpiarFila();
+                            Correlativo();
+                            Hide();
+                            //compraDeProducto.ShowDialog();
+                            return true;
+                    }
                 }
             }
 
@@ -611,6 +619,13 @@ namespace CapaPresentacion
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableProductos = null;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
             limpiarFila();

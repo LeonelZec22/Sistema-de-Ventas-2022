@@ -33,5 +33,10 @@ namespace CapaPresentacion
         {
             this.Hide();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -15,38 +15,36 @@ using System.Windows.Shapes;
 namespace CapaPresentacion
 {
     /// <summary>
-    /// Lógica de interacción para MenuVentas.xaml
+    /// Lógica de interacción para MenuProveedores.xaml
     /// </summary>
-    public partial class MenuVentas : Window
+    public partial class MenuProveedores : Window
     {
-        public MenuVentas()
+        public MenuProveedores()
         {
             InitializeComponent();
         }
 
-        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
+            try
+            {
+                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
 
-            FrmReservas reservas = new FrmReservas();
-            Hide();
-            reservas.ShowDialog();
-            Close();
-        }
+                if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                {
 
-        private void BtnVentaReserva_Click(object sender, RoutedEventArgs e)
-        {
-            FrmVentas_Servicios ventas_Servicios = new FrmVentas_Servicios();
-            Hide();
-            ventas_Servicios.ShowDialog();
-            Close();
-        }
+                    Application.Current.Shutdown();
 
-        private void BtnVentaProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmVentas ventas = new FrmVentas();
-            Hide();
-            ventas.ShowDialog();
-            Close();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
@@ -67,10 +65,7 @@ namespace CapaPresentacion
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
-            FrmProveedores Proveedor = new FrmProveedores();
-            Hide();
-            Proveedor.ShowDialog();
-            Close();
+
         }
 
         private void BtnClientes_Click(object sender, RoutedEventArgs e)
@@ -122,7 +117,6 @@ namespace CapaPresentacion
             {
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
-
         }
 
         private void MinimizeApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -137,27 +131,28 @@ namespace CapaPresentacion
             }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void BtnProveedor_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+            FrmProveedores proveedores = new FrmProveedores();
+            Hide();
+            proveedores.ShowDialog();
+            Close();
+        }
 
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
+        private void BtnIngresoProducto_Click(object sender, RoutedEventArgs e)
+        {
+            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
+            Hide();
+            compraDeProducto.ShowDialog();
+            Close();
+        }
 
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
         }
     }
 }

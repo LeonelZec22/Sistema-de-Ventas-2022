@@ -7,7 +7,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         mc:Ignorable="d"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Icon="Images/thermal-spa.ico" Title="Inventario" Closed="Window_Closed">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -244,7 +244,7 @@
 
                 <Grid Width="300" HorizontalAlignment="Left" Margin="155,469,0,-4" Grid.Row="5" Grid.RowSpan="2">
 
-                    <TextBlock Margin="10,10,10,22" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis} }"/>
+                    <TextBlock Margin="10,14,10,26" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Visibility="{Binding ElementName=txtSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis} }" Height="38"/>
 
                     <TextBox x:Name="txtMontoInv" Style="{StaticResource textBoxSearch}" Margin="10,10,10,22" IsReadOnly="True" Height="38"/>
 

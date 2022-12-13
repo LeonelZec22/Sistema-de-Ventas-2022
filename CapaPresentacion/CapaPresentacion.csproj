@@ -183,6 +183,9 @@
     <Compile Include="Informes\FrmMostrar_Ingreso_Producto.Designer.cs">
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuProveedores.xaml.cs">
+      <DependentUpon>MenuProveedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuVentas.xaml.cs">
       <DependentUpon>MenuVentas.xaml</DependentUpon>
     </Compile>
@@ -347,6 +350,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

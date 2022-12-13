@@ -9,7 +9,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d"
-        Height="720" Width="1338" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded">
+        Height="720" Width="1338" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded" Icon="Images/thermal-spa.ico" Title="Agregar Ingreso de Productos" Closed="Window_Closed">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>

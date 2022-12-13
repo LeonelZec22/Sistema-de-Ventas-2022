@@ -251,5 +251,11 @@ namespace CapaPresentacion
             this.Hide();
             Agregar();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Hide();
+            Agregar();
+        }
     }
 }

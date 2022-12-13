@@ -178,7 +178,7 @@ namespace CapaPresentacion
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una Reserca en la lista Reserva!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Debe de Seleccionar una Reserva en la lista Reserva!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
                 }
@@ -223,8 +223,8 @@ namespace CapaPresentacion
                     else
                     {
                         Descuento();
-                        bool Existe = false;
-                        int no_fila = 0;
+                        //bool Existe = false;
+                        //int no_fila = 0;
 
                         if (ContFila == 0)
                         {
@@ -273,6 +273,7 @@ namespace CapaPresentacion
                                 DataGridVentaServicios.ItemsSource = TableReservas.DefaultView;
                                 LimpiarDetalle();
                                 ContFila++;
+                                txtEstado.Text = "Finalizado";
                             }
 
                             else
@@ -284,6 +285,7 @@ namespace CapaPresentacion
                                 DataGridVentaServicios.UnselectAllCells();
                                 LimpiarDetalle();
                                 ContFila++;
+                                txtEstado.Text = "Finalizado";
                             }
                         }
 
@@ -389,7 +391,7 @@ namespace CapaPresentacion
 
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("No hay Reserca para eliminar!!", "Eliminar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("No hay Reserva para eliminar!!", "Eliminar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
             }
 
@@ -438,7 +440,7 @@ namespace CapaPresentacion
             {
                 if (txtClienteNombre.Text == string.Empty || txtId_Cliente.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {

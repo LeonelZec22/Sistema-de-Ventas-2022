@@ -426,6 +426,12 @@ namespace CapaPresentacion
             TableServicio = null;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            TableServicio = null;
+        }
 
         public virtual bool Guardar()
         {
@@ -447,30 +453,39 @@ namespace CapaPresentacion
 
                     GenerarCorrelativos();
 
-                    foreach (DataRowView drv in DataGridReserva.ItemsSource)
+                    if (DataGridReserva.Items.Count == 0)
                     {
-                        DataRow row = drv.Row;
-
-                        DetalleReserva.Id_Reserva = Convert.ToInt32(txtId_Reserva.Text);
-                        DetalleReserva.Id_Servicios = Convert.ToInt32(row[0].ToString());
-                        DetalleReserva.Estado = Convert.ToString(row[2].ToString());
-                        DetalleReserva.Descuento = Convert.ToDecimal(row[3].ToString());
-                        DetalleReserva.Monto_Total = Convert.ToDecimal(row[4].ToString());
-
-                        DetalleReservas.AgregarDetalleReserva(DetalleReserva);
+                        System.Windows.Forms.MessageBox.Show("Por Favor Agregue un Servicio a la Tabla", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
-                    Reservas.AgregarReserva(Reserva);
+                    else
+                    {
 
-                    System.Windows.Forms.MessageBox.Show("Reserva de Servicio agregada correctamente!!", "Agregar Reserva de Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-                    txtDescuentoVenta.Text = "0.00";
-                    txtMontoTotal.Text = "0.00";
-                    Agregar();
-                    LimpiarDetalle();
-                    LimpiarCampo();
-                    limpiarFila();
-                    Hide();
-                    return true;
+                        foreach (DataRowView drv in DataGridReserva.ItemsSource)
+                        {
+                            DataRow row = drv.Row;
+
+                            DetalleReserva.Id_Reserva = Convert.ToInt32(txtId_Reserva.Text);
+                            DetalleReserva.Id_Servicios = Convert.ToInt32(row[0].ToString());
+                            DetalleReserva.Estado = Convert.ToString(row[2].ToString());
+                            DetalleReserva.Descuento = Convert.ToDecimal(row[3].ToString());
+                            DetalleReserva.Monto_Total = Convert.ToDecimal(row[4].ToString());
+
+                            DetalleReservas.AgregarDetalleReserva(DetalleReserva);
+                        }
+
+                        Reservas.AgregarReserva(Reserva);
+
+                        System.Windows.Forms.MessageBox.Show("Reserva de Servicio agregada correctamente!!", "Agregar Reserva de Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        txtDescuentoVenta.Text = "0.00";
+                        txtMontoTotal.Text = "0.00";
+                        Agregar();
+                        LimpiarDetalle();
+                        LimpiarCampo();
+                        limpiarFila();
+                        Hide();
+                        return true;
+                    }
                 }
             }
 
