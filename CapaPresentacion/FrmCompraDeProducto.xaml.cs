@@ -159,15 +159,7 @@ namespace CapaPresentacion
         {
 
         }
-
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
-        {
-
-            FrmProductos Productos = new FrmProductos();
-            Hide();
-            Productos.ShowDialog();
-            Close();
-        }
+        
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -227,6 +219,61 @@ namespace CapaPresentacion
             }
         }
 
-        
+        private void BtnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow FormPrincipal = new MainWindow();
+            Hide();
+            FormPrincipal.ShowDialog();
+            Close();
+        }
+
+        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        {
+
+            FrmProductos Productos = new FrmProductos();
+            Hide();
+            Productos.ShowDialog();
+            Close();
+        }
+
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
+        {
+            MenuProveedores Proveedor = new MenuProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
+        }
+
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrmClientes clientes = new FrmClientes();
+            Hide();
+            clientes.ShowDialog();
+            Close();
+        }
+
+        private void BtnServicios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmServicios servicios = new FrmServicios();
+            Hide();
+            servicios.ShowDialog();
+            Close();
+        }
+
+        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        {
+            FrmInventario frmInventario = new FrmInventario();
+            Hide();
+            frmInventario.ShowDialog();
+            Close();
+        }
+
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
+        }
     }
 }

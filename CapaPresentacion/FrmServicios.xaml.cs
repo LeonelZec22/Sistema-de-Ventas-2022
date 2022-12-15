@@ -268,5 +268,29 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
+
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
+        {
+            MenuProveedores Proveedor = new MenuProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
+        }
+
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrmClientes clientes = new FrmClientes();
+            Hide();
+            clientes.ShowDialog();
+            Close();
+        }
+
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
+        }
     }
 }

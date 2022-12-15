@@ -100,29 +100,7 @@ namespace CapaPresentacion
 
         }
 
-        private void BtnInicio_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow Inicio = new MainWindow();
-            Hide();
-            Inicio.ShowDialog();
-            Close();
-        }
-
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProductos Productos = new FrmProductos();
-            Hide();
-            Productos.ShowDialog();
-            Close();
-        }
-
-        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProductos Producto = new FrmProductos();
-            Hide();
-            Producto.ShowDialog();
-            Close();
-        }
+        
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -180,6 +158,53 @@ namespace CapaPresentacion
             {
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
+        }
+
+        private void BtnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Inicio = new MainWindow();
+            Hide();
+            Inicio.ShowDialog();
+            Close();
+        }
+
+        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProductos Productos = new FrmProductos();
+            Hide();
+            Productos.ShowDialog();
+            Close();
+        }
+
+        private void BtnProveedores_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProductos Producto = new FrmProductos();
+            Hide();
+            Producto.ShowDialog();
+            Close();
+        }
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrmClientes clientes = new FrmClientes();
+            Hide();
+            clientes.ShowDialog();
+            Close();
+        }
+
+        private void BtnServicios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmServicios servicios = new FrmServicios();
+            Hide();
+            servicios.ShowDialog();
+            Close();
+        }
+
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
         }
     }
 }

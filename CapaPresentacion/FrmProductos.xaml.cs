@@ -131,24 +131,7 @@ namespace CapaPresentacion
         }
 
 
-        //Botones del Menú
-        private void BtnInicio_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow Inicio = new MainWindow();
-            Hide();
-            Inicio.ShowDialog();
-            Close();
-
-
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario Inventario = new FrmInventario();
-            Hide();
-            Inventario.ShowDialog();
-            Close();
-        }
+       
         private void BtnAddProd_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarProducto AgregarProducto = new FrmAgregarProducto(this);
@@ -277,9 +260,28 @@ namespace CapaPresentacion
             }
         }
 
+        //Botones del Menú
+        private void BtnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Inicio = new MainWindow();
+            Hide();
+            Inicio.ShowDialog();
+            Close();
+
+
+        }
+
+        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        {
+            FrmInventario Inventario = new FrmInventario();
+            Hide();
+            Inventario.ShowDialog();
+            Close();
+        }
+
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
-            FrmProveedores Proveedor = new FrmProveedores();
+            MenuProveedores Proveedor = new MenuProveedores();
             Hide();
             Proveedor.ShowDialog();
             Close();
@@ -378,5 +380,7 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }

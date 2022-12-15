@@ -65,7 +65,10 @@ namespace CapaPresentacion
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuProveedores Proveedor = new MenuProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
         }
 
         private void BtnClientes_Click(object sender, RoutedEventArgs e)
@@ -154,5 +157,7 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+       
     }
 }
