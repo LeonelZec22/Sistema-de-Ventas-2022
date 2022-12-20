@@ -49,6 +49,7 @@
     <Compile Include="CDo_Detalle_Ventas.cs" />
     <Compile Include="CDo_Detalle_Ventas_Servicioscs.cs" />
     <Compile Include="CDo_Ingreso_Productos.cs" />
+    <Compile Include="CDo_Paquetes.cs" />
     <Compile Include="CDo_Proveedores.cs" />
     <Compile Include="CDo_Procedimientos.cs" />
     <Compile Include="CDo_Productos.cs" />

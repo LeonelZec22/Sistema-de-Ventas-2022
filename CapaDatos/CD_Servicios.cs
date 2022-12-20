@@ -69,7 +69,7 @@ namespace CapaDatos
             Con.Cerrar();
         }
 
-        #region Métodos para buscar Clientes
+        #region Métodos para buscar Servicios
 
         //Método que me permite buscar un Servicio  por el codigo
         public DataTable Buscar_Servicio_Codigo(CE_Servicios Servicios)

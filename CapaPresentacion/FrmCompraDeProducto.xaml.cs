@@ -157,9 +157,31 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
-        
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboIngresoProducto.Text == "Proveedor")
+                {
+                    IngresoProducto.Buscar = txtBuscador.Text.Trim();
+                    DataGridIngresoProducto.ItemsSource = IngresoProductos.Buscar_Ingreso_Proveedor(IngresoProducto).AsDataView();
+                }
+                else if (cboIngresoProducto.Text == "Fecha")
+                {
+                    IngresoProducto.Buscar = txtBuscador.Text.Trim();
+                    DataGridIngresoProducto.ItemsSource = IngresoProductos.Buscar_Ingreso_Fecha(IngresoProducto).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Proveedor no fue encontrado por: " + ex.Message, "Buscar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

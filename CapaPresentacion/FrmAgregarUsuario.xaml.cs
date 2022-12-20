@@ -16,6 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -123,6 +124,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
+                    
                     Usuario.Nombre = txtNombre.Text.Trim();
                     Usuario.Apellido = txtApellido.Text.Trim();
                     Usuario.Usuario = txtUsuario.Text.Trim();
@@ -170,5 +172,7 @@ namespace CapaPresentacion
             this.Hide();
             Agregar();
         }
+
+       
     }
 }

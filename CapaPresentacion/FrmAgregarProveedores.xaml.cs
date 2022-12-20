@@ -16,6 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -121,31 +122,45 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    Proveedor.Codigo = txtAddCodeProveedor.Text.Trim();
-                    Proveedor.Nombre = txtAddNombreProveedor.Text.Trim();
-                    Proveedor.Direccion = txtAddDireccion.Text.Trim();
-                    Proveedor.Telefono = txtAddTelefono.Text.Trim();
+                    if (txtAddTelefono.Text != string.Empty)
+                    {
+                        bool val = Regexcel(txtAddTelefono);
+                        if (val == false)
+                        {
+                            System.Windows.Forms.MessageBox.Show("El teléfono del becado tiene formato incorrecto, ejemplo 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+
+                            Proveedor.Codigo = txtAddCodeProveedor.Text.Trim();
+                            Proveedor.Nombre = txtAddNombreProveedor.Text.Trim();
+                            Proveedor.Direccion = txtAddDireccion.Text.Trim();
+                            Proveedor.Telefono = txtAddTelefono.Text.Trim();
+
+
+                            Proveedores.AgregarProveedor(Proveedor);
+
+                            System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                            LimpiarControles();
+
+                            GenerarCodigo();
+
+                            txtAddNombreProveedor.Focus();
+
+                            Agregar();
+
+                            Hide();
+                        }
+                    }
+                    else
+                    {
+
+                        System.Windows.Forms.MessageBox.Show("El telefono no puede estar vacio!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                      
+                    }
                     
-
-                    Proveedores.AgregarProveedor(Proveedor);
-
-                    System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-
-                    LimpiarControles();
-
-                    GenerarCodigo();
-
-                    txtAddNombreProveedor.Focus();
-
-                    Agregar();
-
-                    Hide();
-                    //proveedores.CargarDatos();
-                    //vistaProveedores.CargarDatos();
-                    //proveedores.ShowDialog();
-
-                    //FrmProductos productos = new FrmProductos();
-                    //productos.ShowDialog();
 
                 }
             }
@@ -256,6 +271,23 @@ namespace CapaPresentacion
         {
             this.Hide();
             Agregar();
+        }
+
+        public bool Regexcel(TextBox txt)
+        {
+            string re = "^([0-9]{4})-([0-9]{4})$";
+            bool valido;
+            Regex regex = new Regex(re);
+            if (regex.IsMatch(txt.Text))
+            {
+                valido = true;
+                return valido;
+            }
+            else
+            {
+                valido = false;
+                return valido;
+            }
         }
     }
 }

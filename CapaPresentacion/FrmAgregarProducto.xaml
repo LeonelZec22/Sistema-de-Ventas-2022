@@ -47,11 +47,11 @@
                 <TextBox Margin="210,241,62,309" x:Name="txtAddDescripcion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la descripción del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddDescripcion_KeyDown"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Costo unitario" Margin="22,343,424,224"/>
-                <TextBox Margin="210,326,62,224" x:Name="txtAddCostoUnit" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el costo unitario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddCostoUnit_KeyDown" LostFocus="TxtAddCostoUnit_LostFocus"/>
+                <TextBox Margin="210,326,62,224" x:Name="txtAddCostoUnit" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el costo unitario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddCostoUnit_KeyDown" LostFocus="TxtAddCostoUnit_LostFocus" MaxLength="12" PreviewMouseRightButtonDown="TxtAddCostoUnit_PreviewMouseRightButtonDown"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio de venta" Margin="22,427,424,140"/>
 
-                <TextBox Margin="210,410,62,140" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el precio de venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus"/>
+                <TextBox Margin="210,410,62,140" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el precio de venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus" MaxLength="12"/>
 
                 <Button Margin="370,532,40,25" x:Name="AddguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D" Click="AddguardarBtn_Click"/>
 

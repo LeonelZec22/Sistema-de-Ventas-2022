@@ -14,6 +14,8 @@ namespace CapaDatos
         CD_Conexion Con = new CD_Conexion();
 
         private SqlCommand Cmd;
+        DataTable dataTable;
+        SqlDataAdapter Da;
 
         //Método para agregar el ingreso de un producto
 
@@ -96,6 +98,38 @@ namespace CapaDatos
             Dr.Close();
 
             return Dt;
+        }
+
+        public DataTable Buscar_Ingreso_Proveedor(CE_Ingreso_Productos Ingresos)
+        {
+           
+            dataTable = new DataTable("Proveedor");
+            Cmd = new SqlCommand("Buscar_Ingreso_Proveedor", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ingresos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        public DataTable Buscar_Ingreso_Fecha(CE_Ingreso_Productos Ingresos)
+        {
+
+            dataTable = new DataTable("Fecha");
+            Cmd = new SqlCommand("Buscar_Ingreso_Fecha", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ingresos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
         }
 
     }

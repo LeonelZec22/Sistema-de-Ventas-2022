@@ -99,6 +99,12 @@ namespace CapaPresentacion
                 txtAddPrecioVenta.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtAddPrecioVenta_KeyDown(object sender, KeyEventArgs e)
@@ -108,16 +114,78 @@ namespace CapaPresentacion
                 AddguardarBtn.Focus();
                 e.Handled = true;
             }
+
+            
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+            
         }
 
         private void TxtAddCostoUnit_LostFocus(object sender, RoutedEventArgs e)
         {
-            Procedimientos.FormatoMoneda(txtAddCostoUnit);
+
+            //int numero = 0;
+            if(txtAddCostoUnit.Text.Length > 12)
+            {
+                System.Windows.Forms.MessageBox.Show("El Costo Unitario no puede ser mayor a 12 caracteres", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToDecimal(txtAddCostoUnit.Text) >0)
+                    {
+                        Procedimientos.FormatoMoneda(txtAddCostoUnit);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Costo Unitario no puede ser cero", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+                }
+
+                catch(Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Costo Unitario no es un numero por favor ingrese solo numeros", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddCostoUnit.Clear();
+                    //txtAddCostoUnit.Focus();
+                }
+               
+            }
         }
 
         private void TxtAddPrecioVenta_LostFocus(object sender, RoutedEventArgs e)
         {
-            Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+            if (txtAddPrecioVenta.Text.Length > 12)
+            {
+                System.Windows.Forms.MessageBox.Show("El Precio de venta no puede ser mayor a 12 caracteres", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToDecimal(txtAddPrecioVenta.Text) > 0)
+                    {
+                        Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Precio de venta no puede ser cero", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Precio de Venta no es un numero por favor ingrese solo numeros", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddPrecioVenta.Clear();
+                    //txtAddPrecioVenta.Focus();
+                }
+
+            }
+
         }
 
         #endregion
@@ -256,6 +324,11 @@ namespace CapaPresentacion
         {
             this.Hide();
             Agregar();
+        }
+
+        private void TxtAddCostoUnit_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("El precio solo se puede ingresar por medio del teclado", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
         }
     }
 }

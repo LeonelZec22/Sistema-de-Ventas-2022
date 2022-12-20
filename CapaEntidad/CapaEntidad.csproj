@@ -49,6 +49,7 @@
     <Compile Include="CE_Detalle_Ventas.cs" />
     <Compile Include="CE_Detalle_Venta_Servicios.cs" />
     <Compile Include="CE_Ingreso_Productos.cs" />
+    <Compile Include="CE_Paquetes.cs" />
     <Compile Include="CE_Productos.cs" />
     <Compile Include="CE_Proveedores.cs" />
     <Compile Include="CE_Reservas.cs" />

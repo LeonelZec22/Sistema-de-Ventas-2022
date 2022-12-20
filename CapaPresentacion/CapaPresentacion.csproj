@@ -115,6 +115,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_Sistemas_v2DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmAgregarPaquete.xaml.cs">
+      <DependentUpon>FrmAgregarPaquete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAgregarReserva.xaml.cs">
       <DependentUpon>FrmAgregarReserva.xaml</DependentUpon>
     </Compile>
@@ -136,8 +139,14 @@
     <Compile Include="FrmAnular_Venta_Servicio.xaml.cs">
       <DependentUpon>FrmAnular_Venta_Servicio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarPaquetes.xaml.cs">
+      <DependentUpon>FrmEditarPaquetes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditarUsuario.xaml.cs">
       <DependentUpon>FrmEditarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPaquetes.xaml.cs">
+      <DependentUpon>FrmPaquetes.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmReservas.xaml.cs">
       <DependentUpon>FrmReservas.xaml</DependentUpon>
@@ -217,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmAgregarPaquete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmAgregarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -273,6 +286,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmEditarPaquetes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmEditarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,6 +307,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmInventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmPaquetes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,6 +15,7 @@ namespace CapaEntidad
         private DateTime _Fecha_Ingreso;
         private decimal _Monto_total;
         private string _Estado;
+        private string _Buscar;
         //private ObservableCollection _ProductData;
 
         public int Id_IngresoProducto { get => _Id_IngresoProducto; set => _Id_IngresoProducto = value; }
@@ -23,11 +24,8 @@ namespace CapaEntidad
         public DateTime Fecha_Ingreso { get => _Fecha_Ingreso; set => _Fecha_Ingreso = value; }
         public decimal Monto_total { get => _Monto_total; set => _Monto_total = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
+        public string Buscar { get => _Buscar; set => _Buscar = value; }
         
         public IEnumerable<DataGridItemsProducto> AddProducto { get; set; }
-
-       
-        
-
     }
 }

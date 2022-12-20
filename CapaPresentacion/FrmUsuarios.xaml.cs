@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
 using System.Windows.Shapes;
 using CapaNegocio;
 using CapaDatos;
@@ -312,5 +313,28 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+        //public bool Regexp(TextBox txt)
+        //{
+        //    string re = "^([0-9]{4})-([0-9]{2})-([0-9]{2})$";
+
+        //    bool valido;
+
+        //    Regex regex = new Regex(re);
+
+        //    if (regex.IsMatch(txt.Text))
+        //    {
+        //        valido = true;
+        //        return valido;
+        //    }
+        //    else
+        //    {
+        //        valido = false;
+        //        return valido;
+        //    }
+        //}
+
+
+      
     }
 }

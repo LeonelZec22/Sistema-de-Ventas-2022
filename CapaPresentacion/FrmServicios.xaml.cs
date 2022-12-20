@@ -21,15 +21,16 @@ namespace CapaPresentacion
         public FrmServicios()
         {
             InitializeComponent();
+        }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             CargarDatos();
         }
 
         //Creamos un objeto de nuestra clase conexión
 
         CD_Conexion Con = new CD_Conexion();
-
-
         CDo_Servicios Servicios = new CDo_Servicios();
         CE_Servicios Servicio = new CE_Servicios();
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
@@ -193,23 +194,7 @@ namespace CapaPresentacion
             }
         }
 
-        #region Botones menu izquierda
-        private void BtnInicio_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
+      
 
         private void CloseApp_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -269,6 +254,31 @@ namespace CapaPresentacion
             }
         }
 
+        #region Botones menu izquierda
+        private void BtnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Principal = new MainWindow();
+            Hide();
+            Principal.ShowDialog();
+            Close();
+        }
+
+        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProductos productos = new FrmProductos();
+            Hide();
+            productos.ShowDialog();
+            Close();
+        }
+
+        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        {
+            FrmInventario inventario = new FrmInventario();
+            Hide();
+            inventario.ShowDialog();
+            Close();
+        }
+
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
             MenuProveedores Proveedor = new MenuProveedores();
@@ -292,5 +302,8 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+        #endregion
+        
     }
 }

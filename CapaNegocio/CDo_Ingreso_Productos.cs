@@ -34,5 +34,17 @@ namespace CapaNegocio
         {
             return objIngresoProducto.MostrarIngresoProductos();
         }
+
+        public DataTable Buscar_Ingreso_Proveedor(CE_Ingreso_Productos Ingresos)
+        {
+
+            return objIngresoProducto.Buscar_Ingreso_Proveedor(Ingresos);
+        }
+
+        public DataTable Buscar_Ingreso_Fecha(CE_Ingreso_Productos Ingresos)
+        {
+            return objIngresoProducto.Buscar_Ingreso_Fecha(Ingresos);
+
+        }
     }
 }

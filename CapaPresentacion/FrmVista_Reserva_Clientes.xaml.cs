@@ -100,7 +100,7 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
-            DataGridGestionClientes.UnselectAllCells();
+            //DataGridGestionClientes.UnselectAllCells();
         }
     }
 }
