@@ -32,6 +32,7 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Codigo", Paquetes.Codigo));
             Cmd.Parameters.Add(new SqlParameter("@Nombre", Paquetes.Nombre));
             Cmd.Parameters.Add(new SqlParameter("@Descripcion", Paquetes.Descripcion));
+            Cmd.Parameters.Add(new SqlParameter("@Cantidad_Vendida", Paquetes.Cantidad_Vendida));
             Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Paquetes.Precio_Venta));
 
             Cmd.ExecuteNonQuery();
@@ -48,6 +49,7 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Codigo", Paquetes.Codigo));
             Cmd.Parameters.Add(new SqlParameter("@Nombre", Paquetes.Nombre));
             Cmd.Parameters.Add(new SqlParameter("@Descripcion", Paquetes.Descripcion));
+            Cmd.Parameters.Add(new SqlParameter("@Cantidad_Vendida", Paquetes.Cantidad_Vendida));
             Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Paquetes.Precio_Venta));
             Cmd.Parameters.Add(new SqlParameter("@Id_Paquete", Paquetes.Id_Paquetes));
 

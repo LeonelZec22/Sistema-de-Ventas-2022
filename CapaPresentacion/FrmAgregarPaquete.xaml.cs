@@ -143,7 +143,8 @@ namespace CapaPresentacion
         {
             try
             {
-                if (txtAddCodePaquete.Text == string.Empty || txtAddNombrePaquete.Text == string.Empty || txtAddDescripcionPaquete.Text == string.Empty || txtAddPrecioVenta.Text == string.Empty)
+                if (txtAddCodePaquete.Text == string.Empty || txtAddNombrePaquete.Text == string.Empty || txtAddDescripcionPaquete.Text == string.Empty || txtAddCantidad_Vendida.Text == string.Empty||
+                    txtAddPrecioVenta.Text == string.Empty)
                 {
                     System.Windows.Forms.MessageBox.Show("Por favor llene los campos de textos requeridos!!! ", "Agregar Paquetes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
@@ -152,6 +153,7 @@ namespace CapaPresentacion
                     Paquete.Codigo = txtAddCodePaquete.Text.Trim();
                     Paquete.Nombre = txtAddNombrePaquete.Text.Trim();
                     Paquete.Descripcion = txtAddDescripcionPaquete.Text.Trim();
+                    Paquete.Cantidad_Vendida = Convert.ToInt32(txtAddCantidad_Vendida.Text.Trim());
                     Paquete.Precio_Venta = txtAddPrecioVenta.Text.Trim();
 
 
@@ -184,6 +186,7 @@ namespace CapaPresentacion
             txtAddCodePaquete.Clear();
             txtAddNombrePaquete.Clear();
             txtAddDescripcionPaquete.Clear();
+            txtAddCantidad_Vendida.Clear();
             txtAddPrecioVenta.Clear();
             Close();
         }
@@ -200,6 +203,14 @@ namespace CapaPresentacion
         }
 
         private void TxtAddDescripcionPaquete_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtAddCantidad_Vendida.Focus();
+                e.Handled = true;
+            }
+        }
+        private void TxtAddCantidad_Vendida_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -245,6 +256,6 @@ namespace CapaPresentacion
             Agregar();
         }
 
-       
+      
     }
 }

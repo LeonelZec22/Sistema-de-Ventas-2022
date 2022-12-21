@@ -67,12 +67,13 @@ namespace CapaPresentacion
                     Paquete.Codigo = txtAddCodePaquete.Text.Trim();
                     Paquete.Nombre = txtAddNombrePaquete.Text.Trim();
                     Paquete.Descripcion = txtAddDescripcionPaquete.Text.Trim();
+                    Paquete.Cantidad_Vendida = Convert.ToInt32(txtAddCantidad_Vendida.Text.Trim());
                     Paquete.Precio_Venta = txtAddPrecioVenta.Text.Trim();
 
 
                     Paquetes.EditarPaquete(Paquete);
 
-                    System.Windows.Forms.MessageBox.Show("Paquete Agregado exitosamente!!! ", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    System.Windows.Forms.MessageBox.Show("Paquete Editado exitosamente!!! ", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                     this.Hide();
 
@@ -115,11 +116,18 @@ namespace CapaPresentacion
         {
             if (e.Key == Key.Enter)
             {
+                txtAddCantidad_Vendida.Focus();
+                e.Handled = true;
+            }
+        }
+        private void TxtAddCantidad_Vendida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
                 txtAddPrecioVenta.Focus();
                 e.Handled = true;
             }
         }
-
         private void TxtAddPrecioVenta_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -144,5 +152,7 @@ namespace CapaPresentacion
             this.Hide();
             Actualizar();
         }
+
+        
     }
 }

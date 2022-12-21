@@ -12,6 +12,7 @@ namespace CapaEntidad
         private string _Codigo;
         private string _Nombre;
         private string _Descripcion;
+        private int _Cantidad_Vendida;
         private string _Precio_Venta;
         private string _Buscar;
 
@@ -21,5 +22,6 @@ namespace CapaEntidad
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
         public string Precio_Venta { get => _Precio_Venta; set => _Precio_Venta = value; }
         public string Buscar { get => _Buscar; set => _Buscar = value; }
+        public int Cantidad_Vendida { get => _Cantidad_Vendida; set => _Cantidad_Vendida = value; }
     }
 }

@@ -48,9 +48,13 @@
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descripcion del Paquete" Margin="29,280,394,288" Width="187"/>
                 <TextBox Margin="232,261,40,289" x:Name="txtAddDescripcionPaquete" FontSize="18" materialDesign:HintAssist.Hint="Ingresa Descripcion del Paquete" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddDescripcionPaquete_KeyDown"/>
 
-                <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio de Venta" Margin="29,373,342,193" Width="239"/>
+                <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad a Vender" Margin="29,371,394,195" Width="187"/>
 
-                <TextBox Margin="232,354,40,196" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el Precio de Venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus"/>
+                <TextBox Margin="232,352,40,198" x:Name="txtAddCantidad_Vendida" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la Cantidad a Vender" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddCantidad_Vendida_KeyDown"/>
+
+                <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio de Venta" Margin="29,445,394,121" Width="187"/>
+
+                <TextBox Margin="232,429,40,121" x:Name="txtAddPrecioVenta" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el Precio de Venta" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddPrecioVenta_KeyDown" LostFocus="TxtAddPrecioVenta_LostFocus"/>
 
 
                 <Button Margin="370,532,40,25" x:Name="AddguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D" Click="AddguardarBtn_Click"/>

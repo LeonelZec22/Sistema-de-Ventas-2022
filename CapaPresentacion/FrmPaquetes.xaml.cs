@@ -196,7 +196,8 @@ namespace CapaPresentacion
                 EditarPaquete.txtAddCodePaquete.Text = dr[1].ToString();
                 EditarPaquete.txtAddNombrePaquete.Text = dr[2].ToString();
                 EditarPaquete.txtAddDescripcionPaquete.Text = dr[3].ToString();
-                EditarPaquete.txtAddPrecioVenta.Text = dr[4].ToString();
+                EditarPaquete.txtAddCantidad_Vendida.Text = dr[4].ToString();
+                EditarPaquete.txtAddPrecioVenta.Text = dr[5].ToString();
                 EditarPaquete.AddguardarBtn.IsEnabled = true;
                 EditarPaquete.IsEnabled = true;
             }
