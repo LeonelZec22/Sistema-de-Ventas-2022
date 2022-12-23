@@ -43,6 +43,25 @@ namespace CapaDatos
             return Dt;
         }
 
+        public DataTable CargarProcedimiento(string Tabla)
+        {
+            Dt = new DataTable("Cargar_Datos");
+            Cmd = new SqlCommand("EXEC " + Tabla, Con.Abrir());
+
+            Cmd.CommandType = CommandType.Text;
+
+            Dr = Cmd.ExecuteReader();
+
+            Dt.Load(Dr);
+
+            Dr.Close();
+
+            Con.Cerrar();
+
+            return Dt;
+        }
+
+
         //Método que me permite alternar los  colores de las filas de un datagridview
 
         public void AlternarColorFilaDataGridView(DataGridView Dgv)

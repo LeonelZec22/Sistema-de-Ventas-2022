@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\CapaPresentacion\App.xaml
-45-1243110755
+481991841986
 51001242449
-62-1474313616
+65164057383
 331234039384
-Configuraciones.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarPaquete.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarReserva.xaml;FrmAgregarServicio.xaml;FrmAgregarUsuario.xaml;FrmAgregarVenta.xaml;FrmAgregar_Venta_Servicios.xaml;FrmAnularIngresoProducto.xaml;FrmAnularReserva.xaml;FrmAnularVentas.xaml;FrmAnular_Venta_Servicio.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarPaquetes.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmEditarUsuario.xaml;FrmInventario.xaml;FrmPaquetes.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmReservas.xaml;FrmServicios.xaml;FrmUsuarios.xaml;FrmVentas.xaml;FrmVentas_Servicios.xaml;FrmVistaClientes.xaml;FrmVistaProducto.xaml;FrmVistaProveedores.xaml;FrmVistaServicios.xaml;FrmVista_Reserva_Clientes.xaml;FrmVista_Venta_Producto.xaml;InformacionEmpresa.xaml;Login.xaml;MenuProveedores.xaml;MenuVentas.xaml;Menu\Modulos.xaml;VistaReservas.xaml;
+Configuraciones.xaml;FormPrincipal.xaml;FrmAgregarCliente.xaml;FrmAgregarIngreso.xaml;FrmAgregarPaquete.xaml;FrmAgregarProducto.xaml;FrmAgregarProveedores.xaml;FrmAgregarReserva.xaml;FrmAgregarServicio.xaml;FrmAgregarUsuario.xaml;FrmAgregarVenta.xaml;FrmAgregarVentaPaquete.xaml;FrmAgregar_Venta_Servicios.xaml;FrmAnularIngresoProducto.xaml;FrmAnularReserva.xaml;FrmAnularVentas.xaml;FrmAnular_Venta_Servicio.xaml;FrmClientes.xaml;FrmCompraDeProducto.xaml;FrmEditarCliente.xaml;FrmEditarPaquetes.xaml;FrmEditarProducto.xaml;FrmEditarProveedor.xaml;FrmEditarServicios.xaml;FrmEditarUsuario.xaml;FrmInventario.xaml;FrmPaquetes.xaml;FrmProductos.xaml;FrmProveedores.xaml;FrmReservas.xaml;FrmServicios.xaml;FrmUsuarios.xaml;FrmVentas.xaml;FrmVentas_Servicios.xaml;FrmVenta_Paquete.xaml;FrmVistaClientes.xaml;FrmVistaProducto.xaml;FrmVistaProveedores.xaml;FrmVistaServicios.xaml;FrmVista_Reserva_Clientes.xaml;FrmVista_Venta_Producto.xaml;InformacionEmpresa.xaml;Login.xaml;MenuProveedores.xaml;MenuVentas.xaml;Menu\Modulos.xaml;VistaPaquetes.xaml;VistaReservas.xaml;
 
-False
+True
 

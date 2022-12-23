@@ -127,6 +127,9 @@
     <Compile Include="FrmAgregarVenta.xaml.cs">
       <DependentUpon>FrmAgregarVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmAgregarVentaPaquete.xaml.cs">
+      <DependentUpon>FrmAgregarVentaPaquete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmAgregar_Venta_Servicios.xaml.cs">
       <DependentUpon>FrmAgregar_Venta_Servicios.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
     </Compile>
     <Compile Include="FrmVentas_Servicios.xaml.cs">
       <DependentUpon>FrmVentas_Servicios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVenta_Paquete.xaml.cs">
+      <DependentUpon>FrmVenta_Paquete.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrmVistaClientes.xaml.cs">
       <DependentUpon>FrmVistaClientes.xaml</DependentUpon>
@@ -199,6 +205,9 @@
       <DependentUpon>MenuVentas.xaml</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="VistaPaquetes.xaml.cs">
+      <DependentUpon>VistaPaquetes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VistaReservas.xaml.cs">
       <DependentUpon>VistaReservas.xaml</DependentUpon>
     </Compile>
@@ -251,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmAgregarVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmAgregarVentaPaquete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -342,6 +355,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FrmVenta_Paquete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FrmVistaClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -383,6 +400,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu\Modulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistaPaquetes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -565,6 +586,7 @@
     <Resource Include="Images\database.png" />
     <Resource Include="Images\thermal-spa.png" />
     <Resource Include="Images\thermal-spa.ico" />
+    <Resource Include="Images\venta1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

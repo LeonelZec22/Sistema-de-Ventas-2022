@@ -58,6 +58,7 @@
     <Compile Include="CDo_Usuarios.cs" />
     <Compile Include="CDo_Ventas.cs" />
     <Compile Include="CDo_Ventas_Servicios.cs" />
+    <Compile Include="CDo_Venta_Paquetes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

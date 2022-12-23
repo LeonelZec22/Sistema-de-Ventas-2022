@@ -70,5 +70,10 @@ namespace CapaNegocio
             ObjProcedimientos.LlenarComboBox(Tabla, Nombre, xCBox);
 
         }
+
+        public DataTable CargarProcedimiento(string Tabla)
+        {
+            return ObjProcedimientos.CargarProcedimiento(Tabla);
+        }
     }
 }
