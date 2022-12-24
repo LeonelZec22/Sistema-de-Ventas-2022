@@ -25,6 +25,10 @@ namespace CapaNegocio
             objVentas.AnularVentaPaquetes(Ventas);
         }
 
+        public void EditarVentaPaquetes(CE_Ventas_Paquetes Ventas)
+        {
+            objVentas.EditarVentaPaquetes(Ventas);
+        }
         public DataTable MostrarVentasPaquetes()
         {
             return objVentas.MostrarVentasPaquetes();

@@ -137,6 +137,10 @@ namespace CapaPresentacion
         {
             CargarDatos();
         }
+        private void EdVen_UpdateEventHandler(object sender, FrmEditarVentaPaquete.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
         //private void AnVen_UpdateEventHandler(object sender, FrmAnularVentas.UpdateEventArgs args)
         //{
         //    CargarDatos();
@@ -149,12 +153,94 @@ namespace CapaPresentacion
             AgregarVentas.ShowDialog();
         }
 
+        FrmEditarVentaPaquete EditarVenta = new FrmEditarVentaPaquete();
+        DataGrid dg;
+        DataRowView dr;
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void BtnEditarVenta_Click(object sender, RoutedEventArgs e)
         {
+            if (dr != null)
+            {
+               
+                EditarVenta.ShowDialog();
+                DataGridVentaPaquete.UnselectAllCells();
+            }
 
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
+        private void BtnAnularVenta_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (dr != null)
+                {
+
+                    Venta.Id_Cliente = Convert.ToInt32(EditarVenta.txtId_Cliente.Text);
+                    Venta.Id_Paquetes = Convert.ToInt32(EditarVenta.txtId_Paquetes.Text);
+                    Venta.Cliente = Convert.ToString(EditarVenta.txtClienteNombre.Text);
+                    Venta.Paquete = Convert.ToString(EditarVenta.txtNombre_Paquete.Text);
+                    Venta.Fecha_Venta = Convert.ToDateTime(EditarVenta.dtp_FechaVenta.Text);
+                    Venta.Cantidad_Vendida = Convert.ToInt32(EditarVenta.txtCantidadVendida.Text);
+                    Venta.Cantidad_Usada = Convert.ToInt32(EditarVenta.txtCantidadUsar.Text);
+                    Venta.Estado = "Anulado";
+                    Venta.Precio_Venta = Convert.ToDecimal(EditarVenta.txtPrecio_Venta.Text);
+                    Venta.Id_Venta_Paquetes = Convert.ToInt32(EditarVenta.txtId_Venta_Paquetes.Text);
+
+                    Ventas.AnularVentaPaquetes(Venta);
+
+                    CargarDatos();
+                }
+
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Editar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se pudo anular; " + ex.Message, "Editar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+
+        private void DataGridVentaPaquete_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (DataGridVentaPaquete.Items.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("No Hay Compras para Anular!!! ", " Editar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (dr != null)
+                {
+                    EditarVenta.UpdateEventHandler += EdVen_UpdateEventHandler;
+                    EditarVenta.txtId_Venta_Paquetes.Text = dr[0].ToString();
+                    EditarVenta.txtId_Cliente.Text = dr[1].ToString();
+                    EditarVenta.txtId_Paquetes.Text = dr[2].ToString();
+                    EditarVenta.txtClienteNombre.Text = dr[3].ToString();
+                    EditarVenta.txtNombre_Paquete.Text = dr[4].ToString();
+                    EditarVenta.dtp_FechaVenta.Text = dr[5].ToString();
+                    EditarVenta.txtCantidadVendida.Text = dr[7].ToString();
+                    EditarVenta.txtCantidadUsar.Text = dr[8].ToString();
+                    EditarVenta.txtPrecio_Venta.Text = dr[9].ToString();
+
+                   
+
+
+                }
+            }
+        }
+
+  
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
 
@@ -200,25 +286,20 @@ namespace CapaPresentacion
 
         }
 
-        
-
-        private void BtnAnularVenta_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        
 
-        private void DataGridVentaPaquete_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
 
         }
 
-        
+
+
     }
 }

@@ -148,6 +148,9 @@
     <Compile Include="FrmEditarUsuario.xaml.cs">
       <DependentUpon>FrmEditarUsuario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarVentaPaquete.xaml.cs">
+      <DependentUpon>FrmEditarVentaPaquete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmPaquetes.xaml.cs">
       <DependentUpon>FrmPaquetes.xaml</DependentUpon>
     </Compile>
@@ -316,6 +319,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmEditarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmEditarVentaPaquete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

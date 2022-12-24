@@ -89,6 +89,27 @@ namespace CapaDatos
 
         }
 
+        public void EditarVentaPaquetes(CE_Ventas_Paquetes Ventas)
+        {
+            string fech = Convert.ToString(Ventas.Fecha_Venta);
+
+            Cmd = new SqlCommand("EditarVentaPaquetes", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@id_Cliente", Ventas.Id_Cliente));
+            Cmd.Parameters.Add(new SqlParameter("@Id_Paquete", Ventas.Id_Venta_Paquetes));
+            Cmd.Parameters.Add(new SqlParameter("@Cliente", Ventas.Cliente));
+            Cmd.Parameters.Add(new SqlParameter("@Paquete", Ventas.Paquete));
+            Cmd.Parameters.Add(new SqlParameter("@Fecha_Venta", Ventas.Fecha_Venta));
+            Cmd.Parameters.Add(new SqlParameter("@Cantidad_Vendida", Ventas.Cantidad_Vendida));
+            Cmd.Parameters.Add(new SqlParameter("@Cantidad_Usada", Ventas.Cantidad_Usada));
+            Cmd.Parameters.Add(new SqlParameter("@Estado", Ventas.Estado));
+            Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Ventas.Precio_Venta));
+            Cmd.Parameters.Add(new SqlParameter("@Id_Venta_Paquetes", Ventas.Id_Venta_Paquetes));
+            Cmd.ExecuteNonQuery();
+
+            Con.Cerrar();
+        }
+
         public DataTable MostrarVentasPaquetes()
         {
             DataTable Dt = new DataTable("Venta_de_Paquetes");

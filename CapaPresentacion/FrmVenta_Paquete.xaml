@@ -208,15 +208,22 @@
                     </StackPanel>
                 </Button>
 
+                <Button x:Name="btnEditarVenta" Style="{StaticResource addButton}" Margin="0,18,170,10" Click="BtnEditarVenta_Click" Width="132" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="ApplicationEdit" VerticalAlignment="Center" Width="15" Height="15" Margin="0 1 8 0" />
+                        <TextBlock Text="Editar Venta"/>
+                    </StackPanel>
+                </Button>
 
-                <Button x:Name="btnAnularVenta" Style="{StaticResource addButton}" Margin="0,18,177,10" Click="BtnAnularVenta_Click" Width="135" Cursor="Hand">
+
+                <Button x:Name="btnAnularVenta" Style="{StaticResource addButton}" Margin="0,18,328,10" Click="BtnAnularVenta_Click" Width="136" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="AlertOctagonOutline" VerticalAlignment="Center" Width="18" Height="18" Margin="0 1 8 0" />
                         <TextBlock Text="Anular Venta"/>
                     </StackPanel>
                 </Button>
 
-                
+
 
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
@@ -246,7 +253,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridVentaPaquete" HorizontalAlignment="Left" Height="444" Margin="-17,25,0,0" Grid.Row="5"  VerticalAlignment="Top" Width="847" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridVentaPaquete_AutoGeneratingColumn" />
+                <DataGrid x:Name="DataGridVentaPaquete" HorizontalAlignment="Left" Height="444" Margin="-17,25,0,0" Grid.Row="5"  VerticalAlignment="Top" Width="847" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridVentaPaquete_AutoGeneratingColumn" SelectionChanged="DataGridVentaPaquete_SelectionChanged"/>
 
             </Grid>
 

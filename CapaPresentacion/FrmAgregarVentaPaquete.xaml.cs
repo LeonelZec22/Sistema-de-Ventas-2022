@@ -225,7 +225,9 @@ namespace CapaPresentacion
                         Venta.Estado = "Emitido";
                         Venta.Precio_Venta = Convert.ToDecimal(txtPrecio_Venta.Text);
                         Venta.Id_Venta_Paquetes = Convert.ToInt32(txtId_Venta_Paquetes.Text);
+
                         Ventas.AgregarVentaPaquetes(Venta);
+
                         System.Windows.Forms.MessageBox.Show("Venta de Paquete agregada correctamente!!", "Agregar Venta Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
                         Agregar();
                         LimpiarDetalle();
@@ -268,6 +270,7 @@ namespace CapaPresentacion
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {
+            LimpiarDetalle();
             this.Hide();
         }
         private void Window_Closed(object sender, EventArgs e)
