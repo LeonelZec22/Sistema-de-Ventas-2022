@@ -31,7 +31,7 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <!--Información de la empresa-->
 
                 <Border Grid.Row="1" Background="#0F3460" CornerRadius="0 50 0 30">
@@ -42,7 +42,7 @@
 
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png" />
+                                    <ImageBrush ImageSource="Images/admi.png" />
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
@@ -105,7 +105,7 @@
 
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnProveedores" Style="{StaticResource BotonesMenu}" Click="BtnProveedores_Click" Cursor="Hand">
                                 <uc:Modulos Titulo="Proveedores" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -135,7 +135,7 @@
 
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnServicios" Style="{StaticResource BotonesMenu}" Click="BtnServicios_Click" Cursor="Hand">
                                 <uc:Modulos Titulo="Servicios" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -150,7 +150,7 @@
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click_1" Cursor="Hand">
                                 <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -165,7 +165,7 @@
                             <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/ventas-48.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
                             <Button Grid.Column="1" Background="Transparent" x:Name="btnVentas" Style="{StaticResource BotonesMenu}" Click="BtnVentas_Click" Cursor="Hand">
                                 <uc:Modulos  Titulo="Ventas" Margin="-20 0 0 0"/>
-                                
+
                             </Button>
 
                         </Grid>
@@ -255,7 +255,14 @@
                 <!--DataGrid-->
 
                 <DataGrid x:Name="DataGridProductos" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridProductos_AutoGeneratingColumn" SelectionChanged="DataGridProductos_SelectionChanged"/>
-              
+
+                <!--<Button x:Name="btnAyuda" Background="#1F1D1D" Style="{StaticResource addButton}" Margin="0,0,158,60" Click="BtnAyuda_Click" IsEnabled="True" Cursor="Hand" Grid.Row="0" Grid.RowSpan="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="HelpCircle" VerticalAlignment="Center" Width="15" Height="15" Margin="0 1 8 0" />
+                        <TextBlock Text="¿Necesitas Ayuda?"/>
+                    </StackPanel>
+                </Button>-->
+                
             </Grid>
 
 

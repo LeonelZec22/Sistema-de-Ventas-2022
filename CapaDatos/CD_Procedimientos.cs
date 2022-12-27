@@ -180,6 +180,23 @@ namespace CapaDatos
 
         }
 
+        public void FormatoEntero(System.Windows.Controls.TextBox xTBox)
+        {
+            if (xTBox.Text == string.Empty)
+            {
+                return;
+            }
+
+            else
+            {
+                int Monto;
+
+                Monto = Convert.ToInt32(xTBox.Text);
+
+                xTBox.Text = Monto.ToString();
+            }
+        }
+
         //Método que permite dar limpiar una TextBox o caja de texto o combobox
 
         public void LimpiarControles(Form xForm)

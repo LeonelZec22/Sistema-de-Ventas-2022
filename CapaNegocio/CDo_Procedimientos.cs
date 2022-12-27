@@ -55,6 +55,13 @@ namespace CapaNegocio
 
         }
 
+
+        public void FormatoEntero(System.Windows.Controls.TextBox xTBox)
+        {
+            ObjProcedimientos.FormatoEntero(xTBox);
+
+        }
+
         //Método que permite dar limpiar una TextBox o caja de texto o combobox
 
         public void LimpiarControles(Form xForm)

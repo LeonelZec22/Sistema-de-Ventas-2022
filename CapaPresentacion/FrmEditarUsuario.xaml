@@ -41,23 +41,23 @@
                 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre" Margin="29,83,425,484"/>
 
-                <TextBox Margin="210,66,62,484" x:Name="txtNombre" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtNombre_KeyDown"/>
+                <TextBox Margin="210,66,62,484" x:Name="txtNombre" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtNombre_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Apellido" Margin="22,161,424,406"/>
 
-                <TextBox Margin="210,144,62,406" x:Name="txtApellido" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el apellido del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtApellido_KeyDown"/>
+                <TextBox Margin="210,144,62,406" x:Name="txtApellido" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el apellido del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtApellido_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Usuario" Margin="21,258,425,309"/>
 
-                <TextBox Margin="210,241,62,309" x:Name="txtUsuario" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el usuario nuevo" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtUsuario_KeyDown"/>
+                <TextBox Margin="210,241,62,309" x:Name="txtUsuario" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el usuario nuevo" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtUsuario_KeyDown" MaxLength="25"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Correo electronico" Margin="22,343,424,224"/>
 
-                <TextBox Margin="210,326,62,224" x:Name="txtEmail" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el correo electronico" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEmail_KeyDown"/>
+                <TextBox Margin="210,326,62,224" x:Name="txtEmail" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el correo electronico" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEmail_KeyDown" MaxLength="40"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Contraseña" Margin="22,427,424,140"/>
 
-                <TextBox Margin="210,410,62,140" x:Name="txtContrasena" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la contraseña" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtContrasena_KeyDown"/>
+                <TextBox Margin="210,410,62,140" x:Name="txtContrasena" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la contraseña" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtContrasena_KeyDown" MaxLength="20"/>
 
                 <Button Margin="370,532,40,25" x:Name="EditguardarBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D" Click="EditguardarBtn_Click"/>
 

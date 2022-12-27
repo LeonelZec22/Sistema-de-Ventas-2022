@@ -81,7 +81,7 @@ namespace CapaPresentacion
 
             Usuarios.DatosUsuario(MainWindow.Usuario);
             tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
-           
+           dtp_FechaVenta.SelectedDate= DateTime.Today;
 
         }
 
@@ -432,17 +432,7 @@ namespace CapaPresentacion
             AgregarDetalle();
         }
 
-        private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if(txtDescuento.Text == string.Empty)
-            {
-                return;
-            }
-            else
-            {
-                Descuento();
-            }
-        }
+     
 
 
         #endregion
@@ -532,6 +522,118 @@ namespace CapaPresentacion
             TableProductos = null;
         }
 
+        private void TxtCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtDescuento.Focus();
+                e.Handled = true;
+            }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtCantidad_LostFocus(object sender, RoutedEventArgs e)
+        {
+                if (txtCantidad.Text.Length > 5)
+                {
+                    System.Windows.Forms.MessageBox.Show("La Cantidad  no puede ser mayor a 5 caracteres", "Agregar Venta de Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+
+                else
+                {
+                    try
+                    {
+                        if (Convert.ToInt32(txtCantidad.Text) >= 0)
+                        {
+                            Procedimientos.FormatoEntero(txtCantidad);
+                           
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("La Cantidad no puede ser menor a cero", "Agregar Venta de Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                              txtCantidad.Clear();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show("La Cantidad no es un numero por favor ingrese solo numeros", "Agregar Venta de Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                          txtCantidad.Clear();
+                        //txtAddCostoUnit.Focus();
+                    }
+
+
+                }
+            
+        }
+
+        private void TxtCantidad_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("La Cantidad solo se puede ingresar por medio del teclado", "Agregar Venta de Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+
+        private void TxtDescuento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtDescuento_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("El Descuento solo se puede ingresar por medio del teclado", "Agregar Venta de Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+
+        private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtDescuento.Text == string.Empty)
+            {
+                return;
+            }
+            else
+            {
+
+                if (txtDescuento.Text.Length > 5)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Descuento  no puede ser mayor a 5 caracteres", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+
+                else
+                {
+                    try
+                    {
+                        if (Convert.ToInt32(txtDescuento.Text) >= 0)
+                        {
+                            Procedimientos.FormatoEntero(txtDescuento);
+                            Descuento();
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("El Descuento no puede ser menor a cero", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                            txtDescuento.Clear();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Descuento no es un numero por favor ingrese solo numeros", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtDescuento.Clear();
+                        //txtAddCostoUnit.Focus();
+                    }
+
+
+                }
+                //Descuento();
+            }
+        }
+
         private void GenerarCorrelativos()
         {
             txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");
@@ -603,6 +705,8 @@ namespace CapaPresentacion
             }
             return false;
         }
+
+       
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {

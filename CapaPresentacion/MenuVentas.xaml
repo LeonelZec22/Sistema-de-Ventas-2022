@@ -207,11 +207,22 @@
 
                 <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Height="113" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C" Grid.RowSpan="2"/>
                 <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,46,0,0" VerticalAlignment="Top" Width="79" Source="/images/spa.png"/>
-                <Button Grid.Row="5" x:Name="btnVentaReserva" Content="Nueva Venta de Servicios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,46,0,0" Click="BtnVentaReserva_Click"/>
+                <Button Grid.Row="5" x:Name="btnVentaReserva" Content="Nueva Venta de Reserva" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,46,0,0" Click="BtnVentaReserva_Click"/>
 
                 <hc:Card Grid.Row="5" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Height="130" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
-                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,199,0,0" VerticalAlignment="Top" Width="79" Source="/images/Ventas-48.png"/>
-                <Button Grid.Row="5" x:Name="btnVentaProducto" Content="Nueva Venta de Productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,202,0,0" Click="BtnVentaProducto_Click"/>
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="15,202,0,0" VerticalAlignment="Top" Width="79" Source="/images/Venta1.png"/>
+                <Button Grid.Row="5" x:Name="btnVentaPaquete" Content="Nueva Venta de Paquete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,202,0,0" Click="BtnVentaPaquete_Click"/>
+
+                <hc:Card Grid.Row="5" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Height="85" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="80" Margin="15,345,0,0" VerticalAlignment="Top" Width="66" Source="/images/Ventas-48.png"/>
+
+                <Button Grid.Row="5" x:Name="btnVentaProducto" Content="Nueva Venta de Productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="275" Height="70" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="86,345,0,0" Click="BtnVentaProducto_Click"/>
+
+                <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="497,37,0,0" VerticalAlignment="Top" Height="113" Width="313" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+                <Image Grid.Row="4" HorizontalAlignment="Left" Height="55" Margin="516,69,0,0" VerticalAlignment="Top" Width="64" Source="/images/box.png"/>
+
+                <Button Grid.Row="4" x:Name="btnPaquete" Content="Agregar un Paquete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="580,52,0,0" Click="BtnPaquete_Click"/>
 
             </Grid>
 

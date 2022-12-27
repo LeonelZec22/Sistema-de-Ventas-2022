@@ -8,6 +8,8 @@
         mc:Ignorable="d"
         Height="500" Width="1000" Style="{DynamicResource WindowStyle1}" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF040404" MouseDown="Window_MouseDown" Loaded="Window_Loaded" Icon="Images/thermal-spa.ico" Title="Menu Principal" Closed="Window_Closed">
     
+    <!--Estilos de los elementos XAML-->
+    
     <Window.Resources>
         <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
             <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">

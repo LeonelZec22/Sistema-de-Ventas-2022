@@ -16,7 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -73,6 +73,13 @@ namespace CapaPresentacion
                 txtEditDireccion.Focus();
                 e.Handled = true;
             }
+
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtEditDireccion_KeyDown(object sender, KeyEventArgs e)
@@ -90,6 +97,12 @@ namespace CapaPresentacion
             {
                 EditguardarBtn.Focus();
                 e.Handled = true;
+            }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
 
@@ -114,26 +127,59 @@ namespace CapaPresentacion
         {
             try
             {
-                if (txtEditCodeProveedor.Text == string.Empty || txtEditNombreProveedor.Text == string.Empty || txtEditDireccion.Text == string.Empty || txtEditTelefono.Text == string.Empty)
+                if (txtEditCodeProveedor.Text == string.Empty || txtEditNombreProveedor.Text == string.Empty )
                 {
                     System.Windows.Forms.MessageBox.Show("Por favor llene todos los campos de textos!!! ", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    Proveedor.Id_Proveedor = Convert.ToInt32(txtEditIDProveedor.Text.Trim());
-                    Proveedor.Codigo = txtEditCodeProveedor.Text.Trim();
-                    Proveedor.Nombre = txtEditNombreProveedor.Text.Trim();
-                    Proveedor.Direccion = txtEditDireccion.Text.Trim();
-                    Proveedor.Telefono = txtEditTelefono.Text.Trim();
+                    if (txtEditTelefono.Text != string.Empty)
+                    {
+                        bool val = Regexcel(txtEditTelefono);
+                        if (val == false)
+                        {
+                            System.Windows.Forms.MessageBox.Show("El teléfono del Proveedor tiene formato incorrecto, ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            Proveedor.Id_Proveedor = Convert.ToInt32(txtEditIDProveedor.Text.Trim());
+                            Proveedor.Codigo = txtEditCodeProveedor.Text.Trim();
+                            Proveedor.Nombre = txtEditNombreProveedor.Text.Trim();
+                            Proveedor.Direccion = txtEditDireccion.Text.Trim();
+                            Proveedor.Telefono = txtEditTelefono.Text.Trim();
 
 
-                    Proveedores.EditarProveedor(Proveedor);
+                            Proveedores.EditarProveedor(Proveedor);
 
-                    System.Windows.Forms.MessageBox.Show("Proveedor Editado exitosamente!!! ", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                            System.Windows.Forms.MessageBox.Show("Proveedor Editado exitosamente!!! ", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
-                    this.Hide();
+                            this.Hide();
 
-                    Actualizar();
+                            Actualizar();
+                        }
+                    }
+                    else
+                    {
+                        Proveedor.Id_Proveedor = Convert.ToInt32(txtEditIDProveedor.Text.Trim());
+                        Proveedor.Codigo = txtEditCodeProveedor.Text.Trim();
+                        Proveedor.Nombre = txtEditNombreProveedor.Text.Trim();
+                        Proveedor.Direccion = txtEditDireccion.Text.Trim();
+                        Proveedor.Telefono = txtEditTelefono.Text.Trim();
+
+
+                        Proveedores.EditarProveedor(Proveedor);
+
+                        System.Windows.Forms.MessageBox.Show("Proveedor Editado exitosamente!!! ", "Editar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                        this.Hide();
+
+                        Actualizar();
+
+
+                    }
+
+
+                    
                 }
             }
             catch (Exception ex)
@@ -154,5 +200,26 @@ namespace CapaPresentacion
             this.Hide();
             Actualizar();
         }
+
+        #region Expresion Regular
+        public bool Regexcel(TextBox txt)
+        {
+            string re = "^([0-9]{4})-([0-9]{4})$";
+            bool valido;
+            Regex regex = new Regex(re);
+            if (regex.IsMatch(txt.Text))
+            {
+                valido = true;
+                return valido;
+            }
+            else
+            {
+                valido = false;
+                return valido;
+            }
+        }
+
+        #endregion
+
     }
 }

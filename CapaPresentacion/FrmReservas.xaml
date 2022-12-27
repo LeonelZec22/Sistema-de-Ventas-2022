@@ -43,7 +43,7 @@
 
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="C:\Users\Ronaldo\Documents\Sistema-de-ventas-2022\Sistema de Ventas\Imagenes\admi.png" />
+                                    <ImageBrush ImageSource="Images/admi.png" />
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>

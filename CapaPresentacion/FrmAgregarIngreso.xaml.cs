@@ -33,6 +33,12 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtTotal_Pago.Text = "0.00";
+            Correlativo();
+            dtp_FechaIngreso.SelectedDate = DateTime.Today;
+        }
 
         #region Instancia de objetos a usar
 
@@ -71,11 +77,6 @@ namespace CapaPresentacion
             UpdateEventHandler.Invoke(this, args);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            txtTotal_Pago.Text = "0.00";
-            Correlativo();
-        }
 
         #endregion
 
@@ -91,13 +92,13 @@ namespace CapaPresentacion
             txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
         }
 
-      
-        DataSet dataSet;
-        DataTable TableProductos;
-      
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-        ///
+        
+
+        DataSet dataSet;
+        DataTable TableProductos;
+
 
         //Método para limpiar los textBox de productos
 
@@ -117,106 +118,6 @@ namespace CapaPresentacion
         decimal TotalResta = 0;
 
         int indexDelete = 0;
-        //Método para cargar en los textBox el proveedor
-        private void SeleccionarProveedor()
-        {
-           
-            //Abrimos el Formulario de VistaProveedor
-
-            FrmVistaProveedores VistaProveedor = new FrmVistaProveedores();
-
-            VistaProveedor.ShowDialog();
-
-            txtId_Proveedor.Text = "";
-
-            txtNombre_Proveedor.Text = "";
-            
-            var Datos = VistaProveedor.DataGridGestionProveedores;
-
-          
-
-            try
-            {
-                if(VistaProveedor.DialogResult == true)
-                {
-
-
-                    foreach (DataRowView drv in VistaProveedor.DataGridGestionProveedores.SelectedItems)
-                    {
-                        DataRow row = drv.Row;
-
-                        var IdProveedor = Convert.ToString(drv.Row[0]);
-
-                        txtId_Proveedor.Text = IdProveedor;
-
-                        var NombreProveedor = Convert.ToString(drv.Row[2]);
-
-                        txtNombre_Proveedor.Text = NombreProveedor;
-                    }
-
-
-                    #region Pruebas fallidas
-                    //SeleccionItem();
-
-                    //foreach (DataRowView row in VistaProveedor.DataGridGestionProveedores.ItemsSource)
-                    //{
-                    //    txtId_Proveedor.Text = row[0].ToString();
-
-
-                    //}
-
-                    //foreach (DataGridCell row in VistaProveedor.DataGridGestionProveedores.ItemsSource)
-                    //{
-                    //    txtId_Proveedor.Text = row[0];
-
-
-                    //}
-
-
-
-                    //foreach (DataRowView row2 in VistaProveedor.DataGridGestionProveedores.ItemsSource)
-                    //{
-                    //    if (SecondValue == 0)
-                    //    {
-                    //        txtNombre_Proveedor.Text = row2[2].ToString();
-                    //    }
-
-                    //    SecondValue++;
-                    //    //VistaProveedor.DataGridGestionProveedores.UnselectAllCells();
-
-                    //}
-
-
-                    //if (i.Items[counter] != null)
-                    //{
-
-                    //}
-
-                    //foreach (DataRowView row in VistaProveedor.DataGridGestionProveedores.ItemsSource)
-                    //{
-                    //    if (FirstValue == 0)
-                    //    {
-                    //        txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.SelectedCells[0].ToString();
-                    //        FirstValue++;
-                    //    }
-                    //}
-
-                    //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items();
-                    //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.Items[0].ToString(); 
-                    //txtId_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.CurrentCell.ToString();
-                    //txtNombre_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.SelectedCells[2].ToString();
-                    //txtNombre_Proveedor.Text = VistaProveedor.DataGridGestionProveedores.CurrentCell.ToString();
-
-                    #endregion
-
-                }
-            }
-
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-            }
-        }
         
         // Método para agregar los productos al datagrid
         private void AgregarDetalle()
@@ -338,45 +239,6 @@ namespace CapaPresentacion
                             DataGridIngresoProducto.UnselectAllCells();
                             ContFila++;
                         }
-
-                        #region Comentario
-                        //if(Existe = true)
-                        //{
-                        //    SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-
-
-                        //    TableProductos.Rows[no_fila]["Cantidad"] = CantidadPro;
-                        //}
-
-                        //foreach (DataRowView drv in DataGridIngresoProducto.ItemsSource)
-                        //{
-                        //    DataRow row = drv.Row;
-
-                        //    //labelrow.Text = Convert.ToString(row[0]);
-
-                        //    index = Convert.ToString(row[0]);
-
-                        //    if (index == txtId_Producto.Text)
-                        //    {
-                        //        SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
-
-                        //        var CantidadPro = row[2];
-
-                        //        CantidadPro = Convert.ToDecimal(txtCantidad.Text) + Convert.ToDecimal(CantidadPro);
-
-                        //        var SubTotalPro = row[4];
-
-                        //        SubTotalPro = (SubTotal + Convert.ToDecimal(SubTotalPro));
-
-                        //        TableProductos.Rows[Convert.ToInt32(index)]["Cantidad"] = CantidadPro;
-                        //        TableProductos.Rows[Convert.ToInt32(index)]["Sub_Total"] = SubTotal;
-                        //        DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
-                        //    }
-
-                        //}
-
-                        #endregion
-                    
                     }
 
                     decimal TotalSuma = 0;
@@ -390,9 +252,7 @@ namespace CapaPresentacion
                     TotalResta = TotalSuma;
 
                     txtTotal_Pago.Text = TotalSuma.ToString("N2");
-                    
-                    
-
+                   
                 }
             }
 
@@ -401,8 +261,64 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("El Producto no fue agregado por: " + ex, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
+        private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarDetalle(); 
+        }
 
-        //Método para cargar en los textBox el producto
+        #endregion
+
+        #region Método para cargar en los textBox el proveedor
+        private void SeleccionarProveedor()
+        {
+            //Abrimos el Formulario de VistaProveedor
+
+            FrmVistaProveedores VistaProveedor = new FrmVistaProveedores();
+
+            VistaProveedor.ShowDialog();
+
+            txtId_Proveedor.Text = "";
+
+            txtNombre_Proveedor.Text = "";
+            
+            var Datos = VistaProveedor.DataGridGestionProveedores;
+
+            try
+            {
+                if(VistaProveedor.DialogResult == true)
+                {
+
+
+                    foreach (DataRowView drv in VistaProveedor.DataGridGestionProveedores.SelectedItems)
+                    {
+                        DataRow row = drv.Row;
+
+                        var IdProveedor = Convert.ToString(drv.Row[0]);
+
+                        txtId_Proveedor.Text = IdProveedor;
+
+                        var NombreProveedor = Convert.ToString(drv.Row[2]);
+
+                        txtNombre_Proveedor.Text = NombreProveedor;
+                    }
+
+                    
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void BtnBuscarProveedor_Click(object sender, RoutedEventArgs e)
+        {
+            SeleccionarProveedor();
+        }
+        #endregion
+
+        #region Método para cargar en los textBox el producto
         private void SeleccionarProducto()
         {
 
@@ -459,25 +375,14 @@ namespace CapaPresentacion
                 System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Producto en la lista Producto!!", "Seleccionar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
-      
-        #endregion
-
-
         private void BtnBuscarProducto_Click(object sender, RoutedEventArgs e)
         {
             SeleccionarProducto();
         }
 
-        private void BtnBuscarProveedor_Click(object sender, RoutedEventArgs e)
-        {
-            SeleccionarProveedor();
-        }
+        #endregion
 
-        private void BtnAgregarProducto_Click(object sender, RoutedEventArgs e)
-        {
-            AgregarDetalle(); 
-        }
-        
+        #region Eliminar datos del DataGrid
         private void BtnEliminarProducto_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -529,10 +434,9 @@ namespace CapaPresentacion
 
         FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
 
-        private void BtnGuardarIngreso_Click(object sender, RoutedEventArgs e)
-        {
-            Guardar();
-        }
+        #endregion
+
+        #region Método para guardar la información en la Base de Datos
 
         public virtual bool Guardar()
         {
@@ -595,8 +499,14 @@ namespace CapaPresentacion
             }
             return false;
         }
+        private void BtnGuardarIngreso_Click(object sender, RoutedEventArgs e)
+        {
+            Guardar();
+        }
 
+        #endregion
 
+        #region Métodos para limpiar los textbox
         public void limpiarproveedor()
         {
             txtId_IngresoProducto.Clear();
@@ -611,10 +521,15 @@ namespace CapaPresentacion
              ContFila = 0;
         }
 
+        #endregion
+
+
+        #region Botones para salir de la pantalla
         private void BtnCancelarIngreso_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             limpiarFila();
+            LimpiarDetalle();
             TableProductos = null;
         }
 
@@ -622,6 +537,7 @@ namespace CapaPresentacion
         {
             this.Hide();
             limpiarFila();
+            LimpiarDetalle();
             TableProductos = null;
         }
 
@@ -629,9 +545,57 @@ namespace CapaPresentacion
         {
             this.Hide();
             limpiarFila();
+            LimpiarDetalle();
             TableProductos = null;
         }
 
+        #endregion
+
+        #region Validacion de los textbox
+        private void TxtCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Ingreso  de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtCantidad_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtCantidad.Text.Length > 4)
+            {
+                System.Windows.Forms.MessageBox.Show("El Descuento  no puede ser mayor a 4 caracteres", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtCantidad.Text) > 0)
+                    {
+                        Procedimientos.FormatoEntero(txtCantidad);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("La Cantidad no puede ser mayor a cero", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtCantidad.Clear();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("La cantidad no es un numero por favor ingrese solo numeros", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtCantidad.Clear();
+                }
+            }
+        }
+
+        private void TxtCantidad_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            System.Windows.Forms.MessageBox.Show("La Cantidad solo se puede ingresar por medio del teclado", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+
+        #endregion
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 

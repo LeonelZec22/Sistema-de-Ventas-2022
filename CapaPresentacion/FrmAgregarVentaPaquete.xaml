@@ -41,7 +41,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente" Margin="22,83,503,484"/>
 
-                <TextBox Margin="210,66,192,484" x:Name="txtClienteNombre" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True"/>
+                <TextBox Margin="210,66,192,484" x:Name="txtClienteNombre" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="35"/>
 
                 <!--Caja de texto de ID Cliente-->
                 <TextBox Margin="102,12,537,555" x:Name="txtId_Venta_Paquetes" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
@@ -61,19 +61,19 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Paquete" Margin="22,241,484,326" Width="169"/>
 
-                <TextBox Margin="210,224,192,326" x:Name="txtNombre_Paquete" FontSize="18" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True" RenderTransformOrigin="0.479,0.476"/>
+                <TextBox Margin="210,224,192,326" x:Name="txtNombre_Paquete" FontSize="18" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True" RenderTransformOrigin="0.479,0.476" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad Vendida" Margin="17,325,503,242" Width="155" RenderTransformOrigin="0.527,0.801"/>
 
-                <TextBox Margin="210,308,192,242" x:Name="txtCantidadVendida" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True"/>
+                <TextBox Margin="210,308,192,242" x:Name="txtCantidadVendida" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True" MaxLength="5"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad a Usar" Margin="21,392,521,175" Width="133"/>
 
-                <TextBox Margin="210,375,192,175" x:Name="txtCantidadUsar" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                <TextBox Margin="210,375,192,175" x:Name="txtCantidadUsar" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="5" KeyDown="TxtCantidadUsar_KeyDown" LostFocus="TxtCantidadUsar_LostFocus"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio de venta" Margin="22,458,534,109"/>
 
-                <TextBox Margin="210,441,192,109" x:Name="txtPrecio_Venta" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True"/>
+                <TextBox Margin="210,441,192,109" x:Name="txtPrecio_Venta" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" IsReadOnly="True" MaxLength="12"/>
 
                 <Button Margin="370,532,40,25" x:Name="btnGuardarVenta" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="200" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Guardar" Background="#FF1F1D1D" Click="BtnGuardarVenta_Click"/>
 

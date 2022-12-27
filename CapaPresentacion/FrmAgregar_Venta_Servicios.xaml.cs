@@ -33,6 +33,15 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtDescuentoVenta.Text = "0.00";
+            txtMontoTotal.Text = "0.00";
+            Usuarios.DatosUsuario(MainWindow.Usuario);
+            tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
+            dtp_FechaVenta.SelectedDate = DateTime.Today;
+            GenerarCorrelativos();
+        }
 
         #region Instancia de objetos a usar
 
@@ -69,13 +78,6 @@ namespace CapaPresentacion
         #endregion
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            txtDescuentoVenta.Text = "0.00";
-            txtMontoTotal.Text = "0.00";
-            Usuarios.DatosUsuario(MainWindow.Usuario);
-            tbUsuario.Text = Convert.ToString(InformacionUsuario.IdUsuario);
-        }
 
         #region Método para calcular el descuento
 
@@ -329,17 +331,6 @@ namespace CapaPresentacion
             AgregarDetalle();
         }
 
-        private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txtDescuento.Text == string.Empty)
-            {
-                return;
-            }
-            else
-            {
-                Descuento();
-            }
-        }
 
         #endregion
 
@@ -367,10 +358,6 @@ namespace CapaPresentacion
                             indexDelete = TableReservas.Rows.IndexOf(row);
 
                         }
-
-                        //Restar SubTotal 
-
-                      
 
                         //Restar Descuento 
                         TotalResta2 = TotalResta2 - Convert.ToDecimal(TableReservas.Rows[indexDelete][4]);
@@ -401,7 +388,6 @@ namespace CapaPresentacion
             }
         }
 
-
         private void BtnEliminarReserva_Click(object sender, RoutedEventArgs e)
         {
             EliminarDetalle();
@@ -419,21 +405,6 @@ namespace CapaPresentacion
         {
             txtId_Venta_Servicios.Text = Procedimientos.GenerarCodigoId("Ventas_Servicios");
         }
-
-        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Hide();
-            limpiarFila();
-            TableReservas = null;
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            this.Hide();
-            limpiarFila();
-            TableReservas = null;
-        }
-
         public virtual bool Guardar()
         {
             try
@@ -452,7 +423,7 @@ namespace CapaPresentacion
                     VentaServicio.Estado = "Emitida";
                     VentaServicio.Id_Usuario = Convert.ToInt32(tbUsuario.Text);
 
-                    GenerarCorrelativos();
+                   
 
                     if (DataGridVentaServicios.Items.Count == 0)
                     {
@@ -498,15 +469,98 @@ namespace CapaPresentacion
             return false;
         }
 
+        #endregion
+
+
+        #region Botones para salir de la pantalla
+        private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            LimpiarDetalle();
+            LimpiarCampo();
+            TableReservas = null;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Hide();
+            limpiarFila();
+            LimpiarDetalle();
+            LimpiarCampo();
+            TableReservas = null;
+        }
+
         private void BtnCancelarVentaServicios_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             limpiarFila();
+            LimpiarDetalle();
+            LimpiarCampo();
             TableReservas = null;
+        }
+        #endregion
+
+
+        #region Validacion de los textbox
+        private void TxtDescuento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+        private void TxtDescuento_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+            if (txtDescuento.Text == string.Empty)
+            {
+                return;
+            }
+            else
+            {
+                if (txtDescuento.Text.Length > 5)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Descuento  no puede ser mayor a 5 caracteres", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+
+                else
+                {
+                    try
+                    {
+                        if (Convert.ToInt32(txtDescuento.Text) >= 0)
+                        {
+                            Procedimientos.FormatoEntero(txtDescuento);
+                            Descuento();
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("El Descuento no puede ser menor a cero", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                            txtDescuento.Clear();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Descuento no es un numero por favor ingrese solo numeros", "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtDescuento.Clear();
+                        //txtAddCostoUnit.Focus();
+                    }
+                   
+
+                }
+            }
+        }
+
+        private void TxtDescuento_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("El Descuento solo se puede ingresar por medio del teclado", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
         }
 
         #endregion
-
+        
+        #region Métodos para limpiar los textbox
         private void LimpiarDetalle()
         {
             txtId_Reserva.Text = string.Empty;
@@ -526,5 +580,7 @@ namespace CapaPresentacion
         {
             ContFila = 0;
         }
+
+        #endregion
     }
 }

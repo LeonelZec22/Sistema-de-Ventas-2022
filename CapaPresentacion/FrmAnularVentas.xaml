@@ -130,15 +130,15 @@
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Subtotal"  Width="101" Margin="10,322,1167,-4" Foreground="#DDFFFFFF"  />
 
-                    <TextBox Margin="116,308,1020,0" x:Name="txtSubTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+                    <TextBox Margin="116,308,1020,0" x:Name="txtSubTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="118" Margin="279,322,881,-4" Foreground="#DDFFFFFF"  />
 
-                    <TextBox Margin="420,308,716,0" x:Name="txtDescuentoVenta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+                    <TextBox Margin="420,308,716,0" x:Name="txtDescuentoVenta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Monto Total"  Width="135" Margin="584,322,559,-4" Foreground="#DDFFFFFF"  />
 
-                    <TextBox Margin="724,309,412,0" x:Name="txtMontoTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsEnabled="False"/>
+                    <TextBox Margin="724,309,412,0" x:Name="txtMontoTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
                 </Grid>
 
 

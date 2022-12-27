@@ -285,5 +285,48 @@ namespace CapaPresentacion
             LimpiarDetalle();
             this.Hide();
         }
+
+        private void TxtCantidadUsar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtCantidadUsar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtCantidadUsar.Text.Length > 5)
+            {
+                System.Windows.Forms.MessageBox.Show("La Cantidad de Usar  no puede ser mayor a 5 caracteres", "Agregar Venta de Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtCantidadUsar.Text) >= 0)
+                    {
+                        Procedimientos.FormatoEntero(txtCantidadUsar);
+                        
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Descuento no puede ser menor a cero", "Agregar Venta de Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtCantidadUsar.Clear();
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Descuento no es un numero por favor ingrese solo numeros", "Agregar Venta de Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtCantidadUsar.Clear();
+                    //txtAddCostoUnit.Focus();
+                }
+
+
+            }
+        }
     }
 }

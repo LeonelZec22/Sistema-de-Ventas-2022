@@ -28,19 +28,25 @@ namespace CapaPresentacion
         public FrmAgregarProveedores()
         {
             InitializeComponent();
-            GenerarCodigo();
+           
         }
 
         public FrmAgregarProveedores(FrmProveedores Proveedores)
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             GenerarCodigo();
+
         }
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_Proveedores Proveedores = new CDo_Proveedores();
         CE_Proveedores Proveedor = new CE_Proveedores();
 
+        #region Evento para recargar el formulario de Clientes
         //Agregamos un delegado
 
         public delegate void UpdateDelegate(object sender, UpdateEventArgs args);
@@ -59,128 +65,13 @@ namespace CapaPresentacion
             UpdateEventHandler.Invoke(this, args);
         }
 
+        #endregion
 
         //FrmVistaProveedores vistaProveedores = new FrmVistaProveedores();
 
 
-        #region evento de los textbox
-        private void TxtAddNombreProveedor_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                txtAddDireccion.Focus();
-                e.Handled = true;
-            }
-        }
 
-        private void TxtAddDireccion_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                txtAddTelefono.Focus();
-                e.Handled = true;
-            }
-        }
-
-
-        private void TxtAddTelefono_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                AddguardarBtn.Focus();
-                e.Handled = true;
-            }
-        }
-
-
-        #endregion
-
-        #region Evento Clic
-
-        
-        private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Guardar();
-        }
-
-        private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            Agregar();
-        }
-
-        #endregion
-
-        //FrmProveedores proveedores = new FrmProveedores();
-        public virtual bool Guardar()
-        {
-            try
-            {
-                if (txtAddCodeProveedor.Text == string.Empty || txtAddNombreProveedor.Text == string.Empty || txtAddDireccion.Text == string.Empty || txtAddTelefono.Text==string.Empty)
-                {
-                    System.Windows.Forms.MessageBox.Show("Por favor llene todos los campos de textos!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    if (txtAddTelefono.Text != string.Empty)
-                    {
-                        bool val = Regexcel(txtAddTelefono);
-                        if (val == false)
-                        {
-                            System.Windows.Forms.MessageBox.Show("El teléfono del becado tiene formato incorrecto, ejemplo 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-
-                            Proveedor.Codigo = txtAddCodeProveedor.Text.Trim();
-                            Proveedor.Nombre = txtAddNombreProveedor.Text.Trim();
-                            Proveedor.Direccion = txtAddDireccion.Text.Trim();
-                            Proveedor.Telefono = txtAddTelefono.Text.Trim();
-
-
-                            Proveedores.AgregarProveedor(Proveedor);
-
-                            System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-
-                            LimpiarControles();
-
-                            GenerarCodigo();
-
-                            txtAddNombreProveedor.Focus();
-
-                            Agregar();
-
-                            Hide();
-                        }
-                    }
-                    else
-                    {
-
-                        System.Windows.Forms.MessageBox.Show("El telefono no puede estar vacio!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
-
-                      
-                    }
-                    
-
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("El Proveedor no fue agregado porque: " + ex.Message, "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            return false;
-        }
-
-        //Método para limpiar los textbox del formulario
-        private void LimpiarControles()
-        {
-            txtAddCodeProveedor.Clear();
-            txtAddNombreProveedor.Clear();
-            txtAddDireccion.Clear();
-            txtAddTelefono.Clear();
-            Close();
-        }
-
+        #region Generar Código
         private void GenerarCodigo()
         {
             try
@@ -260,6 +151,157 @@ namespace CapaPresentacion
             return Codigo;
         }
 
+        #endregion
+
+        //FrmProveedores proveedores = new FrmProveedores();
+        public virtual bool Guardar()
+        {
+            try
+            {
+                if (txtAddCodeProveedor.Text == string.Empty || txtAddNombreProveedor.Text == string.Empty)
+                {
+                    System.Windows.Forms.MessageBox.Show("Por favor llene todos los campos requeridos!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if (txtAddTelefono.Text != string.Empty)
+                    {
+                        bool val = Regexcel(txtAddTelefono);
+                        if (val == false)
+                        {
+                            System.Windows.Forms.MessageBox.Show("El teléfono del Proveedor tiene formato incorrecto, ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+
+                            Proveedor.Codigo = txtAddCodeProveedor.Text.Trim();
+                            Proveedor.Nombre = txtAddNombreProveedor.Text.Trim();
+                            Proveedor.Direccion = txtAddDireccion.Text.Trim();
+                            Proveedor.Telefono = txtAddTelefono.Text.Trim();
+
+
+                            Proveedores.AgregarProveedor(Proveedor);
+
+                            System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                            LimpiarControles();
+
+                            GenerarCodigo();
+
+                            txtAddNombreProveedor.Focus();
+
+                            Agregar();
+
+                            Hide();
+                        }
+                    }
+                    else
+                    {
+                        Proveedor.Codigo = txtAddCodeProveedor.Text.Trim();
+                        Proveedor.Nombre = txtAddNombreProveedor.Text.Trim();
+                        Proveedor.Direccion = txtAddDireccion.Text.Trim();
+                        Proveedor.Telefono = txtAddTelefono.Text.Trim();
+
+
+                        Proveedores.AgregarProveedor(Proveedor);
+
+                        System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                        LimpiarControles();
+
+                        GenerarCodigo();
+
+                        txtAddNombreProveedor.Focus();
+
+                        Agregar();
+
+                        Hide();
+
+
+                    }
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Proveedor no fue agregado porque: " + ex.Message, "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return false;
+        }
+
+        //Método para limpiar los textbox del formulario
+        private void LimpiarControles()
+        {
+            txtAddCodeProveedor.Clear();
+            txtAddNombreProveedor.Clear();
+            txtAddDireccion.Clear();
+            txtAddTelefono.Clear();
+            Close();
+        }
+
+        #region Evento Clic de los botones
+
+        
+        private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Guardar();
+        }
+
+        private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Agregar();
+        }
+
+        #endregion
+
+        #region Validacion de los TextBox 
+        private void TxtAddNombreProveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtAddDireccion.Focus();
+                e.Handled = true;
+            }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtAddDireccion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtAddTelefono.Focus();
+                e.Handled = true;
+            }
+        }
+
+
+        private void TxtAddTelefono_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Enter)
+            {
+                AddguardarBtn.Focus();
+                e.Handled = true;
+            }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Venta Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+
+        #endregion
+
+
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -273,6 +315,7 @@ namespace CapaPresentacion
             Agregar();
         }
 
+        #region Expresion Regular
         public bool Regexcel(TextBox txt)
         {
             string re = "^([0-9]{4})-([0-9]{4})$";
@@ -289,5 +332,9 @@ namespace CapaPresentacion
                 return valido;
             }
         }
+
+        #endregion
+
+
     }
 }

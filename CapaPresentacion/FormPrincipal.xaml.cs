@@ -133,7 +133,10 @@ namespace CapaPresentacion
 
         private void BtnPaquetes_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmPaquetes paquetes = new FrmPaquetes();
+            Hide();
+            paquetes.ShowDialog();
+            Hide();
         }
 
         private void BtnUsuarios_Click(object sender, RoutedEventArgs e)

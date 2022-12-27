@@ -381,6 +381,9 @@ namespace CapaPresentacion
             }
         }
 
-       
+        private void BtnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

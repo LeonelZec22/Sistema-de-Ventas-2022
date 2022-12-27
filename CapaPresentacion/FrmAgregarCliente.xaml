@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
-        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Clientes" Closed="Window_Closed">
+        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Clientes" Closed="Window_Closed" Loaded="Window_Loaded">
 
     <Grid>
 
@@ -30,8 +30,7 @@
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0">
 
             <Grid>
-                <!--<Image Source="/Images/exit.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
-                <Image Source="/Images/mimizar.png" Width="20" Margin="0 7 40 0"  Style="{StaticResource iconApp}"/>-->
+              
                 
                 <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
@@ -39,23 +38,24 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo del Cliente" Margin="29,83,394,484" Width="187"/>
 
-                <TextBox Margin="232,66,40,484" x:Name="txtAddCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsEnabled="False"/>
+                <TextBox Margin="232,66,40,484" x:Name="txtAddCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="15"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreCliente_KeyDown" TabIndex="0"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreCliente_KeyDown" TabIndex="0" MaxLength="30"/>
 
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Telefono de Cliente" Margin="29,373,394,195" Width="187"/>
-                <TextBox Margin="232,354,40,196" x:Name="txtAddTelefonoCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddTelefonoCliente_KeyDown" />
+                
+                <TextBox Margin="232,354,20,196" x:Name="txtAddTelefonoCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del cliente (Opcional)" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddTelefonoCliente_KeyDown"  MaxLength="9"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Email del cliente" Margin="29,280,342,286" Width="239"/>
 
-                <TextBox Margin="232,264,40,286" x:Name="txtAddEmailCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el email del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddEmailCliente_KeyDown"/>
+                <TextBox Margin="232,264,40,286" x:Name="txtAddEmailCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el email del cliente (Opcional)" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddEmailCliente_KeyDown" MaxLength="40"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Estado de Cliente" Margin="29,452,394,116" Width="187"/>
 
-                <ComboBox x:Name="cboEstadoClientes" Style="{StaticResource ComboBoxStyle}" Background="#FFAC3EAC"  BorderThickness="2" HorizontalAlignment="Left" Margin="229,372,0,52" Width="138" >
+                <ComboBox x:Name="cboEstadoClientes" Style="{StaticResource ComboBoxStyle}" Background="#FFAC3EAC"  BorderThickness="2" HorizontalAlignment="Left" Margin="229,372,0,52" Width="138">
 
                     <ComboBoxItem Content="Activo" IsSelected="True"/>
                     <ComboBoxItem Content="Inactivo" />

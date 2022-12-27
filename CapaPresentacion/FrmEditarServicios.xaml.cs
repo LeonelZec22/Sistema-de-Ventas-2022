@@ -62,7 +62,7 @@ namespace CapaPresentacion
         {
             try
             {
-                if (txtEditCodeServicio.Text == string.Empty || txtEditNombreServicio.Text == string.Empty || txtEditDescripcionServicio.Text == string.Empty || txtEditPrecioVenta.Text == string.Empty)
+                if (txtEditCodeServicio.Text == string.Empty || txtEditNombreServicio.Text == string.Empty || txtEditPrecioVenta.Text == string.Empty)
                 {
                     System.Windows.Forms.MessageBox.Show("Por favor llene los campos de textos requeridos!!! ", "Editar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
@@ -117,6 +117,12 @@ namespace CapaPresentacion
                 txtEditDescripcionServicio.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Editar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtEditDescripcionServicio_KeyDown(object sender, KeyEventArgs e)
@@ -135,11 +141,47 @@ namespace CapaPresentacion
                 EditguardarBtn.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de Letras", "Editar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtEditPrecioVenta_LostFocus(object sender, RoutedEventArgs e)
         {
-            Procedimientos.FormatoMoneda(txtEditPrecioVenta);
+            if (txtEditPrecioVenta.Text.Length > 12)
+            {
+                System.Windows.Forms.MessageBox.Show("El Descuento  no puede ser mayor a 12 caracteres", "Editar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
+            else
+            {
+                try
+                {
+                    if (Convert.ToDecimal(txtEditPrecioVenta.Text) > 0)
+                    {
+                        Procedimientos.FormatoMoneda(txtEditPrecioVenta);
+
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Descuento no puede ser menor a cero", "Editar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtEditPrecioVenta.Clear();
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("El Descuento no es un numero por favor ingrese solo numeros", "Editar Servicios", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtEditPrecioVenta.Clear();
+                    //txtAddCostoUnit.Focus();
+                }
+
+
+            }
+            //Procedimientos.FormatoMoneda(txtEditPrecioVenta);
         }
 
         #endregion

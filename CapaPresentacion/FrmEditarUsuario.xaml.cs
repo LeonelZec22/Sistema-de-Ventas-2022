@@ -16,6 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -66,6 +67,12 @@ namespace CapaPresentacion
                 txtApellido.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtApellido_KeyDown(object sender, KeyEventArgs e)
@@ -74,6 +81,12 @@ namespace CapaPresentacion
             {
                 txtUsuario.Focus();
                 e.Handled = true;
+            }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
 
@@ -98,6 +111,11 @@ namespace CapaPresentacion
         private void TxtContrasena_KeyDown(object sender, KeyEventArgs e)
         {
 
+            if (e.Key == Key.Enter)
+            {
+                EditguardarBtn.Focus();
+                e.Handled = true;
+            }
         }
         #endregion
 
@@ -122,21 +140,38 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    
-                    Usuario.Id_Usuario = Convert.ToInt32(txtIdUsuario.Text.Trim());
-                    Usuario.Nombre = txtNombre.Text.Trim();
-                    Usuario.Apellido = txtApellido.Text.Trim();
-                    Usuario.Usuario = txtUsuario.Text.Trim();
-                    Usuario.Correo = txtEmail.Text.Trim();
-                    Usuario.Password = txtContrasena.Text.Trim();
+                    if (txtEmail.Text != string.Empty)
+                    {
+                        bool val2 = regeEmail(txtEmail);
+                        if (val2 == false)
+                        {
+                            System.Windows.Forms.MessageBox.Show("El Email del Cliente tiene formato incorrecto, ejemplo: Ejemplo@gmail.com", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        }
 
-                    Usuarios.EditarUsuario(Usuario);
-                    
+                        else
+                        {
+                            Usuario.Id_Usuario = Convert.ToInt32(txtIdUsuario.Text.Trim());
+                            Usuario.Nombre = txtNombre.Text.Trim();
+                            Usuario.Apellido = txtApellido.Text.Trim();
+                            Usuario.Usuario = txtUsuario.Text.Trim();
+                            Usuario.Correo = txtEmail.Text.Trim();
+                            Usuario.Password = txtContrasena.Text.Trim();
 
-                    this.Hide();
+                            Usuarios.EditarUsuario(Usuario);
 
-                    Actualizar();
 
+                            this.Hide();
+
+                            Actualizar();
+
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Email no puede estar vacio!!! ", "Agregar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                    }
+
+                   
                     //FrmProductos productos = new FrmProductos();
                     //productos.ShowDialog();
 
@@ -159,6 +194,25 @@ namespace CapaPresentacion
         {
             this.Hide();
             Actualizar();
+        }
+
+        public bool regeEmail(TextBox Variablee)
+        {
+            string ema = @"^\S{1,}@\S{2,}\.\S{2,}$";
+            bool validoo;
+            Regex regex = new Regex(ema);
+
+            if (regex.IsMatch(Variablee.Text))
+            {
+                validoo = true;
+                return validoo;
+            }
+
+            else
+            {
+                validoo = false;
+                return validoo;
+            }
         }
     }
 }

@@ -27,14 +27,19 @@ namespace CapaPresentacion
         public FrmAgregarProducto()
         {
             InitializeComponent();
-            GenerarCodigoPro();
+           
         }
 
         //Creamos una instancia de la pantalla productos
         public FrmAgregarProducto(FrmProductos Productos)
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             GenerarCodigo();
+
         }
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
@@ -73,13 +78,19 @@ namespace CapaPresentacion
         #endregion
 
         //Evento para cambiar al siguiente textbox presionando la tecla enter
-        #region Evento de los textBox
+        #region Validaciones de los textBox
         private void TxtAddNombreProduct_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key== Key.Enter)
             {
                 txtAddDescripcion.Focus();
                 e.Handled = true;
+            }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Productos", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
 
@@ -188,6 +199,16 @@ namespace CapaPresentacion
 
         }
 
+        private void TxtAddCostoUnit_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("El precio solo se puede ingresar por medio del teclado", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+
+        private void TxtAddPrecioVenta_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("El precio solo se puede ingresar por medio del teclado", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        }
+
         #endregion
 
 
@@ -243,6 +264,8 @@ namespace CapaPresentacion
             Close();
         }
 
+
+        #region Generar Codigo
         private void GenerarCodigo()
         {
             txtAddCodeProduct.Text = "PROD" + GenerarCodigoPro();
@@ -314,6 +337,7 @@ namespace CapaPresentacion
             return Codigo;
         }
 
+        #endregion
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
@@ -326,9 +350,8 @@ namespace CapaPresentacion
             Agregar();
         }
 
-        private void TxtAddCostoUnit_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            System.Windows.Forms.MessageBox.Show("El precio solo se puede ingresar por medio del teclado", "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-        }
+       
+
+       
     }
 }

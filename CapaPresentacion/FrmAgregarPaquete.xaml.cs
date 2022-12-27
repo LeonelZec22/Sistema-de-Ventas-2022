@@ -16,6 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -32,13 +33,19 @@ namespace CapaPresentacion
         public FrmAgregarPaquete(FrmPaquetes Paquetes)
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             GenerarCodigo();
+
         }
 
         CDo_Paquetes Paquetes = new CDo_Paquetes();
         CE_Paquetes Paquete = new CE_Paquetes();
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
 
+        #region Evento de Cargar 
         //Agregamos un delegado
 
         public delegate void UpdateDelegate(object sender, UpdateEventArgs args);
@@ -56,13 +63,13 @@ namespace CapaPresentacion
             UpdateEventArgs args = new UpdateEventArgs();
             UpdateEventHandler.Invoke(this, args);
         }
+        #endregion
 
         #region Generar Código
         private void GenerarCodigo()
         {
             try
             {
-
                 txtAddCodePaquete.Text = "PAQ" + GenerarCodigoPaquete();
             }
 
@@ -73,8 +80,6 @@ namespace CapaPresentacion
         }
 
         CD_Conexion Con = new CD_Conexion();
-
-
         SqlCommand Cmd;
         SqlDataReader Dr;
 
@@ -139,6 +144,7 @@ namespace CapaPresentacion
 
         #endregion
 
+        #region Método para guardar información en la base de datos
         public virtual bool Guardar()
         {
             try
@@ -156,21 +162,13 @@ namespace CapaPresentacion
                     Paquete.Cantidad_Vendida = Convert.ToInt32(txtAddCantidad_Vendida.Text.Trim());
                     Paquete.Precio_Venta = txtAddPrecioVenta.Text.Trim();
 
-
                     Paquetes.AgregarPaquete(Paquete);
 
                     System.Windows.Forms.MessageBox.Show("Paquete Agregado exitosamente!!! ", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                     LimpiarControles();
 
-                    GenerarCodigo();
-
-                    txtAddCodePaquete.Focus();
-
                     Agregar();
-
-                    //FrmProductos productos = new FrmProductos();
-                    //productos.ShowDialog();
 
                 }
             }
@@ -180,6 +178,12 @@ namespace CapaPresentacion
             }
             return false;
         }
+        private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Guardar();
+        }
+
+        #endregion
 
         private void LimpiarControles()
         {
@@ -191,14 +195,20 @@ namespace CapaPresentacion
             Close();
         }
 
-       
 
+        #region Validacion de los TextBox
         private void TxtAddNombrePaquete_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 txtAddDescripcionPaquete.Focus();
                 e.Handled = true;
+            }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
         }
 
@@ -217,6 +227,13 @@ namespace CapaPresentacion
                 txtAddPrecioVenta.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+
         }
 
         private void TxtAddPrecioVenta_KeyDown(object sender, KeyEventArgs e)
@@ -226,18 +243,75 @@ namespace CapaPresentacion
                 AddguardarBtn.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtAddPrecioVenta_LostFocus(object sender, RoutedEventArgs e)
         {
-            Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+
+            if (txtAddPrecioVenta.Text.Length > 12)
+            {
+                System.Windows.Forms.MessageBox.Show("El Precio de Venta no puede ser mayor a 12 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtAddPrecioVenta.Text) >= 0)
+                    {
+                        Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Precio de Venta no puede ser mayor o igual a cero", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtAddPrecioVenta.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("La Cantidad Vendida no es un numero por favor ingrese solo numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddPrecioVenta.Clear();
+                }
+            }
+           
         }
 
-        private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
+        private void TxtAddCantidad_Vendida_LostFocus(object sender, RoutedEventArgs e)
         {
-            Guardar();
+            if (txtAddCantidad_Vendida.Text.Length > 5)
+            {
+                System.Windows.Forms.MessageBox.Show("La Cantidad Vendida  no puede ser mayor a 4 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtAddCantidad_Vendida.Text) > 0)
+                    {
+                        Procedimientos.FormatoEntero(txtAddCantidad_Vendida);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("La Cantidad no puede ser mayor a cero", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtAddCantidad_Vendida.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("La Cantidad Vendida no es un numero por favor ingrese solo numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddCantidad_Vendida.Clear();
+                }
+            }
         }
+        #endregion
 
+
+        #region Métodos para salir de la pantalla
         private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -255,6 +329,8 @@ namespace CapaPresentacion
             this.Hide();
             Agregar();
         }
+
+        #endregion
 
       
     }

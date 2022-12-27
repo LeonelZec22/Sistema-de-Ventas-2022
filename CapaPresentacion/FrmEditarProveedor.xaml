@@ -40,18 +40,18 @@
                 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de proveedor" Margin="29,83,394,484" Width="187"/>
 
-                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeProveedor" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsEnabled="False"/>
+                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeProveedor" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True"  MaxLength="15"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Proveedor" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtEditNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditNombreProveedor_KeyDown"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtEditNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditNombreProveedor_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Dirección de Proveedor" Margin="29,280,342,286" Width="239"/>
 
-                <TextBox Margin="232,264,40,286" x:Name="txtEditDireccion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la direccion del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditDireccion_KeyDown"/>
+                <TextBox Margin="232,264,40,286" x:Name="txtEditDireccion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la direccion del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditDireccion_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Telefono de Proveedor" Margin="29,390,394,178" Width="187"/>
-                <TextBox Margin="232,372,40,178" x:Name="txtEditTelefono" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditTelefono_KeyDown" />
+                <TextBox Margin="232,372,40,178" x:Name="txtEditTelefono" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditTelefono_KeyDown" MaxLength="10"/>
 
 
 

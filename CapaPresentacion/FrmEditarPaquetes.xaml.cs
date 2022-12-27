@@ -110,6 +110,12 @@ namespace CapaPresentacion
                 txtAddDescripcionPaquete.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtAddDescripcionPaquete_KeyDown(object sender, KeyEventArgs e)
@@ -127,6 +133,12 @@ namespace CapaPresentacion
                 txtAddPrecioVenta.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
         private void TxtAddPrecioVenta_KeyDown(object sender, KeyEventArgs e)
         {
@@ -135,11 +147,41 @@ namespace CapaPresentacion
                 AddguardarBtn.Focus();
                 e.Handled = true;
             }
+
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void TxtAddPrecioVenta_LostFocus(object sender, RoutedEventArgs e)
         {
-            Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+            if (txtAddPrecioVenta.Text.Length > 12)
+            {
+                System.Windows.Forms.MessageBox.Show("El Precio de Venta no puede ser mayor a 12 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtAddPrecioVenta.Text) >= 0)
+                    {
+                        Procedimientos.FormatoMoneda(txtAddPrecioVenta);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("El Precio de Venta no puede ser mayor o igual a cero", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtAddPrecioVenta.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("La Cantidad Vendida no es un numero por favor ingrese solo numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddPrecioVenta.Clear();
+                }
+            }
+            // Procedimientos.FormatoMoneda(txtAddPrecioVenta);
         }
 
         private void AddguardarBtn_Click(object sender, RoutedEventArgs e)
@@ -153,6 +195,32 @@ namespace CapaPresentacion
             Actualizar();
         }
 
-        
+        private void TxtAddCantidad_Vendida_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAddCantidad_Vendida.Text.Length > 5)
+            {
+                System.Windows.Forms.MessageBox.Show("La Cantidad Vendida  no puede ser mayor a 4 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(txtAddCantidad_Vendida.Text) > 0)
+                    {
+                        Procedimientos.FormatoEntero(txtAddCantidad_Vendida);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("La Cantidad no puede ser mayor a cero", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        txtAddCantidad_Vendida.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("La Cantidad Vendida no es un numero por favor ingrese solo numeros", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    txtAddCantidad_Vendida.Clear();
+                }
+            }
+        }
     }
 }

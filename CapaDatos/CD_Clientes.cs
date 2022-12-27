@@ -46,8 +46,8 @@ namespace CapaDatos
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@Codigo", Clientes.Codigo));
             Cmd.Parameters.Add(new SqlParameter("@Nombre", Clientes.Nombre));
-            Cmd.Parameters.Add(new SqlParameter("@Telefono", Clientes.Telefono));
             Cmd.Parameters.Add(new SqlParameter("@Email", Clientes.Email));
+            Cmd.Parameters.Add(new SqlParameter("@Telefono", Clientes.Telefono));
             Cmd.Parameters.Add(new SqlParameter("@Estado", Clientes.Estado));
             Cmd.Parameters.Add(new SqlParameter("@Id_Cliente", Clientes.Id_Cliente));
 

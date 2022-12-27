@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
-        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Proveedores" Closed="Window_Closed">
+        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Proveedores" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -29,8 +29,7 @@
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0">
 
             <Grid>
-                <!--<Image Source="/Images/exit.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
-                <Image Source="/Images/mimizar.png" Width="20" Margin="0 7 40 0"  Style="{StaticResource iconApp}"/>-->
+              
 
                 <Ellipse x:Name="closeApp" Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 20 0" MouseLeftButtonDown="CloseApp_MouseLeftButtonDown" ToolTip="Cerrar" Cursor="Hand">
 
@@ -38,18 +37,18 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de proveedor" Margin="29,83,394,484" Width="187"/>
 
-                <TextBox Margin="232,66,40,484" x:Name="txtAddCodeProveedor" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsEnabled="False"/>
+                <TextBox Margin="232,66,40,484" x:Name="txtAddCodeProveedor" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="15"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Proveedor" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProveedor_KeyDown"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProveedor_KeyDown" MaxLength="40"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Dirección de Proveedor" Margin="29,280,342,286" Width="239"/>
 
-                <TextBox Margin="232,264,40,286" x:Name="txtAddDireccion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la direccion del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddDireccion_KeyDown"/>
+                <TextBox Margin="232,264,40,286" x:Name="txtAddDireccion" FontSize="18" materialDesign:HintAssist.Hint="Ingresa la direccion (Opcional)" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddDireccion_KeyDown" MaxLength="60"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Telefono de Proveedor" Margin="29,390,394,178" Width="187"/>
-                <TextBox Margin="232,372,40,178" x:Name="txtAddTelefono" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddTelefono_KeyDown" />
+                <TextBox Margin="232,372,40,178" x:Name="txtAddTelefono" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono(Opcional)" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddTelefono_KeyDown" MaxLength="10"/>
                
 
 

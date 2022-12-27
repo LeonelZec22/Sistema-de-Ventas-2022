@@ -39,19 +39,19 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo del Cliente" Margin="29,83,394,484" Width="187"/>
 
-                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsEnabled="False"/>
+                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtEditNombreCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditNombreCliente_KeyDown" TabIndex="0"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtEditNombreCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditNombreCliente_KeyDown" TabIndex="0" MaxLength="35"/>
 
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Telefono de Cliente" Margin="29,373,394,195" Width="187"/>
-                <TextBox Margin="232,354,40,196" x:Name="txtEditTelefonoCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditTelefonoCliente_KeyDown" />
+                <TextBox Margin="232,354,40,196" x:Name="txtEditTelefonoCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditTelefonoCliente_KeyDown" LostFocus="TxtEditTelefonoCliente_LostFocus" MaxLength="10"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Email del cliente" Margin="29,280,342,286" Width="239"/>
 
-                <TextBox Margin="232,264,40,286" x:Name="txtEditEmailCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el email del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditEmailCliente_KeyDown"/>
+                <TextBox Margin="232,264,40,286" x:Name="txtEditEmailCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el email del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditEmailCliente_KeyDown" LostFocus="TxtEditEmailCliente_LostFocus" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Estado de Cliente" Margin="29,452,394,116" Width="187"/>
 

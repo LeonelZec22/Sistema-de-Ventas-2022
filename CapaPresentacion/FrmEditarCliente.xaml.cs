@@ -16,6 +16,7 @@ using CapaEntidad;
 using CapaDatos;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -56,36 +57,7 @@ namespace CapaPresentacion
             UpdateEventHandler.Invoke(this, args);
         }
 
-        #region Evento de los TextBox
-        private void TxtEditNombreCliente_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                txtEditEmailCliente.Focus();
-                e.Handled = true;
-            }
-        }
-
-        private void TxtEditTelefonoCliente_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.Key == Key.Enter)
-            {
-                cboEstadoClientes.Focus();
-                e.Handled = true;
-            }
-        }
-
-        private void TxtEditEmailCliente_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                txtEditTelefonoCliente.Focus();
-                e.Handled = true;
-            }
-        }
-
-        #endregion
+     
 
         #region Botones 
         private void EditguardarBtn_Click(object sender, RoutedEventArgs e)
@@ -100,6 +72,7 @@ namespace CapaPresentacion
         }
 
         #endregion
+
         public virtual void Editar()
         {
             try
@@ -110,21 +83,114 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    Cliente.Id_Cliente = Convert.ToInt32(txtEditIDCliente.Text.Trim());
-                    Cliente.Codigo = txtEditCodeCliente.Text.Trim();
-                    Cliente.Nombre = txtEditNombreCliente.Text.Trim();
-                    Cliente.Telefono = txtEditTelefonoCliente.Text.Trim();
-                    Cliente.Email = txtEditEmailCliente.Text.Trim();
-                    Cliente.Estado = cboEstadoClientes.Text.Trim();
+                    if (txtEditEmailCliente.Text != string.Empty)
+                    {
+                        bool val2 = regeEmail(txtEditEmailCliente);
+                        if (val2 == false)
+                        {
+                            System.Windows.Forms.MessageBox.Show("El Email del Cliente tiene formato incorrecto, ejemplo: Ejemplo@gmail.com", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        }
+
+                        else
+                        {
+                            if (txtEditTelefonoCliente.Text != string.Empty)
+                            {
+                                bool val = Regexcel(txtEditTelefonoCliente);
+                                if (val == false)
+                                {
+                                    System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto,         ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                }
+
+                                else
+                                {
+                                    Cliente.Id_Cliente = Convert.ToInt32(txtEditIDCliente.Text.Trim());
+                                    Cliente.Codigo = txtEditCodeCliente.Text.Trim();
+                                    Cliente.Nombre = txtEditNombreCliente.Text.Trim();
+                                    Cliente.Telefono = txtEditTelefonoCliente.Text.Trim();
+                                    Cliente.Email = txtEditEmailCliente.Text.Trim();
+                                    Cliente.Estado = cboEstadoClientes.Text.Trim();
 
 
-                    Clientes.EditarCliente(Cliente);
+                                    Clientes.EditarCliente(Cliente);
 
-                    System.Windows.Forms.MessageBox.Show("Cliente Editado exitosamente!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                                    System.Windows.Forms.MessageBox.Show("Cliente Editado exitosamente!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
-                    this.Hide();
+                                    this.Hide();
 
-                    Actualizar();
+                                    Actualizar();
+                                }
+                            }
+                            else
+                            {
+                                Cliente.Id_Cliente = Convert.ToInt32(txtEditIDCliente.Text.Trim());
+                                Cliente.Codigo = txtEditCodeCliente.Text.Trim();
+                                Cliente.Nombre = txtEditNombreCliente.Text.Trim();
+                                Cliente.Telefono = txtEditTelefonoCliente.Text.Trim();
+                                Cliente.Email = txtEditEmailCliente.Text.Trim();
+                                Cliente.Estado = cboEstadoClientes.Text.Trim();
+
+
+                                Clientes.EditarCliente(Cliente);
+
+                                System.Windows.Forms.MessageBox.Show("Cliente Editado exitosamente!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                                this.Hide();
+
+                                Actualizar();
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        if (txtEditTelefonoCliente.Text != string.Empty)
+                        {
+                            //El campo de telefono puede estar vacio o ingresado con el formato correcto
+                            bool val = Regexcel(txtEditTelefonoCliente);
+                            if (val == false)
+                            {
+                                System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto,         ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                            }
+
+                            else
+                            {
+                                Cliente.Id_Cliente = Convert.ToInt32(txtEditIDCliente.Text.Trim());
+                                Cliente.Codigo = txtEditCodeCliente.Text.Trim();
+                                Cliente.Nombre = txtEditNombreCliente.Text.Trim();
+                                Cliente.Telefono = txtEditTelefonoCliente.Text.Trim();
+                                Cliente.Email = txtEditEmailCliente.Text.Trim();
+                                Cliente.Estado = cboEstadoClientes.Text.Trim();
+
+
+                                Clientes.EditarCliente(Cliente);
+
+                                System.Windows.Forms.MessageBox.Show("Cliente Editado exitosamente!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                                this.Hide();
+
+                                Actualizar();
+                            }
+                        }
+                        else
+                        {
+                            Cliente.Id_Cliente = Convert.ToInt32(txtEditIDCliente.Text.Trim());
+                            Cliente.Codigo = txtEditCodeCliente.Text.Trim();
+                            Cliente.Nombre = txtEditNombreCliente.Text.Trim();
+                            Cliente.Telefono = txtEditTelefonoCliente.Text.Trim();
+                            Cliente.Email = txtEditEmailCliente.Text.Trim();
+                            Cliente.Estado = cboEstadoClientes.Text.Trim();
+
+
+                            Clientes.EditarCliente(Cliente);
+
+                            System.Windows.Forms.MessageBox.Show("Cliente Editado exitosamente!!! ", "Editar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+                            this.Hide();
+
+                            Actualizar();
+                        }
+                    }
+                  
                 }
             }
             catch (Exception ex)
@@ -145,5 +211,94 @@ namespace CapaPresentacion
             this.Hide();
             Actualizar();
         }
+
+        #region Evento de los TextBox
+        private void TxtEditNombreCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtEditEmailCliente.Focus();
+                e.Handled = true;
+            }
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de numeros", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtEditTelefonoCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Enter)
+            {
+                cboEstadoClientes.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void TxtEditEmailCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtEditTelefonoCliente.Focus();
+                e.Handled = true;
+            }
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Space) || (e.Key == Key.LeftCtrl))
+            {
+                e.Handled = true;
+                System.Windows.Forms.MessageBox.Show("No se permite el ingreso de letras y espacios", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        #endregion
+
+        private void TxtEditEmailCliente_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TxtEditTelefonoCliente_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #region Expresiones Regulares
+        public bool Regexcel(TextBox txt)
+        {
+            string re = "^([0-9]{4})-([0-9]{4})$";
+            bool valido;
+            Regex regex = new Regex(re);
+            if (regex.IsMatch(txt.Text))
+            {
+                valido = true;
+                return valido;
+            }
+            else
+            {
+                valido = false;
+                return valido;
+            }
+        }
+        public bool regeEmail(TextBox Variablee)
+        {
+            string ema = @"^\S{1,}@\S{2,}\.\S{2,}$";
+            bool validoo;
+            Regex regex = new Regex(ema);
+
+            if (regex.IsMatch(Variablee.Text))
+            {
+                validoo = true;
+                return validoo;
+            }
+
+            else
+            {
+                validoo = false;
+                return validoo;
+            }
+        }
+
+        #endregion
     }
 }
