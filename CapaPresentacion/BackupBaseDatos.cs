@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
 using CapaDatos;
 using System.Configuration;
 
@@ -21,12 +20,13 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        //nuestro conexion
-        //SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings[@"Data Source=LEONEL\SISTEMADEVENTAS;Initial Catalog=DB_Sistemas_V2;Integrated Security=True"].ConnectionString);
-
-        SqlConnection con = new SqlConnection(@"Data Source=LEONEL\SISTEMADEVENTAS;Initial Catalog=DB_Sistemas_V2;Integrated Security=True");
-
+        //nuestra conexion
         
+        //SqlConnection con = new SqlConnection(@"Data Source=LEONEL\SISTEMADEVENTAS;Initial Catalog=DB_Sistemas_V2;Integrated Security=True");
+
+         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString);
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog();
@@ -104,10 +104,12 @@ namespace CapaPresentacion
 
                 string str2 = "USE MASTER RESTORE DATABASE [" + database + "] FROM DISK='" + txtUbicacion1.Text + "'WITH REPLACE;";
                 SqlCommand cmd2 = new SqlCommand(str2, con);
+                cmd2.CommandTimeout = 30;
                 cmd2.ExecuteNonQuery();
 
                 string str3 = string.Format("ALTER DATABASE [" + database + "] SET MULTI_USER");
                 SqlCommand cmd3 = new SqlCommand(str3, con);
+                cmd3.CommandTimeout = 30;
                 cmd3.ExecuteNonQuery();
 
                 MessageBox.Show("Restauración de la base de datos hecha exitosamente", "Restaurar la Copia de seguridad", MessageBoxButtons.OK, MessageBoxIcon.Information);
