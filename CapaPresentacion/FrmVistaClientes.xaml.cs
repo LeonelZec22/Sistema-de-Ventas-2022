@@ -49,6 +49,11 @@ namespace CapaPresentacion
             DataGridGestionClientes.UnselectAllCells();
         }
 
+        private void AgClient_UpdateEventHandler(object sender, FrmAgregarCliente.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
         private void DataGridGestionClientes_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Cliente = e.Column.Header.ToString();
@@ -127,7 +132,14 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-            //DataGridGestionClientes.UnselectAllCells();
+            
+        }
+
+        private void BtnNuevoCliente_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarCliente clientes = new FrmAgregarCliente(this);
+            clientes.UpdateEventHandler += AgClient_UpdateEventHandler;
+            clientes.ShowDialog();
         }
     }
 }

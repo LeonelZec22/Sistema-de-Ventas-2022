@@ -33,5 +33,22 @@ namespace CapaNegocio
         {
             return objVentas.MostrarVentasPaquetes();
         }
+
+        public DataTable Buscar_VentaPaquete_Cliente(CE_Ventas_Paquetes Ventas)
+        {
+            return objVentas.Buscar_VentaPaquete_Cliente(Ventas);
+        }
+
+        public DataTable Buscar_VentaPaquete_Estado(CE_Ventas_Paquetes Ventas)
+        {
+            return objVentas.Buscar_VentaPaquete_Estado(Ventas);
+        }
+
+        public DataTable Buscar_VentaPaquete_Paquete(CE_Ventas_Paquetes Ventas)
+        {
+            return objVentas.Buscar_VentaPaquete_Paquete(Ventas);
+        }
+
+
     }
 }

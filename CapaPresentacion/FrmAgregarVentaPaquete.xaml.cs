@@ -198,7 +198,14 @@ namespace CapaPresentacion
 
         private void GenerarCorrelativos()
         {
-            txtId_Venta_Paquetes.Text = Procedimientos.GenerarCodigoId("Ventas_Paquetes");
+            try
+            {
+                txtId_Venta_Paquetes.Text = Procedimientos.GenerarCodigoId("Ventas_Paquetes");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Codigo no se puede generar por: "+ ex.Message, "Seleccionar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         public virtual bool Guardar()
@@ -207,7 +214,7 @@ namespace CapaPresentacion
             {
                 if (txtId_Cliente.Text == string.Empty || txtId_Paquetes.Text == string.Empty || txtNombre_Paquete.Text == string.Empty || txtClienteNombre.Text == string.Empty || txtCantidadVendida.Text == string.Empty || txtPrecio_Venta.Text == string.Empty || txtCantidadUsar.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del formulario!!", "Agregar Detalle Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del formulario!!", "Agregar Venta Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -236,7 +243,7 @@ namespace CapaPresentacion
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("La Cantidad de citas a usar no puede ser mayor que la cantidad de citas compradas", "Agregar Detalle Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("La Cantidad de citas a usar no puede ser mayor que la cantidad de citas compradas", "Agregar Venta de Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
                 }

@@ -52,7 +52,7 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado == "Anulado")
+                if (Estado == "Cancelado")
                 {
                     return;
                 }
@@ -61,7 +61,7 @@ namespace CapaDatos
 
                     Cmd = new SqlCommand("AnularDetalleVenta", Con.Abrir());
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.Add(new SqlParameter("@Id_Ventas", Detalles.Id_Venta));
+                    Cmd.Parameters.Add(new SqlParameter("@Id_Venta", Detalles.Id_Venta));
                     Cmd.Parameters.Add(new SqlParameter("@Id_Producto", Detalles.Id_Producto));
                     Cmd.Parameters.Add(new SqlParameter("@Cantidad", Detalles.Cantidad));
                     Cmd.Parameters.Add(new SqlParameter("@Precio_Venta", Detalles.Precio_Venta));
@@ -69,6 +69,7 @@ namespace CapaDatos
                     Cmd.Parameters.Add(new SqlParameter("@Descuento", Detalles.Descuento));
                     Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Detalles.Monto_Total));
                     Cmd.Parameters.Add(new SqlParameter("@Id_DetalleVenta", Detalles.Id_DetalleVenta));
+                    Cmd.CommandTimeout = 30;
                     Cmd.ExecuteNonQuery();
                     Con.Cerrar();
                 }

@@ -29,7 +29,7 @@ namespace CapaPresentacion
         public FrmVistaProducto()
         {
             InitializeComponent();
-            CargarDatos();
+           
         }
 
         //Creamos un objeto de nuestra clase conexión
@@ -66,16 +66,36 @@ namespace CapaPresentacion
 
         private void DataGridGestionProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //FrmAgregarIngreso ingreso = new FrmAgregarIngreso();
-
-
         }
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Buscar();
 
         }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboGestionProd.Text == "Codigo")
+                {
+                    Producto.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionProductos.ItemsSource = Productos.Buscar_Producto_Codigo(Producto).AsDataView();
+                }
+                else if (cboGestionProd.Text == "Nombre")
+                {
+                    Producto.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionProductos.ItemsSource = Productos.Buscar_Producto_Nombre(Producto).AsDataView();
+                }
+                
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Producto no fue encontrado por: " + ex.Message, "Buscar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
         private void BtnSeleccionarProd_Click(object sender, RoutedEventArgs e)
         {
             if (DataGridGestionProductos.SelectedItems.Count == 0)
@@ -109,8 +129,10 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-            //DataGridGestionProductos.UnselectAllCells();
+           
         }
+
+       
     }
 
 }

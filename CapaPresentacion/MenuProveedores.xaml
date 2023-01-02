@@ -80,20 +80,21 @@
 
                         </Grid>
 
-                        <!--Productos-->
+                        <!--Paquetes-->
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click" Cursor="Hand">
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/box.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" x:Name="btnPaquete" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnPaquete_Click" Cursor="Hand">
 
-                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
+                                <uc:Modulos Titulo="Paquete" Margin="-20 0 0 0"/>
                             </Button>
 
                         </Grid>
+
 
                         <!--Proveedores-->
                         <Grid>
@@ -141,19 +142,18 @@
 
                         </Grid>
 
-                        <!--Inventario-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click" Cursor="Hand">
-                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Reserva.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnReservas" Style="{StaticResource BotonesMenu}" Click="BtnReservas_Click" Cursor="Hand">
+                                <uc:Modulos  Titulo="Reserva" Margin="-20 0 0 0"/>
 
                             </Button>
-
                         </Grid>
 
                         <!--Ventas-->
@@ -206,10 +206,20 @@
                 <Button Grid.Row="4" x:Name="btnProveedor" Content="Agregar un nuevo Proveedor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,52,0,0" Click="BtnProveedor_Click"/>
 
                 <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Height="113" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C" Grid.RowSpan="2"/>
-                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,46,0,0" VerticalAlignment="Top" Width="79" Source="/images/product-64.png"/>
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,46,0,0" VerticalAlignment="Top" Width="79" Source="/images/supermercado.png"/>
                 <Button Grid.Row="5" x:Name="btnIngresoProducto" Content="Agregar Ingreso de Producto" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="94,46,0,0" Click="BtnIngresoProducto_Click"/>
 
+                <hc:Card Grid.Row="5" HorizontalAlignment="Left" Margin="0,189,0,0" VerticalAlignment="Top" Height="113" Width="415" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+
+                <Image Grid.Row="5" HorizontalAlignment="Left" Height="91" Margin="10,211,0,0" VerticalAlignment="Top" Width="79" Source="/images/product-64.png" RenderTransformOrigin="0.487,0.555"/>
                 
+                <Button Grid.Row="5" x:Name="btnProducto" Content="Ver listas de Productos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="299" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="89,211,0,0" Click="BtnProducto_Click"/>
+
+                <hc:Card Grid.Row="4" HorizontalAlignment="Left" Margin="497,37,0,0" VerticalAlignment="Top" Height="113" Width="313" Background="#FF1F1D1D" BorderBrush="#FF514C4C"/>
+                <Image Grid.Row="4" HorizontalAlignment="Left" Height="55" Margin="516,69,0,0" VerticalAlignment="Top" Width="64" Source="/images/inventory-64.png"/>
+
+                <Button Grid.Row="4" x:Name="btnInventario" Content="Ver Inventario" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="88" FontSize="19" Background="#1F1D1D" Foreground="#FFFBF6F6" BorderBrush="#1F1D1D" Margin="580,52,0,0" Click="BtnInventario_Click"/>
+
             </Grid>
 
 

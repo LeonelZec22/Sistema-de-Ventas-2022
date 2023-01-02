@@ -81,17 +81,17 @@
 
                         </Grid>
 
-                        <!--Productos-->
+                        <!--Paquetes-->
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click" Cursor="Hand">
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/box.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" x:Name="btnPaquete" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnPaquete_Click" Cursor="Hand">
 
-                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
+                                <uc:Modulos Titulo="Paquete" Margin="-20 0 0 0"/>
                             </Button>
 
                         </Grid>
@@ -142,19 +142,19 @@
 
                         </Grid>
 
-                        <!--Inventario-->
+                        <!--Reservas-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Cursor="Hand" Click="BtnInventario_Click">
-                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Reserva.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnReservas" Style="{StaticResource BotonesMenu}" Click="BtnReservas_Click" Cursor="Hand">
+                                <uc:Modulos  Titulo="Reserva" Margin="-20 0 0 0"/>
 
                             </Button>
-
                         </Grid>
 
                         <!--Ventas-->
@@ -217,12 +217,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="btnImprimirInfo" Style="{StaticResource addButton}" Margin="0,18,331,10" Click="BtnImprimirInfo_Click" Width="141" Cursor="Hand">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Printer" VerticalAlignment="Center" Width="18" Height="18" Margin="0 1 8 0" />
-                        <TextBlock Text="Imprimir Informe"/>
-                    </StackPanel>
-                </Button>
+               
 
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
@@ -232,8 +227,8 @@
                 <Grid Grid.Row="4" Margin="107,0,584,0">
                     <ComboBox x:Name="cboVenta" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
 
-                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
-                        <ComboBoxItem Content="Fecha de ingreso"/>
+                        <ComboBoxItem Content="Cliente" IsSelected="True"/>
+                        
                         <ComboBoxItem Content="Estado"/>
                     </ComboBox>
 

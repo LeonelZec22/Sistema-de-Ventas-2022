@@ -28,7 +28,6 @@ namespace CapaPresentacion
         {
             InitializeComponent();
 
-            
         }
 
         //Instancia de la clases
@@ -47,6 +46,7 @@ namespace CapaPresentacion
             MostrarUsuarios();
         }
 
+        #region Botones del encabezado
         private void BtnNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarUsuario agregarUsuario = new FrmAgregarUsuario(this);
@@ -68,15 +68,57 @@ namespace CapaPresentacion
             }
         }
 
+        private void BtnEliminarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            Eliminar();
+        }
+
+        public void Eliminar()
+        {
+            if (DataGridUsuarios.Items.Count == 1)
+            {
+                System.Windows.Forms.MessageBox.Show("No se puede eliminar el unico usuario registrado!!! ", "Eliminar Clientes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                DataGridUsuarios.UnselectAllCells();
+            }
+            else
+            {
+                try
+                {
+                    if (DataGridUsuarios.SelectedItems == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Cliente", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+
+                        if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Usuario.Id_Usuario = Convert.ToInt32(dr[0].ToString());
+                            Usuarios.EliminarUsuario(Usuario);
+                            MostrarUsuarios();
+                        }
+                        else if (Resultado == System.Windows.Forms.DialogResult.No)
+                        {
+                            MostrarUsuarios();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
         FrmEditarUsuario EditarUsuario = new FrmEditarUsuario();
 
         DataGrid dg;
         DataRowView dr;
-        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
+        #endregion
 
+        #region Evento para modificar las columnas autogeneradas del DataGrid
         private void DataGridUsuarios_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Usuario = e.Column.Header.ToString();
@@ -127,6 +169,9 @@ namespace CapaPresentacion
 
         }
 
+        #endregion
+
+        //Invocacion de un evento creado para recargar este formulario o pantalla
         private void AgUs_UpdateEventHandler(object sender, FrmAgregarUsuario.UpdateEventArgs args)
         {
             MostrarUsuarios();
@@ -136,6 +181,7 @@ namespace CapaPresentacion
             MostrarUsuarios();
         }
 
+        //Evento para capturar una fila seleccionada del DataGrid
         private void DataGridUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dg = sender as DataGrid;
@@ -155,51 +201,7 @@ namespace CapaPresentacion
             }
         }
 
-        public void Eliminar()
-        {
-            if (DataGridUsuarios.Items.Count == 1)
-            {
-                System.Windows.Forms.MessageBox.Show("No se puede eliminar el unico usuario registrado!!! ", "Eliminar Clientes", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                DataGridUsuarios.UnselectAllCells();
-            }
-            else
-            {
-                try
-                {
-                    if (DataGridUsuarios.SelectedItems == null)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Eliminar este registro?", "Eliminar Cliente", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                        if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            Usuario.Id_Usuario = Convert.ToInt32(dr[0].ToString());
-                            Usuarios.EliminarUsuario(Usuario);
-                            MostrarUsuarios();
-                        }
-                        else if (Resultado == System.Windows.Forms.DialogResult.No)
-                        {
-                            MostrarUsuarios();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show("Debe seleccionar un registro para eliminar!!! ", "Eliminar Usuario", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-      
-
-        private void BtnEliminarUsuario_Click(object sender, RoutedEventArgs e)
-        {
-            Eliminar();
-        }
-
+        #region  Formas de Cerrar la App
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -239,18 +241,7 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -258,6 +249,9 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
+
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow FormPrincipal = new MainWindow();
@@ -265,12 +259,12 @@ namespace CapaPresentacion
             FormPrincipal.ShowDialog();
             Close();
         }
-
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos Productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            Productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -297,12 +291,15 @@ namespace CapaPresentacion
             servicios.ShowDialog();
             Close();
         }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            FrmInventario frmInventario = new FrmInventario();
+            MenuReserva Reserva = new MenuReserva();
+
             Hide();
-            frmInventario.ShowDialog();
+
+            Reserva.ShowDialog();
+
             Close();
         }
 
@@ -314,27 +311,9 @@ namespace CapaPresentacion
             Close();
         }
 
-        //public bool Regexp(TextBox txt)
-        //{
-        //    string re = "^([0-9]{4})-([0-9]{2})-([0-9]{2})$";
-
-        //    bool valido;
-
-        //    Regex regex = new Regex(re);
-
-        //    if (regex.IsMatch(txt.Text))
-        //    {
-        //        valido = true;
-        //        return valido;
-        //    }
-        //    else
-        //    {
-        //        valido = false;
-        //        return valido;
-        //    }
-        //}
+        #endregion
 
 
-      
+
     }
 }

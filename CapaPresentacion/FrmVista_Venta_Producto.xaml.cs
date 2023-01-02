@@ -48,6 +48,7 @@ namespace CapaPresentacion
             DataGridProductosVenta.UnselectAllCells();
         }
 
+      
 
         private void DataGridProductosVenta_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -83,12 +84,7 @@ namespace CapaPresentacion
             DataGridProductosVenta.UnselectAllCells();
         }
 
-        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
+      
         private void DataGridProductosVenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -103,7 +99,9 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-           // DataGridProductosVenta.UnselectAllCells();
+          
         }
+
+       
     }
 }

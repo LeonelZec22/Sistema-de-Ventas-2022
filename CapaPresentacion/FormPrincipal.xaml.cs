@@ -39,10 +39,10 @@ namespace CapaPresentacion
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
+            //if (e.LeftButton == MouseButtonState.Pressed)
+            //{
+            //    this.DragMove();
+            //}
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -99,7 +99,7 @@ namespace CapaPresentacion
 
         private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            FrmReservas reservas = new FrmReservas();
+            MenuReserva reservas = new MenuReserva();
             Hide();
             reservas.ShowDialog();
             Close();
@@ -133,7 +133,7 @@ namespace CapaPresentacion
 
         private void BtnPaquetes_Click(object sender, RoutedEventArgs e)
         {
-            FrmPaquetes paquetes = new FrmPaquetes();
+            MenuPaquete paquetes = new MenuPaquete();
             Hide();
             paquetes.ShowDialog();
             Hide();
@@ -186,7 +186,14 @@ namespace CapaPresentacion
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            try
+            {
+                Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
     }
 }

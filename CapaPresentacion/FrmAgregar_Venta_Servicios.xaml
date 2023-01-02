@@ -63,7 +63,7 @@
                     <!--Caja de texto de ID Cliente-->
                     <TextBox Margin="342,10,892,172" x:Name="txtId_Cliente" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
-                    <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True" MaxLength="30"/>
 
                     <TextBox Margin="275,152,959,30" x:Name="txtId_Reserva" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
@@ -75,17 +75,17 @@
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Venta"  Width="182" Margin="28,129,1068,76" RenderTransformOrigin="0.876,0.477"/>
 
-                    <DatePicker x:Name="dtp_FechaVenta" Margin="28,158,0,25" Height="40" FirstDayOfWeek="Sunday" Cursor="Cross" FontSize="18" HorizontalAlignment="Left" Width="222" Background="#ffffff"  IsDropDownOpen="False" Text="" DisplayDateStart="2022-01-31" SelectedDate="2023-01-31"/>
+                    <DatePicker x:Name="dtp_FechaVenta" Margin="28,158,0,25" Height="40" FirstDayOfWeek="Sunday" Cursor="Hand" FontSize="18" HorizontalAlignment="Left" Width="222" Background="#ffffff"  IsDropDownOpen="False"  DisplayDateStart="2022-01-31" SelectedDate="2023-01-31"/>
 
                     <!--Detalle del producto-->
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Fecha de Reserva"  Width="174" Margin="520,28,584,157" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="520,64,561,0" x:Name="txtFechaReserva" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="520,64,561,0" x:Name="txtFechaReserva" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Estado"  Width="174" Margin="748,28,356,157" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="748,67,306,0" x:Name="txtEstado" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True" Text="Finalizado"/>
+                    <TextBox Margin="748,67,306,0" x:Name="txtEstado" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True" Text="Finalizado" MaxLength="10"/>
 
                     <TextBlock x:Name="tbUsuario" Text="1" Margin="971,8,233,206" Visibility="Hidden"/>
 
@@ -93,12 +93,12 @@
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Monto Total"  Width="128" Margin="520,157,630,40" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="648,142,466,0" x:Name="txtMontoTotal1" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="648,142,466,0" x:Name="txtMontoTotal1" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True" MaxLength="12"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="94" Margin="857,157,327,40"/>
 
 
-                    <TextBox Margin="956,142,211,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" LostFocus="TxtDescuento_LostFocus" KeyDown="TxtDescuento_KeyDown" MaxLength="5" PreviewMouseRightButtonDown="TxtDescuento_PreviewMouseRightButtonDown"/>
+                    <TextBox Margin="956,142,211,0" x:Name="txtDescuento" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" LostFocus="TxtDescuento_LostFocus" KeyDown="TxtDescuento_KeyDown" MaxLength="5" PreviewMouseRightButtonDown="TxtDescuento_PreviewMouseRightButtonDown"/>
 
                     <Button x:Name="btnEliminarReserva" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" Click="BtnEliminarReserva_Click" Cursor="Hand"/>
 
@@ -140,11 +140,11 @@
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="118" Margin="78,318,1082,0" Foreground="#DDFFFFFF"  />
 
-                    <TextBox Margin="219,308,917,0" x:Name="txtDescuentoVenta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="219,308,874,0" x:Name="txtDescuentoVenta" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True" HorizontalContentAlignment="Center" />
 
                     <TextBlock FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Monto Total"  Width="135" Margin="468,323,675,-5" Foreground="#DDFFFFFF"  />
 
-                    <TextBox Margin="631,308,505,0" x:Name="txtMontoTotal" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True" RenderTransformOrigin="0.511,0.484"/>
+                    <TextBox Margin="631,308,439,0" x:Name="txtMontoTotal" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True" RenderTransformOrigin="0.511,0.484"  HorizontalContentAlignment="Center" />
                 </Grid>
 
 

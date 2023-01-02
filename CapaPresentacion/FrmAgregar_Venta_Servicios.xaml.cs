@@ -97,7 +97,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("El campo Cantidad no puede estar vacio", "Calcular Descuento", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("El campo Descuento no puede estar vacio", "Calcular Descuento", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -145,12 +145,12 @@ namespace CapaPresentacion
 
                             var Estado = Convert.ToString(drv.Row[4]);
 
-                            if (Estado == "Finalizada")
+                            if (Estado == "Finalizada" || Estado =="Cancelada")
                             {
-                                System.Windows.Forms.MessageBox.Show("Solo se pueden seleccionar Reservas que están pendientes!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                System.Windows.Forms.MessageBox.Show("Solo se pueden seleccionar Reservas que estén pendientes!!", "Seleccionar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
                                 break;
-                                //VistaReserva.DataGridGestionReserva.UnselectAllCells();
+                                
                             }
                             else
                             {
@@ -212,22 +212,20 @@ namespace CapaPresentacion
             {
                 if (txtId_Reserva.Text == string.Empty || txtFechaReserva.Text == string.Empty || txtClienteNombre.Text == string.Empty || txtEstado.Text == string.Empty || txtMontoTotal1.Text == string.Empty || txtDescuento.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de la reserva!!", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {
                     if (txtId_Reserva.Text == string.Empty || txtFechaReserva.Text == string.Empty || txtClienteNombre.Text == string.Empty || txtEstado.Text == string.Empty || txtMontoTotal1.Text == string.Empty || txtDescuento.Text == string.Empty)
                     {
-                        System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de reserva!!", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
                         return;
                     }
                     else
                     {
-                        Descuento();
-                        //bool Existe = false;
-                        //int no_fila = 0;
-
+                        //Descuento();
+                       
                         if (ContFila == 0)
                         {
                             if (TableReservas == null)
@@ -237,7 +235,6 @@ namespace CapaPresentacion
 
                                 //Creamos las columnas del Data Table 
                                 DataColumn column;
-                                //DataRow row;
 
                                 column = new DataColumn();
                                 column.ColumnName = "Id_Reserva";
@@ -276,6 +273,8 @@ namespace CapaPresentacion
                                 LimpiarDetalle();
                                 ContFila++;
                                 txtEstado.Text = "Finalizado";
+                                btnBuscarReserva.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
                             }
 
                             else
@@ -288,19 +287,32 @@ namespace CapaPresentacion
                                 LimpiarDetalle();
                                 ContFila++;
                                 txtEstado.Text = "Finalizado";
+                                btnBuscarReserva.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
                             }
                         }
 
                         else
                         {
-                            TableReservas.Rows.Add(txtId_Reserva.Text, txtClienteNombre.Text, txtFechaReserva.Text, txtEstado.Text, Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+                            if (DataGridVentaServicios.Items.Count >= 1)
+                            {
+                                System.Windows.Forms.MessageBox.Show("Solo se puede agregar una reserva a la vez", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            }
 
-                            DataGridVentaServicios.ItemsSource = TableReservas.DefaultView;
+                            else
+                            {
 
-                            DataGridVentaServicios.UnselectAllCells();
-                            LimpiarDetalle();
-                            ContFila++;
-                            txtEstado.Text = "Finalizado";
+                                TableReservas.Rows.Add(txtId_Reserva.Text, txtClienteNombre.Text, txtFechaReserva.Text, txtEstado.Text, Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+
+                                DataGridVentaServicios.ItemsSource = TableReservas.DefaultView;
+
+                                DataGridVentaServicios.UnselectAllCells();
+                                LimpiarDetalle();
+                                ContFila++;
+                                txtEstado.Text = "Finalizado";
+                                btnBuscarReserva.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
+                            }
                         }
 
                         decimal  Total2 = 0, Total3 = 0;
@@ -322,7 +334,7 @@ namespace CapaPresentacion
 
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("La Venta no fue agregada por: " + ex, "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("La Venta  de Reserva no fue agregada por: " + ex, "Agregar Venta Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 
@@ -344,7 +356,7 @@ namespace CapaPresentacion
                 {
                     if (DataGridVentaServicios.SelectedItems.Count == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar la reserva a eliminar de la tabla!!", "Eliminar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
                     else
@@ -371,8 +383,10 @@ namespace CapaPresentacion
                         DataGridVentaServicios.ItemsSource = TableReservas.DefaultView;
                         DataGridVentaServicios.UnselectAllCells();
                         txtEstado.Text = "Finalizado";
-                        LimpiarCampo();
                         ContFila--;
+                        btnBuscarReserva.IsEnabled = true;
+                        txtClienteNombre.Clear();
+                        dtp_FechaVenta.IsEnabled = true;
                     }
                 }
 
@@ -403,7 +417,14 @@ namespace CapaPresentacion
 
         private void GenerarCorrelativos()
         {
-            txtId_Venta_Servicios.Text = Procedimientos.GenerarCodigoId("Ventas_Servicios");
+            try
+            {
+                txtId_Venta_Servicios.Text = Procedimientos.GenerarCodigoId("Ventas_Servicios");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("No se ha podido Generar el codigo de la Reserva porque: " + ex, "Codigo de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
         public virtual bool Guardar()
         {
@@ -427,7 +448,7 @@ namespace CapaPresentacion
 
                     if (DataGridVentaServicios.Items.Count == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Por Favor Agregue una Reserva a la Tabla", "Agregar Venta Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Por Favor Agregue una Reserva a la Tabla", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
                     else
                     {
@@ -457,6 +478,7 @@ namespace CapaPresentacion
                         LimpiarCampo();
                         limpiarFila();
                         Hide();
+                        TableReservas = null;
                         return true;
                     }
                 }
@@ -475,29 +497,29 @@ namespace CapaPresentacion
         #region Botones para salir de la pantalla
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Hide();
             limpiarFila();
             LimpiarDetalle();
             LimpiarCampo();
             TableReservas = null;
+            this.Hide();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            this.Hide();
             limpiarFila();
             LimpiarDetalle();
             LimpiarCampo();
             TableReservas = null;
+            this.Hide();
         }
 
         private void BtnCancelarVentaServicios_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
             limpiarFila();
             LimpiarDetalle();
             LimpiarCampo();
             TableReservas = null;
+            this.Hide();
         }
         #endregion
 
@@ -563,7 +585,6 @@ namespace CapaPresentacion
         #region Métodos para limpiar los textbox
         private void LimpiarDetalle()
         {
-            txtId_Reserva.Text = string.Empty;
             txtFechaReserva.Text = string.Empty;
             txtEstado.Text = string.Empty;
             txtMontoTotal1.Text = string.Empty;
@@ -572,6 +593,7 @@ namespace CapaPresentacion
 
         private void LimpiarCampo()
         {
+            txtId_Reserva.Text = string.Empty;
             txtId_Cliente.Text = string.Empty;
             txtClienteNombre.Text = string.Empty;
         }

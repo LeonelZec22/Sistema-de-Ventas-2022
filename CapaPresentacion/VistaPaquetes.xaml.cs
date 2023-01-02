@@ -49,6 +49,11 @@ namespace CapaPresentacion
             DataGridGestionPaquete.UnselectAllCells();
         }
 
+        private void AgPaq_UpdateEventHandler(object sender, FrmAgregarPaquete.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
         private void DataGridGestionPaquete_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Paquetes = e.Column.Header.ToString();
@@ -94,8 +99,32 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboPaq.Text == "Nombre")
+                {
+                    Paquete.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionPaquete.ItemsSource = Paquetes.Buscar_Paquete_Nombre(Paquete).AsDataView();
+                }
+                else if (cboPaq.Text == "Descripcion")
+                {
+                    Paquete.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionPaquete.ItemsSource = Paquetes.Buscar_Paquete_Descripcion(Paquete).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Paquete no fue encontrado por: " + ex.Message, "Seleccionar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
         private void DataGridGestionPaquete_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -105,6 +134,13 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void BtnNuevoPaquete_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarPaquete paquetes = new FrmAgregarPaquete(this);
+            paquetes.UpdateEventHandler += AgPaq_UpdateEventHandler;
+            paquetes.ShowDialog();
         }
     }
 }

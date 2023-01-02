@@ -24,31 +24,19 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
-
-            FrmReservas reservas = new FrmReservas();
-            Hide();
-            reservas.ShowDialog();
-            Close();
+            try
+            {
+                Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
-        private void BtnVentaReserva_Click(object sender, RoutedEventArgs e)
-        {
-            FrmVentas_Servicios ventas_Servicios = new FrmVentas_Servicios();
-            Hide();
-            ventas_Servicios.ShowDialog();
-            Close();
-        }
-
-        private void BtnVentaProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmVentas ventas = new FrmVentas();
-            Hide();
-            ventas.ShowDialog();
-            Close();
-        }
-
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow FormPrincipal = new MainWindow();
@@ -57,11 +45,12 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+
+        private void BtnPaquete_Click_1(object sender, RoutedEventArgs e)
         {
-            FrmProductos productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -91,16 +80,31 @@ namespace CapaPresentacion
 
             Close();
         }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        private void BtnReservas1_Click(object sender, RoutedEventArgs e)
         {
-            FrmInventario inventario = new FrmInventario();
+            MenuReserva Reserva = new MenuReserva();
+
             Hide();
 
-            inventario.ShowDialog();
+            Reserva.ShowDialog();
+
             Close();
         }
 
+        private void BtnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
+        }
+
+        #endregion
+
+        // *********************************************
+
+     
+        
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -137,28 +141,24 @@ namespace CapaPresentacion
             }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        #region botones del menu 
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
 
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
+            FrmReservas reservas = new FrmReservas();
+            Hide();
+            reservas.ShowDialog();
+            Close();
         }
+
+        private void BtnVentaReserva_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVentas_Servicios ventas_Servicios = new FrmVentas_Servicios();
+            Hide();
+            ventas_Servicios.ShowDialog();
+            Close();
+        }
+
 
         private void BtnVentaPaquete_Click(object sender, RoutedEventArgs e)
         {
@@ -168,14 +168,28 @@ namespace CapaPresentacion
             paquete.ShowDialog();
             Close();
         }
-
-        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
+        private void BtnVentaProducto_Click(object sender, RoutedEventArgs e)
         {
-            FrmPaquetes paquetes = new FrmPaquetes();
+            FrmVentas ventas = new FrmVentas();
             Hide();
-
-            paquetes.ShowDialog();
+            ventas.ShowDialog();
             Close();
         }
+
+     
+
+        private void BtnProducto_Click(object sender, RoutedEventArgs e)
+        {
+            FrmProductos productos = new FrmProductos();
+            Hide();
+            productos.ShowDialog();
+            Close();
+        }
+
+        #endregion 
+
+
+
+
     }
 }

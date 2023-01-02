@@ -80,17 +80,17 @@
 
                         </Grid>
 
-                        <!--Productos-->
+                        <!--Paquetes-->
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnProductos_Click" Cursor="Hand">
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/box.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" x:Name="btnPaquete" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnPaquete_Click" Cursor="Hand">
 
-                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
+                                <uc:Modulos Titulo="Paquete" Margin="-20 0 0 0"/>
                             </Button>
 
                         </Grid>
@@ -140,20 +140,20 @@
                             </Button>
 
                         </Grid>
-
-                        <!--Inventario-->
+                        
+                        <!--Reservas-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Cursor="Hand" Click="BtnInventario_Click">
-                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Reserva.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnReservas" Style="{StaticResource BotonesMenu}" Click="BtnReservas_Click" Cursor="Hand">
+                                <uc:Modulos  Titulo="Reserva" Margin="-20 0 0 0"/>
 
                             </Button>
-
                         </Grid>
 
                         <!--Ventas-->
@@ -223,26 +223,7 @@
                     </StackPanel>
                 </Button>
 
-                <!--Buscador-->
-                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-
-
-
-                <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox x:Name="cboUsuario" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">
-
-                        <ComboBoxItem Content="Nombre de Usuario" IsSelected="True"/>
-                        <ComboBoxItem Content="Email"/>
-                    </ComboBox>
-
-                    <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="160,10,-3,10"/>
-                </Grid>
-
-                <Grid Grid.Row="4" Margin="297,0,138,0">
-                    <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-
-                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged" Height="54"/>
-                </Grid>
+             
 
                 <!--Separarto-->
 
@@ -250,7 +231,7 @@
 
                 <!--DataGrid-->
 
-                <DataGrid x:Name="DataGridUsuarios" HorizontalAlignment="Left" Height="444" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridUsuarios_AutoGeneratingColumn" SelectionChanged="DataGridUsuarios_SelectionChanged"/>
+                <DataGrid x:Name="DataGridUsuarios" HorizontalAlignment="Left" Height="522" Margin="29,25,0,0" Grid.Row="5" VerticalAlignment="Top" Width="781" CanUserReorderColumns="False"  Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" AutoGeneratingColumn="DataGridUsuarios_AutoGeneratingColumn" SelectionChanged="DataGridUsuarios_SelectionChanged"/>
 
             </Grid>
 

@@ -40,7 +40,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Paquete" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtAddNombrePaquete" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del Paquete" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombrePaquete_KeyDown" TabIndex="0" MaxLength="40"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtAddNombrePaquete" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del Paquete" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombrePaquete_KeyDown" TabIndex="0" MaxLength="30"/>
 
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descripcion del Paquete" Margin="29,280,394,288" Width="187"/>

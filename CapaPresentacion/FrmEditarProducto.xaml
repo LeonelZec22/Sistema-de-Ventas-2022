@@ -42,7 +42,7 @@
                 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo de producto" Margin="29,83,425,484"/>
 
-                <TextBox Margin="210,66,62,484" x:Name="txtEditCodeProduct" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True"/>
+                <TextBox Margin="210,66,62,484" x:Name="txtEditCodeProduct" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="15"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de producto" Margin="22,161,424,406"/>
 

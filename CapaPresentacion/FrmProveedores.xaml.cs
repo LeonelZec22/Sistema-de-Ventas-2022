@@ -20,10 +20,13 @@ namespace CapaPresentacion
         public FrmProveedores()
         {
             InitializeComponent();
-            CargarDatos();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CargarDatos();
 
+        }
         //Creamos un objeto de nuestra clase conexión
 
         CD_Conexion Con = new CD_Conexion();
@@ -40,26 +43,13 @@ namespace CapaPresentacion
         //Método para cargar o mostrar los datos en la tabla del formulario
         private void CargarDatos()
         {
-            //Dt = new DataTable("Cargar_Datos");
-            //Cmd = new SqlCommand("SELECT * FROM Proveedores", Con.Abrir());
-
-            //Cmd.CommandType = CommandType.Text;
-
-            //Dr = Cmd.ExecuteReader();
-
-            //Dt.Load(Dr);
-
-            //Dr.Close();
-
-            //Con.Cerrar();
-
-            //DataGridProveedores.ItemsSource = Dt.DefaultView;
+            
 
             DataGridProveedores.ItemsSource = Procedimientos.CargarDatos("Proveedores").AsDataView();
 
         }
 
-        #region Eventos del DataGrid
+        #region Evento para modificar las columnas autogeneradas del DataGrid
         //Evento para ocultar una columna de un datagrid autogenerico
         private void DataGridProveedores_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -79,10 +69,18 @@ namespace CapaPresentacion
         {
             FrmAgregarProveedores proveedores = new FrmAgregarProveedores(this);
             proveedores.UpdateEventHandler += AgProve_UpdateEventHandler;
-            //this.Hide();
+          
             proveedores.ShowDialog();
         }
 
+        private void BtnAddIngre_Click(object sender, RoutedEventArgs e)
+        {
+
+            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
+            Hide();
+            compraDeProducto.ShowDialog();
+            Close();
+        }
         private void BtnEditProve_Click(object sender, RoutedEventArgs e)
         {
             if (dr != null)
@@ -100,51 +98,6 @@ namespace CapaPresentacion
         private void BtnDeleteProve_Click(object sender, RoutedEventArgs e)
         {
             Eliminar();
-        }
-        #endregion
-
-
-        FrmEditarProveedor EditarProveedor = new FrmEditarProveedor();
-        DataGrid dg;
-        DataRowView dr;
-
-       
-
-
-
-        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Buscar();
-        }
-
-        private void AgProve_UpdateEventHandler(object sender, FrmAgregarProveedores.UpdateEventArgs args)
-        {
-            CargarDatos();
-        }
-
-        private void EdProve_UpdateEventHandler(object sender, FrmEditarProveedor.UpdateEventArgs args)
-        {
-            CargarDatos();
-        }
-
-
-        private void DataGridProveedores_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            dg = sender as DataGrid;
-
-            dr = dg.SelectedItem as DataRowView;
-
-            if (dr != null)
-            {
-                EditarProveedor.UpdateEventHandler += EdProve_UpdateEventHandler;
-                EditarProveedor.txtEditIDProveedor.Text = dr[0].ToString();
-                EditarProveedor.txtEditCodeProveedor.Text = dr[1].ToString();
-                EditarProveedor.txtEditNombreProveedor.Text = dr[2].ToString();
-                EditarProveedor.txtEditDireccion.Text = dr[3].ToString();
-                EditarProveedor.txtEditTelefono.Text = dr[4].ToString();
-                EditarProveedor.EditguardarBtn.IsEnabled = true;
-                btnEditProve.IsEnabled = true;
-            }
         }
 
         //Método para eliminar 
@@ -186,6 +139,50 @@ namespace CapaPresentacion
                 }
             }
         }
+        #endregion
+
+
+        FrmEditarProveedor EditarProveedor = new FrmEditarProveedor();
+        DataGrid dg;
+        DataRowView dr;
+
+        //Invocacion de un evento creado para recargar este formulario o pantalla
+        private void AgProve_UpdateEventHandler(object sender, FrmAgregarProveedores.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        private void EdProve_UpdateEventHandler(object sender, FrmEditarProveedor.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        //Evento para capturar una fila seleccionada del DataGrid
+        private void DataGridProveedores_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                EditarProveedor.UpdateEventHandler += EdProve_UpdateEventHandler;
+                EditarProveedor.txtEditIDProveedor.Text = dr[0].ToString();
+                EditarProveedor.txtEditCodeProveedor.Text = dr[1].ToString();
+                EditarProveedor.txtEditNombreProveedor.Text = dr[2].ToString();
+                EditarProveedor.txtEditDireccion.Text = dr[3].ToString();
+                EditarProveedor.txtEditTelefono.Text = dr[4].ToString();
+                EditarProveedor.EditguardarBtn.IsEnabled = true;
+                btnEditProve.IsEnabled = true;
+            }
+        }
+
+
+        #region Buscador
+        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Buscar();
+        }
 
         public virtual void Buscar()
         {
@@ -210,15 +207,9 @@ namespace CapaPresentacion
             }
         }
 
-        private void BtnAddIngre_Click(object sender, RoutedEventArgs e)
-        {
+        #endregion
 
-            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
-            Hide();
-            compraDeProducto.ShowDialog();
-            Close();
-        }
-
+        #region  Formas de Cerrar la App
         private void CloseApp_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
@@ -259,24 +250,14 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
+        #endregion
 
         #region Botones del menu lateral
 
@@ -288,19 +269,11 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos Producto = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            Producto.ShowDialog();
-            Close();
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario Inventario = new FrmInventario();
-            Hide();
-            Inventario.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -327,7 +300,17 @@ namespace CapaPresentacion
             servicios.ShowDialog();
             Close();
         }
-        
+
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuReserva Reserva = new MenuReserva();
+
+            Hide();
+
+            Reserva.ShowDialog();
+
+            Close();
+        }
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
@@ -336,6 +319,11 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
         #endregion
+
+        
+
+        
     }
 }

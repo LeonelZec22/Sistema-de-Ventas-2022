@@ -48,6 +48,12 @@ namespace CapaPresentacion
             DataGridGestionClientes.UnselectAllCells();
         }
 
+        private void AggClient_UpdateEventHandler(object sender, FrmAgregarCliente.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+
         private void DataGridGestionClientes_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Cliente = e.Column.Header.ToString();
@@ -83,7 +89,30 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Buscar();
+        }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboClientes.Text == "Codigo")
+                {
+                    Cliente.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionClientes.ItemsSource = Clientes.Buscar_Cliente_Codigo(Cliente).AsDataView();
+                }
+                else if (cboClientes.Text == "Nombre")
+                {
+                    Cliente.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionClientes.ItemsSource = Clientes.Buscar_Cliente_Nombre(Cliente).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Cliente no fue encontrado por: " + ex.Message, "Buscar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         private void DataGridGestionClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,7 +129,14 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
-            //DataGridGestionClientes.UnselectAllCells();
+           
+        }
+
+        private void BtnNuevoCliente_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarCliente clientes = new FrmAgregarCliente(this);
+            clientes.UpdateEventHandler += AggClient_UpdateEventHandler;
+            clientes.ShowDialog();
         }
     }
 }

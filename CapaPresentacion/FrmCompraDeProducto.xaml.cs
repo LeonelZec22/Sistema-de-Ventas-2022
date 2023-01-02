@@ -26,7 +26,7 @@ namespace CapaPresentacion
         public FrmCompraDeProducto()
         {
             InitializeComponent();
-            //CargarDatos();
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -97,7 +97,7 @@ namespace CapaPresentacion
             //AnularProducto.UpdateEventHandler += AnIn_UpdateEventHandler;
             if (dr != null)
             {
-                AnularProducto.MostrarDetalleIngreso();
+                //AnularProducto.MostrarDetalleIngreso();
                 AnularProducto.ShowDialog();
                 DataGridIngresoProducto.UnselectAllCells();
                 
@@ -169,11 +169,7 @@ namespace CapaPresentacion
                     IngresoProducto.Buscar = txtBuscador.Text.Trim();
                     DataGridIngresoProducto.ItemsSource = IngresoProductos.Buscar_Ingreso_Proveedor(IngresoProducto).AsDataView();
                 }
-                else if (cboIngresoProducto.Text == "Fecha")
-                {
-                    IngresoProducto.Buscar = txtBuscador.Text.Trim();
-                    DataGridIngresoProducto.ItemsSource = IngresoProductos.Buscar_Ingreso_Fecha(IngresoProducto).AsDataView();
-                }
+               
 
             }
 
@@ -222,18 +218,7 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro de que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -249,14 +234,14 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-
-            FrmProductos Productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            Productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
+
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
@@ -282,11 +267,14 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            FrmInventario frmInventario = new FrmInventario();
+            MenuReserva Reserva = new MenuReserva();
+
             Hide();
-            frmInventario.ShowDialog();
+
+            Reserva.ShowDialog();
+
             Close();
         }
 
@@ -297,5 +285,8 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+       
+       
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CapaPresentacion
 {
     /// <summary>
-    /// Lógica de interacción para MenuProveedores.xaml
+    /// Lógica de interacción para MenuPaquete.xaml
     /// </summary>
-    public partial class MenuProveedores : Window
+    public partial class MenuPaquete : Window
     {
-        public MenuProveedores()
+        public MenuPaquete()
         {
             InitializeComponent();
         }
@@ -44,16 +44,13 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete2_Click(object sender, RoutedEventArgs e)
         {
             MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
             menuPaquete.ShowDialog();
             Close();
-
         }
-
-       
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
@@ -84,23 +81,20 @@ namespace CapaPresentacion
 
         private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            MenuReserva Reserva = new MenuReserva();
-
+            MenuReserva menuReserva = new MenuReserva();
             Hide();
-
-            Reserva.ShowDialog();
-
+            menuReserva.ShowDialog();
             Close();
         }
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
+
             MenuVentas ventas = new MenuVentas();
             Hide();
             ventas.ShowDialog();
             Close();
         }
-
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -125,6 +119,22 @@ namespace CapaPresentacion
             }
         }
 
+        private void BtnVentaPaquete_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVenta_Paquete venta_Paquete = new FrmVenta_Paquete();
+            Hide();
+            venta_Paquete.ShowDialog();
+            Close();
+        }
+
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
+        {
+            FrmPaquetes paquetes = new FrmPaquetes();
+            Hide();
+            paquetes.ShowDialog();
+            Close();
+        }
+
         private void MinimizeApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -135,39 +145,6 @@ namespace CapaPresentacion
             {
                 System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
-        }
-
-        private void BtnProveedor_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProveedores proveedores = new FrmProveedores();
-            Hide();
-            proveedores.ShowDialog();
-            Close();
-        }
-
-        private void BtnIngresoProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
-            Hide();
-            compraDeProducto.ShowDialog();
-            Close();
-        }
-
-
-        private void BtnProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProductos productos = new FrmProductos();
-            Hide();
-            productos.ShowDialog();
-            Close();
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario inventario = new FrmInventario();
-            Hide();
-            inventario.ShowDialog();
-            Close();
         }
     }
 }

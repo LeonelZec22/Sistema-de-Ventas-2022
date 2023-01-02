@@ -38,6 +38,7 @@ namespace CapaPresentacion
             txtTotal_Pago.Text = "0.00";
             Correlativo();
             dtp_FechaIngreso.SelectedDate = DateTime.Today;
+           
         }
 
         #region Instancia de objetos a usar
@@ -85,11 +86,20 @@ namespace CapaPresentacion
 
         private void Correlativo()
         {
-            txtId_IngresoProducto.Text = Procedimientos.GenerarCodigoId("Ingreso_Productos");
+            try
+            {
 
-            txtNo_Ingreso.Text = "INGR" + Procedimientos.GenerarCodigo("Ingreso_Productos");
+                txtId_IngresoProducto.Text = Procedimientos.GenerarCodigoId("Ingreso_Productos");
 
-            txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
+                txtNo_Ingreso.Text = "INGR" + Procedimientos.GenerarCodigo("Ingreso_Productos");
+
+                txtId_Detalle.Text = Procedimientos.GenerarCodigoId("Detalles_Ingreso");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Codigo del Ingreso no fue generado por: " + ex, "Generar Código de Ingreso", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
         }
 
 
@@ -130,7 +140,7 @@ namespace CapaPresentacion
 
                 if (txtId_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtCosto_Unitario.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
                     return;
                 }
@@ -140,10 +150,10 @@ namespace CapaPresentacion
                     //Variable que verifica si un producto ya ha fue agregado a la DataTable para solo modificar la columna de Cantidad y Subtotal de ese producto
                     bool Existe = false;
 
-                    //Variable para guardar el index del producto en caso que este fuera agregado al DataTable
+                    //Variable para guardar el index del producto seleccionado en caso que este ya estuviera agregado al DataTable
                     int no_fila = 0;
 
-                    //Verificamos si el DataGrid contiene datos por defecto no estara vacio porque después de agregar un producto el valor de está aumenta
+                    //Verificamos si el DataGrid contiene datos por defecto estara vacio y después de agregar un producto el valor de está variable aumenta de 1 en 1
                     if (ContFila == 0)
                     {
                         //Verficamos si la DataTable ya esta creada con una fila agregada
@@ -185,9 +195,12 @@ namespace CapaPresentacion
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                             LimpiarDetalle();
                             ContFila++;
+
+                            btnBuscarProveedor.IsEnabled = false;
+                            dtp_FechaIngreso.IsEnabled = false;
                         }
 
-                        //En caso que ya hay datos en la DataTable solo agregamos una fila con los datos de los TextBox
+                        //En caso que ya halla datos en la DataTable solo agregamos una fila con los datos de los TextBox
                         else
                         {
                             SubTotal = Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtCosto_Unitario.Text);
@@ -196,6 +209,10 @@ namespace CapaPresentacion
                             DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                             DataGridIngresoProducto.UnselectAllCells();
                             LimpiarDetalle();
+                            ContFila++;
+
+                            btnBuscarProveedor.IsEnabled = false;
+                            dtp_FechaIngreso.IsEnabled = false;
                         }
 
                     }
@@ -226,6 +243,8 @@ namespace CapaPresentacion
                             LimpiarDetalle();
                             DataGridIngresoProducto.UnselectAllCells();
 
+                            btnBuscarProveedor.IsEnabled = false;
+                            dtp_FechaIngreso.IsEnabled = false;
                         }
 
                         //Si no existe entonces solo agrego una  nueva fila con los datos que hay en los textbox
@@ -238,6 +257,8 @@ namespace CapaPresentacion
                             LimpiarDetalle();
                             DataGridIngresoProducto.UnselectAllCells();
                             ContFila++;
+                            btnBuscarProveedor.IsEnabled = false;
+                            dtp_FechaIngreso.IsEnabled = false;
                         }
                     }
 
@@ -393,19 +414,18 @@ namespace CapaPresentacion
                     //Verificamos si hay un producto o una fila seleccionada de la tabla
                     if(DataGridIngresoProducto.SelectedItems.Count == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Debe de seleccionar el producto a eliminar de la tabla!!", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
                     else
                     {
                         //Va recorrer la fila seleccionada en busca de obtener su index
                         foreach (DataRowView drv in DataGridIngresoProducto.SelectedItems)
                         {
-                            //if(DataGridIngresoProducto.SelectedItems.Count == 1)
-                            //{
+                           
                             DataRow row = drv.Row;
 
                             indexDelete = TableProductos.Rows.IndexOf(row);
-                            //}
+                          
 
                         }
 
@@ -417,18 +437,20 @@ namespace CapaPresentacion
                         DataGridIngresoProducto.ItemsSource = TableProductos.DefaultView;
                         DataGridIngresoProducto.UnselectAllCells();
                         ContFila--;
+                        btnBuscarProveedor.IsEnabled = true;
+                        dtp_FechaIngreso.IsEnabled = true;
                     }
                 }
 
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("No hay productos para eliminar!!", "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("No hay productos para eliminar!!", "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
             }
 
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("No se ha podido eliminar el producto porque: "+ ex, "Eliminar Productor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("No se ha podido eliminar el producto porque: "+ ex, "Eliminar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
 
@@ -444,7 +466,7 @@ namespace CapaPresentacion
             {
                 if (txtId_IngresoProducto.Text == string.Empty || txtNo_Ingreso.Text == string.Empty || txtId_Proveedor.Text == string.Empty || txtNombre_Proveedor.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos por favor!!", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -457,7 +479,7 @@ namespace CapaPresentacion
 
                     if (DataGridIngresoProducto.Items.Count == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Por favor agregue un producto a la tabla", "Agregar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        System.Windows.Forms.MessageBox.Show("Por favor agregue un producto a la tabla", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     }
 
                     else
@@ -485,7 +507,7 @@ namespace CapaPresentacion
                             LimpiarDetalle();
                             limpiarproveedor();
                             limpiarFila();
-                            Correlativo();
+                            TableProductos = null;
                             Hide();
                             //compraDeProducto.ShowDialog();
                             return true;
@@ -530,6 +552,7 @@ namespace CapaPresentacion
             this.Hide();
             limpiarFila();
             LimpiarDetalle();
+            limpiarproveedor();
             TableProductos = null;
         }
 
@@ -538,6 +561,7 @@ namespace CapaPresentacion
             this.Hide();
             limpiarFila();
             LimpiarDetalle();
+            limpiarproveedor();
             TableProductos = null;
         }
 
@@ -546,6 +570,7 @@ namespace CapaPresentacion
             this.Hide();
             limpiarFila();
             LimpiarDetalle();
+            limpiarproveedor();
             TableProductos = null;
         }
 
@@ -583,7 +608,7 @@ namespace CapaPresentacion
                 }
                 catch(Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("La cantidad no es un numero por favor ingrese solo numeros", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("La cantidad no es un numero entero por favor ingrese solo numeros sin decimales", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     txtCantidad.Clear();
                 }
             }
@@ -594,6 +619,7 @@ namespace CapaPresentacion
 
             System.Windows.Forms.MessageBox.Show("La Cantidad solo se puede ingresar por medio del teclado", "Agregar Ingreso de Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
         }
+
 
         #endregion
 

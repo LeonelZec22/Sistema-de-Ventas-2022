@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CapaPresentacion
 {
     /// <summary>
-    /// Lógica de interacción para MenuProveedores.xaml
+    /// Lógica de interacción para MenuReserva.xaml
     /// </summary>
-    public partial class MenuProveedores : Window
+    public partial class MenuReserva : Window
     {
-        public MenuProveedores()
+        public MenuReserva()
         {
             InitializeComponent();
         }
@@ -36,6 +36,7 @@ namespace CapaPresentacion
             }
         }
 
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow FormPrincipal = new MainWindow();
@@ -44,16 +45,15 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
+ 
+
+        private void BtnPaquete2_Click(object sender, RoutedEventArgs e)
         {
             MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
             menuPaquete.ShowDialog();
             Close();
-
         }
-
-       
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
@@ -84,12 +84,9 @@ namespace CapaPresentacion
 
         private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            MenuReserva Reserva = new MenuReserva();
-
+            MenuReserva menuReserva = new MenuReserva();
             Hide();
-
-            Reserva.ShowDialog();
-
+            menuReserva.ShowDialog();
             Close();
         }
 
@@ -101,6 +98,24 @@ namespace CapaPresentacion
             Close();
         }
 
+        #endregion
+
+        private void BtnAddReserva_Click(object sender, RoutedEventArgs e)
+        {
+            FrmReservas reservas = new FrmReservas();
+            Hide();
+            reservas.ShowDialog();
+            Close();
+        }
+
+        private void BtnVentaReserva_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVentas_Servicios ventas_Servicios = new FrmVentas_Servicios();
+            Hide();
+            ventas_Servicios.ShowDialog();
+            Close();
+
+        }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -137,37 +152,6 @@ namespace CapaPresentacion
             }
         }
 
-        private void BtnProveedor_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProveedores proveedores = new FrmProveedores();
-            Hide();
-            proveedores.ShowDialog();
-            Close();
-        }
-
-        private void BtnIngresoProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmCompraDeProducto compraDeProducto = new FrmCompraDeProducto();
-            Hide();
-            compraDeProducto.ShowDialog();
-            Close();
-        }
-
-
-        private void BtnProducto_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProductos productos = new FrmProductos();
-            Hide();
-            productos.ShowDialog();
-            Close();
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario inventario = new FrmInventario();
-            Hide();
-            inventario.ShowDialog();
-            Close();
-        }
+       
     }
 }

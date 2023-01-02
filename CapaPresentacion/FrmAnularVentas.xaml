@@ -61,7 +61,7 @@
                     <!--Caja de texto de ID Cliente-->
                     <TextBox Margin="342,10,892,172" x:Name="txtId_Cliente" FontSize="18" TextWrapping="Wrap" Visibility="Hidden" IsReadOnly="True"/>
 
-                    <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="28,64,926,0" x:Name="txtClienteNombre" FontSize="15" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
 
 
@@ -81,11 +81,11 @@
 
                     <TextBox Margin="949,10,285,172" x:Name="txtId_Producto" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>
 
-                    <TextBox Margin="520,64,561,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="520,64,561,0" x:Name="txtCod_Producto" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Producto"  Width="174" Margin="748,28,356,157" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="748,67,306,0" x:Name="txtNombre_Producto" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top"  Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock x:Name="tbUsuario" Text="1" Margin="971,8,233,206" Visibility="Hidden"/>
 
@@ -93,21 +93,21 @@
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Cantidad"  Width="73" Margin="584,158,621,39" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="676,142,506,0" x:Name="txtCantidad" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="676,142,506,0" x:Name="txtCantidad" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Stock Actual"  Width="117" Margin="374,157,787,40"/>
 
 
-                    <TextBox Margin="491,142,714,0" x:Name="txtStockActual"  FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="491,142,714,0" x:Name="txtStockActual"  FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Precio Venta"  Width="128" Margin="794,158,356,39" RenderTransformOrigin="0.876,0.477"/>
 
-                    <TextBox Margin="907,142,260,0" x:Name="txtPrecio_Venta" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff" IsReadOnly="True"/>
+                    <TextBox Margin="907,142,260,0" x:Name="txtPrecio_Venta" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff" IsReadOnly="True"/>
 
                     <TextBlock FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descuento"  Width="94" Margin="1038,157,146,40"/>
 
 
-                    <TextBox Margin="1137,142,30,0" x:Name="txtDescuento" FontSize="18" TextWrapping="Wrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" materialDesign:HintAssist.Hint="" Background="#ffffff"  IsReadOnly="True"/>
+                    <TextBox Margin="1137,142,30,0" x:Name="txtDescuento" FontSize="18" TextWrapping="NoWrap" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Background="#ffffff"  IsReadOnly="True"/>
 
                     <Button x:Name="btnEliminarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="Auto" materialDesign:ButtonAssist.CornerRadius="14" FontSize="15" Content="Eliminar" Background="Red" Margin="1120,80,70,104" IsEnabled="False"/>
 

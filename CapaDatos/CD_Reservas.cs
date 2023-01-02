@@ -54,9 +54,13 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado == "Anulado")
+                if (Estado == "Cancelada")
                 {
                     System.Windows.Forms.MessageBox.Show("Esta Reserva ya ha sido Anulada anteriormente", "Cancelar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+                else if (Estado == "Finalizada")
+                {
+                    System.Windows.Forms.MessageBox.Show("Esta Reserva ya está finalizada no se puede cancelar", "Cancelar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -71,6 +75,7 @@ namespace CapaDatos
                     Cmd.Parameters.Add(new SqlParameter("@Id_Reserva", Reservas.Id_Reserva));
                     Cmd.ExecuteNonQuery();
                     System.Windows.Forms.MessageBox.Show("La Reserva fue anulada correctamente", "Cancelar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
                     Con.Cerrar();
                 }
 

@@ -22,7 +22,12 @@ namespace CapaPresentacion
         public FrmClientes()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             CargarDatos();
+
         }
 
         //Creamos un objeto de nuestra clase conexión
@@ -273,18 +278,8 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+                Application.Current.Shutdown();
 
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
             }
             catch (Exception ex)
             {
@@ -301,19 +296,11 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            FrmProductos frmProductos = new FrmProductos();
-            frmProductos.ShowDialog();
-            Close();
-        }
-
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario frmInventario = new FrmInventario();
-            Hide();
-            frmInventario.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -334,6 +321,17 @@ namespace CapaPresentacion
             Close();
         }
 
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuReserva Reserva = new MenuReserva();
+
+            Hide();
+
+            Reserva.ShowDialog();
+
+            Close();
+        }
+
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
             MenuVentas ventas = new MenuVentas();
@@ -342,6 +340,11 @@ namespace CapaPresentacion
             Close();
         }
 
+
         #endregion
+
+        
+
+       
     }
 }

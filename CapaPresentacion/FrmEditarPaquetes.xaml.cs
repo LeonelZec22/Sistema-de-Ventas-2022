@@ -68,7 +68,7 @@ namespace CapaPresentacion
                     Paquete.Nombre = txtAddNombrePaquete.Text.Trim();
                     Paquete.Descripcion = txtAddDescripcionPaquete.Text.Trim();
                     Paquete.Cantidad_Vendida = Convert.ToInt32(txtAddCantidad_Vendida.Text.Trim());
-                    Paquete.Precio_Venta = txtAddPrecioVenta.Text.Trim();
+                    Paquete.Precio_Venta = Convert.ToDecimal(txtAddPrecioVenta.Text.Trim());
 
 
                     Paquetes.EditarPaquete(Paquete);
@@ -165,7 +165,7 @@ namespace CapaPresentacion
             {
                 try
                 {
-                    if (Convert.ToInt32(txtAddPrecioVenta.Text) >= 0)
+                    if (Convert.ToDecimal(txtAddPrecioVenta.Text) >= 0)
                     {
                         Procedimientos.FormatoMoneda(txtAddPrecioVenta);
                     }

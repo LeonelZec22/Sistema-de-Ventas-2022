@@ -157,7 +157,6 @@ namespace CapaPresentacion
 
                     Ingresos.AnularIngreso(Ingreso);
 
-                    //System.Windows.Forms.MessageBox.Show("El Ingreso de Producto fue Cancelado correctamente!!", "Cancelar Ingreso Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                     this.Hide();
                     Actualizar();
@@ -182,16 +181,19 @@ namespace CapaPresentacion
         private void BtnCancelarIngreso_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+            Actualizar();
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
+            Actualizar();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
+            Actualizar();
         }
     }
 }

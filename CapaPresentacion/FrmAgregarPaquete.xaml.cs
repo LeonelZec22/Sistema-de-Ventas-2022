@@ -35,6 +35,11 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        public FrmAgregarPaquete(VistaPaquetes Paquetes)
+        {
+            InitializeComponent();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GenerarCodigo();
@@ -160,7 +165,7 @@ namespace CapaPresentacion
                     Paquete.Nombre = txtAddNombrePaquete.Text.Trim();
                     Paquete.Descripcion = txtAddDescripcionPaquete.Text.Trim();
                     Paquete.Cantidad_Vendida = Convert.ToInt32(txtAddCantidad_Vendida.Text.Trim());
-                    Paquete.Precio_Venta = txtAddPrecioVenta.Text.Trim();
+                    Paquete.Precio_Venta = Convert.ToDecimal(txtAddPrecioVenta.Text.Trim());
 
                     Paquetes.AgregarPaquete(Paquete);
 
@@ -192,7 +197,7 @@ namespace CapaPresentacion
             txtAddDescripcionPaquete.Clear();
             txtAddCantidad_Vendida.Clear();
             txtAddPrecioVenta.Clear();
-            Close();
+            Hide();
         }
 
 
@@ -262,7 +267,7 @@ namespace CapaPresentacion
             {
                 try
                 {
-                    if (Convert.ToInt32(txtAddPrecioVenta.Text) >= 0)
+                    if (Convert.ToDecimal(txtAddPrecioVenta.Text) >= 0)
                     {
                         Procedimientos.FormatoMoneda(txtAddPrecioVenta);
                     }
@@ -285,7 +290,7 @@ namespace CapaPresentacion
         {
             if (txtAddCantidad_Vendida.Text.Length > 5)
             {
-                System.Windows.Forms.MessageBox.Show("La Cantidad Vendida  no puede ser mayor a 4 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                System.Windows.Forms.MessageBox.Show("La Cantidad Vendida  no puede ser mayor a 5 caracteres", "Agregar Paquete", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
             }
             else
             {

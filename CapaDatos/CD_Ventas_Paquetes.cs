@@ -125,5 +125,50 @@ namespace CapaDatos
 
             return Dt;
         }
+
+        public DataTable Buscar_VentaPaquete_Cliente(CE_Ventas_Paquetes Ventas)
+        {
+            dataTable = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_VentaPaquete_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        public DataTable Buscar_VentaPaquete_Estado(CE_Ventas_Paquetes Ventas)
+        {
+            dataTable = new DataTable("Estado");
+            Cmd = new SqlCommand("Buscar_VentaPaquete_Estado", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        public DataTable Buscar_VentaPaquete_Paquete(CE_Ventas_Paquetes Ventas)
+        {
+            dataTable = new DataTable("Paquete");
+            Cmd = new SqlCommand("Buscar_VentaPaquete_Paquete", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
     }
 }

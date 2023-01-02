@@ -83,7 +83,30 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Buscar();
+        }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboServicios.Text == "Codigo")
+                {
+                    Servicio.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionServicios.ItemsSource = Servicios.Buscar_Servicio_Codigo(Servicio).AsDataView();
+                }
+                else if (cboServicios.Text == "Nombre")
+                {
+                    Servicio.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionServicios.ItemsSource = Servicios.Buscar_Servicios_Nombre(Servicio).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Servicio no fue encontrado por: " + ex.Message, "Seleccionar Servicio", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
 
@@ -101,7 +124,19 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-            //DataGridGestionServicios.UnselectAllCells();
+           
+        }
+
+        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        private void BtnNuevoServicios_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarServicio servicios = new FrmAgregarServicio(this);
+            servicios.UpdateEventHandler += AgServi_UpdateEventHandler;
+            servicios.ShowDialog();
         }
     }
 }

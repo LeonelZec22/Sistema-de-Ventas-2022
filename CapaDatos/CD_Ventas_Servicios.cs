@@ -61,7 +61,7 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado == "Anulado")
+                if (Estado == "Cancelado")
                 {
                     System.Windows.Forms.MessageBox.Show("Esta Venta ya ha sido Anulada anteriormente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
@@ -106,6 +106,35 @@ namespace CapaDatos
             return Dt;
         }
 
-        
+        public DataTable Buscar_VentaReserva_Nombre(CE_Ventas_Servicios Ventas)
+        {
+            dataTable = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_VentaReserva_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
+        public DataTable Buscar_VentaReserva_Estado(CE_Ventas_Servicios Ventas)
+        {
+            dataTable = new DataTable("Estado");
+            Cmd = new SqlCommand("Buscar_VentaReserva_Estado", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(dataTable);
+
+            Con.Cerrar();
+
+            return dataTable;
+        }
+
     }
 }

@@ -46,6 +46,7 @@ namespace CapaPresentacion
 
         }
 
+        #region Evento para modificar las columnas autogeneradas del DataGrid
         private void DataGridVentaPaquete_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Venta_Paquetes = e.Column.Header.ToString();
@@ -127,12 +128,14 @@ namespace CapaPresentacion
             {
                 e.Column.Width = 100;
             }
-            #endregion
 
+            #endregion 
 
         }
 
+        #endregion
 
+        //Invocacion de un evento creado para recargar este formulario o pantalla
         private void AgVen_UpdateEventHandler(object sender, FrmAgregarVentaPaquete.UpdateEventArgs args)
         {
             CargarDatos();
@@ -141,11 +144,8 @@ namespace CapaPresentacion
         {
             CargarDatos();
         }
-        //private void AnVen_UpdateEventHandler(object sender, FrmAnularVentas.UpdateEventArgs args)
-        //{
-        //    CargarDatos();
-        //}
 
+        #region Botones del encabezado
         private void BtnNuevaVenta_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarVentaPaquete AgregarVentas = new FrmAgregarVentaPaquete(this);
@@ -207,7 +207,9 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
 
+        //Evento para capturar una fila seleccionada del DataGrid
         private void DataGridVentaPaquete_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dg = sender as DataGrid;
@@ -240,66 +242,156 @@ namespace CapaPresentacion
             }
         }
 
-  
+
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow Principal = new MainWindow();
+            Hide();
+            Principal.ShowDialog();
+            Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuPaquete menuPaquete = new MenuPaquete();
+            Hide();
+            menuPaquete.ShowDialog();
+            Close();
         }
+
+        
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuProveedores Proveedor = new MenuProveedores();
+            Hide();
+            Proveedor.ShowDialog();
+            Close();
         }
 
         private void BtnClientes_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmClientes clientes = new FrmClientes();
+            Hide();
+            clientes.ShowDialog();
+            Close();
         }
 
         private void BtnServicios_Click(object sender, RoutedEventArgs e)
         {
-
+            FrmServicios servicios = new FrmServicios();
+            Hide();
+            servicios.ShowDialog();
+            Close();
         }
 
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
+            MenuReserva Reserva = new MenuReserva();
 
+            Hide();
+
+            Reserva.ShowDialog();
+
+            Close();
         }
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuVentas ventas = new MenuVentas();
+            Hide();
+            ventas.ShowDialog();
+            Close();
         }
 
+        #endregion
+
+        #region  Formas de Cerrar la App
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
 
+                if (Resultado == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    Application.Current.Shutdown();
+
+                }
+                else
+                {
+                    return;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void MinimizeApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            try
+            {
+                this.WindowState = WindowState.Minimized;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
-
-     
-
-        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
 
         private void Window_Closed(object sender, EventArgs e)
         {
-
+            try
+            {
+                Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
+        #endregion
 
+        #region buscador
+        private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Buscar();
+        }
+
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboVentaPaquete.Text == "Cliente")
+                {
+                    Venta.Buscar = txtBuscador.Text.Trim();
+                    DataGridVentaPaquete.ItemsSource = Ventas.Buscar_VentaPaquete_Cliente(Venta).AsDataView();
+                }
+                else if (cboVentaPaquete.Text == "Estado")
+                {
+                    Venta.Buscar = txtBuscador.Text.Trim();
+                    DataGridVentaPaquete.ItemsSource = Ventas.Buscar_VentaPaquete_Estado(Venta).AsDataView();
+                }
+                else if (cboVentaPaquete.Text == "Paquete")
+                {
+                    Venta.Buscar = txtBuscador.Text.Trim();
+                    DataGridVentaPaquete.ItemsSource = Ventas.Buscar_VentaPaquete_Paquete(Venta).AsDataView();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Cliente no fue encontrado por: " + ex.Message, "Buscar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
+        #endregion
 
     }
 }

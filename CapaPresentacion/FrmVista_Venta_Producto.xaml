@@ -51,28 +51,16 @@
                 <!--Botones Encabezado-->
 
                 <!--Buscador-->
-                <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,18,695,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+               
 
-                <Button Grid.Row="4" Margin="810,1,94,534" Height="Auto"  x:Name="btnSeleccionarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarProducto_Click" Grid.RowSpan="2" Cursor="Hand"/>
+                <Button Grid.Row="4" Margin="706,0,198,2" Height="50"  x:Name="btnSeleccionarProducto" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarProducto_Click" Cursor="Hand"/>
+
+               
 
                 <Button Grid.Row="5" Margin="834,491,94,0" Height="Auto"  x:Name="btnCancelarPro" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarPro_Click" Cursor="Hand"/>
 
 
-                <Grid Grid.Row="4" Margin="107,0,584,0">
-                    <ComboBox x:Name="cboProductos" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="-46,0,0,0" Panel.ZIndex="2">
-
-                        <ComboBoxItem Content="Codigo"/>
-                        <ComboBoxItem Content="Nombre" IsSelected="True"/>
-                    </ComboBox>
-
-                    <Rectangle Width="2" Fill="#e9e9e9" Panel.ZIndex="2" HorizontalAlignment="Left" Margin="137,10,0,10"/>
-                </Grid>
-
-                <Grid Grid.Row="4" Margin="377,0,368,0">
-                    <TextBlock Margin="24,19,20,19" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Busca aqui.." Visibility="{Binding ElementName=txtBuscador, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-
-                    <TextBox x:Name="txtBuscador" Style="{StaticResource ResourceKey=BuscadorTextBox}" Visibility="Visible" TextChanged="TxtBuscador_TextChanged" Height="54"/>
-                </Grid>
+               
 
                 <!--Separarto-->
 

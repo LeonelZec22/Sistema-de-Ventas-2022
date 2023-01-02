@@ -55,7 +55,7 @@ namespace CapaDatos
                 dr.Close();
                 Con.Cerrar();
 
-                if (Estado == "Anulado")
+                if (Estado == "Cancelado")
                 {
                     System.Windows.Forms.MessageBox.Show("Esta Venta ya ha sido Anulada anteriormente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }

@@ -300,5 +300,10 @@ namespace CapaPresentacion
         }
 
         #endregion
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

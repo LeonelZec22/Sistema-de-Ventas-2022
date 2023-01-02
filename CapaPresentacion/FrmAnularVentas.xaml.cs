@@ -133,7 +133,7 @@ namespace CapaPresentacion
                         }
 
                         Ventas.AnularVenta(Venta);
-                        System.Windows.Forms.MessageBox.Show("Venta Cancelada Correctamente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
                         Anular();
                         this.Hide();
                     }
@@ -155,8 +155,9 @@ namespace CapaPresentacion
 
         private void BtnCancelarVenta_Click(object sender, RoutedEventArgs e)
         {
-           
+
             this.Hide();
+            Anular();
         }
 
         private void DataGridAnularVenta_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -193,11 +194,14 @@ namespace CapaPresentacion
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
+            Anular();
+
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
+            Anular();
         }
     }
 }

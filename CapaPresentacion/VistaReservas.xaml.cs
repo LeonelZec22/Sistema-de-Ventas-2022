@@ -47,6 +47,14 @@ namespace CapaPresentacion
             DataGridGestionReserva.UnselectAllCells();
         }
 
+
+        private void AgPaq_UpdateEventHandler(object sender, FrmAgregarReserva.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+
+
         private void DataGridGestionReserva_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Reserva = e.Column.Header.ToString();
@@ -94,10 +102,32 @@ namespace CapaPresentacion
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Buscar();
         }
 
-      
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboReserva.Text == "Nombre")
+                {
+                    Reserva.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionReserva.ItemsSource = Reservas.Buscar_Reserva_Nombre(Reserva).AsDataView();
+                }
+                
+                else if (cboReserva.Text == "Estado")
+                {
+                    Reserva.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionReserva.ItemsSource = Reservas.Buscar_Reserva_Estado(Reserva).AsDataView();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("La Reserva no fue encontrada por: " + ex.Message, "Buscar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
+
         private void DataGridGestionReserva_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -112,7 +142,14 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-            //DataGridGestionReserva.UnselectAllCells();
+            
+        }
+
+        private void BtnNuevoReserva_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarReserva Reserva = new FrmAgregarReserva(this);
+            Reserva.UpdateEventHandler += AgPaq_UpdateEventHandler;
+            Reserva.ShowDialog();
         }
     }
 }

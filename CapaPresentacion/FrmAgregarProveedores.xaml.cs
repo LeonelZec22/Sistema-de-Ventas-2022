@@ -36,6 +36,11 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        public FrmAgregarProveedores(FrmVistaProveedores Proveedores)
+        {
+            InitializeComponent();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GenerarCodigo();
@@ -186,10 +191,6 @@ namespace CapaPresentacion
 
                             LimpiarControles();
 
-                            GenerarCodigo();
-
-                            txtAddNombreProveedor.Focus();
-
                             Agregar();
 
                             Hide();
@@ -208,10 +209,6 @@ namespace CapaPresentacion
                         System.Windows.Forms.MessageBox.Show("Proveedor Agregado exitosamente!!! ", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                         LimpiarControles();
-
-                        GenerarCodigo();
-
-                        txtAddNombreProveedor.Focus();
 
                         Agregar();
 
@@ -237,7 +234,7 @@ namespace CapaPresentacion
             txtAddNombreProveedor.Clear();
             txtAddDireccion.Clear();
             txtAddTelefono.Clear();
-            Close();
+            Hide();
         }
 
         #region Evento Clic de los botones

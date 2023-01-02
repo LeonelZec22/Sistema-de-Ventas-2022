@@ -22,6 +22,10 @@ namespace CapaPresentacion
         {
             InitializeComponent();
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             CargarDatos();
         }
 
@@ -42,6 +46,12 @@ namespace CapaPresentacion
             DataGridGestionProveedores.ItemsSource = Procedimientos.CargarDatos("Proveedores").AsDataView();
 
         }
+
+        private void AgProve_UpdateEventHandler(object sender, FrmAgregarProveedores.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
 
         #region Ocultar la columna ID Proveedor
 
@@ -76,18 +86,6 @@ namespace CapaPresentacion
 
             ingreso.txtId_Proveedor.Clear();
 
-            #region traer datos
-            //var Cell = DataGridGestionProveedores.CurrentCell;
-            //GetDataGridCell(Cell);
-            //dg = sender as DataGrid;
-
-            //dr = dg.SelectedItem as DataRowView;
-
-            ////AgregarIngresoProveedor.UpdateEventHandler += 
-            //AgregarIngresoProveedor.txtId_Proveedor.Text = dr[0].ToString();
-            //AgregarIngresoProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
-
-            #endregion
 
         }
 
@@ -95,7 +93,30 @@ namespace CapaPresentacion
         //Vacio
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Buscar();
+        }
 
+        public virtual void Buscar()
+        {
+            try
+            {
+                if (cboGestionProv.Text == "Codigo")
+                {
+                    Proveedor.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionProveedores.ItemsSource = Proveedores.Buscar_Proveedor_Codigo(Proveedor).AsDataView();
+                }
+                else if (cboGestionProv.Text == "Nombre")
+                {
+                    Proveedor.Buscar = txtBuscador.Text.Trim();
+                    DataGridGestionProveedores.ItemsSource = Proveedores.Buscar_Proveedor_Nombre(Proveedor).AsDataView();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Cliente no fue encontrado por: " + ex.Message, "Buscar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         FrmAgregarIngreso AddProveedor = new FrmAgregarIngreso();
@@ -103,26 +124,6 @@ namespace CapaPresentacion
 
         private void BtnSeleccionarProve_Click(object sender, RoutedEventArgs e)
         {
-
-            #region comentarios btnselecionnar
-            //if (dr != null)
-            //{
-            //    //AddProveedor.txtId_Proveedor.Text = dr[0].ToString();
-            //    //AddProveedor.txtNombre_Proveedor.Text = dr[2].ToString();
-            //    //Hide();
-            //    AgregarIngresoProveedor.Show();
-            //}
-
-            //else
-            //{
-            //    System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-            //}
-
-            #endregion
-
-            //Necesario
-
-
             if (DataGridGestionProveedores.SelectedItems.Count == 0)
             {
                 System.Windows.Forms.MessageBox.Show("Debe de Seleccionar un Proveedor en la lista proveedores!!", "Seleccionar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
@@ -138,19 +139,7 @@ namespace CapaPresentacion
             }
         }
 
-      
 
-        #region datagridcell
-        //public DataGridCell GetDataGridCell (DataGridCellInfo cellInfo)
-        //{
-        //    var cellContent = cellInfo.Column.GetCellContent(cellInfo.Item);
-        //    if (cellContent != null)
-        //        return (DataGridCell)cellContent.Parent;
-
-        //    return null;
-        //}
-
-        #endregion
 
         private void BtnCancelarProv_Click(object sender, RoutedEventArgs e)
         {
@@ -158,11 +147,7 @@ namespace CapaPresentacion
             DataGridGestionProveedores.UnselectAllCells();
         }
 
-        private void Btnaddcli_Click(object sender, RoutedEventArgs e)
-        {
-            //FrmProveedores proveedores = new FrmProveedores();
-            //proveedores.ShowDialog();
-        }
+       
 
         private void CloseApp_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -173,7 +158,17 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             Hide();
-            //DataGridGestionProveedores.UnselectAllCells();
+           
         }
+
+        private void BtnNuevoProveedor_Click(object sender, RoutedEventArgs e)
+        {
+            FrmAgregarProveedores proveedores = new FrmAgregarProveedores(this);
+            proveedores.UpdateEventHandler += AgProve_UpdateEventHandler;
+
+            proveedores.ShowDialog();
+        }
+
+       
     }
 }

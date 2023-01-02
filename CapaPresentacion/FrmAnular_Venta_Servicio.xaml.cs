@@ -142,7 +142,7 @@ namespace CapaPresentacion
                             DetalleVentaServicios.Id_Venta_Servicios = Convert.ToInt32(txtId_Venta_Servicios.Text);
                             DetalleVentaServicios.Id_Reserva = Convert.ToInt32(row[2].ToString());
                             DetalleVentaServicios.Fecha_Reserva = Convert.ToDateTime(row[4].ToString());
-                            DetalleVentaServicios.Estado = Convert.ToString(row[5].ToString());
+                            DetalleVentaServicios.Estado = "Cancelado";
                             DetalleVentaServicios.Descuento = Convert.ToDecimal(row[6].ToString());
                             DetalleVentaServicios.Monto_Total = Convert.ToDecimal(row[7].ToString());
 
@@ -150,7 +150,7 @@ namespace CapaPresentacion
                         }
 
                         VentasServicios.AnularVentaServicios(VentaServicio);
-                        System.Windows.Forms.MessageBox.Show("Venta Cancelada Correctamente", "Cancelar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                        
                         Anular();
                         this.Hide();
                     }
@@ -172,16 +172,19 @@ namespace CapaPresentacion
         private void BtnCancelarVentaServicios_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+            Anular();
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
+            Anular();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
+            Anular();
         }
     }
 }

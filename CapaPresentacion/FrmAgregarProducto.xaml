@@ -40,7 +40,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de producto" Margin="22,161,424,406"/>
 
-                <TextBox Margin="210,144,62,406" x:Name="txtAddNombreProduct" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProduct_KeyDown" MaxLength="40"/>
+                <TextBox Margin="210,144,62,406" x:Name="txtAddNombreProduct" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del producto" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProduct_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Descripción " Margin="21,258,425,309"/>
 

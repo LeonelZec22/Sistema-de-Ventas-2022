@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
-        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Editar Clientes" Closed="Window_Closed">
+        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Editar Clientes" Closed="Window_Closed" Loaded="Window_Loaded">
 
     <Grid>
 
@@ -39,7 +39,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Codigo del Cliente" Margin="29,83,394,484" Width="187"/>
 
-                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True"/>
+                <TextBox Margin="232,66,40,484" x:Name="txtEditCodeCliente" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="15"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente" Margin="29,184,387,384" Width="194"/>
 
@@ -47,6 +47,7 @@
 
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Telefono de Cliente" Margin="29,373,394,195" Width="187"/>
+                
                 <TextBox Margin="232,354,40,196" x:Name="txtEditTelefonoCliente" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el telefono del cliente" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtEditTelefonoCliente_KeyDown" LostFocus="TxtEditTelefonoCliente_LostFocus" MaxLength="10"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Email del cliente" Margin="29,280,342,286" Width="239"/>

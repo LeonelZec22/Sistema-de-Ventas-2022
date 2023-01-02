@@ -28,16 +28,25 @@ namespace CapaPresentacion
         {
             InitializeComponent();
 
-            GenerarCodigo();
         }
 
         public FrmAgregarServicio(FrmServicios Servicios)
         {
             InitializeComponent();
 
-            GenerarCodigo();
         }
 
+        public FrmAgregarServicio(FrmVistaServicios Servicios)
+        {
+            InitializeComponent();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GenerarCodigo();
+
+        }
 
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_Servicios Servicios = new CDo_Servicios();
@@ -66,7 +75,6 @@ namespace CapaPresentacion
         {
             try
             {
-
                 txtAddCodeServicio.Text = "SERVI" + GenerarCodigoServicio();
             }
 
@@ -190,7 +198,7 @@ namespace CapaPresentacion
             txtAddNombreServicio.Clear();
             txtAddDescripcionServicio.Clear();
             txtAddPrecioVenta.Clear();
-            Close();
+            Hide();
         }
 
         #region Evento de los TextBox 
@@ -290,5 +298,7 @@ namespace CapaPresentacion
             this.Hide();
             Agregar();
         }
+
+       
     }
 }

@@ -254,7 +254,7 @@ namespace CapaPresentacion
             {
                 if (txtId_Producto.Text == string.Empty || txtCod_Producto.Text == string.Empty || txtNombre_Producto.Text == string.Empty || txtCantidad.Text == string.Empty || txtPrecio_Venta.Text == string.Empty || txtStockActual.Text == string.Empty || txtDescuento.Text == string.Empty)
                 {
-                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Detalle", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show("Debe de completar todos los campos del detalle de producto!!", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 }
                 else if (Convert.ToInt32(txtCantidad.Text) == 0)
                 {
@@ -333,6 +333,8 @@ namespace CapaPresentacion
                                 DataGridVenta.ItemsSource = TableProductos.DefaultView;
                                 LimpiarDetalle();
                                 ContFila++;
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
                             }
 
                             else
@@ -344,6 +346,8 @@ namespace CapaPresentacion
                                 DataGridVenta.UnselectAllCells();
                                 LimpiarDetalle();
                                 ContFila++;
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
                             }
                         }
 
@@ -371,6 +375,7 @@ namespace CapaPresentacion
                                     System.Windows.Forms.MessageBox.Show("No hay suficientes productos en existencia", "Agregar Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                                     LimpiarDetalle();
                                     DataGridVenta.UnselectAllCells();
+                                    
                                 }
 
                                 else
@@ -386,6 +391,10 @@ namespace CapaPresentacion
                                     DataGridVenta.ItemsSource = TableProductos.DefaultView;
                                     LimpiarDetalle();
                                     DataGridVenta.UnselectAllCells();
+
+                                    btnBuscarCliente.IsEnabled = false;
+                                    dtp_FechaVenta.IsEnabled = false;
+
                                 }
                                 
                             }
@@ -399,6 +408,8 @@ namespace CapaPresentacion
                                 DataGridVenta.UnselectAllCells();
                                 LimpiarDetalle();
                                 ContFila++;
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaVenta.IsEnabled = false;
                             }
                         }
 
@@ -479,6 +490,8 @@ namespace CapaPresentacion
                         DataGridVenta.ItemsSource = TableProductos.DefaultView;
                         DataGridVenta.UnselectAllCells();
                         ContFila--;
+                        btnBuscarCliente.IsEnabled = true;
+                        dtp_FechaVenta.IsEnabled = true;
                     }
                 }
 
@@ -636,7 +649,18 @@ namespace CapaPresentacion
 
         private void GenerarCorrelativos()
         {
-            txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");
+            try 
+            {
+
+                txtId_Venta.Text = Procedimientos.GenerarCodigoId("Ventas");
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Codigo de Venta no se puede generar por:" +ex.Message, "Agregar Venta de Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+               
+               
+            }
         }
 
         public virtual bool Guardar()
@@ -693,6 +717,7 @@ namespace CapaPresentacion
                         LimpiarDetalle();
                         LimpiarCampo();
                         limpiarFila();
+                        TableProductos = null;
                         Hide();
                         return true;
                     }

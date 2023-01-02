@@ -122,7 +122,7 @@ namespace CapaPresentacion
                             DetalleReserva.Id_DetalleReserva = Convert.ToInt32(row[0].ToString());
                             DetalleReserva.Id_Reserva = Convert.ToInt32(txtId_Reserva.Text);
                             DetalleReserva.Id_Servicios = Convert.ToInt32(row[2].ToString());
-                            DetalleReserva.Estado = Convert.ToString(row[4].ToString());
+                            DetalleReserva.Estado = "Cancelada";
                             DetalleReserva.Descuento = Convert.ToDecimal(row[5].ToString());
                             DetalleReserva.Monto_Total = Convert.ToDecimal(row[6].ToString());
 
@@ -130,7 +130,7 @@ namespace CapaPresentacion
                         }
 
                         Reservas.AnularReserva(Reserva);
-                        System.Windows.Forms.MessageBox.Show("Reserva Cancelada Correctamente", "Cancelar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                       
                         Anular();
                         this.Hide();
                     }
@@ -182,16 +182,19 @@ namespace CapaPresentacion
         private void BtnCancelarServicio_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+            Anular();
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
+            Anular();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
+            Anular();
         }
     }
 }

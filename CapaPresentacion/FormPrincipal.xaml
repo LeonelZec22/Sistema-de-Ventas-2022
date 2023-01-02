@@ -569,6 +569,7 @@
             <Ellipse Fill="#FF111111" Margin="19,7,0,10" Stroke="Black" RenderTransformOrigin="1.087,0.44"/>
 
         </Grid>
+        
         <Button Content="Button" x:Name="btnConfiguracion" HorizontalAlignment="Left" Height="45" Margin="19,108,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.889,0.556" Click="BtnConfiguracion_Click" Cursor="Hand"/>
         
         <Button x:Name="btnUsuarios" Content="Button" HorizontalAlignment="Left" Height="45" Margin="10,194,0,0" VerticalAlignment="Top" Width="45" Style="{DynamicResource ButtonStyle2}" Click="BtnUsuarios_Click" Cursor="Hand"/>

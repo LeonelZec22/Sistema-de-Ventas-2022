@@ -52,10 +52,18 @@ namespace CapaPresentacion
         }
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
-
-            
+            try
+            {
+                Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Hubo un error al cerrar la aplicacion: " + ex.Message, "Cerrar Aplicación", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
+
+
+    
 
         #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
@@ -66,13 +74,14 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
+
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
@@ -91,11 +100,22 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        private void BtnServicios_Click(object sender, RoutedEventArgs e)
         {
-            FrmInventario inventario = new FrmInventario();
+            FrmServicios servicios = new FrmServicios();
             Hide();
-            inventario.ShowDialog();
+            servicios.ShowDialog();
+            Close();
+        }
+
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuReserva Reserva = new MenuReserva();
+
+            Hide();
+
+            Reserva.ShowDialog();
+
             Close();
         }
 
@@ -269,5 +289,6 @@ namespace CapaPresentacion
             }
         }
 
+       
     }
 }

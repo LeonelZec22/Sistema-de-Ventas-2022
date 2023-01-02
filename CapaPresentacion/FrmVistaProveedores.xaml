@@ -9,7 +9,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d"
-        Height="720" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Icon="Images/thermal-spa.ico" Title="Selecciona un Proveedor" Closed="Window_Closed">
+        Height="720" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Icon="Images/thermal-spa.ico" Title="Selecciona un Proveedor" Closed="Window_Closed" Loaded="Window_Loaded">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
@@ -55,6 +55,9 @@
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,20,708,16" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
                 <Button Grid.Row="4" Margin="641,1,162,0" Height="Auto"  x:Name="btnSeleccionarProve" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8"  IsEnabled="True" Click="BtnSeleccionarProve_Click" Tag="{Binding Path=frow1}"/>
+
+                <Button Grid.Row="4" Margin="850,2,20,0" Height="Auto"  x:Name="btnNuevoProveedor" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="35" Content="+" Background="Green"  IsEnabled="True" Click="BtnNuevoProveedor_Click"/>
+
 
                 <Button Grid.Row="5" Margin="805,491,20,-18" Height="Auto"  x:Name="btnCancelarProv" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarProv_Click" Grid.RowSpan="2"/>
 

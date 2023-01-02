@@ -235,14 +235,8 @@ namespace CapaPresentacion
 
                     LimpiarControles();
 
-                    GenerarCodigoPro();
-
-                    txtAddNombreProduct.Focus();
-
                     Agregar();
 
-                    //FrmProductos productos = new FrmProductos();
-                    //productos.ShowDialog();
                     
                 }
             }
@@ -261,14 +255,22 @@ namespace CapaPresentacion
             txtAddDescripcion.Clear();
             txtAddPrecioVenta.Clear();
             txtAddCostoUnit.Clear();
-            Close();
+            Hide();
         }
 
 
         #region Generar Codigo
         private void GenerarCodigo()
         {
-            txtAddCodeProduct.Text = "PROD" + GenerarCodigoPro();
+            try
+            {
+                txtAddCodeProduct.Text = "PROD" + GenerarCodigoPro();
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Codigo de Producto no fue agregado porque: " + ex.Message, "Agregar Producto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         CD_Conexion Con = new CD_Conexion();

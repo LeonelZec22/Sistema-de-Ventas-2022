@@ -24,10 +24,7 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-        }
+        
 
         InformacionEmpresa empresa = new InformacionEmpresa();
 
@@ -50,7 +47,12 @@ namespace CapaPresentacion
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+        }
+
+        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

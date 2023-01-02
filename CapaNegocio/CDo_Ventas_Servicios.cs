@@ -28,5 +28,15 @@ namespace CapaNegocio
         {
             return objVentas.MostrarVentasServicios();
         }
+
+        public DataTable Buscar_VentaReserva_Nombre(CE_Ventas_Servicios Ventas)
+        {
+            return objVentas.Buscar_VentaReserva_Nombre(Ventas);
+        }
+
+        public DataTable Buscar_VentaReserva_Estado(CE_Ventas_Servicios Ventas)
+        {
+            return objVentas.Buscar_VentaReserva_Estado(Ventas);
+        }
     }
 }

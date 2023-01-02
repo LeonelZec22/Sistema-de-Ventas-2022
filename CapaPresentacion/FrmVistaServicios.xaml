@@ -54,7 +54,9 @@
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,18,677,19" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <Button Grid.Row="4" Margin="810,1,94,534" Height="Auto"  x:Name="btnSeleccionarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8" Cursor="Hand" IsEnabled="True" Click="BtnSeleccionarServicio_Click" Grid.RowSpan="2"/>
+                <Button Grid.Row="4" Margin="721,2,183,0" Height="Auto"  x:Name="btnSeleccionarServicio" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Seleccionar" Background="#FFCD20E8" Cursor="Hand" IsEnabled="True" Click="BtnSeleccionarServicio_Click"/>
+
+                <Button Grid.Row="4" Margin="908,2,20,0" Height="Auto"  x:Name="btnNuevoServicios" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="35" Content="+" Background="Green"  IsEnabled="True" Click="BtnNuevoServicios_Click"/>
 
                 <Button Grid.Row="5" Margin="908,491,20,0" Height="Auto"  x:Name="btnCancelarSer" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Cursor="Hand" Content="Cancelar" Background="red"  IsEnabled="True" Click="BtnCancelarSer_Click"/>
 

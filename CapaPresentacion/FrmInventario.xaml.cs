@@ -28,19 +28,23 @@ namespace CapaPresentacion
         public FrmInventario()
         {
             InitializeComponent();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             CargarDatos();
             SumarInventario();
 
         }
-
         //Método para que se pueda mover la ventana
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            //if (e.ChangedButton == MouseButton.Left)
+            //{
+            //    this.DragMove();
+            //}
         }
 
         //Creamos un objeto de nuestra clase conexión
@@ -141,18 +145,7 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -168,11 +161,11 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos Productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            Productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -199,6 +192,17 @@ namespace CapaPresentacion
             Close();
         }
 
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuReserva Reserva = new MenuReserva();
+
+            Hide();
+
+            Reserva.ShowDialog();
+
+            Close();
+        }
+
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
             MenuVentas ventas = new MenuVentas();
@@ -206,5 +210,9 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+       
+
+       
     }
 }

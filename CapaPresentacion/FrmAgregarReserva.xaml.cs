@@ -33,10 +33,16 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
+        public FrmAgregarReserva(VistaReservas Reservas)
+        {
+            InitializeComponent();
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             txtDescuentoVenta.Text = "0.00";
             txtMontoTotal.Text = "0.00";
+            GenerarCorrelativos();
             dtp_FechaReserva.SelectedDate = DateTime.Today;
         }
 
@@ -286,6 +292,8 @@ namespace CapaPresentacion
                                 DataGridReserva.ItemsSource = TableServicio.DefaultView;
                                 LimpiarDetalle();
                                 ContFila++;
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaReserva.IsEnabled = false;
                             }
 
                             else
@@ -296,17 +304,29 @@ namespace CapaPresentacion
                                 LimpiarDetalle();
                                 ContFila++;
                                 DataGridReserva.UnselectAllCells();
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaReserva.IsEnabled = false;
                             }
                         }
 
                         else
                         {
-                            TableServicio.Rows.Add(txtId_Servicios.Text, txtNombre_Servicio.Text, txtEstado.Text, Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+                            if (DataGridReserva.Items.Count >= 1)
+                            {
+                                System.Windows.Forms.MessageBox.Show("Solo se puede agregar una reserva a la vez", "Agregar Reserva", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            }
+                            else
+                            {
 
-                            DataGridReserva.ItemsSource = TableServicio.DefaultView;
-                            LimpiarDetalle();
-                            ContFila++;
-                            DataGridReserva.UnselectAllCells();
+                                TableServicio.Rows.Add(txtId_Servicios.Text, txtNombre_Servicio.Text, txtEstado.Text, Descuento1.ToString("N2"), Monto_Total.ToString("N2"));
+
+                                DataGridReserva.ItemsSource = TableServicio.DefaultView;
+                                LimpiarDetalle();
+                                ContFila++;
+                                DataGridReserva.UnselectAllCells();
+                                btnBuscarCliente.IsEnabled = false;
+                                dtp_FechaReserva.IsEnabled = false;
+                            }
                         }
 
                         decimal Total1 = 0, Total2 = 0;
@@ -377,6 +397,8 @@ namespace CapaPresentacion
                         DataGridReserva.ItemsSource = TableServicio.DefaultView;
                         DataGridReserva.UnselectAllCells();
                         ContFila--;
+                        btnBuscarCliente.IsEnabled = true;
+                        dtp_FechaReserva.IsEnabled = true;
                     }
                 }
 
@@ -407,13 +429,21 @@ namespace CapaPresentacion
 
         private void GenerarCorrelativos()
         {
-            txtId_Reserva.Text = Procedimientos.GenerarCodigoId("Reserva");
+            try
+            {
+                txtId_Reserva.Text = Procedimientos.GenerarCodigoId("Reserva");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("El Id de Reserva no fue generado por: " + ex, "Agregar Reservas", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
             LimpiarDetalle();
+            LimpiarCampo();
             limpiarFila();
             TableServicio = null;
         }
@@ -421,7 +451,7 @@ namespace CapaPresentacion
         private void Window_Closed(object sender, EventArgs e)
         {
             this.Hide();
-            //LimpiarDetalle();
+            LimpiarCampo();
             limpiarFila();
             TableServicio = null;
         }
@@ -495,6 +525,7 @@ namespace CapaPresentacion
         {
             this.Hide();
             LimpiarDetalle();
+            LimpiarCampo();
             limpiarFila();
             TableServicio = null;
         }
@@ -554,7 +585,6 @@ namespace CapaPresentacion
 
         private void LimpiarDetalle()
         {
-            txtId_Servicios.Text = string.Empty;
             txtNombre_Servicio.Text = string.Empty;
             txtPrecio_Venta.Text = string.Empty;
             txtDescuento.Text = string.Empty;
@@ -563,6 +593,7 @@ namespace CapaPresentacion
 
         private void LimpiarCampo()
         {
+            txtId_Servicios.Text = string.Empty;
             txtId_Cliente.Text = string.Empty;
             txtNombre_Servicio.Text = string.Empty;
         }

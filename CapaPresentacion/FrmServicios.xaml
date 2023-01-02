@@ -79,17 +79,17 @@
 
                         </Grid>
 
-                        <!--Productos-->
+                        <!--Paquetes-->
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Product-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" x:Name="btnProductos" Background="Transparent" Click="BtnProductos_Click" Style="{StaticResource BotonesMenu}" Cursor="Hand">
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/box.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" x:Name="btnPaquete" Background="Transparent"  Style="{StaticResource BotonesMenu}" Click="BtnPaquete_Click" Cursor="Hand">
 
-                                <uc:Modulos Titulo="Productos" Margin="-20 0 0 0"/>
+                                <uc:Modulos Titulo="Paquete" Margin="-20 0 0 0"/>
                             </Button>
 
                         </Grid>
@@ -140,19 +140,19 @@
 
                         </Grid>
 
-                        <!--Inventario-->
+                        <!--Reservas-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Inventory-64.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
-                            <Button Grid.Column="1" Background="Transparent" x:Name="btnInventario" Style="{StaticResource BotonesMenu}" Click="BtnInventario_Click" Cursor="Hand">
-                                <uc:Modulos  Titulo="Inventario" Margin="-20 0 0 0"/>
+
+                            <Image Grid.Column="0" Grid.ColumnSpan="2" Source="/images/Reserva.png" Style="{StaticResource BotonesMenuImagen}" Margin="9,12,113,11" Width="Auto"/>
+                            <Button Grid.Column="1" Background="Transparent" x:Name="btnReservas" Style="{StaticResource BotonesMenu}" Click="BtnReservas_Click" Cursor="Hand">
+                                <uc:Modulos  Titulo="Reserva" Margin="-20 0 0 0"/>
 
                             </Button>
-
                         </Grid>
 
                         <!--Ventas-->
@@ -224,12 +224,7 @@
                 <!--Buscador-->
                 <TextBlock Text="Buscar por" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0,19,738,18" Foreground="#ffffff" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-                <!--<Button  Style="{StaticResource addButton}" Margin="0,9,65,10" Grid.Row="4" Width="88">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0" />
-                        <TextBlock Text="Buscar"/>
-                    </StackPanel>
-                </Button>-->
+         
 
                 <Grid Grid.Row="4" Margin="107,0,584,0">
                     <ComboBox x:Name="cboServicios" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2">

@@ -84,48 +84,6 @@ namespace CapaPresentacion
             Eliminar();
         }
 
-        #endregion
-
-
-        FrmEditarServicios EditarServicio = new FrmEditarServicios();
-        DataGrid dg;
-        DataRowView dr;
-
-
-        //Eventos del DataGrid 
-
-        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
-        {
-            CargarDatos();
-        }
-
-        private void EdServi_UpdateEventHandler(object sender, FrmEditarServicios.UpdateEventArgs args)
-        {
-            CargarDatos();
-        }
-
-        private void DataGridServicios_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            dg = sender as DataGrid;
-
-            dr = dg.SelectedItem as DataRowView;
-
-            if (dr != null)
-            {
-                EditarServicio.UpdateEventHandler += EdServi_UpdateEventHandler;
-                EditarServicio.txtEditIDServicio.Text = dr[0].ToString();
-                EditarServicio.txtEditCodeServicio.Text = dr[1].ToString();
-                EditarServicio.txtEditNombreServicio.Text = dr[2].ToString();
-                EditarServicio.txtEditDescripcionServicio.Text = dr[3].ToString();
-                EditarServicio.txtEditPrecioVenta.Text = dr[4].ToString();
-                EditarServicio.EditguardarBtn.IsEnabled = true;
-                EditarServicio.IsEnabled = true;
-            }
-        }
-
-
-        //Método para eliminar
-
         public void Eliminar()
         {
             if (DataGridServicios.Items.Count == 0)
@@ -164,8 +122,49 @@ namespace CapaPresentacion
             }
         }
 
-        
-        //Método Buscar Clientes
+        #endregion
+
+
+        FrmEditarServicios EditarServicio = new FrmEditarServicios();
+        DataGrid dg;
+        DataRowView dr;
+
+
+        //Invocacion de un evento creado para recargar este formulario o pantalla
+
+        private void AgServi_UpdateEventHandler(object sender, FrmAgregarServicio.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        private void EdServi_UpdateEventHandler(object sender, FrmEditarServicios.UpdateEventArgs args)
+        {
+            CargarDatos();
+        }
+
+        //Invocacion de un evento creado para recargar este formulario o pantalla
+        private void DataGridServicios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dg = sender as DataGrid;
+
+            dr = dg.SelectedItem as DataRowView;
+
+            if (dr != null)
+            {
+                EditarServicio.UpdateEventHandler += EdServi_UpdateEventHandler;
+                EditarServicio.txtEditIDServicio.Text = dr[0].ToString();
+                EditarServicio.txtEditCodeServicio.Text = dr[1].ToString();
+                EditarServicio.txtEditNombreServicio.Text = dr[2].ToString();
+                EditarServicio.txtEditDescripcionServicio.Text = dr[3].ToString();
+                EditarServicio.txtEditPrecioVenta.Text = dr[4].ToString();
+                EditarServicio.EditguardarBtn.IsEnabled = true;
+                EditarServicio.IsEnabled = true;
+            }
+        }
+
+
+
+        #region Buscador
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
             Buscar();
@@ -194,8 +193,9 @@ namespace CapaPresentacion
             }
         }
 
-      
+        #endregion
 
+        #region  Formas de Cerrar la App
         private void CloseApp_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
@@ -235,18 +235,7 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -254,7 +243,9 @@ namespace CapaPresentacion
             }
         }
 
-        #region Botones menu izquierda
+        #endregion
+
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow Principal = new MainWindow();
@@ -263,21 +254,14 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
         {
-            FrmProductos productos = new FrmProductos();
+            MenuPaquete menuPaquete = new MenuPaquete();
             Hide();
-            productos.ShowDialog();
+            menuPaquete.ShowDialog();
             Close();
         }
 
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
-        {
-            FrmInventario inventario = new FrmInventario();
-            Hide();
-            inventario.ShowDialog();
-            Close();
-        }
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
         {
@@ -294,6 +278,16 @@ namespace CapaPresentacion
             clientes.ShowDialog();
             Close();
         }
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuReserva Reserva = new MenuReserva();
+
+            Hide();
+
+            Reserva.ShowDialog();
+
+            Close();
+        }
 
         private void BtnVentas_Click(object sender, RoutedEventArgs e)
         {
@@ -304,6 +298,8 @@ namespace CapaPresentacion
         }
 
         #endregion
-        
+
+       
+
     }
 }

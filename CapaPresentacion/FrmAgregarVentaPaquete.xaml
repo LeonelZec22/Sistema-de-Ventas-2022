@@ -41,7 +41,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre del Cliente" Margin="22,83,503,484"/>
 
-                <TextBox Margin="210,66,192,484" x:Name="txtClienteNombre" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="35"/>
+                <TextBox Margin="210,66,192,484" x:Name="txtClienteNombre" FontSize="18"  BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" Foreground="Black" IsReadOnly="True" MaxLength="30"/>
 
                 <!--Caja de texto de ID Cliente-->
                 <TextBox Margin="102,12,537,555" x:Name="txtId_Venta_Paquetes" FontSize="18" TextWrapping="Wrap" Visibility="Hidden"/>

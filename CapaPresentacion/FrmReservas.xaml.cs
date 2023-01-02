@@ -47,6 +47,8 @@ namespace CapaPresentacion
             DataGridReserva.UnselectAllCells();
 
         }
+
+        #region Evento para modificar las columnas autogeneradas del DataGrid
         private void DataGridReserva_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string Id_Reserva = e.Column.Header.ToString();
@@ -72,6 +74,9 @@ namespace CapaPresentacion
             //DataGridReserva.Columns[3].HeaderStringFormat.
         }
 
+        #endregion
+
+        //Invocacion de un evento creado para recargar este formulario o pantalla
         private void AgRes_UpdateEventHandler(object sender, FrmAgregarReserva.UpdateEventArgs args)
         {
             CargarDatos();
@@ -81,7 +86,7 @@ namespace CapaPresentacion
             CargarDatos();
         }
 
-
+        #region Botones del encabezado
         private void BtnNuevaReserva_Click(object sender, RoutedEventArgs e)
         {
             FrmAgregarReserva AgregarReservas = new FrmAgregarReserva(this);
@@ -89,14 +94,28 @@ namespace CapaPresentacion
             AgregarReservas.ShowDialog();
         }
 
+        private void BtnAnularReserva_Click(object sender, RoutedEventArgs e)
+        {
+            if (dr != null)
+            {
+                AnularReserva.MostrarDetalleVenta();
+                AnularReserva.ShowDialog();
+                DataGridReserva.UnselectAllCells();
+            }
 
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
+        }
 
         FrmAnularReserva AnularReserva = new FrmAnularReserva();
         DataGrid dg;
         DataRowView dr;
 
+        #endregion
 
-
+        //Evento para capturar una fila seleccionada del DataGrid
         private void DataGridReserva_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dg = sender as DataGrid;
@@ -128,25 +147,9 @@ namespace CapaPresentacion
 
             }
         }
-        private void BtnAnularReserva_Click(object sender, RoutedEventArgs e)
-        {
-            if (dr != null)
-            {
-                AnularReserva.MostrarDetalleVenta();
-                AnularReserva.ShowDialog();
-                DataGridReserva.UnselectAllCells();
-            }
 
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("Por favor seleccione un dato!!! ", "Anular Venta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-            }
-        }
 
-        private void BtnImprimirInfo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #region Buscador
 
         private void TxtBuscador_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -180,18 +183,9 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
 
-        private void BtnProductos_Click(object sender, RoutedEventArgs e)
-        {
-            FrmProductos Productos = new FrmProductos();
-
-            Hide();
-
-            Productos.ShowDialog();
-
-            Close();
-        }
-
+        #region  Formas de Cerrar la App
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -231,18 +225,7 @@ namespace CapaPresentacion
         {
             try
             {
-                System.Windows.Forms.DialogResult Resultado = System.Windows.Forms.MessageBox.Show("¿Está seguro que desea Cerrar la Aplicacion?", "Cerrar Aplicacion", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
-
-                if (Resultado == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    Application.Current.Shutdown();
-
-                }
-                else
-                {
-                    return;
-                }
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -250,11 +233,23 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
+
+        #region Menu Lateral
         private void BtnInicio_Click(object sender, RoutedEventArgs e)
         {
             MainWindow FormPrincipal = new MainWindow();
             Hide();
             FormPrincipal.ShowDialog();
+            Close();
+        }
+
+
+        private void BtnPaquete_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPaquete menuPaquete = new MenuPaquete();
+            Hide();
+            menuPaquete.ShowDialog();
             Close();
         }
 
@@ -282,11 +277,14 @@ namespace CapaPresentacion
             Close();
         }
 
-        private void BtnInventario_Click(object sender, RoutedEventArgs e)
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            FrmInventario frmInventario = new FrmInventario();
+            MenuReserva Reserva = new MenuReserva();
+
             Hide();
-            frmInventario.ShowDialog();
+
+            Reserva.ShowDialog();
+
             Close();
         }
 
@@ -297,5 +295,9 @@ namespace CapaPresentacion
             ventas.ShowDialog();
             Close();
         }
+
+        #endregion
+
+
     }
 }

@@ -36,6 +36,19 @@ namespace CapaPresentacion
 
         }
 
+        public FrmAgregarCliente(FrmVista_Reserva_Clientes Clientes)
+        {
+            InitializeComponent();
+
+        }
+
+        public FrmAgregarCliente(FrmVistaClientes Clientes)
+        {
+            InitializeComponent();
+
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GenerarCodigo();
@@ -168,7 +181,7 @@ namespace CapaPresentacion
                         bool val2 = regeEmail(txtAddEmailCliente);
                         if(val2 == false)
                         {
-                            System.Windows.Forms.MessageBox.Show("El Email del Cliente tiene formato incorrecto, ejemplo: Ejemplo@gmail.com", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                            System.Windows.Forms.MessageBox.Show("El Email del Cliente tiene formato incorrecto, ejemplo: Ejemplo@gmail.com", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                         }
                         else
                         {
@@ -178,7 +191,7 @@ namespace CapaPresentacion
                                 bool val = Regexcel(txtAddTelefonoCliente);
                                 if (val == false)
                                 {
-                                    System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto,         ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK,            System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                    System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto, ejemplo: 0000-0000.", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK,            System.Windows.Forms.MessageBoxIcon.Exclamation);
                                 }
 
                                 else
@@ -196,14 +209,7 @@ namespace CapaPresentacion
 
                                     LimpiarControles();
 
-                                    GenerarCodigo();
-
-                                    txtAddNombreCliente.Focus();
-
                                     Agregar();
-
-                                   
-
 
                                 }
                             }
@@ -223,11 +229,7 @@ namespace CapaPresentacion
                                 System.Windows.Forms.MessageBox.Show("Cliente Agregado exitosamente!!! ", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                                 LimpiarControles();
-
-                                GenerarCodigo();
-
-                                txtAddNombreCliente.Focus();
-
+                                
                                 Agregar();
                             }
                         }
@@ -242,7 +244,7 @@ namespace CapaPresentacion
                             bool val = Regexcel(txtAddTelefonoCliente);
                             if (val == false)
                             {
-                                System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto,         ejemplo: 0000-0000.", "Agregar Proveedor", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                System.Windows.Forms.MessageBox.Show("El teléfono del Cliente tiene formato incorrecto, ejemplo: 0000-0000.", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                             }
 
                             else
@@ -259,10 +261,6 @@ namespace CapaPresentacion
                                 System.Windows.Forms.MessageBox.Show("Cliente Agregado exitosamente!!! ", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                                 LimpiarControles();
-
-                                GenerarCodigo();
-
-                                txtAddNombreCliente.Focus();
 
                                 Agregar();
 
@@ -288,10 +286,6 @@ namespace CapaPresentacion
                             System.Windows.Forms.MessageBox.Show("Cliente Agregado exitosamente!!! ", "Agregar Cliente", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
                             LimpiarControles();
-
-                            GenerarCodigo();
-
-                            txtAddNombreCliente.Focus();
 
                             Agregar();
                         }
@@ -367,19 +361,19 @@ namespace CapaPresentacion
 
         private void AddCancelarBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            LimpiarControles();
             Agregar();
         }
 
         private void CloseApp_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Hide();
+            LimpiarControles();
             Agregar();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            this.Hide();
+            LimpiarControles();
             Agregar();
         }
 

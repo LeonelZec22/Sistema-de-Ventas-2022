@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CapaPresentacion"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
-        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Usuario" Closed="Window_Closed">
+        mc:Ignorable="d" Height="650" Width="1000" Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Icon="Images/thermal-spa.ico" Title="Agregar Usuario" Closed="Window_Closed" Loaded="Window_Loaded">
 
     <Grid>
 
@@ -37,11 +37,11 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre" Margin="29,83,425,484"/>
 
-                <TextBox Margin="210,66,62,484" x:Name="txtNombre" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtNombre_KeyDown" MaxLength="35"/>
+                <TextBox Margin="210,66,62,484" x:Name="txtNombre" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtNombre_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Apellido" Margin="22,161,424,406"/>
 
-                <TextBox Margin="210,144,62,406" x:Name="txtApellido" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el apellido del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtApellido_KeyDown" MaxLength="35"/>
+                <TextBox Margin="210,144,62,406" x:Name="txtApellido" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el apellido del usuario" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtApellido_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Usuario" Margin="21,258,425,309"/>
 

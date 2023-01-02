@@ -201,8 +201,14 @@
     <Compile Include="Informes\FrmMostrar_Ingreso_Producto.Designer.cs">
       <DependentUpon>FrmMostrar_Ingreso_Producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuPaquete.xaml.cs">
+      <DependentUpon>MenuPaquete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuProveedores.xaml.cs">
       <DependentUpon>MenuProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuReserva.xaml.cs">
+      <DependentUpon>MenuReserva.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuVentas.xaml.cs">
       <DependentUpon>MenuVentas.xaml</DependentUpon>
@@ -398,7 +404,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MenuPaquete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuReserva.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -594,6 +608,7 @@
     <Resource Include="Images\thermal-spa.png" />
     <Resource Include="Images\thermal-spa.ico" />
     <Resource Include="Images\venta1.png" />
+    <Resource Include="Images\supermercado.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

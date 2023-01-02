@@ -41,7 +41,7 @@
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Nombre de Proveedor" Margin="29,184,387,384" Width="194"/>
 
-                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProveedor_KeyDown" MaxLength="40"/>
+                <TextBox Margin="232,166,40,384" x:Name="txtAddNombreProveedor" FontSize="18" materialDesign:HintAssist.Hint="Ingresa el nombre del proveedor" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}" KeyDown="TxtAddNombreProveedor_KeyDown" MaxLength="30"/>
 
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Dirección de Proveedor" Margin="29,280,342,286" Width="239"/>
 
